@@ -44,15 +44,14 @@ public class PassengersHandler {
     }
 
     public Passenger removePassenger(){
-        Passenger x;
         if(!this.isEmpty()){
-            x = p[this.index-1];
             this.index--;
             this.full = false;
-            if(this.index == 0){
+            if(this.index == -1){
                 this.empty = true;
+                return null;
             }
-            return x;
+            return this.p[this.index];
         }   
         return null;
     }
@@ -63,6 +62,5 @@ public class PassengersHandler {
             " p='" + getP() + "'" +
             "}";
     }
-
 
 }
