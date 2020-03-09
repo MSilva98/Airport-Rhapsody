@@ -11,7 +11,7 @@ package airportrhapsody;
 
 import java.util.Random;
 
-public class Passenger {
+public class Passenger extends Thread{
     enum InternalState {
         AT_THE_DISEMBARKING_ZONE,
         AT_THE_LUGGAGE_COLLECTION_POINT,
@@ -28,45 +28,47 @@ public class Passenger {
         FDT
     }
 
-    private InternalState state;
+    private InternalState passengerState;
     private Situation situation;
     private int nr; //number of pieces of luggage the passenger carried at the start of her journey
     private int na; //number of pieces of luggage the passenger she has presently collected
 
     public Passenger(Situation situation, int nr) {
-        this.state = InternalState.AT_THE_DISEMBARKING_ZONE;
+        this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
         this.situation = situation;
         this.nr = nr;
     }
 
     public Passenger() {
-        this.state = InternalState.AT_THE_DISEMBARKING_ZONE;
+        this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
         setupPassenger();
     }
 
-    public void lifeCycle() {
-        boolean isFinalDst = whatShouldIDo();
-        if(isFinalDst){
-            if(nr == 0){
-                goHome();
-            }else{
-                boolean success;
-                for (int i = 0; i < nr; i++) {
-                    success = goCollectABag();
-                    if (!success){
-                        break;
-                    }
-                }
-                if (!success){
-                    reportMissingBags();
-                }
-                goHome();
-            }
-        }else{
-            takeABus();
-            enterTheBus();
-            prepareNextLeg();
-        }
+    @Override
+    public void run() {
+        System.out.println("Thread Passenger");
+        // boolean isFinalDst = whatShouldIDo();
+        // if(isFinalDst){
+        //     if(nr == 0){
+        //         goHome();
+        //     }else{
+        //         boolean success;
+        //         for (int i = 0; i < nr; i++) {
+        //             success = goCollectABag();
+        //             if (!success){
+        //                 break;
+        //             }
+        //         }
+        //         if (!success){
+        //             reportMissingBags();
+        //         }
+        //         goHome();
+        //     }
+        // }else{
+        //     takeABus();
+        //     enterTheBus();
+        //     prepareNextLeg();
+        // }
     }
 
     public void setupPassenger() {
@@ -82,7 +84,7 @@ public class Passenger {
     }
 
     private boolean whatShouldIDo() {
-        return True;
+        return true;
     }
 
     private void takeABus() {
@@ -93,12 +95,12 @@ public class Passenger {
         
     }
 
-    public InternalState getState() {
-        return this.state;
+    public InternalState getPassengerState() {
+        return this.passengerState;
     }
 
-    public void setState(InternalState state) {
-        this.state = state;
+    public void setPassengerState(InternalState state) {
+        this.passengerState = state;
     }
 
     public Situation getSituation() {

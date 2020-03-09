@@ -1,6 +1,6 @@
 package airportrhapsody;
 
-public class Porter {
+public class Porter extends Thread{
     enum InternalState {
         WAITING_FOR_A_PLANE_TO_LAND,
         AT_THE_PLANES_HOLD,
@@ -8,9 +8,15 @@ public class Porter {
         AT_THE_STOREROOM
     }
 
-    private InternalState state;
+    private InternalState porterState;
     private int bagsCb; // number of pieces of luggage presently on the conveyor belt
     private int bagsSR; // number of pieces of luggage belonging to passengers in transit presently stored at the storeroom
+
+
+    @Override
+    public void run(){
+        System.out.println("Thread Porter");
+    }
 
     private void takeARest() {
         
@@ -25,15 +31,15 @@ public class Porter {
     }
 
     public Porter() {
-        this.state = InternalState.WAITING_FOR_A_PLANE_TO_LAND;
+        this.porterState = InternalState.WAITING_FOR_A_PLANE_TO_LAND;
     }
 
-    public InternalState getState() {
-        return this.state;
+    public InternalState getPorterState() {
+        return this.porterState;
     }
 
-    public void setState(InternalState state) {
-        this.state = state;
+    public void setPorterState(InternalState state) {
+        this.porterState = state;
     }
 
     public int getBagsCb() {

@@ -1,6 +1,6 @@
 package airportrhapsody;
 
-public class BusDriver {
+public class BusDriver extends Thread{
     enum InternalState {
         PARKING_AT_THE_ARRIVAL_TERMINAL,
         DRIVING_FORWARD,
@@ -8,8 +8,13 @@ public class BusDriver {
         DRIVING_BACKWARD
     }
 
-    private InternalState state;
+    private InternalState busDriverState;
     private String[] seats; // occupation state for seat in the bus (passenger id / - (empty))
+
+    @Override
+    public void run(){
+        System.out.println("Thread BusDriver");
+    }
 
     private void goToDepartureTerminal() {
         
@@ -33,16 +38,16 @@ public class BusDriver {
     }
 
     public BusDriver(int numOfSeats) {
-        this.state = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
+        this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
         this.seats = new String[numOfSeats];
     }
 
-    public InternalState getState() {
-        return this.state;
+    public InternalState getBusDriverState() {
+        return this.busDriverState;
     }
 
-    public void setState(InternalState state) {
-        this.state = state;
+    public void setBusDriverState(InternalState state) {
+        this.busDriverState = state;
     }
 
     public String[] getSeats() {
