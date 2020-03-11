@@ -2,11 +2,9 @@ package airportrhapsody;
 
 public class LuggageHandler {
     private Luggage[] nbags;
-    int index;
-    boolean full;
-    boolean empty;
-    // private int finalBags;
-    // private int otherBags;
+    private int index;
+    private boolean full;
+    private boolean empty;
 
     public LuggageHandler(){
     }
@@ -16,8 +14,6 @@ public class LuggageHandler {
         this.index = 0;
         this.full = false;
         this.empty = true;
-        // this.finalBags = finalBags;
-        // this.otherBags = otherBags;
     }
 
     public Luggage[] getNbags() {
@@ -51,7 +47,7 @@ public class LuggageHandler {
         if(!this.isEmpty()){
             this.index--;
             this.full = false;
-            if(this.index == -1){
+            if(this.index == 0){
                 this.empty = true;
                 return null;
             }
@@ -59,22 +55,6 @@ public class LuggageHandler {
         }
         return null;
     }
-
-    // public int getFinalBags() {
-    //     return this.finalBags;
-    // }
-
-    // public void setFinalBags(int finalBags) {
-    //     this.finalBags = finalBags;
-    // }
-
-    // public int getOtherBags() {
-    //     return this.otherBags;
-    // }
-
-    // public void setOtherBags(int otherBags) {
-    //     this.otherBags = otherBags;
-    // }
 
     @Override
     public String toString() {

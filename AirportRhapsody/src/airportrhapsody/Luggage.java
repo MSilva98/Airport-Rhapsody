@@ -1,26 +1,26 @@
 package airportrhapsody;
 
+import airportrhapsody.Passenger.Situation;;
+
 /**
- * Luggage
+* Luggage
  */
 public class Luggage {
-    private int bagID;
+    private static int bagID = 0;
     private int owner;
+    private Situation si; 
 
     public Luggage() {
     }
 
-    public Luggage(int bagID, int owner) {
-        this.bagID = bagID;
+    public Luggage(int owner, Situation si) {
+        this.bagID++;
         this.owner = owner;
+        this.si = si;
     }
 
-    public int getBagID() {
-        return this.bagID;
-    }
-
-    public void setBagID(int bagID) {
-        this.bagID = bagID;
+    public static int getBagID() {
+        return bagID;
     }
 
     public int getOwner() {
@@ -29,6 +29,14 @@ public class Luggage {
 
     public void setOwner(int owner) {
         this.owner = owner;
+    }
+
+    public Situation getSi(){
+        return this.si;
+    }
+
+    public void setSi(Situation si){
+        this.si = si;
     }
 
     @Override
