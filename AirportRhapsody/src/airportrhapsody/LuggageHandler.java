@@ -56,6 +56,17 @@ public class LuggageHandler {
         return null;
     }
 
+    public Luggage remLuggage(int id){
+        if(!this.isEmpty()){
+            for (int i = 0; i < nbags.length; i++) {
+                if (nbags[i].getOwner() == id){
+                    //....
+                }
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "{" +

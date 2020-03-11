@@ -13,7 +13,7 @@ public class ArrTransQuay extends PassengersHandler {
         super.insertPassenger(p);
     }
 
-    public Passenger enterBus(){
+    public Passenger enterTheBus(){
         return super.removePassenger();
     }
 }

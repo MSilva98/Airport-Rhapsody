@@ -66,28 +66,29 @@ public class Passenger extends Thread{
     @Override
     public void run() {
         System.out.println("Thread Passenger");
-        // boolean isFinalDst = whatShouldIDo();
-        // if(isFinalDst){
-        //     if(nr == 0){
-        //         goHome();
-        //     }else{
-        //         boolean success;
-        //         for (int i = 0; i < nr; i++) {
-        //             success = goCollectABag();
-        //             if (!success){
-        //                 break;
-        //             }
-        //         }
-        //         if (!success){
-        //             reportMissingBags();
-        //         }
-        //         goHome();
-        //     }
-        // }else{
-        //     takeABus();
-        //     enterTheBus();
-        //     prepareNextLeg();
-        // }
+        boolean isFinalDst = whatShouldIDo();
+        if(isFinalDst){
+            if(nr == 0){
+                goHome();
+            }else{
+                boolean success = true;
+                for (int i = 0; i < nr; i++) {
+                    success = arrivalLounge.goCollectABag(passengerID);
+                    if (!success){
+                        break;
+                    }
+                    na++;
+                }
+                if (!success){
+                    reclaimOffice.reportMissingBags(nr - na);
+                }
+                goHome();
+            }
+        }else{
+            takeABus();
+            arrTransQuay.enterTheBus();
+            prepareNextLeg();
+        }
     }
 
     public void setupPassenger() {
@@ -112,7 +113,7 @@ public class Passenger extends Thread{
     }
 
     private boolean whatShouldIDo() {
-        return true;
+        return (situation == Situation.FDT);
     }
 
     private void takeABus() {

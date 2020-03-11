@@ -13,8 +13,8 @@ public class ArrivalLounge extends LuggageHandler{
         super.addLuggage(l);
     }
 
-    public Luggage getBag(){
-        return super.remLuggage();
+    public boolean goCollectABag(int id){
+         return(super.remLuggage(id) != null);
     }
 
     // @Override

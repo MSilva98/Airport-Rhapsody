@@ -6,12 +6,22 @@ package airportrhapsody;
 public class ReclaimOffice {
 
     private int reclaims;
+    private int numBagsMissing;
 
     public ReclaimOffice() {
+        numBagsMissing = 0;
     }
 
     public ReclaimOffice(int reclaims) {
         this.reclaims = reclaims;
+    }
+
+    public void reportMissingBags(int numBags) {
+        numBagsMissing++;
+    }
+
+    public int getNumBagsMissing() {
+        return this.numBagsMissing;
     }
 
     public int getReclaims() {
