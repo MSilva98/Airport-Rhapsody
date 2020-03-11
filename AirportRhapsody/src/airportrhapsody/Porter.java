@@ -8,6 +8,10 @@ public class Porter extends Thread{
         AT_THE_STOREROOM
     }
 
+
+    private ArrivalLounge arrivalLounge;
+    private TempStorageArea tempStorageArea;
+    private int porterID;
     private InternalState porterState;
     private int bagsCb; // number of pieces of luggage presently on the conveyor belt
     private int bagsSR; // number of pieces of luggage belonging to passengers in transit presently stored at the storeroom
@@ -28,6 +32,13 @@ public class Porter extends Thread{
 
     private void carryItToAppropriateStore() {
         
+    }
+
+    public Porter(int id, ArrivalLounge arrivalLounge, TempStorageArea tempStorageArea) {
+        this.porterState = InternalState.WAITING_FOR_A_PLANE_TO_LAND;
+        this.porterID = id;
+        this.arrivalLounge = arrivalLounge;
+        this.tempStorageArea = tempStorageArea;
     }
 
     public Porter() {

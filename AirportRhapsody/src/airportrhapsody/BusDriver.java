@@ -7,7 +7,9 @@ public class BusDriver extends Thread{
         PARKING_AT_THE_DEPARTURE_TERMINAL,
         DRIVING_BACKWARD
     }
-
+    private int busDriverID;
+    private ArrTransQuay arrTransQuay;
+    private DepTransQuay depTransQuay;
     private InternalState busDriverState;
     private String[] seats; // occupation state for seat in the bus (passenger id / - (empty))
 
@@ -35,11 +37,14 @@ public class BusDriver extends Thread{
 
 
     public BusDriver() {
+        this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
     }
 
-    public BusDriver(int numOfSeats) {
+    public BusDriver(int id, int numOfSeats, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay ) {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
         this.seats = new String[numOfSeats];
+        this.arrTransQuay = arrTransQuay;
+        this.depTransQuay = depTransQuay;
     }
 
     public InternalState getBusDriverState() {

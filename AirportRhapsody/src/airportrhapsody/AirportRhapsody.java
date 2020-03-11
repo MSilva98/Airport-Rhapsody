@@ -12,28 +12,33 @@ public class AirportRhapsody {
         int nPlaneLandings = 5;                             // number of plane landings
         int nSeatingPlaces = 3;                             // bus capacity
         int maxBags = 2;                                    // maximum luggage
-
-        // TempStorageArea tempStorArea;
-        // BaggageCollectionPoint bagCollPnt;
-        //...
+        ArrivalLounge arrivalLounge;
+        CollectionPoint collPoint;
+        ReclaimOffice reclaimOffice;
+        ArrTransQuay arrTransQuay;
+        DepTransQuay depTransQuay;
+        ArrTermExit arrTermExit;
+        DepTermEntrance depTermEntrance;
+        TempStorageArea tempStorageArea;
 
         //Problem config
 
         //Sharing region
 
-        // LuggageHandler temporaryStorageArea = new LuggageHandler();
-        // LuggageHandler baggageCollectionPoint = new LuggageHandler();
-        // PassengersHandler baggageReclaimOffice = new PassengersHandler();
-
-        // tempStorArea = new TempStorageArea();
-        // bagCollPnt = new BaggageCollectionPoint();
-        // ...
+        arrivalLounge = new ArrivalLounge(nPassengers*maxBags);
+        collPoint = new CollectionPoint(nPassengers*maxBags);
+        reclaimOffice = new ReclaimOffice();
+        arrTransQuay = new ArrTransQuay(nPassengers);
+        depTransQuay = new DepTransQuay(nPassengers);
+        arrTermExit = new ArrTermExit(nPassengers);
+        depTermEntrance = new DepTermEntrance(nPassengers);
+        tempStorageArea = new TempStorageArea(nPassengers);
 
         //entities
-        porter = new Porter();
-        busDriver = new BusDriver();
+        porter = new Porter(1, arrivalLounge, tempStorageArea);
+        busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay);
         for (int i = 0; i < nPassengers; i++){
-            passenger[i] = new Passenger(); //passar regioes partilhadas e argumentos necessarios
+            passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance);
         }
         
 

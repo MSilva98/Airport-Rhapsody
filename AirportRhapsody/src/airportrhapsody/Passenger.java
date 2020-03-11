@@ -28,15 +28,34 @@ public class Passenger extends Thread{
         FDT
     }
 
+    int passengerID;
+
     private InternalState passengerState;
     private Situation situation;
     private int nr; //number of pieces of luggage the passenger carried at the start of her journey
     private int na; //number of pieces of luggage the passenger she has presently collected
 
-    public Passenger(Situation situation, int nr) {
+    private ArrivalLounge arrivalLounge;
+    private CollectionPoint collPoint;
+    private ReclaimOffice reclaimOffice;
+    private ArrTransQuay arrTransQuay;
+    private DepTransQuay depTransQuay;
+    private ArrTermExit arrTermExit;
+    private DepTermEntrance depTermEntrance;
+
+    public Passenger(int id, ArrivalLounge arrivalLounge, CollectionPoint collPoint, ReclaimOffice reclaimOffice, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay, ArrTermExit arrTermExit, DepTermEntrance depTermEntrance) {
+        this.passengerID = id;
         this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
-        this.situation = situation;
-        this.nr = nr;
+        this.na = 0;
+        this.arrivalLounge = arrivalLounge;
+        this.collPoint = collPoint;
+        this.reclaimOffice = reclaimOffice;
+        this.arrTransQuay = arrTransQuay;
+        this.depTransQuay = depTransQuay;
+        this.arrTermExit = arrTermExit;
+        this.depTermEntrance = depTermEntrance;
+        setupPassenger();
+
     }
 
     public Passenger() {
@@ -76,7 +95,16 @@ public class Passenger extends Thread{
         Random rand = new Random(); 
         int rand_int1 = rand.nextInt(2);
         this.situation = s[rand_int1]; // randomize situation
-        this.nr = rand.nextInt(3); 
+        this.nr = rand.nextInt(3);
+        int temp = rand.nextInt(nr+1);
+        System.out.println("TEMP" + temp);
+        System.out.println("NR" + nr);
+        for (int i = 0; i < nr - temp; i++) {
+            arrivalLounge.putBag(new Luggage(passengerID,situation));
+            System.out.println("PUT BAG");
+        }
+        
+
     }
 
     private void goHome() {

@@ -3,9 +3,9 @@ package airportrhapsody;
 /**
  * DepTermExit
  */
-public class DepTermExit extends PassengersHandler{
+public class DepTermEntrance extends PassengersHandler{
 
-    public DepTermExit(int n){
+    public DepTermEntrance(int n){
         super(n);
     }
 
