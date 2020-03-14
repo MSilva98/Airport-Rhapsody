@@ -27,18 +27,27 @@ public class BusDriver extends Thread {
     public void run() {
         System.out.println("Thread BusDriver");
         int schedule = 50;
-        while(schedule > 0){
-            if(arrTransQuay.numPassengers() >= seats.length){
-                schedule = 0;
-            } 
-            schedule--;
-        }
+        // while(schedule > 0){
+        //     if(arrTransQuay.numPassengers() >= seats.length){
+        //         schedule = 0;
+        //     } 
+        //     schedule--; 
+        // }
 
-        if(schedule == 0 && arrTransQuay.numPassengers() > 0){
-            announcingBusBoarding();
-        }
-        else{
-            schedule = 50;
+        // if(schedule == 0 && arrTransQuay.numPassengers() > 0){
+        //     announcingBusBoarding();
+        // }
+        // else{
+        //     schedule = 50;
+        // }
+        while(arrTransQuay.numPassengers() > 0){
+            schedule--;
+            if(arrTransQuay.numPassengers() >= seats.length || schedule == 0){
+                announcingBusBoarding();
+            }
+            if(schedule == 0){
+                schedule = 50;
+            }
         }
 
     }
