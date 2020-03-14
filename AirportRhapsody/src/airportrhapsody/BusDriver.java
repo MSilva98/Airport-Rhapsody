@@ -49,6 +49,7 @@ public class BusDriver extends Thread {
                 schedule = 50;
             }
         }
+        hasDaysWorkEnded();
 
     }
 
@@ -71,15 +72,18 @@ public class BusDriver extends Thread {
     }
 
     private void parkTheBus(){
+        System.out.println("BusDriver: parkTheBus");
         this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
         // Lock the thread
     }
 
     private void hasDaysWorkEnded() {
+        System.out.println("BusDriver: hasDaysWorkEnded");
         this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
     }
 
     private void announcingBusBoarding() {
+        System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ arrTransQuay.numPassengers());
         this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
         for(int i = 0; i < seats.length; i++) {
             seats[i] = arrTransQuay.enterTheBus();

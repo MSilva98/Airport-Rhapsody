@@ -43,12 +43,12 @@ public class AirportRhapsody {
         
 
         //Start Simullation
-
+        porter.start();
+        busDriver.start();
         for (int i = 0; i < nPassengers; i++){
             passenger[i].start ();
         }
-        porter.start();
-        busDriver.start();
+        
 
         //End simulation
 

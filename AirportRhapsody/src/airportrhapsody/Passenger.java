@@ -109,6 +109,7 @@ public class Passenger extends Thread{
     private void goHome() {
         arrTermExit.insertPassenger(this); 
         this.setPassengerState(InternalState.EXITING_THE_ARRIVAL_TERMINAL);
+        System.out.println("Passenger "+ passengerID+" : goHome");
     }
 
     private boolean whatShouldIDo() {
@@ -119,11 +120,13 @@ public class Passenger extends Thread{
     private void takeABus() {
         arrTransQuay.arrived(this);
         this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
+        System.out.println("Passenger "+ passengerID+" : takeABus()");
     }
 
     public void prepareNextLeg(){
         depTermEntrance.arrivedTerm(depTransQuay.leaveDepTransQuay(this.passengerID));
         this.setPassengerState(InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
+        System.out.println("Passenger "+ passengerID+" : prepareNextLeg");
     }
 
     public InternalState getPassengerState() {

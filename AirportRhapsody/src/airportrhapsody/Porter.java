@@ -49,6 +49,7 @@ public class Porter extends Thread{
     }
 
     private void noMoreBagsToCollect() {
+        System.out.println("Porter: " + "noMoreBags");
         this.setPorterState(InternalState.WAITING_FOR_A_PLANE_TO_LAND);
         takeARest();
     }
@@ -57,11 +58,14 @@ public class Porter extends Thread{
         if(l.getSi() == Situation.FDT){
             collPoint.insertBag(l);
             this.setPorterState(InternalState.AT_THE_LUGGAGE_BELT_CONVEYOR);
+            System.out.println("Porter: " + "carryItToAppropriateStore -> collPoint");
         }
         else{
             tempStorageArea.insertBag(l);
             this.setPorterState(InternalState.AT_THE_STOREROOM);
+            System.out.println("Porter: " + "carryItToAppropriateStore -> tempStor");
         }
+        
     }
 
     public InternalState getPorterState() {
