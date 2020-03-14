@@ -35,7 +35,7 @@ public class AirportRhapsody {
         tempStorageArea = new TempStorageArea(nPassengers);
 
         //entities
-        porter = new Porter(1, arrivalLounge, tempStorageArea);
+        porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint);
         busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay);
         for (int i = 0; i < nPassengers; i++){
             passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance);

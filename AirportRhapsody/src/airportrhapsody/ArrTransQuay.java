@@ -16,4 +16,8 @@ public class ArrTransQuay extends PassengersHandler {
     public Passenger enterTheBus(){
         return super.removePassenger();
     }
+
+    public int numPassengers(){
+        return super.size();
+    }
 }

@@ -32,6 +32,10 @@ public class PassengersHandler {
         return this.empty;
     }
 
+    public int size(){
+        return index;
+    }
+
     public void insertPassenger(Passenger x) {
         if(!this.isFull()){
             p[this.index] = x;
@@ -52,6 +56,22 @@ public class PassengersHandler {
                 return null;
             }
             return this.p[this.index];
+        }   
+        return null;
+    }
+
+    public Passenger removePassenger(int id){
+        if(!this.isEmpty()){
+            for (int i = 0; i < p.length; i++) {
+                if (p[i].getId() == id){
+                    Passenger l = p[i];
+                    for(int j = i+1; j < p.length; j++) {
+                        p[j-1] = p[j]; 
+                    }
+                    this.full = false;
+                    return l;
+                }
+            }
         }   
         return null;
     }

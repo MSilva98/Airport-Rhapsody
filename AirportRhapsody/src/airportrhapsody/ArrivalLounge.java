@@ -1,5 +1,7 @@
 package airportrhapsody;
 
+import airportrhapsody.Porter.InternalState;
+
 /**
  * ArrivalLounge
  */
@@ -13,8 +15,9 @@ public class ArrivalLounge extends LuggageHandler{
         super.addLuggage(l);
     }
 
-    public boolean goCollectABag(int id){
-         return(super.remLuggage(id) != null);
+    public Luggage tryToCollectABag(Porter p){
+        p.setPorterState(InternalState.AT_THE_PLANES_HOLD);
+        return super.remLuggage();
     }
 
     // @Override

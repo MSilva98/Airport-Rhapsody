@@ -9,9 +9,9 @@ public class CollectionPoint extends LuggageHandler {
         super(n);
     }
 
-    public Luggage collectBag(){
-        return super.remLuggage();
-    }
+    public boolean goCollectABag(int id){
+        return(super.remLuggage(id) != null);
+    }    
 
     public void insertBag(Luggage l){
         super.addLuggage(l);

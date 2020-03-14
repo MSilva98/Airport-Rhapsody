@@ -1,7 +1,7 @@
 package airportrhapsody;
 
 public class LuggageHandler {
-    private Luggage[] nbags;
+    private Luggage[] bags;
     private int index;
     private boolean full;
     private boolean empty;
@@ -10,18 +10,18 @@ public class LuggageHandler {
     }
 
     public LuggageHandler(int n) {
-        this.nbags = new Luggage[n];
+        this.bags = new Luggage[n];
         this.index = 0;
         this.full = false;
         this.empty = true;
     }
 
     public Luggage[] getNbags() {
-        return this.nbags;
+        return this.bags;
     }
 
     public void setNbags(Luggage[] nbags) {
-        this.nbags = nbags;
+        this.bags = nbags;
     }
 
     public boolean isFull(){
@@ -34,10 +34,10 @@ public class LuggageHandler {
 
     public void addLuggage(Luggage bag){
         if(!this.isFull()){
-            this.nbags[index] = bag;
+            this.bags[index] = bag;
             this.index++;
             this.empty = false;
-            if(this.index == this.nbags.length){
+            if(this.index == this.bags.length){
                 this.full = true;
             }
         }
@@ -51,16 +51,21 @@ public class LuggageHandler {
                 this.empty = true;
                 return null;
             }
-            return this.nbags[index];
+            return this.bags[index];
         }
         return null;
     }
 
     public Luggage remLuggage(int id){
         if(!this.isEmpty()){
-            for (int i = 0; i < nbags.length; i++) {
-                if (nbags[i].getOwner() == id){
-                    //....
+            for (int i = 0; i < bags.length; i++) {
+                if (bags[i].getOwner() == id){
+                    Luggage l = bags[i];
+                    for(int j = i+1; j < bags.length; j++) {
+                        bags[j-1] = bags[j]; 
+                    }
+                    this.full = false;
+                    return l;
                 }
             }
         }

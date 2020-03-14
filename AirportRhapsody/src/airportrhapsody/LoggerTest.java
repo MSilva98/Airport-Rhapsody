@@ -1,6 +1,5 @@
 package airportrhapsody;
 
-import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
 
 /**
  * LoggerTest

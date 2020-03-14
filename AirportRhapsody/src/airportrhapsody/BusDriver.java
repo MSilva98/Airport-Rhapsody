@@ -1,50 +1,81 @@
 package airportrhapsody;
 
-public class BusDriver extends Thread{
+
+public class BusDriver extends Thread {
     enum InternalState {
-        PARKING_AT_THE_ARRIVAL_TERMINAL,
-        DRIVING_FORWARD,
-        PARKING_AT_THE_DEPARTURE_TERMINAL,
-        DRIVING_BACKWARD
+        PARKING_AT_THE_ARRIVAL_TERMINAL, DRIVING_FORWARD, PARKING_AT_THE_DEPARTURE_TERMINAL, DRIVING_BACKWARD
     }
+
     private int busDriverID;
     private ArrTransQuay arrTransQuay;
     private DepTransQuay depTransQuay;
     private InternalState busDriverState;
-    private String[] seats; // occupation state for seat in the bus (passenger id / - (empty))
-
-    @Override
-    public void run(){
-        System.out.println("Thread BusDriver");
-    }
-
-    private void goToDepartureTerminal() {
-        
-    }
-
-    private void goToArrivalTerminal() {
-        
-    }
-
-
-    private void hasDaysWorkEnded() {
-        
-    }
-
-    private void announcingBusBoarding() {
-        
-    }
-
+    private Passenger[] seats; // occupation state for seat in the bus (passenger id / - (empty))
 
     public BusDriver() {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
     }
 
-    public BusDriver(int id, int numOfSeats, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay ) {
+    public BusDriver(int id, int numOfSeats, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay) {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
-        this.seats = new String[numOfSeats];
+        this.seats = new Passenger[numOfSeats];
         this.arrTransQuay = arrTransQuay;
         this.depTransQuay = depTransQuay;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread BusDriver");
+        int schedule = 50;
+        while(schedule > 0){
+            if(arrTransQuay.numPassengers() >= seats.length){
+                schedule = 0;
+            } 
+            schedule--;
+        }
+
+        if(schedule == 0 && arrTransQuay.numPassengers() > 0){
+            announcingBusBoarding();
+        }
+        else{
+            schedule = 50;
+        }
+
+    }
+
+    private void goToDepartureTerminal() {
+        this.setBusDriverState(InternalState.DRIVING_FORWARD);
+        parkTheBusAndLetPassOff();
+    }
+
+    private void parkTheBusAndLetPassOff(){
+        this.setBusDriverState(InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
+        for(int i = 0; i < seats.length; i++) {
+           depTransQuay.leaveBus(seats[i]); 
+        }
+        goToArrivalTerminal();
+    }
+
+    private void goToArrivalTerminal() {
+        this.setBusDriverState(InternalState.DRIVING_BACKWARD);
+        parkTheBus();
+    }
+
+    private void parkTheBus(){
+        this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
+        // Lock the thread
+    }
+
+    private void hasDaysWorkEnded() {
+        this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
+    }
+
+    private void announcingBusBoarding() {
+        this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
+        for(int i = 0; i < seats.length; i++) {
+            seats[i] = arrTransQuay.enterTheBus();
+        }
+        goToDepartureTerminal();
     }
 
     public InternalState getBusDriverState() {
@@ -55,11 +86,11 @@ public class BusDriver extends Thread{
         this.busDriverState = state;
     }
 
-    public String[] getSeats() {
+    public Passenger[] getSeats() {
         return this.seats;
     }
 
-    public void setSeats(String[] seats) {
+    public void setSeats(Passenger[] seats) {
         this.seats = seats;
     }
 

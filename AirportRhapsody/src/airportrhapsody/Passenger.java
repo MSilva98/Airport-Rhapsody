@@ -73,7 +73,7 @@ public class Passenger extends Thread{
             }else{
                 boolean success = true;
                 for (int i = 0; i < nr; i++) {
-                    success = arrivalLounge.goCollectABag(passengerID);
+                    success = collPoint.goCollectABag(passengerID);
                     if (!success){
                         break;
                     }
@@ -98,30 +98,32 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        System.out.println("TEMP" + temp);
-        System.out.println("NR" + nr);
+        System.out.println("TEMP " + temp);
+        System.out.println("NR " + nr);
         for (int i = 0; i < nr - temp; i++) {
             arrivalLounge.putBag(new Luggage(passengerID,situation));
             System.out.println("PUT BAG");
         }
-        
-
     }
 
     private void goHome() {
-        
+        arrTermExit.insertPassenger(this); 
+        this.setPassengerState(InternalState.EXITING_THE_ARRIVAL_TERMINAL);
     }
 
     private boolean whatShouldIDo() {
+        //  Wake up porter
         return (situation == Situation.FDT);
     }
 
     private void takeABus() {
-        
+        arrTransQuay.arrived(this);
+        this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
     }
 
-    private void prepareNextLeg() {
-        
+    public void prepareNextLeg(){
+        depTermEntrance.arrivedTerm(depTransQuay.leaveDepTransQuay(this.passengerID));
+        this.setPassengerState(InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
     }
 
     public InternalState getPassengerState() {

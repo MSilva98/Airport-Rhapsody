@@ -1,5 +1,6 @@
 package airportrhapsody;
 
+import airportrhapsody.Passenger.InternalState;
 
 /**
  * DepTransQuay
@@ -11,10 +12,11 @@ public class DepTransQuay extends PassengersHandler {
     }
 
     public void leaveBus(Passenger p){
+        p.setPassengerState(InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
         super.insertPassenger(p);
     }
 
-    public Passenger prepareNextLeg(){
-        return super.removePassenger();
+    public Passenger leaveDepTransQuay(int id){
+        return super.removePassenger(id);
     }
 }

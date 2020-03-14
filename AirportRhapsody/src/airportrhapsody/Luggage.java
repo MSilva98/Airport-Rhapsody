@@ -6,7 +6,8 @@ import airportrhapsody.Passenger.Situation;;
 * Luggage
  */
 public class Luggage {
-    private static int bagID = 0;
+    private static int idCount = 0;
+    private int bagID;
     private int owner;
     private Situation si; 
 
@@ -14,12 +15,12 @@ public class Luggage {
     }
 
     public Luggage(int owner, Situation si) {
-        this.bagID++;
+        this.bagID = idCount++;
         this.owner = owner;
         this.si = si;
     }
 
-    public static int getBagID() {
+    public int getBagID() {
         return bagID;
     }
 
