@@ -1,6 +1,6 @@
-package airportrhapsody;
+package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Passenger.Situation;;
+import airportrhapsody.mainProgram.Passenger.Situation;
 
 /**
 * Luggage

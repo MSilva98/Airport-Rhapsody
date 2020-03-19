@@ -1,4 +1,4 @@
-package airportrhapsody;
+package airportrhapsody.sharedRegions;
 
 /**
  * TempStorageArea

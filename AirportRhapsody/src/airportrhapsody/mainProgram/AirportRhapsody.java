@@ -1,4 +1,6 @@
-package airportrhapsody;
+package airportrhapsody.mainProgram;
+
+import airportrhapsody.sharedRegions.*;
 
 public class AirportRhapsody {
 

@@ -1,6 +1,7 @@
-package airportrhapsody;
+package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Porter.InternalState;
+import airportrhapsody.mainProgram.Porter;
+import airportrhapsody.mainProgram.Porter.InternalState;;
 
 /**
  * ArrivalLounge

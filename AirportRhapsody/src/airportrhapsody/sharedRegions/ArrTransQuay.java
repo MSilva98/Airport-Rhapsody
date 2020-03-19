@@ -1,4 +1,6 @@
-package airportrhapsody;
+package airportrhapsody.sharedRegions;
+
+import airportrhapsody.mainProgram.Passenger;
 
 /**
  * ArrTransQuay

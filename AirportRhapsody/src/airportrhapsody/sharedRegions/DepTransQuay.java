@@ -1,6 +1,7 @@
-package airportrhapsody;
+package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Passenger.InternalState;
+import airportrhapsody.mainProgram.Passenger.InternalState;
+import airportrhapsody.mainProgram.Passenger;
 
 /**
  * DepTransQuay

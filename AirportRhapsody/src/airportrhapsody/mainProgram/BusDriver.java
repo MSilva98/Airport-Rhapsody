@@ -1,5 +1,6 @@
-package airportrhapsody;
+package airportrhapsody.mainProgram;
 
+import airportrhapsody.sharedRegions.*;
 
 public class BusDriver extends Thread {
     enum InternalState {

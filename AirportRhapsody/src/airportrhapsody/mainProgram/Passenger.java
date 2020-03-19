@@ -7,12 +7,13 @@
  * Passenger bags are randomly attributed (0,1 or 2) and the lost bags are randomly generated
  */
 
-package airportrhapsody;
+package airportrhapsody.mainProgram;
 
 import java.util.Random;
+import airportrhapsody.sharedRegions.*;
 
 public class Passenger extends Thread{
-    enum InternalState {
+    public enum InternalState {
         AT_THE_DISEMBARKING_ZONE,
         AT_THE_LUGGAGE_COLLECTION_POINT,
         AT_THE_BAGGAGE_RECLAIM_OFFICE,
@@ -23,7 +24,7 @@ public class Passenger extends Thread{
         ENTERING_THE_DEPARTURE_TERMINAL
     }
 
-    enum Situation {
+    public enum Situation {
         TRT,
         FDT
     }

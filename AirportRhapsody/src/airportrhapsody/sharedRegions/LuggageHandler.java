@@ -1,4 +1,4 @@
-package airportrhapsody;
+package airportrhapsody.sharedRegions;
 
 public class LuggageHandler {
     private Luggage[] bags;
