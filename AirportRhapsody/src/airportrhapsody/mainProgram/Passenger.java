@@ -67,7 +67,7 @@ public class Passenger extends Thread{
     @Override
     public void run() {
         System.out.println("Thread Passenger");
-        boolean isFinalDst = whatShouldIDo();
+        boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(nr == 0){
                 goHome();
@@ -113,10 +113,10 @@ public class Passenger extends Thread{
         System.out.println("Passenger "+ passengerID+" : goHome");
     }
 
-    private boolean whatShouldIDo() {
-        //  Wake up porter
-        return (situation == Situation.FDT);
-    }
+    // private boolean whatShouldIDo() {
+    //     //  Wake up porter
+    //     return (situation == Situation.FDT);
+    // }
 
     private void takeABus() {
         arrTransQuay.arrived(this);
@@ -132,6 +132,10 @@ public class Passenger extends Thread{
 
     public InternalState getPassengerState() {
         return this.passengerState;
+    }
+
+    public int getPassengerID() {
+        return this.passengerID;
     }
 
     public void setPassengerState(InternalState state) {

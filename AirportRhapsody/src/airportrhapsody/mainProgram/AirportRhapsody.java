@@ -27,7 +27,7 @@ public class AirportRhapsody {
 
         //Sharing region
 
-        arrivalLounge = new ArrivalLounge(nPassengers*maxBags);
+        arrivalLounge = new ArrivalLounge(nPassengers*maxBags,nPassengers);
         collPoint = new CollectionPoint(nPassengers*maxBags);
         reclaimOffice = new ReclaimOffice();
         arrTransQuay = new ArrTransQuay(nPassengers);
@@ -55,6 +55,26 @@ public class AirportRhapsody {
         //End simulation
 
         
+        try
+        { 
+            porter.join();
+        }
+        catch (InterruptedException e) {}
+        System.out.println("O porter terminou.");
+        try
+        { 
+            busDriver.join();
+        }
+        catch (InterruptedException e) {}
+        System.out.println("O busDriver terminou.");
+        for (int i = 0; i < nPassengers; i++){
+            try
+            { 
+                passenger[i].join();
+            }
+            catch (InterruptedException e) {}
+            System.out.println("O passenger "+  i + " terminou.");
+        }
     }
     
 }

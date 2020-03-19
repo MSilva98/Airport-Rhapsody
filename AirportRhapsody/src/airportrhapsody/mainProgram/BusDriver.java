@@ -45,6 +45,10 @@ public class BusDriver extends Thread {
             schedule--;
             if(arrTransQuay.numPassengers() >= seats.length || schedule == 0){
                 announcingBusBoarding();
+                goToDepartureTerminal();
+                parkTheBusAndLetPassOff();
+                goToArrivalTerminal();
+                parkTheBus();
             }
             if(schedule == 0){
                 schedule = 50;
@@ -56,7 +60,7 @@ public class BusDriver extends Thread {
 
     private void goToDepartureTerminal() {
         this.setBusDriverState(InternalState.DRIVING_FORWARD);
-        parkTheBusAndLetPassOff();
+        //parkTheBusAndLetPassOff();
     }
 
     private void parkTheBusAndLetPassOff(){
@@ -64,12 +68,12 @@ public class BusDriver extends Thread {
         for(int i = 0; i < seats.length; i++) {
            depTransQuay.leaveBus(seats[i]); 
         }
-        goToArrivalTerminal();
+        //goToArrivalTerminal();
     }
 
     private void goToArrivalTerminal() {
         this.setBusDriverState(InternalState.DRIVING_BACKWARD);
-        parkTheBus();
+        //parkTheBus();
     }
 
     private void parkTheBus(){
@@ -89,7 +93,7 @@ public class BusDriver extends Thread {
         for(int i = 0; i < seats.length; i++) {
             seats[i] = arrTransQuay.enterTheBus();
         }
-        goToDepartureTerminal();
+        //goToDepartureTerminal();
     }
 
     public InternalState getBusDriverState() {

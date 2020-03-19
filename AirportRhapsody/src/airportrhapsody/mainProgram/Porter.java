@@ -35,7 +35,9 @@ public class Porter extends Thread{
     @Override
     public void run(){
         System.out.println("Thread Porter");
-        takeARest();
+        System.out.println("1"+porterState);
+        arrivalLounge.takeARest(this);
+        System.out.println("2"+porterState);
         Luggage l = arrivalLounge.tryToCollectABag(this);
         while(l != null){
             carryItToAppropriateStore(l);
@@ -44,15 +46,15 @@ public class Porter extends Thread{
         noMoreBagsToCollect();
     }
 
-    private void takeARest() {
-        this.setPorterState(InternalState.WAITING_FOR_A_PLANE_TO_LAND);
-        // block porter
-    }
+    // private void takeARest() {
+    //     this.setPorterState(InternalState.WAITING_FOR_A_PLANE_TO_LAND);
+    //     // block porter
+    // }
 
     private void noMoreBagsToCollect() {
         System.out.println("Porter: " + "noMoreBags");
         this.setPorterState(InternalState.WAITING_FOR_A_PLANE_TO_LAND);
-        takeARest();
+        arrivalLounge.takeARest(this);
     }
 
     private void carryItToAppropriateStore(Luggage l) {
