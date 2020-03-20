@@ -22,4 +22,10 @@ public class DepTermEntrance extends PassengersHandler{
     public boolean emptyTerm(){
         return super.isEmpty();
     }
+
+    public void prepareNextLeg(DepTransQuay depTransQuay, Passenger p){
+        this.arrivedTerm(depTransQuay.leaveDepTransQuay(p.getPassengerID()));
+        p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
+        System.out.println("Passenger "+ p.getPassengerID()+" : prepareNextLeg");
+    }
 }

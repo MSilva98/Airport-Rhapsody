@@ -3,7 +3,6 @@ package airportrhapsody.mainProgram;
 import airportrhapsody.sharedRegions.*;
 
 public class AirportRhapsody {
-
     
     public static void main(String[] args) {
        

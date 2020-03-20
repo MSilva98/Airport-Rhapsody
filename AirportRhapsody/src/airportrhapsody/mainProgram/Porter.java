@@ -43,7 +43,8 @@ public class Porter extends Thread{
             carryItToAppropriateStore(l);
             l = arrivalLounge.tryToCollectABag(this);
         }
-        noMoreBagsToCollect();
+        collPoint.noMoreBagsToCollect(this);
+        arrivalLounge.takeARest(this);
     }
 
     // private void takeARest() {
@@ -51,11 +52,11 @@ public class Porter extends Thread{
     //     // block porter
     // }
 
-    private void noMoreBagsToCollect() {
-        System.out.println("Porter: " + "noMoreBags");
-        this.setPorterState(InternalState.WAITING_FOR_A_PLANE_TO_LAND);
-        arrivalLounge.takeARest(this);
-    }
+    // private void noMoreBagsToCollect() {
+    //     System.out.println("Porter: " + "noMoreBags");
+    //     this.setPorterState(InternalState.WAITING_FOR_A_PLANE_TO_LAND);
+    //     arrivalLounge.takeARest(this);
+    // }
 
     private void carryItToAppropriateStore(Luggage l) {
         if(l.getSi() == Situation.FDT){

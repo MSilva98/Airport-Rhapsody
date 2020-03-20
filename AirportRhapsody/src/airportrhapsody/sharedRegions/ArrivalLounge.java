@@ -9,7 +9,7 @@ import airportrhapsody.mainProgram.Porter.InternalState;;
  */
 public class ArrivalLounge extends LuggageHandler{
 
-    private Semaphore rest; 
+    private Semaphore rest;
 
     private int numPassengers;
 

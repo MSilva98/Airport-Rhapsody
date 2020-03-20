@@ -22,4 +22,10 @@ public class ArrTermExit extends PassengersHandler {
     public boolean emptyTerm(){
         return super.isEmpty();
     }
+
+    public void goHome(Passenger p) {
+        this.insertPassenger(p); 
+        p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
+        System.out.println("Passenger "+ p.getPassengerID() +" : goHome");
+    }
 }

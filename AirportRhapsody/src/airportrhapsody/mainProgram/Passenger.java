@@ -29,7 +29,7 @@ public class Passenger extends Thread{
         FDT
     }
 
-    int passengerID;
+    private int passengerID;
 
     private InternalState passengerState;
     private Situation situation;
@@ -86,8 +86,8 @@ public class Passenger extends Thread{
                 goHome();
             }
         }else{
-            takeABus();
-            arrTransQuay.enterTheBus();
+            arrTransQuay.takeABus(this);
+            arrTransQuay.enterTheBus(passengerID);
             prepareNextLeg();
         }
     }
@@ -118,11 +118,11 @@ public class Passenger extends Thread{
     //     return (situation == Situation.FDT);
     // }
 
-    private void takeABus() {
-        arrTransQuay.arrived(this);
-        this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
-        System.out.println("Passenger "+ passengerID+" : takeABus()");
-    }
+    // private void takeABus() {
+    //     arrTransQuay.arrived(this);
+    //     this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
+    //     System.out.println("Passenger "+ passengerID+" : takeABus()");
+    // }
 
     public void prepareNextLeg(){
         depTermEntrance.arrivedTerm(depTransQuay.leaveDepTransQuay(this.passengerID));
