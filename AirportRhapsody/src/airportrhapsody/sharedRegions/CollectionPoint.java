@@ -1,5 +1,6 @@
 package airportrhapsody.sharedRegions;
 
+import airportrhapsody.mainProgram.Passenger;
 import airportrhapsody.mainProgram.Porter;
 
 /**
@@ -10,29 +11,31 @@ public class CollectionPoint extends LuggageHandler {
     private Semaphore collectBag[];
     private int currentPass;
 
-    public CollectionPoint(int n){
-        super(n);
-        collectBag = new Semaphore[n];
+    public CollectionPoint(int nBags, int nPass){
+        super(nBags);
+        collectBag = new Semaphore[nPass];
         for (int i = 0; i < collectBag.length; i++) {
             collectBag[i] = new Semaphore();
         }
        
     }
 
-    public boolean goCollectABag(int id){
-        collectBag[id].down();
-        this.currentPass = id;
-        return(super.remLuggage(id) != null);
+    public boolean goCollectABag(Passenger p){
+        p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
+        collectBag[p.getPassengerID()].down();
+        // this.currentPass = id;
+        return(super.remLuggage(p.getPassengerID()) != null);
     }    
 
-    public void insertBag(Luggage l){
-        if(l.getOwner() == this.currentPass){
-            collectBag[l.getOwner()].up();
-        }
+    public void insertBag(Luggage l){           // a mala L é de certeza de um dos que está a espera pq a distinção é feita no carryItToAppropriateStore
+        // if(l.getOwner() == this.currentPass){
+        //     collectBag[l.getOwner()].up();
+        // }
+        collectBag[l.getOwner()].up();
         super.addLuggage(l);
     }
 
-    public void noMoreBagsToCollect(Porter p) {
+    public void noMoreBagsToCollect(Porter p) {         // para já fica mas acho que deviamos fazer up só aos que estão à espera (não deve aleijar ninguém assim XD)
         System.out.println("Porter: " + "noMoreBags");
         p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
         for (int i = 0; i < collectBag.length; i++) {

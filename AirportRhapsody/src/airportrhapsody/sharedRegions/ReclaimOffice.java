@@ -1,5 +1,7 @@
 package airportrhapsody.sharedRegions;
 
+import airportrhapsody.mainProgram.Passenger;
+
 /**
  * ReclaimOffice
  */
@@ -16,7 +18,8 @@ public class ReclaimOffice {
         this.reclaims = reclaims;
     }
 
-    public void reportMissingBags(int numBags) {
+    public void reportMissingBags(int numBags, Passenger p) {
+        p.setPassengerState(Passenger.InternalState.AT_THE_BAGGAGE_RECLAIM_OFFICE);
         numBagsMissing++;
     }
 

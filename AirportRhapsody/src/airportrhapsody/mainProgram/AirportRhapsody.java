@@ -27,7 +27,7 @@ public class AirportRhapsody {
         //Sharing region
 
         arrivalLounge = new ArrivalLounge(nPassengers*maxBags,nPassengers);
-        collPoint = new CollectionPoint(nPassengers*maxBags);
+        collPoint = new CollectionPoint(nPassengers*maxBags, nPassengers);
         reclaimOffice = new ReclaimOffice();
         arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces);
         depTransQuay = new DepTransQuay(nPassengers, arrTransQuay);

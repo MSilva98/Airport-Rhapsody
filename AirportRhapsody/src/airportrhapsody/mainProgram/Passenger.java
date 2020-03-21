@@ -70,25 +70,26 @@ public class Passenger extends Thread{
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(nr == 0){
-                goHome();
+                arrTermExit.goHome(this);
             }else{
                 boolean success = true;
                 for (int i = 0; i < nr; i++) {
-                    success = collPoint.goCollectABag(passengerID);
+                    success = collPoint.goCollectABag(this);
                     if (!success){
                         break;
                     }
                     na++;
                 }
                 if (!success){
-                    reclaimOffice.reportMissingBags(nr - na);
+                    reclaimOffice.reportMissingBags(nr - na, this);
                 }
-                goHome();
+                arrTermExit.goHome(this);
             }
         }else{
             arrTransQuay.takeABus(this);
             arrTransQuay.enterTheBus(passengerID);
-            prepareNextLeg();
+            depTransQuay.leaveBus(this);
+            depTermEntrance.prepareNextLeg(depTransQuay, this);
         }
     }
 
