@@ -35,9 +35,7 @@ public class Porter extends Thread{
     @Override
     public void run(){
         System.out.println("Thread Porter");
-        System.out.println("1"+porterState);
         arrivalLounge.takeARest(this);
-        System.out.println("2"+porterState);
         Luggage l = arrivalLounge.tryToCollectABag(this);
         while(l != null){
             carryItToAppropriateStore(l);

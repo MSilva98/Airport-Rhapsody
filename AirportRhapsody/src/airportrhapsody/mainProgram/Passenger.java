@@ -66,7 +66,7 @@ public class Passenger extends Thread{
 
     @Override
     public void run() {
-        System.out.println("Thread Passenger");
+        System.out.println("Thread Passenger " + passengerID + " - nr: " + nr + " situation: " + situation);
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(nr == 0){
@@ -99,11 +99,8 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        System.out.println("TEMP " + temp);
-        System.out.println("NR " + nr);
         for (int i = 0; i < nr - temp; i++) {
             arrivalLounge.putBag(new Luggage(passengerID,situation));
-            System.out.println("PUT BAG");
         }
     }
 

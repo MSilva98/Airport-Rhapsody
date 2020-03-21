@@ -16,9 +16,12 @@ public class ArrTransQuay extends PassengersHandler {
     private Semaphore takeBus;
     private Semaphore enterBus;
     private Passenger[] seats;
+    private int idx;
 
-    public ArrTransQuay(int n){
+    public ArrTransQuay(int n, int nseats){
         super(n);
+        seats = new Passenger[nseats];
+        idx = 0;
         this.parkBusArr = new Semaphore();
         this.busBoard = new Semaphore();
         this.takeBus = new Semaphore();
@@ -29,14 +32,18 @@ public class ArrTransQuay extends PassengersHandler {
         super.insertPassenger(p);
     }
 
+    public void enterBusUp() {
+        enterBus.up();
+    }
+
     public void enterTheBus(int id){
-        seats[id] = super.removePassenger(id);
-        if(id == seats.length){
+        seats[idx] = super.removePassenger(id);
+        idx++;
+        this.enterBus.down();
+        if(idx == seats.length-1){
+            idx = 0;
             this.busBoard.up();
-        }
-        else{
-            this.enterBus.down();
-        }
+        } 
     }
 
     public void parkTheBus(BusDriver b){
@@ -56,11 +63,10 @@ public class ArrTransQuay extends PassengersHandler {
     public Passenger[] announcingBusBoarding(BusDriver b) {
         System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ this.numPassengers());
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
-        this.seats = b.getSeats();
+        //this.seats = b.getSeats();
         
         this.takeBus.up();
         this.busBoard.down();
-
         // for(int i = 0; i < seats.length; i++) {
         //     seats[i] = this.enterTheBus(seats.length-1 == i);
         // }

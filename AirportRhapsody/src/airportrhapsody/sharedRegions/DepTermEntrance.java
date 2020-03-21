@@ -7,8 +7,11 @@ import airportrhapsody.mainProgram.Passenger;
  */
 public class DepTermEntrance extends PassengersHandler{
 
-    public DepTermEntrance(int n){
+    private ArrTermExit arrTermExit;
+
+    public DepTermEntrance(int n, ArrTermExit arrTermExit){
         super(n);
+        this.arrTermExit = arrTermExit;
     }
 
     public void arrivedTerm(Passenger p){
@@ -26,6 +29,7 @@ public class DepTermEntrance extends PassengersHandler{
     public void prepareNextLeg(DepTransQuay depTransQuay, Passenger p){
         this.arrivedTerm(depTransQuay.leaveDepTransQuay(p.getPassengerID()));
         p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
+        arrTermExit.leaveAirpDown();
         System.out.println("Passenger "+ p.getPassengerID()+" : prepareNextLeg");
     }
 }

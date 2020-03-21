@@ -29,18 +29,18 @@ public class AirportRhapsody {
         arrivalLounge = new ArrivalLounge(nPassengers*maxBags,nPassengers);
         collPoint = new CollectionPoint(nPassengers*maxBags);
         reclaimOffice = new ReclaimOffice();
-        arrTransQuay = new ArrTransQuay(nPassengers);
-        depTransQuay = new DepTransQuay(nPassengers);
+        arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces);
+        depTransQuay = new DepTransQuay(nPassengers, arrTransQuay);
         arrTermExit = new ArrTermExit(nPassengers);
-        depTermEntrance = new DepTermEntrance(nPassengers);
+        depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit);
         tempStorageArea = new TempStorageArea(nPassengers);
 
         //entities
         porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint);
-        busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay);
         for (int i = 0; i < nPassengers; i++){
             passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance);
         }
+        busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay);
         
 
         //Start Simullation

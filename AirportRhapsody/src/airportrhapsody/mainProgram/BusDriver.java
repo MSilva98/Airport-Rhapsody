@@ -65,9 +65,7 @@ public class BusDriver extends Thread {
 
     // private void parkTheBusAndLetPassOff(){
     //     this.setBusDriverState(InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
-    //     for(int i = 0; i < seats.length; i++) {
-    //        depTransQuay.leaveBus(seats[i]); 
-    //     }
+    //    else{
     //     //goToArrivalTerminal();
     // }
 

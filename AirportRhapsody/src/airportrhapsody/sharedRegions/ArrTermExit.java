@@ -7,8 +7,15 @@ import airportrhapsody.mainProgram.Passenger;
  */
 public class ArrTermExit extends PassengersHandler {
 
+    private Barrier leaveAirp;
+
     public ArrTermExit(int n){
         super(n);
+        leaveAirp = new Barrier(n);
+    }
+
+    public void leaveAirpDown() {
+        leaveAirp.down();
     }
 
     public void arrivedTerm(Passenger p){
@@ -27,5 +34,6 @@ public class ArrTermExit extends PassengersHandler {
         this.insertPassenger(p); 
         p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
         System.out.println("Passenger "+ p.getPassengerID() +" : goHome");
+        leaveAirp.down();
     }
 }
