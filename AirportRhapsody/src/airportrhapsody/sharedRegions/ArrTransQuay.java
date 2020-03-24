@@ -1,8 +1,5 @@
 package airportrhapsody.sharedRegions;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import airportrhapsody.mainProgram.BusDriver;
 import airportrhapsody.mainProgram.Passenger;
 

@@ -14,6 +14,11 @@ public class Luggage {
     public Luggage() {
     }
 
+    public Luggage(int owner){
+        this.owner = owner;
+        this.bagID = idCount++;
+    }
+
     public Luggage(int owner, Situation si) {
         this.bagID = idCount++;
         this.owner = owner;

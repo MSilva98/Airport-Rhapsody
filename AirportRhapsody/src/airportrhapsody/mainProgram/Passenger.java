@@ -61,7 +61,13 @@ public class Passenger extends Thread{
 
     public Passenger() {
         this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
-        setupPassenger();
+        // setupPassenger();
+    }
+
+    public Passenger(int id) {
+        this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
+        // setupPassenger();
+        this.passengerID = id;
     }
 
     @Override
@@ -105,11 +111,11 @@ public class Passenger extends Thread{
         }
     }
 
-    private void goHome() {
-        arrTermExit.insertPassenger(this); 
-        this.setPassengerState(InternalState.EXITING_THE_ARRIVAL_TERMINAL);
-        System.out.println("Passenger "+ passengerID+" : goHome");
-    }
+    // private void goHome() {
+    //     arrTermExit.insertPassenger(this); 
+    //     this.setPassengerState(InternalState.EXITING_THE_ARRIVAL_TERMINAL);
+    //     System.out.println("Passenger "+ passengerID+" : goHome");
+    // }
 
     // private boolean whatShouldIDo() {
     //     //  Wake up porter
@@ -122,11 +128,11 @@ public class Passenger extends Thread{
     //     System.out.println("Passenger "+ passengerID+" : takeABus()");
     // }
 
-    public void prepareNextLeg(){
-        depTermEntrance.arrivedTerm(depTransQuay.leaveDepTransQuay(this.passengerID));
-        this.setPassengerState(InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
-        System.out.println("Passenger "+ passengerID+" : prepareNextLeg");
-    }
+    // public void prepareNextLeg(){
+    //     depTermEntrance.arrivedTerm(depTransQuay.leaveDepTransQuay(this.passengerID));
+    //     this.setPassengerState(InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
+    //     System.out.println("Passenger "+ passengerID+" : prepareNextLeg");
+    // }
 
     public InternalState getPassengerState() {
         return this.passengerState;
@@ -164,5 +170,10 @@ public class Passenger extends Thread{
         this.na = na;
     }
 
-
+    @Override
+    public String toString(){
+        return "{" +
+            "passenger ID: " + this.getPassengerID()
+            + "}";
+    }
 }

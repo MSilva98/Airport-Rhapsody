@@ -32,26 +32,33 @@ public class LuggageHandler {
         return this.empty;
     }
 
-    public void addLuggage(Luggage bag){
+    public int size(){
+        return this.index;
+    }
+
+    public boolean addLuggage(Luggage bag){
         if(!this.isFull()){
             this.bags[index] = bag;
-            this.index++;
             this.empty = false;
+            this.index++;
             if(this.index == this.bags.length){
                 this.full = true;
             }
+            return true;
         }
+        return false;
     }
 
     public Luggage remLuggage(){
         if(!this.isEmpty()){
             this.index--;
             this.full = false;
-            if(this.index == 0){
+            if(this.index == -1){
                 this.empty = true;
+                this.index = 0;
                 return null;
             }
-            return this.bags[index];
+            return this.bags[this.index];
         }
         return null;
     }
@@ -64,8 +71,10 @@ public class LuggageHandler {
                     Luggage l = bags[i];
                     for(int j = i+1; j < bags.length; j++) {
                         bags[j-1] = bags[j]; 
+                        bags[j] = null;
                     }
                     this.full = false;
+                    this.index--;
                     return l;
                 }
             }
@@ -75,9 +84,11 @@ public class LuggageHandler {
 
     @Override
     public String toString() {
-        return "{" +
-            " nbags='" + getNbags() + "'" + 
-            "}";
+        String s = "";
+        for (int i = 0; i < this.bags.length; i++) {
+            s += "\n" + bags[i];
+        }
+        return s;
     }
 
     

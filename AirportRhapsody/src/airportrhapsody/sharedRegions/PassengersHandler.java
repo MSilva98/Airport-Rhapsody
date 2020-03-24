@@ -38,7 +38,7 @@ public class PassengersHandler {
         return index;
     }
 
-    public void insertPassenger(Passenger x) {
+    public boolean insertPassenger(Passenger x) {
         if(!this.isFull()){
             p[this.index] = x;
             this.empty = false;
@@ -46,7 +46,9 @@ public class PassengersHandler {
             if(this.index == this.p.length){
                 this.full = true;
             }
+            return true;
         }
+        return false;
     }
 
     public Passenger removePassenger(){
@@ -55,6 +57,7 @@ public class PassengersHandler {
             this.full = false;
             if(this.index == -1){
                 this.empty = true;
+                this.index = 0;
                 return null;
             }
             return this.p[this.index];
@@ -66,12 +69,14 @@ public class PassengersHandler {
         if(!this.isEmpty()){
             for (int i = 0; i < p.length; i++) {
                 System.out.println("p size " + p.length + " i=" + i);
-                if (p[i].getId() == id){
+                if (p[i].getPassengerID() == id){
                     Passenger l = p[i];
                     for(int j = i+1; j < p.length; j++) {
                         p[j-1] = p[j]; 
+                        p[j] = null;
                     }
                     this.full = false;
+                    this.index--;
                     return l;
                 }
             }
@@ -81,9 +86,11 @@ public class PassengersHandler {
 
     @Override
     public String toString() {
-        return "{" +
-            " p='" + getP() + "'" +
-            "}";
+        String s = "";
+        for (int i = 0; i < this.p.length; i++) {
+            s += "\n" + p[i];
+        }
+        return s;
     }
 
 }
