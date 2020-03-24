@@ -69,15 +69,17 @@ public class PassengersHandler {
         if(!this.isEmpty()){
             for (int i = 0; i < p.length; i++) {
                 // System.out.println("p size " + p.length + " i=" + i);
-                if (p[i].getPassengerID() == id){
-                    Passenger l = p[i];
-                    for(int j = i+1; j < p.length; j++) {
-                        p[j-1] = p[j]; 
-                        p[j] = null;
+                if(p[i] != null){
+                    if (p[i].getPassengerID() == id){
+                        Passenger l = p[i];
+                        for(int j = i+1; j < p.length; j++) {
+                            p[j-1] = p[j]; 
+                            p[j] = null;
+                        }
+                        this.full = false;
+                        this.index--;
+                        return l;
                     }
-                    this.full = false;
-                    this.index--;
-                    return l;
                 }
             }
         }   
