@@ -68,7 +68,7 @@ public class PassengersHandler {
     public Passenger removePassenger(int id){
         if(!this.isEmpty()){
             for (int i = 0; i < p.length; i++) {
-                System.out.println("p size " + p.length + " i=" + i);
+                // System.out.println("p size " + p.length + " i=" + i);
                 if (p[i].getPassengerID() == id){
                     Passenger l = p[i];
                     for(int j = i+1; j < p.length; j++) {

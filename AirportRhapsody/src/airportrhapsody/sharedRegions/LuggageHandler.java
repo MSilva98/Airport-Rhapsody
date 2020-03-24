@@ -66,16 +66,18 @@ public class LuggageHandler {
     public Luggage remLuggage(int id){
         if(!this.isEmpty()){
             for (int i = 0; i < bags.length; i++) {
-                System.out.println("bags size " + bags.length + " i=" + i);
-                if (bags[i].getOwner() == id){
-                    Luggage l = bags[i];
-                    for(int j = i+1; j < bags.length; j++) {
-                        bags[j-1] = bags[j]; 
-                        bags[j] = null;
+                // System.out.println("bags size " + bags.length + " i=" + i);
+                if(bags[i] != null){
+                    if (bags[i].getOwner() == id){
+                        Luggage l = bags[i];
+                        for(int j = i+1; j < bags.length; j++) {
+                            bags[j-1] = bags[j]; 
+                            bags[j] = null;
+                        }
+                        this.full = false;
+                        this.index--;
+                        return l;
                     }
-                    this.full = false;
-                    this.index--;
-                    return l;
                 }
             }
         }
