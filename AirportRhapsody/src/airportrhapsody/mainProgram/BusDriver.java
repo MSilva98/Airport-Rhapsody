@@ -11,7 +11,7 @@ public class BusDriver extends Thread {
     private ArrTransQuay arrTransQuay;
     private DepTransQuay depTransQuay;
     private InternalState busDriverState;
-    private Passenger[] seats; // occupation state for seat in the bus (passenger id / - (empty))
+    private PassengersHandler seats; // occupation state for seat in the bus (passenger id / - (empty))
 
     public BusDriver() {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
@@ -19,7 +19,7 @@ public class BusDriver extends Thread {
 
     public BusDriver(int id, int numOfSeats, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay) {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
-        this.seats = new Passenger[numOfSeats];
+        this.seats = new PassengersHandler(numOfSeats);
         this.arrTransQuay = arrTransQuay;
         this.depTransQuay = depTransQuay;
     }
@@ -27,7 +27,7 @@ public class BusDriver extends Thread {
     @Override
     public void run() {
         System.out.println("Thread BusDriver");
-        int schedule = 50;
+        int schedule = 5000;
         // while(schedule > 0){
         //     if(arrTransQuay.numPassengers() >= seats.length){
         //         schedule = 0;
@@ -41,9 +41,10 @@ public class BusDriver extends Thread {
         // else{
         //     schedule = 50;
         // }
-        while(arrTransQuay.numPassengers() > 0){
+        // while(arrTransQuay.numPassengers() > 0){
+        while(true){
             schedule--;
-            if(arrTransQuay.numPassengers() >= seats.length || schedule == 0){
+            if(arrTransQuay.numPassengers() >= seats.maxSize() || (schedule == 0 && arrTransQuay.numPassengers() >= 1)){
                 seats = arrTransQuay.announcingBusBoarding(this);
                 goToDepartureTerminal();
                 depTransQuay.parkTheBusAndLetPassOff(this);
@@ -51,10 +52,10 @@ public class BusDriver extends Thread {
                 arrTransQuay.parkTheBus(this);
             }
             if(schedule == 0){
-                schedule = 50;
+                schedule = 5000;
             }
         }
-        hasDaysWorkEnded();
+        //hasDaysWorkEnded();
 
     }
 
@@ -101,12 +102,8 @@ public class BusDriver extends Thread {
         this.busDriverState = state;
     }
 
-    public Passenger[] getSeats() {
+    public PassengersHandler getSeats() {
         return this.seats;
-    }
-
-    public void setSeats(Passenger[] seats) {
-        this.seats = seats;
     }
 
 }

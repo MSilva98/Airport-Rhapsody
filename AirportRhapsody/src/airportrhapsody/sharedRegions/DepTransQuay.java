@@ -20,12 +20,17 @@ public class DepTransQuay extends PassengersHandler {
     }
 
     public void leaveBus(Passenger p){
-        p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
-        super.insertPassenger(p);
-        idx++;
-        if(idx == 3){
-            parkBusDep.up();
+        synchronized(this){
+            System.out.println("Passenger "+ p.getPassengerID() + ": leaveTheBus()");
+            p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
+            super.insertPassenger(p);
+            idx++;
+            if(idx == arrTransQuay.seatsSize()){
+                parkBusDep.up();
+                idx = 0;
+            }
         }
+        
     }
 
     public Passenger leaveDepTransQuay(int id){
@@ -33,13 +38,18 @@ public class DepTransQuay extends PassengersHandler {
     }
 
     public void parkTheBusAndLetPassOff(BusDriver b){
+        System.out.println("BusDriver: parkTheBusAndLetPassOff()");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
-        arrTransQuay.enterBusUp();
+        for (int i = 0; i < b.getSeats().size(); i++) {
+            arrTransQuay.enterBusUp();
+            System.out.println("Passageiro libertado");
+        }
         // Passenger[] seats = b.getSeats();
         // for(int i = 0; i < seats.length; i++) {
         //    this.leaveBus(seats[i], seats.length-1 == i); 
         // }
         parkBusDep.down();
         //goToArrivalTerminal();
+        idx = 0;
     }
 }

@@ -7,6 +7,7 @@ public class PassengersHandler {
     private boolean full;
     private boolean empty;
     private int index;
+    private int max;
 
     public PassengersHandler() {
     }
@@ -16,6 +17,11 @@ public class PassengersHandler {
         this.full = false;
         this.empty = true;
         this.index = 0;
+        this.max = n;
+    }
+
+    public int maxSize() {
+        return max;
     }
 
     public Passenger[] getP() {

@@ -54,6 +54,15 @@ public class AirportRhapsody {
         //End simulation
 
         
+
+        for (int i = 0; i < nPassengers; i++){
+            try
+            { 
+                passenger[i].join();
+            }
+            catch (InterruptedException e) {}
+            System.out.println("O passenger "+  i + " terminou.");
+        }
         try
         { 
             porter.join();
@@ -66,14 +75,6 @@ public class AirportRhapsody {
         }
         catch (InterruptedException e) {}
         System.out.println("O busDriver terminou.");
-        for (int i = 0; i < nPassengers; i++){
-            try
-            { 
-                passenger[i].join();
-            }
-            catch (InterruptedException e) {}
-            System.out.println("O passenger "+  i + " terminou.");
-        }
     }
     
 }

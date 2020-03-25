@@ -16,10 +16,14 @@ public class Barrier {
         }
     }
 
-    public synchronized void down() {
+    public  void down() {
+        System.out.println("Barrier: down");
         if( counter < s.length){
-            s[counter].down();
+            System.out.println("Barrier: down -> counter = "+ counter);
             counter ++;
+            s[counter-1].down();
+            
+            
         }else{
             for (int i = 0; i < s.length; i++) {
                 s[i].up();

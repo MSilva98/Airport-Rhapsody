@@ -90,12 +90,14 @@ public class Passenger extends Thread{
                     reclaimOffice.reportMissingBags(nr - na, this);
                 }
                 arrTermExit.goHome(this);
+                System.out.println("FINISH");
             }
         }else{
             arrTransQuay.takeABus(this);
             arrTransQuay.enterTheBus(passengerID);
             depTransQuay.leaveBus(this);
             depTermEntrance.prepareNextLeg(depTransQuay, this);
+            System.out.println("FINISH");
         }
     }
 
@@ -106,6 +108,7 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
+        System.out.println("BAGS LOST " + (nr - temp) + "SIT : " + situation );
         for (int i = 0; i < nr - temp; i++) {
             arrivalLounge.putBag(new Luggage(passengerID,situation));
         }
