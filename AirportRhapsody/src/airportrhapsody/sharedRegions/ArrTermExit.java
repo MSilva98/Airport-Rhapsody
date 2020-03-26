@@ -21,13 +21,13 @@ public class ArrTermExit extends PassengersHandler {
     }
 
     public void leaveAirpDown() {
-        // leaveAirp.down();
-        try {
-            newBarrier.await();
-        } catch (InterruptedException | BrokenBarrierException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+         leaveAirp.down();
+        // try {
+        //     newBarrier.await();
+        // } catch (InterruptedException | BrokenBarrierException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
     }
 
     public void arrivedTerm(Passenger p) {
@@ -47,14 +47,14 @@ public class ArrTermExit extends PassengersHandler {
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
             System.out.println("Passenger " + p.getPassengerID() + " : goHome");
-            // leaveAirp.down();
+            
         }
-        
-        try {
-            newBarrier.await();
-        } catch (InterruptedException | BrokenBarrierException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        leaveAirp.down();
+        // try {
+        //     newBarrier.await();
+        // } catch (InterruptedException | BrokenBarrierException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
     }
 }

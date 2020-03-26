@@ -19,8 +19,10 @@ public class Barrier {
     public  void down() {
         System.out.println("Barrier: down");
         if( counter < s.length){
-            System.out.println("Barrier: down -> counter = "+ counter);
-            counter ++;
+            synchronized(this){
+                System.out.println("Barrier: down -> counter = "+ counter);
+                counter ++;
+            }
             s[counter-1].down();
             
             
