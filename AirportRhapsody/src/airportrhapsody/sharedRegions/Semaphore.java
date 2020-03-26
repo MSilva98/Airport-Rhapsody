@@ -38,6 +38,22 @@ public class Semaphore
         else val -= 1;
    }
 
+   /**
+   *  Operação down com tempo t em milissegundos.
+   */
+
+  public synchronized void down (int t)
+  {
+    if (val == 0)
+        { numbBlockThreads += 1;
+          try
+          { wait (t);
+          }
+          catch (InterruptedException e) {}
+        }
+        else val -= 1;
+  }
+
   /**
    *  Operação up.
    */

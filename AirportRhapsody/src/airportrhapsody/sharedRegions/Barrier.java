@@ -20,12 +20,12 @@ public class Barrier {
         System.out.println("Barrier: down");
         if( counter < s.length){
             synchronized(this){
-                System.out.println("Barrier: down -> counter = "+ counter);
+                System.out.println("Barrier: down -> counter = " + counter + " s_length = " + s.length);
                 counter ++;
             }
+
             s[counter-1].down();
-            
-            
+
         }else{
             for (int i = 0; i < s.length; i++) {
                 s[i].up();
