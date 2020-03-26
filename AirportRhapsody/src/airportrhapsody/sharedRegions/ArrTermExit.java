@@ -21,13 +21,13 @@ public class ArrTermExit extends PassengersHandler {
     }
 
     public void leaveAirpDown() {
-         leaveAirp.down();
-        // try {
-        //     newBarrier.await();
-        // } catch (InterruptedException | BrokenBarrierException e) {
-        //     // TODO Auto-generated catch block
-        //     e.printStackTrace();
-        // }
+        // leaveAirp.down();
+        try {
+            newBarrier.await();
+        } catch (InterruptedException | BrokenBarrierException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void arrivedTerm(Passenger p) {
@@ -49,12 +49,12 @@ public class ArrTermExit extends PassengersHandler {
             System.out.println("Passenger " + p.getPassengerID() + " : goHome");
             
         }
-        leaveAirp.down();
-        // try {
-        //     newBarrier.await();
-        // } catch (InterruptedException | BrokenBarrierException e) {
-        //     // TODO Auto-generated catch block
-        //     e.printStackTrace();
-        // }
+        //leaveAirp.down();
+        try {
+            newBarrier.await();
+        } catch (InterruptedException | BrokenBarrierException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

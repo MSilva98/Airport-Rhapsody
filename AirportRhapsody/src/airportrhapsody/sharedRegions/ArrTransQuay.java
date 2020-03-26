@@ -33,7 +33,7 @@ public class ArrTransQuay extends PassengersHandler {
         for (int i = 0; i < enterBus.length; i++) {
             this.enterBus[i] = new Semaphore();
         }
-        enterBusIdx = 0;
+        enterBusIdx = -1;
     }
     
     public void arrived(Passenger p){
@@ -41,29 +41,35 @@ public class ArrTransQuay extends PassengersHandler {
     }
 
     public void enterBusUp() {
-        if(enterBusIdx >= 0){
-            enterBus[enterBusIdx].up();
+        for (int i = enterBusIdx; i >= 0; i--) {
+            enterBus[i].up();
         }
-        if(enterBusIdx > 0){
-            enterBusIdx--;
-        }
+        // if(enterBusIdx >= 0){
+        //     enterBus[enterBusIdx].up();
+        // }
+        // if(enterBusIdx > 0){
+        //     enterBusIdx--;
+        // }
         
     }
 
     public  void enterTheBus(int id){
         synchronized (this){
             System.out.println("Passenger "+ id + ": enterTheBus()");
+            //this.seats.insertPassenger( super.removePassenger(id));
             this.seats.insertPassenger( super.removePassenger(id));
             this.idx++;
-            if(this.idx == this.seats.size()){
+            // if((this.idx == this.seats.maxSize() )|| super.isEmpty()){
+            // if(this.seats.isFull()|| super.isEmpty()){
+            if(this.seats.size() == this.seats.maxSize()|| super.size() == 0){
                 this.idx = 0;
                 this.busBoard.up();
                 System.out.println("BusBoard UP");
             }
+            enterBusIdx++;
         }
-        
         this.enterBus[enterBusIdx].down();
-        enterBusIdx++;
+        
     }
 
     public void parkTheBus(BusDriver b){
@@ -78,7 +84,7 @@ public class ArrTransQuay extends PassengersHandler {
             this.enterBus[i] = new Semaphore();
         }
         //rst
-        enterBusIdx = 0;
+        enterBusIdx = -1;
         this.idx = 0;
         this.parkBusArr = new Semaphore(); //retirar isto e ver qual é o primeiro passenger para dar up
         this.seats = new PassengersHandler(seats.maxSize());
@@ -86,12 +92,13 @@ public class ArrTransQuay extends PassengersHandler {
 
     public void takeABus(Passenger p) {
         synchronized(this){
-            this.arrived(p);
+            //this.arrived(p);
             p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
             System.out.println("Passenger "+ p.getPassengerID() +" : takeABus()");
-            if(this.queue.isEmpty()){
+            if(super.isEmpty()){
                 this.parkBusArr.up();
             }
+            super.insertPassenger(p);
             this.queue.insertPassenger(p);
         }
         this.takeBus[p.getPassengerID()].down();
@@ -102,16 +109,19 @@ public class ArrTransQuay extends PassengersHandler {
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
         //this.seats = b.getSeats();
         // this.takeBus.up();
-
         //if(this.queue.size() >= 3){
-            for(int i = 0; i < 3; i++) {
-                try {
-                    int id = this.queue.removePassenger().getPassengerID();
-                    this.takeBus[id].up();
-                }catch (Exception e) {
-                    //TODO: handle exception
-                }
-            }
+        int j = 0;
+        // while((!this.queue.isEmpty()) && j < seats.maxSize()) {
+        while((queue.size()!=0) && j < seats.maxSize()) {
+            System.out.println(queue.size() + " " + (!this.queue.isEmpty()) + " j= "+ j + " maxsize= " + seats.maxSize());
+            int id = this.queue.removePassenger().getPassengerID();
+            this.takeBus[id].up();
+            j++;
+        }
+        // for (int i = 0; i < this.queue.size(); i++) {
+        //     int id = this.queue.removePassenger().getPassengerID();
+        //     this.takeBus[id].up();
+        // }
         //}
         this.busBoard.down();
         

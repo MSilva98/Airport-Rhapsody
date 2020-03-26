@@ -60,21 +60,22 @@ public class AirportRhapsody {
             { 
                 passenger[i].join();
             }
-            catch (InterruptedException e) {}
+            catch (InterruptedException e) {System.out.println("O passenger "+  i + " exceção.");}
             System.out.println("O passenger "+  i + " terminou.");
         }
         try
         { 
-            porter.join();
-        }
-        catch (InterruptedException e) {}
-        System.out.println("O porter terminou.");
-        try
-        { 
             busDriver.join();
         }
-        catch (InterruptedException e) {}
+        catch (InterruptedException e) {System.out.println("BusDriver exceção.");}
         System.out.println("O busDriver terminou.");
+        try
+        { 
+            porter.join();
+        }
+        catch (InterruptedException e) {System.out.println("Porter exceção.");}
+        System.out.println("O porter terminou.");
+        
     }
     
 }
