@@ -64,7 +64,7 @@ public class BusDriver extends Thread {
     }
 
     private void goToDepartureTerminal() {
-        System.out.println("Bus driver goes to departure terminal");
+        System.out.println("BusDriver: goToDepartureTerminal");
         this.setBusDriverState(InternalState.DRIVING_FORWARD);
         //parkTheBusAndLetPassOff();
     }
@@ -76,7 +76,7 @@ public class BusDriver extends Thread {
     // }
 
     private void goToArrivalTerminal() {
-        System.out.println("Bus driver back to arrival terminal");
+        System.out.println("BusDriver: goToArrivalTerminal");
         this.setBusDriverState(InternalState.DRIVING_BACKWARD);
         //parkTheBus();
     }

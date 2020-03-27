@@ -20,6 +20,19 @@ public class PassengersHandler {
         this.max = n;
     }
 
+    public int[] getIDs(){
+        int[] ids = new int[p.length];
+        for (int i = 0; i < p.length; i++) {
+            if(p[i] != null){
+                ids[i] = p[i].getPassengerID();
+            }
+            else{
+                ids[i] = -1;
+            }
+        }
+        return ids;
+    }
+
     public int maxSize() {
         return max;
     }

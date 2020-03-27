@@ -52,7 +52,7 @@ public class AirportRhapsody {
         for (int i = 0; i < nPassengers; i++){
             passenger[i].start ();
         }
-        d.start();
+        // d.start();
 
         //End simulation
 
@@ -79,12 +79,12 @@ public class AirportRhapsody {
         catch (InterruptedException e) {System.out.println("Porter exceção.");}
         System.out.println("O porter terminou.");
 
-        try
-        { 
-            d.join();
-        }
-        catch (InterruptedException e) {System.out.println("Deadlock thread exceção.");}
-        System.out.println("O deadlock detect terminou.");
+        // try
+        // { 
+        //     d.join();
+        // }
+        // catch (InterruptedException e) {System.out.println("Deadlock thread exceção.");}
+        // System.out.println("O deadlock detect terminou.");
         
     }
     

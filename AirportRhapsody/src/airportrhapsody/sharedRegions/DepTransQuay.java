@@ -30,7 +30,7 @@ public class DepTransQuay extends PassengersHandler {
             arrTransQuay.getSeats().removePassenger(p.getPassengerID());
             System.out.println("iddx= " + idx + " seatsSize= " + arrTransQuay.seatsSize());
 
-            System.out.println("Bus empty " + arrTransQuay.getSeats().isEmpty());
+            // System.out.println("Bus empty " + arrTransQuay.getSeats().isEmpty());
             if(arrTransQuay.getSeats().isEmpty()){
                 System.out.println("Bus empty back to arrival term");   
                 parkBusDep.up();
