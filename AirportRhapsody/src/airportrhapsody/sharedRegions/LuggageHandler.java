@@ -39,11 +39,9 @@ public class LuggageHandler {
     public boolean addLuggage(Luggage bag){
         if(!this.isFull()){
             this.bags[index] = bag;
-            this.empty = false;
             this.index++;
-            if(this.index == this.bags.length){
-                this.full = true;
-            }
+            this.empty = this.size() == 0;
+            this.full = this.size() == bags.length;
             return true;
         }
         return false;
@@ -52,12 +50,8 @@ public class LuggageHandler {
     public Luggage remLuggage(){
         if(!this.isEmpty()){
             this.index--;
-            this.full = false;
-            if(this.index == -1){
-                this.empty = true;
-                this.index = 0;
-                return null;
-            }
+            this.full = this.size() == bags.length;
+            this.empty = this.size() == 0;
             return this.bags[this.index];
         }
         return null;
@@ -74,8 +68,9 @@ public class LuggageHandler {
                             bags[j-1] = bags[j]; 
                             bags[j] = null;
                         }
-                        this.full = false;
                         this.index--;
+                        this.full = this.size() == bags.length;
+                        this.empty = this.size() == 0;
                         return l;
                     }
                 }

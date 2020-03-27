@@ -17,6 +17,7 @@ public class ArrTransQuay extends PassengersHandler {
     private PassengersHandler seats;
     private int idx;
     private PassengersHandler queue;
+    private boolean leave;
 
     public ArrTransQuay(int n, int nseats){
         super(n);
@@ -61,7 +62,8 @@ public class ArrTransQuay extends PassengersHandler {
             this.idx++;
             // if((this.idx == this.seats.maxSize() )|| super.isEmpty()){
             // if(this.seats.isFull()|| super.isEmpty()){
-            if(this.seats.size() == this.seats.maxSize()|| super.size() == 0){
+            System.out.println("Bus full? " + this.seats.isFull() + " No Passengers in terminal? " + super.isEmpty());
+            if(this.seats.isFull() || super.isEmpty() || this.leave){
                 this.idx = 0;
                 this.busBoard.up();
                 System.out.println("BusBoard UP");
@@ -111,10 +113,12 @@ public class ArrTransQuay extends PassengersHandler {
         // this.takeBus.up();
         //if(this.queue.size() >= 3){
         int j = 0;
+        this.leave = b.leaveTime();
         // while((!this.queue.isEmpty()) && j < seats.maxSize()) {
-        while((queue.size()!=0) && j < seats.maxSize()) {
+        while(!this.queue.isEmpty() && j < seats.maxSize()) {
             System.out.println(queue.size() + " " + (!this.queue.isEmpty()) + " j= "+ j + " maxsize= " + seats.maxSize());
             int id = this.queue.removePassenger().getPassengerID();
+            System.out.println("Passenger " + id + " unblocked");
             this.takeBus[id].up();
             j++;
         }
@@ -123,6 +127,7 @@ public class ArrTransQuay extends PassengersHandler {
         //     this.takeBus[id].up();
         // }
         //}
+        System.out.println("Bus driver blocked at busBoard");
         this.busBoard.down();
         
         return seats;
@@ -134,5 +139,9 @@ public class ArrTransQuay extends PassengersHandler {
 
     public int seatsSize(){
         return seats.size();
+    }
+
+    public PassengersHandler getSeats(){
+        return this.seats;
     }
 }

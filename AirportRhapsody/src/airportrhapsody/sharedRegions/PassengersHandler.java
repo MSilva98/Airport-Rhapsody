@@ -47,11 +47,9 @@ public class PassengersHandler {
     public boolean insertPassenger(Passenger x) {
         if(!this.isFull()){
             p[this.index] = x;
-            this.empty = false;
             this.index++;
-            if(this.index == this.p.length){
-                this.full = true;
-            }
+            this.empty = this.size() == 0;
+            this.full = this.size() == p.length;
             return true;
         }
         return false;
@@ -60,12 +58,8 @@ public class PassengersHandler {
     public Passenger removePassenger(){
         if(!this.isEmpty()){
             this.index--;
-            this.full = false;
-            if(this.index == -1){
-                this.empty = true;
-                this.index = 0;
-                return null;
-            }
+            this.full = this.size() == p.length;
+            this.empty = this.size() == 0;
             return this.p[this.index];
         }   
         return null;
@@ -82,8 +76,9 @@ public class PassengersHandler {
                             p[j-1] = p[j]; 
                             p[j] = null;
                         }
-                        this.full = false;
                         this.index--;
+                        this.full = this.size() == p.length;
+                        this.empty = this.size() == 0;
                         return l;
                     }
                 }

@@ -61,12 +61,12 @@ public class Passenger extends Thread{
 
     public Passenger() {
         this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
-        // setupPassenger();
+        setupPassenger();
     }
 
     public Passenger(int id) {
         this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
-        // setupPassenger();
+        setupPassenger();
         this.passengerID = id;
     }
 

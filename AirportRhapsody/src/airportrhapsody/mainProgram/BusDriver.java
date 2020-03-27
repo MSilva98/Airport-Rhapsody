@@ -11,7 +11,9 @@ public class BusDriver extends Thread {
     private ArrTransQuay arrTransQuay;
     private DepTransQuay depTransQuay;
     private InternalState busDriverState;
-    private PassengersHandler seats; // occupation state for seat in the bus (passenger id / - (empty))
+    // private PassengersHandler seats; // occupation state for seat in the bus (passenger id / - (empty))
+    private int seats;
+    private boolean schd = false;   // true when bus leaves in the scheduled time
 
     public BusDriver() {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
@@ -19,7 +21,7 @@ public class BusDriver extends Thread {
 
     public BusDriver(int id, int numOfSeats, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay) {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
-        this.seats = new PassengersHandler(numOfSeats);
+        this.seats = numOfSeats;
         this.arrTransQuay = arrTransQuay;
         this.depTransQuay = depTransQuay;
     }
@@ -44,8 +46,10 @@ public class BusDriver extends Thread {
         // while(arrTransQuay.numPassengers() > 0){
         while(true){
             schedule--;
-            if(arrTransQuay.numPassengers() >= seats.maxSize() || (schedule == 0 && arrTransQuay.numPassengers() >= 1)){
-                seats = arrTransQuay.announcingBusBoarding(this);
+            // System.out.println("Leaving in " + schedule);
+            if(arrTransQuay.numPassengers() >= this.seats || (schedule == 0 && arrTransQuay.numPassengers() >= 1)){
+                this.schd = schedule == 0;
+                arrTransQuay.announcingBusBoarding(this);
                 goToDepartureTerminal();
                 depTransQuay.parkTheBusAndLetPassOff(this);
                 goToArrivalTerminal();
@@ -60,6 +64,7 @@ public class BusDriver extends Thread {
     }
 
     private void goToDepartureTerminal() {
+        System.out.println("Bus driver goes to departure terminal");
         this.setBusDriverState(InternalState.DRIVING_FORWARD);
         //parkTheBusAndLetPassOff();
     }
@@ -71,6 +76,7 @@ public class BusDriver extends Thread {
     // }
 
     private void goToArrivalTerminal() {
+        System.out.println("Bus driver back to arrival terminal");
         this.setBusDriverState(InternalState.DRIVING_BACKWARD);
         //parkTheBus();
     }
@@ -102,8 +108,12 @@ public class BusDriver extends Thread {
         this.busDriverState = state;
     }
 
-    public PassengersHandler getSeats() {
-        return this.seats;
+    // public PassengersHandler getSeats() {
+    //     return this.seats;
+    // }
+
+    public boolean leaveTime(){
+        return this.schd;
     }
 
 }

@@ -26,8 +26,13 @@ public class DepTransQuay extends PassengersHandler {
             p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
             super.insertPassenger(p);
             idx++;
+            // if(idx == arrTransQuay.seatsSize()){
+            arrTransQuay.getSeats().removePassenger(p.getPassengerID());
             System.out.println("iddx= " + idx + " seatsSize= " + arrTransQuay.seatsSize());
-            if(idx == arrTransQuay.seatsSize()){
+
+            System.out.println("Bus empty " + arrTransQuay.getSeats().isEmpty());
+            if(arrTransQuay.getSeats().isEmpty()){
+                System.out.println("Bus empty back to arrival term");   
                 parkBusDep.up();
                 idx = 0;
             }
