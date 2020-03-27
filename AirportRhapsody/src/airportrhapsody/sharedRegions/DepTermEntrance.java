@@ -33,6 +33,9 @@ public class DepTermEntrance extends PassengersHandler{
             p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
         }
         arrTermExit.leaveAirpDown();
+        synchronized(this){
+            super.removePassenger();
+        }
         
     }
 }

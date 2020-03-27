@@ -13,18 +13,25 @@ public class ArrTermExit extends PassengersHandler {
     private CyclicBarrier newBarrier;
     private ArrivalLounge arrivalLounge;
     private ArrTransQuay arrTransQuay;
+    private int totalPassengers;
+    private int counter;
 
-    public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay) {
+    public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights) {
         super(n);
         newBarrier = new CyclicBarrier(n);
         this.arrivalLounge = arrivalLounge;
         this.arrTransQuay = arrTransQuay;
+        totalPassengers = n * numbOfFlights;
+        counter = 0;
     }
 
     public void leaveAirpDown() {
         try {
             newBarrier.await();
-            this.endOfWork();
+            counter++;
+            if(counter == totalPassengers){
+                this.endOfWork();
+            }
         } catch (InterruptedException | BrokenBarrierException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -57,7 +64,15 @@ public class ArrTermExit extends PassengersHandler {
         }
         try {
             newBarrier.await();
-            this.endOfWork();
+            synchronized (this){
+                counter++;
+                if(counter == totalPassengers){
+                    this.endOfWork();
+                }
+                
+                this.removePassenger();
+            }
+            
         } catch (InterruptedException | BrokenBarrierException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

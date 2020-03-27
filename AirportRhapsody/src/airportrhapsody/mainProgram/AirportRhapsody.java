@@ -37,37 +37,39 @@ public class AirportRhapsody {
         reclaimOffice = new ReclaimOffice();
         arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces);
         depTransQuay = new DepTransQuay(nPassengers, arrTransQuay);
-        arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay);
+        arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay, nPlaneLandings);
         depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit);
         tempStorageArea = new TempStorageArea(nPassengers);
         generalRepo = new Logger(nSeatingPlaces, nPassengers, "log.txt");
 
         //entities
         porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint);
-        for (int i = 0; i < nPassengers; i++){
-            passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance);
-        }
+        
         busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay);
         
 
         //Start Simullation
         porter.start();
         busDriver.start();
-        for (int i = 0; i < nPassengers; i++){
-            passenger[i].start ();
-        }
 
-        //End simulation
-
-        
-
-        for (int i = 0; i < nPassengers; i++){
-            try
-            { 
-                passenger[i].join();
+        for (int j = 0; j < nPlaneLandings; j++) {
+            for (int i = 0; i < nPassengers; i++){
+                passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance);
             }
-            catch (InterruptedException e) {System.out.println("O passenger "+  i + " exceção.");}
-            System.out.println("O passenger "+  i + " terminou.");
+            for (int i = 0; i < nPassengers; i++){
+                passenger[i].start ();
+            }
+    
+            //End simulation
+    
+            for (int i = 0; i < nPassengers; i++){
+                try
+                { 
+                    passenger[i].join();
+                }
+                catch (InterruptedException e) {System.out.println("O passenger "+  i + " exceção.");}
+                System.out.println("O passenger "+  i + " terminou.");
+            }
         }
         try
         { 
