@@ -107,6 +107,7 @@ public class ArrTransQuay extends PassengersHandler {
     }
 
     public PassengersHandler announcingBusBoarding(BusDriver b) {
+        int passEnter = this.queue.size();
         System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ this.numPassengers());
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
         //this.seats = b.getSeats();
@@ -115,18 +116,21 @@ public class ArrTransQuay extends PassengersHandler {
         int j = 0;
         this.leave = b.leaveTime();
         // while((!this.queue.isEmpty()) && j < seats.maxSize()) {
-        while(!this.queue.isEmpty() && j < seats.maxSize()) {
-            System.out.println(queue.size() + " " + (!this.queue.isEmpty()) + " j= "+ j + " maxsize= " + seats.maxSize());
-            int id = this.queue.removePassenger().getPassengerID();
-            System.out.println("Passenger " + id + " unblocked");
-            this.takeBus[id].up();
-            j++;
-        }
-        // for (int i = 0; i < this.queue.size(); i++) {
+        // while(!this.queue.isEmpty() && j < seats.maxSize()) {
+        //     System.out.println(queue.size() + " " + (!this.queue.isEmpty()) + " j= "+ j + " maxsize= " + seats.maxSize());
         //     int id = this.queue.removePassenger().getPassengerID();
+        //     System.out.println("Passenger " + id + " unblocked");
         //     this.takeBus[id].up();
+        //     j++;
         // }
-        //}
+        for (int i = 0; i < passEnter; i++) {
+            if(i < seats.maxSize()){
+                System.out.println(queue.size() + " " + (!this.queue.isEmpty()) + " j= "+ j + " maxsize= " + seats.maxSize());
+                int id = this.queue.removePassenger().getPassengerID();
+                System.out.println("Passenger " + id + " unblocked");
+                this.takeBus[id].up();
+            }
+        }
         System.out.println("Bus driver blocked at busBoard");
         this.busBoard.down();
         
