@@ -1,13 +1,16 @@
 package airportrhapsody.mainProgram;
 
-import airportrhapsody.Deadlock;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;
 
-
 public class AirportRhapsody {
-    
+
     public static void main(String[] args) {
-       
+
         int nPassengers = 6 ;                               // number of passengers
         Passenger[] passenger = new Passenger[nPassengers]; // Passenger threads array
         Porter porter;                                      // thread porter
@@ -23,6 +26,7 @@ public class AirportRhapsody {
         ArrTermExit arrTermExit;
         DepTermEntrance depTermEntrance;
         TempStorageArea tempStorageArea;
+        Logger generalRepo;
 
         //Problem config
 
@@ -36,6 +40,7 @@ public class AirportRhapsody {
         arrTermExit = new ArrTermExit(nPassengers);
         depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit);
         tempStorageArea = new TempStorageArea(nPassengers);
+        generalRepo = new Logger(nSeatingPlaces, nPassengers, "log.txt");
 
         //entities
         porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint);

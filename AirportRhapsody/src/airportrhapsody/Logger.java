@@ -1,5 +1,10 @@
 package airportrhapsody;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+
 /**
  * Logger
  * 
@@ -51,9 +56,10 @@ public class Logger {
     private int numP_TRT;
     private int numTotalBags;
     private int numLostBags;
+    private File log;
     
-    public Logger(int numSeats, int waitQ, int numP){
-        this.q = new String[waitQ];
+    public Logger(int numSeats, int numP, String filename){
+        this.q = new String[numP];
         this.s = new String[numSeats];
         this.st = new String[numP];
         this.si = new String[numP];
@@ -63,6 +69,13 @@ public class Logger {
         this.numP_TRT = 0;
         this.numTotalBags = 0;
         this.numLostBags = 0;
+        this.log = new File(filename);
+        try {
+            Files.deleteIfExists(log.toPath());
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
     }
 
     // Flight number
@@ -135,7 +148,7 @@ public class Logger {
 
     // Final report
     public String finalRep(){
-        return  "\nFinal Report" +
+        return  "\n\nFinal Report" +
                 "\nN. of passengers which have this airport as their final destination = " + this.numP_FDT + 
                 "\nN. of passengers in transit = " + this.numP_TRT +
                 "\nN. of bags that should have been transported in the planes hold = " + this.numTotalBags +
@@ -158,6 +171,43 @@ public class Logger {
         this.st[3], this.si[3], this.nr[3], this.na[3],
         this.st[4], this.si[4], this.nr[4], this.na[4],
         this.st[5], this.si[5], this.nr[5], this.na[5]);
+    }
+
+    public void write(boolean end){
+        String first = ("PLANE         PORTER                  DRIVER                     PASSENGER" +
+        "\nFN  BN   Stat CB SR     Stat Q1 Q2 Q3 Q4 Q5 Q6  S1 S2 S3    St1 Si1 NR1 NA1   St2 Si2 NR2 NA2   St3 Si3 NR3 NA3  St4 Si4 NR4 NA4  St5 Si5 NR5 NA5  St6 Si6 NR6 NA6");
+        String s = String.format("\n%2d %2d   %s %2d %2d     %s %s %s %s %s %s %s   %s %s %s    %s  %3s %1d   %1d     %s %3s  %1d   %1d     %s %3s  %1d   %1d    %s %3s  %1d   %1d    %s %3s  %1d   %1d    %s %3s  %1d   %1d", 
+        this.fn, this.bn, this.statPorter, this.cb, this.sr, this.statDriver, 
+        this.q[0], this.q[1], this.q[2], this.q[3], this.q[4], this.q[5],
+        this.s[0], this.s[1], this.s[2],
+        this.st[0], this.si[0], this.nr[0], this.na[0],
+        this.st[1], this.si[1], this.nr[1], this.na[1],
+        this.st[2], this.si[2], this.nr[2], this.na[2],
+        this.st[3], this.si[3], this.nr[3], this.na[3],
+        this.st[4], this.si[4], this.nr[4], this.na[4],
+        this.st[5], this.si[5], this.nr[5], this.na[5]);
+
+        try {
+            FileWriter fw;
+            if(log.createNewFile()){
+                fw = new FileWriter(log);
+                fw.write(first + s);
+                fw.close();
+            }
+            else{
+                fw = new FileWriter(log, true);
+                if(end){
+                    fw.append(this.finalRep());
+                }
+                else{
+                    fw.append(s);
+                }
+                fw.close();
+            }
+
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
     }
 
 }

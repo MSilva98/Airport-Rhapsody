@@ -7,7 +7,7 @@ package airportrhapsody;
 public class LoggerTest {
 
     public static void main(String[] args) {
-        Logger l = new Logger(3,6,6);
+        Logger l = new Logger(3,6,"log.txt");
         l.setBn(123);
         l.setCb(456);
         l.setSr(10);
@@ -24,7 +24,7 @@ public class LoggerTest {
         l.setNr(3, 2);
         l.setNr(4, 2);
         l.setNr(5, 1);
-        l.setStatDriver("FODASE");
+        l.setStatDriver("OLAAAAAAAA");
         l.setStatPorter("TEST");
         l.setQ(0,"0");
         l.setQ(1,"1");
@@ -50,5 +50,10 @@ public class LoggerTest {
         System.out.println(l.toString());
 
         System.out.println(l.finalRep());
+        l.write(false);
+        l.write(false);
+        l.write(false);
+        l.write(false);
+        l.write(true);
     }
 }
