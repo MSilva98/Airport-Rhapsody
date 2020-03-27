@@ -11,15 +11,20 @@ import airportrhapsody.mainProgram.Passenger;
 public class ArrTermExit extends PassengersHandler {
 
     private CyclicBarrier newBarrier;
+    private ArrivalLounge arrivalLounge;
+    private ArrTransQuay arrTransQuay;
 
-    public ArrTermExit(int n) {
+    public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay) {
         super(n);
         newBarrier = new CyclicBarrier(n);
+        this.arrivalLounge = arrivalLounge;
+        this.arrTransQuay = arrTransQuay;
     }
 
     public void leaveAirpDown() {
         try {
             newBarrier.await();
+            this.endOfWork();
         } catch (InterruptedException | BrokenBarrierException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -38,6 +43,11 @@ public class ArrTermExit extends PassengersHandler {
         return super.isEmpty();
     }
 
+    private void endOfWork(){
+        arrivalLounge.setDayEnd(true);
+        arrTransQuay.setDayEnd(true);
+    }
+
     public void goHome(Passenger p) {
         synchronized (this){
             this.insertPassenger(p);
@@ -47,6 +57,7 @@ public class ArrTermExit extends PassengersHandler {
         }
         try {
             newBarrier.await();
+            this.endOfWork();
         } catch (InterruptedException | BrokenBarrierException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

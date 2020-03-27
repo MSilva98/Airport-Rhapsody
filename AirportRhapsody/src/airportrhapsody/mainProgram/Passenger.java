@@ -90,16 +90,12 @@ public class Passenger extends Thread{
                     reclaimOffice.reportMissingBags(nr - na, this);
                 }
                 arrTermExit.goHome(this);
-                System.out.println("FINISH");
             }
         }else{
             arrTransQuay.takeABus(this);
             arrTransQuay.enterTheBus(passengerID);
             depTransQuay.leaveBus(this);
             depTermEntrance.prepareNextLeg(depTransQuay, this);
-            arrTransQuay.setDayEnd(true);
-            arrivalLounge.setDayEnd(true);
-            System.out.println("FINISH");
         }
     }
 

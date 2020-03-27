@@ -35,9 +35,8 @@ public class Porter extends Thread{
     @Override
     public void run(){
         System.out.println("Thread Porter");
-        arrivalLounge.takeARest(this);
-        while (!arrivalLounge.getDayEnd()) {
-            
+        arrivalLounge.rest(); // começa bloqueado
+        while (! arrivalLounge.takeARest(this)) {
             Luggage l = arrivalLounge.tryToCollectABag(this);
             while(l != null){
                 carryItToAppropriateStore(l);

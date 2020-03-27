@@ -31,7 +31,7 @@ public class ArrTransQuay extends PassengersHandler {
         int[] ids = seats.getIDs();
         for (int i = 0; i < ids.length; i++) {
             if(ids[i] != -1){    
-                System.out.println("Passenger " + ids[i] + " up");
+                //System.out.println("Passenger " + ids[i] + " up");
                 this.passengers[ids[i]].up();
             }
         }
@@ -41,10 +41,10 @@ public class ArrTransQuay extends PassengersHandler {
         synchronized (this){
             System.out.println("Passenger "+ id + ": enterTheBus()");
             this.seats.insertPassenger( super.removePassenger(id));
-            System.out.println("Bus full? " + this.seats.isFull() + " No Passengers in terminal? " + super.isEmpty());
+            //System.out.println("Bus full? " + this.seats.isFull() + " No Passengers in terminal? " + super.isEmpty());
             if(this.seats.isFull() || super.isEmpty()){
                 this.busBoard.up();
-                System.out.println("BusBoard UP");
+                //System.out.println("BusBoard UP");
             }
         }
         this.passengers[id].down();
@@ -62,10 +62,10 @@ public class ArrTransQuay extends PassengersHandler {
             System.out.println("Passenger "+ p.getPassengerID() +" : takeABus()");
             
             super.insertPassenger(p);
-            System.out.println(super.toString());
+            //System.out.println(super.toString());
             
             if(super.size() == this.seats.maxSize()){
-                System.out.println("Wake up bus driver");
+                //System.out.println("Wake up bus driver");
                 this.parkBusArr.up();
             }
         }
@@ -81,11 +81,11 @@ public class ArrTransQuay extends PassengersHandler {
         
         for (int i = 0; i < passEnter; i++) {
             if(i < seats.maxSize()){
-                System.out.println("Passenger " + ids[i] + " unblocked");
+                //System.out.println("Passenger " + ids[i] + " unblocked");
                 this.passengers[ids[i]].up();
             }
         }
-        System.out.println("Bus driver blocked at busBoard");
+        //System.out.println("Bus driver blocked at busBoard");
         this.busBoard.down();
     }
 

@@ -30,7 +30,6 @@ public class CollectionPoint extends LuggageHandler {
     }
 
     public void noMoreBagsToCollect(Porter p) {         // para já fica mas acho que deviamos fazer up só aos que estão à espera (não deve aleijar ninguém assim XD)
-        System.out.println("Porter: " + "noMoreBags");
         p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
         for (int i = 0; i < collectBag.length; i++) {
             collectBag[i].up();

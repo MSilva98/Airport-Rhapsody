@@ -37,7 +37,7 @@ public class AirportRhapsody {
         reclaimOffice = new ReclaimOffice();
         arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces);
         depTransQuay = new DepTransQuay(nPassengers, arrTransQuay);
-        arrTermExit = new ArrTermExit(nPassengers);
+        arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay);
         depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit);
         tempStorageArea = new TempStorageArea(nPassengers);
         generalRepo = new Logger(nSeatingPlaces, nPassengers, "log.txt");

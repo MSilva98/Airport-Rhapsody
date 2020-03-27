@@ -30,10 +30,13 @@ public class ArrivalLounge extends LuggageHandler {
         return super.remLuggage();
     }
 
-
-    public void takeARest(Porter p) {
-        p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
+    public void rest(){
         rest.down();
+    }
+
+    public boolean takeARest(Porter p) {
+        p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
+        return dayEnd;
     }
 
     public boolean whatShouldIDo(Passenger p) {
