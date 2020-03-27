@@ -13,6 +13,7 @@ public class ArrTransQuay extends PassengersHandler {
     private Semaphore busBoard;
     private Semaphore[] passengers;
     private PassengersHandler seats;
+    private boolean dayEnd;
 
     public ArrTransQuay(int n, int nseats){
         super(n);
@@ -23,6 +24,7 @@ public class ArrTransQuay extends PassengersHandler {
         for (int i = 0; i < passengers.length; i++) {
             passengers[i] = new Semaphore(); 
         }
+        dayEnd = false;
     }
 
     public void enterBusUp() {
@@ -93,5 +95,13 @@ public class ArrTransQuay extends PassengersHandler {
 
     public PassengersHandler getSeats(){
         return this.seats;
+    }
+
+    public boolean getDayEnd(){
+        return dayEnd;
+    }
+
+    public void setDayEnd(boolean st){
+        dayEnd = st;
     }
 }

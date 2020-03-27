@@ -29,7 +29,7 @@ public class BusDriver extends Thread {
     @Override
     public void run() {
         System.out.println("Thread BusDriver");
-        while(true){
+        while(!arrTransQuay.getDayEnd()){
             arrTransQuay.parkTheBus(this);
             if(!arrTransQuay.isEmpty()){
                 arrTransQuay.announcingBusBoarding(this);
@@ -38,6 +38,7 @@ public class BusDriver extends Thread {
                 goToArrivalTerminal();
             }
         }
+        hasDaysWorkEnded();
     }
 
     private void goToDepartureTerminal() {

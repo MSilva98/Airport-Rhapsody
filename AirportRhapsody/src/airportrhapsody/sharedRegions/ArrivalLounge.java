@@ -11,12 +11,14 @@ public class ArrivalLounge extends LuggageHandler {
     private Semaphore rest;
     private PassengersHandler airport;
     private int numPassengers;
+    private boolean dayEnd;
 
     public ArrivalLounge(int n,int numPassengers){
         super(n);
         this.numPassengers = numPassengers;
         this.airport = new PassengersHandler(numPassengers);
         this.rest = new Semaphore();
+        dayEnd = false;
     }
 
     public void putBag(Luggage l){
@@ -42,5 +44,14 @@ public class ArrivalLounge extends LuggageHandler {
 
         return (p.getSituation() == Passenger.Situation.FDT);
     }
+
+    public boolean getDayEnd(){
+        return dayEnd;
+    }
+
+    public void setDayEnd(boolean st){
+        dayEnd = st;
+    }
+
 
 }

@@ -97,6 +97,8 @@ public class Passenger extends Thread{
             arrTransQuay.enterTheBus(passengerID);
             depTransQuay.leaveBus(this);
             depTermEntrance.prepareNextLeg(depTransQuay, this);
+            arrTransQuay.setDayEnd(true);
+            arrivalLounge.setDayEnd(true);
             System.out.println("FINISH");
         }
     }

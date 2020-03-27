@@ -36,13 +36,16 @@ public class Porter extends Thread{
     public void run(){
         System.out.println("Thread Porter");
         arrivalLounge.takeARest(this);
-        Luggage l = arrivalLounge.tryToCollectABag(this);
-        while(l != null){
-            carryItToAppropriateStore(l);
-            l = arrivalLounge.tryToCollectABag(this);
+        while (!arrivalLounge.getDayEnd()) {
+            
+            Luggage l = arrivalLounge.tryToCollectABag(this);
+            while(l != null){
+                carryItToAppropriateStore(l);
+                l = arrivalLounge.tryToCollectABag(this);
+            }
+            collPoint.noMoreBagsToCollect(this);
         }
-        collPoint.noMoreBagsToCollect(this);
-        arrivalLounge.takeARest(this);
+        
     }
 
     private void carryItToAppropriateStore(Luggage l) {
