@@ -108,7 +108,7 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        System.out.println("BAGS LOST " + (nr - temp) + "SIT : " + situation );
+        // System.out.println("BAGS LOST " + (nr - temp) + "SIT : " + situation );
         for (int i = 0; i < nr - temp; i++) {
             arrivalLounge.putBag(new Luggage(passengerID,situation));
         }

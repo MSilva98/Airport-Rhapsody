@@ -45,19 +45,16 @@ public class BusDriver extends Thread {
         // }
         // while(arrTransQuay.numPassengers() > 0){
         while(true){
-            schedule--;
+            // schedule--;
             // System.out.println("Leaving in " + schedule);
-            if(arrTransQuay.numPassengers() >= this.seats || (schedule == 0 && arrTransQuay.numPassengers() >= 1)){
-                this.schd = schedule == 0;
+            // if(arrTransQuay.numPassengers() >= this.seats || (schedule == 0 && arrTransQuay.numPassengers() >= 1)){
+                // this.schd = schedule == 0;
+                arrTransQuay.parkTheBus(this);
                 arrTransQuay.announcingBusBoarding(this);
                 goToDepartureTerminal();
                 depTransQuay.parkTheBusAndLetPassOff(this);
                 goToArrivalTerminal();
-                arrTransQuay.parkTheBus(this);
-            }
-            if(schedule == 0){
-                schedule = 5000;
-            }
+            // }
         }
         //hasDaysWorkEnded();
 
