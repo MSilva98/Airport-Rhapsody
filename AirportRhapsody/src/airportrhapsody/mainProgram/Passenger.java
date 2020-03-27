@@ -108,34 +108,11 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        // System.out.println("BAGS LOST " + (nr - temp) + "SIT : " + situation );
+        System.out.println("BAGS LOST " + (nr - temp) + "SIT : " + situation );
         for (int i = 0; i < nr - temp; i++) {
             arrivalLounge.putBag(new Luggage(passengerID,situation));
         }
     }
-
-    // private void goHome() {
-    //     arrTermExit.insertPassenger(this); 
-    //     this.setPassengerState(InternalState.EXITING_THE_ARRIVAL_TERMINAL);
-    //     System.out.println("Passenger "+ passengerID+" : goHome");
-    // }
-
-    // private boolean whatShouldIDo() {
-    //     //  Wake up porter
-    //     return (situation == Situation.FDT);
-    // }
-
-    // private void takeABus() {
-    //     arrTransQuay.arrived(this);
-    //     this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
-    //     System.out.println("Passenger "+ passengerID+" : takeABus()");
-    // }
-
-    // public void prepareNextLeg(){
-    //     depTermEntrance.arrivedTerm(depTransQuay.leaveDepTransQuay(this.passengerID));
-    //     this.setPassengerState(InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
-    //     System.out.println("Passenger "+ passengerID+" : prepareNextLeg");
-    // }
 
     public InternalState getPassengerState() {
         return this.passengerState;

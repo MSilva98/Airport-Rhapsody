@@ -1,7 +1,6 @@
 package airportrhapsody.sharedRegions;
 
 import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
 import airportrhapsody.mainProgram.Passenger;
@@ -11,17 +10,14 @@ import airportrhapsody.mainProgram.Passenger;
  */
 public class ArrTermExit extends PassengersHandler {
 
-    private Barrier leaveAirp;
     private CyclicBarrier newBarrier;
 
     public ArrTermExit(int n) {
         super(n);
-        leaveAirp = new Barrier(n);
         newBarrier = new CyclicBarrier(n);
     }
 
     public void leaveAirpDown() {
-        // leaveAirp.down();
         try {
             newBarrier.await();
         } catch (InterruptedException | BrokenBarrierException e) {
@@ -49,7 +45,6 @@ public class ArrTermExit extends PassengersHandler {
             System.out.println("Passenger " + p.getPassengerID() + " : goHome");
             
         }
-        //leaveAirp.down();
         try {
             newBarrier.await();
         } catch (InterruptedException | BrokenBarrierException e) {

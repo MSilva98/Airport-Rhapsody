@@ -24,7 +24,6 @@ public class AirportRhapsody {
         DepTermEntrance depTermEntrance;
         TempStorageArea tempStorageArea;
 
-        Deadlock d = new Deadlock();
         //Problem config
 
         //Sharing region
@@ -52,7 +51,6 @@ public class AirportRhapsody {
         for (int i = 0; i < nPassengers; i++){
             passenger[i].start ();
         }
-        // d.start();
 
         //End simulation
 
@@ -77,15 +75,7 @@ public class AirportRhapsody {
             porter.join();
         }
         catch (InterruptedException e) {System.out.println("Porter exceção.");}
-        System.out.println("O porter terminou.");
-
-        // try
-        // { 
-        //     d.join();
-        // }
-        // catch (InterruptedException e) {System.out.println("Deadlock thread exceção.");}
-        // System.out.println("O deadlock detect terminou.");
-        
+        System.out.println("O porter terminou.");     
     }
     
 }

@@ -24,10 +24,6 @@ public class ArrTransQuay extends PassengersHandler {
             passengers[i] = new Semaphore(); 
         }
     }
-    
-    public void arrived(Passenger p){
-        super.insertPassenger(p);
-    }
 
     public void enterBusUp() {
         int[] ids = seats.getIDs();
@@ -89,15 +85,10 @@ public class ArrTransQuay extends PassengersHandler {
         }
         System.out.println("Bus driver blocked at busBoard");
         this.busBoard.down();
-        
     }
 
     public int numPassengers(){
         return super.size();
-    }
-
-    public int seatsSize(){
-        return seats.size();
     }
 
     public PassengersHandler getSeats(){

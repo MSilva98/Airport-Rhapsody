@@ -31,12 +31,10 @@ public class ArrivalLounge extends LuggageHandler {
 
     public void takeARest(Porter p) {
         p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
-        // block porter
         rest.down();
     }
 
     public boolean whatShouldIDo(Passenger p) {
-        //  Wake up porter
         airport.insertPassenger(p);
         if(this.airport.size() == this.numPassengers){
             this.rest.up();
@@ -44,10 +42,5 @@ public class ArrivalLounge extends LuggageHandler {
 
         return (p.getSituation() == Passenger.Situation.FDT);
     }
-
-    // @Override
-    // public String toString() {
-    //     return "luggage = " + getLug();
-    // }
 
 }

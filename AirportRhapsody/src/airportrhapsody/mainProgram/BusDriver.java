@@ -29,73 +29,31 @@ public class BusDriver extends Thread {
     @Override
     public void run() {
         System.out.println("Thread BusDriver");
-        int schedule = 5000;
-        // while(schedule > 0){
-        //     if(arrTransQuay.numPassengers() >= seats.length){
-        //         schedule = 0;
-        //     } 
-        //     schedule--; 
-        // }
-
-        // if(schedule == 0 && arrTransQuay.numPassengers() > 0){
-        //     announcingBusBoarding();
-        // }
-        // else{
-        //     schedule = 50;
-        // }
-        // while(arrTransQuay.numPassengers() > 0){
         while(true){
-            // schedule--;
-            // System.out.println("Leaving in " + schedule);
-            // if(arrTransQuay.numPassengers() >= this.seats || (schedule == 0 && arrTransQuay.numPassengers() >= 1)){
-                // this.schd = schedule == 0;
-                arrTransQuay.parkTheBus(this);
+            arrTransQuay.parkTheBus(this);
+            if(!arrTransQuay.isEmpty()){
                 arrTransQuay.announcingBusBoarding(this);
                 goToDepartureTerminal();
                 depTransQuay.parkTheBusAndLetPassOff(this);
                 goToArrivalTerminal();
-            // }
+            }
         }
-        //hasDaysWorkEnded();
-
     }
 
     private void goToDepartureTerminal() {
         System.out.println("BusDriver: goToDepartureTerminal");
         this.setBusDriverState(InternalState.DRIVING_FORWARD);
-        //parkTheBusAndLetPassOff();
     }
-
-    // private void parkTheBusAndLetPassOff(){
-    //     this.setBusDriverState(InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
-    //    else{
-    //     //goToArrivalTerminal();
-    // }
 
     private void goToArrivalTerminal() {
         System.out.println("BusDriver: goToArrivalTerminal");
         this.setBusDriverState(InternalState.DRIVING_BACKWARD);
-        //parkTheBus();
     }
 
     private void hasDaysWorkEnded() {
         System.out.println("BusDriver: hasDaysWorkEnded");
         this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
     }
-
-    // private void announcingBusBoarding() {
-    //     System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ arrTransQuay.numPassengers());
-    //     this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
-    //     for(int i = 0; i < seats.length; i++) {
-    //         seats[i] = arrTransQuay.enterTheBus();
-    //     }
-    //     //goToDepartureTerminal();
-    // }
-
-    // private void parkTheBus(){
-    //     System.out.println("BusDriver: parkTheBus");
-    //     this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
-    // }
 
     public InternalState getBusDriverState() {
         return this.busDriverState;
@@ -104,10 +62,6 @@ public class BusDriver extends Thread {
     public void setBusDriverState(InternalState state) {
         this.busDriverState = state;
     }
-
-    // public PassengersHandler getSeats() {
-    //     return this.seats;
-    // }
 
     public boolean leaveTime(){
         return this.schd;

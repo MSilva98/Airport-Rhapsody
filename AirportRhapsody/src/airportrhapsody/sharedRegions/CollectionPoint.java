@@ -9,7 +9,6 @@ import airportrhapsody.mainProgram.Porter;
 public class CollectionPoint extends LuggageHandler {
 
     private Semaphore collectBag[];
-    private int currentPass;
 
     public CollectionPoint(int nBags, int nPass){
         super(nBags);
@@ -17,20 +16,15 @@ public class CollectionPoint extends LuggageHandler {
         for (int i = 0; i < collectBag.length; i++) {
             collectBag[i] = new Semaphore();
         }
-       
     }
 
     public boolean goCollectABag(Passenger p){
         p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
         collectBag[p.getPassengerID()].down();
-        // this.currentPass = id;
         return(super.remLuggage(p.getPassengerID()) != null);
     }    
 
     public void insertBag(Luggage l){           // a mala L é de certeza de um dos que está a espera pq a distinção é feita no carryItToAppropriateStore
-        // if(l.getOwner() == this.currentPass){
-        //     collectBag[l.getOwner()].up();
-        // }
         collectBag[l.getOwner()].up();
         super.addLuggage(l);
     }
