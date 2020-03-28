@@ -1,5 +1,6 @@
 package airportrhapsody.mainProgram;
 
+import airportrhapsody.Logger;
 import airportrhapsody.mainProgram.Passenger.Situation;
 import airportrhapsody.sharedRegions.*;
 
@@ -15,18 +16,21 @@ public class Porter extends Thread{
     private ArrivalLounge arrivalLounge;
     private TempStorageArea tempStorageArea;
     private CollectionPoint collPoint;
+    private Logger generalRepo;
     private int porterID;
     private InternalState porterState;
-    private int bagsCb; // number of pieces of luggage presently on the conveyor belt
-    private int bagsSR; // number of pieces of luggage belonging to passengers in transit presently stored at the storeroo
-
-    public Porter(int id, ArrivalLounge arrivalLounge, TempStorageArea tempStorageArea, CollectionPoint collPoint){
+  
+    public Porter(int id, ArrivalLounge arrivalLounge, TempStorageArea tempStorageArea, CollectionPoint collPoint, Logger generalRepo){
         this.porterState = InternalState.WAITING_FOR_A_PLANE_TO_LAND;
         this.porterID = id;
         this.arrivalLounge = arrivalLounge;
         this.tempStorageArea = tempStorageArea;
         this.collPoint = collPoint;
-    }
+        this.generalRepo = generalRepo;
+        this.generalRepo.setStatPorter("WFPL");
+        this.generalRepo.setCb(this.collPoint.size());
+        this.generalRepo.setSr(this.tempStorageArea.size());
+     }
 
     public Porter() {
         this.porterState = InternalState.WAITING_FOR_A_PLANE_TO_LAND;
@@ -35,30 +39,35 @@ public class Porter extends Thread{
     @Override
     public void run(){
         System.out.println("Thread Porter");
-        arrivalLounge.rest(); // começa bloqueado
-        while (! arrivalLounge.takeARest(this)) {
-            Luggage l = arrivalLounge.tryToCollectABag(this);
+        while (!this.arrivalLounge.takeARest(this)) {
+            this.arrivalLounge.rest(); // começa bloqueado
+            Luggage l = this.arrivalLounge.tryToCollectABag(this);
             while(l != null){
-                carryItToAppropriateStore(l);
-                l = arrivalLounge.tryToCollectABag(this);
+                this.carryItToAppropriateStore(l);
+                l = this.arrivalLounge.tryToCollectABag(this);
             }
-            collPoint.noMoreBagsToCollect(this);
+            this.collPoint.noMoreBagsToCollect(this);
         }
         
     }
 
     private void carryItToAppropriateStore(Luggage l) {
+        this.generalRepo.setBn(this.arrivalLounge.size());
         if(l.getSi() == Situation.FDT){
-            collPoint.insertBag(l);
+            this.collPoint.insertBag(l);
             this.setPorterState(InternalState.AT_THE_LUGGAGE_BELT_CONVEYOR);
             System.out.println("Porter: " + "carryItToAppropriateStore -> collPoint");
+            this.generalRepo.setStatPorter("ALBC");
+            this.generalRepo.setCb(this.collPoint.size());
         }
         else{
-            tempStorageArea.insertBag(l);
+            this.tempStorageArea.insertBag(l);
             this.setPorterState(InternalState.AT_THE_STOREROOM);
             System.out.println("Porter: " + "carryItToAppropriateStore -> tempStor");
+            this.generalRepo.setStatPorter("ATST");
+            this.generalRepo.setSr(this.tempStorageArea.size());
         }
-        
+        this.generalRepo.write(false);
     }
 
     public InternalState getPorterState() {
@@ -67,22 +76,6 @@ public class Porter extends Thread{
 
     public void setPorterState(InternalState state) {
         this.porterState = state;
-    }
-
-    public int getBagsCb() {
-        return this.bagsCb;
-    }
-
-    public void setBagsCb(int bagsCb) {
-        this.bagsCb = bagsCb;
-    }
-
-    public int getBagsSR() {
-        return this.bagsSR;
-    }
-
-    public void setBagsSR(int bagsSR) {
-        this.bagsSR = bagsSR;
     }
 
 }

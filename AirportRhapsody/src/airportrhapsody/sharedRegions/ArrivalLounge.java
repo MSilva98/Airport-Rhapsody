@@ -1,5 +1,6 @@
 package airportrhapsody.sharedRegions;
 
+import airportrhapsody.Logger;
 import airportrhapsody.mainProgram.Passenger;
 import airportrhapsody.mainProgram.Porter;
 
@@ -10,15 +11,15 @@ public class ArrivalLounge extends LuggageHandler {
 
     private Semaphore rest;
     private PassengersHandler airport;
-    private int numPassengers;
     private boolean dayEnd;
+    private Logger generalRepo;
 
-    public ArrivalLounge(int n,int numPassengers){
-        super(n);
-        this.numPassengers = numPassengers;
+    public ArrivalLounge(int maxBags,int numPassengers, Logger generalRepo){
+        super(maxBags);
         this.airport = new PassengersHandler(numPassengers);
         this.rest = new Semaphore();
-        dayEnd = false;
+        this.dayEnd = false;
+        this.generalRepo = generalRepo;
     }
 
     public void putBag(Luggage l){
@@ -27,6 +28,8 @@ public class ArrivalLounge extends LuggageHandler {
 
     public Luggage tryToCollectABag(Porter p){
         p.setPorterState(Porter.InternalState.AT_THE_PLANES_HOLD);
+        this.generalRepo.setStatPorter("ATPH");
+        this.generalRepo.write(false);
         return super.remLuggage();
     }
 
@@ -34,14 +37,20 @@ public class ArrivalLounge extends LuggageHandler {
         rest.down();
     }
 
+    public void restUp(){
+        rest.up();
+    }
+
     public boolean takeARest(Porter p) {
-        p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
+        // p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
+        // this.generalRepo.setStatPorter("WFPL");
+        // this.generalRepo.write(false);
         return dayEnd;
     }
 
     public boolean whatShouldIDo(Passenger p) {
-        airport.insertPassenger(p);
-        if(this.airport.size() == this.numPassengers){
+        this.airport.insertPassenger(p);
+        if(this.airport.isFull()){
             this.rest.up();
         }
 
@@ -55,6 +64,4 @@ public class ArrivalLounge extends LuggageHandler {
     public void setDayEnd(boolean st){
         dayEnd = st;
     }
-
-
 }

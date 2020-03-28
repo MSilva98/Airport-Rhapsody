@@ -10,6 +10,8 @@
 package airportrhapsody.mainProgram;
 
 import java.util.Random;
+
+import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;
 
 public class Passenger extends Thread{
@@ -43,8 +45,9 @@ public class Passenger extends Thread{
     private DepTransQuay depTransQuay;
     private ArrTermExit arrTermExit;
     private DepTermEntrance depTermEntrance;
+    private Logger generalRepo;
 
-    public Passenger(int id, ArrivalLounge arrivalLounge, CollectionPoint collPoint, ReclaimOffice reclaimOffice, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay, ArrTermExit arrTermExit, DepTermEntrance depTermEntrance) {
+    public Passenger(int id, ArrivalLounge arrivalLounge, CollectionPoint collPoint, ReclaimOffice reclaimOffice, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay, ArrTermExit arrTermExit, DepTermEntrance depTermEntrance, Logger generalRepo) {
         this.passengerID = id;
         this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
         this.na = 0;
@@ -55,6 +58,8 @@ public class Passenger extends Thread{
         this.depTransQuay = depTransQuay;
         this.arrTermExit = arrTermExit;
         this.depTermEntrance = depTermEntrance;
+        this.generalRepo = generalRepo;
+        this.generalRepo.setSt(id, "ATDZ");
         setupPassenger();
 
     }
@@ -75,18 +80,19 @@ public class Passenger extends Thread{
         System.out.println("Thread Passenger " + passengerID + " - nr: " + nr + " situation: " + situation);
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
-            if(nr == 0){
+            if(this.nr == 0){
                 arrTermExit.goHome(this);
             }else{
-                boolean success = true;
-                for (int i = 0; i < nr; i++) {
-                    success = collPoint.goCollectABag(this);
-                    if (!success){
-                        break;
+                // boolean success = true;
+                for (int i = 0; i < this.nr; i++) {
+                    if(collPoint.goCollectABag(this)){    
+                        // System.out.println("Bag collected " + passengerID);
+                        this.na++;
                     }
-                    na++;
                 }
-                if (!success){
+                this.generalRepo.setNa(this.passengerID, this.na);
+                if (this.nr != this.na){
+                    System.out.println("REPORT " + passengerID + "  NA: " + na + " NR: " + nr);
                     reclaimOffice.reportMissingBags(nr - na, this);
                 }
                 arrTermExit.goHome(this);
@@ -106,10 +112,15 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        System.out.println("BAGS LOST " + (nr - temp) + "SIT : " + situation );
+        System.out.println("BAGS LOST " + temp + " SIT : " + situation + " " + passengerID + " NR: " + nr);
         for (int i = 0; i < nr - temp; i++) {
-            arrivalLounge.putBag(new Luggage(passengerID,situation));
+            this.arrivalLounge.putBag(new Luggage(this.passengerID, this.situation));
         }
+        this.generalRepo.setBn(this.arrivalLounge.size());
+        this.generalRepo.setSi(this.passengerID, this.situation.name());
+        this.generalRepo.setNr(this.passengerID, this.nr);
+        this.generalRepo.setNa(this.passengerID, 0);
+        this.generalRepo.write(false);
     }
 
     public InternalState getPassengerState() {

@@ -35,6 +35,29 @@ import java.nio.file.Files;
  * N. of passengers in transit = ##
  * N. of bags that should have been transported in the the planes hold = ##
  * N. of bags that were lost = ##
+ * 
+ * STATES
+ * PORTER
+ * WAITING_FOR_A_PLANE_TO_LAND – WFPL
+ * AT_THE_PLANES_HOLD – ATPH
+ * AT_THE_LUGGAGE_BELT_CONVEYOR – ALBC
+ * AT_THE_STOREROOM – ATST
+ * 
+ * PASSENGER
+ * AT_THE_DISEMBARKING_ZONE – ATDZ
+ * AT_THE_LUGGAGE_COLLECTION_POINT – ATCP
+ * AT_THE_BAGGAGE_RECLAIM_OFFICE – ATRO
+ * EXITING_THE_ARRIVAL_TERMINAL – EAT
+ * AT_THE_ARRIVAL_TRANSFER_TERMINAL – AATT
+ * TERMINAL_TRANSFER – TT
+ * AT_THE_DEPARTURE_TRANSFER_TERMINAL – ADTT
+ * ENTERING_THE_DEPARTURE_TERMINAL – EDT
+ * 
+ * BUS DRIVER
+ * PARKING_AT_THE_ARRIVAL_TERMINAL – PAAT
+ * DRIVING_FORWARD – DF
+ * PARKING_AT_THE_DEPARTURE_TERMINAL – PADT
+ * DRIVING_BACKWARD - DB
  */
 
 public class Logger {
@@ -55,7 +78,7 @@ public class Logger {
     private int numP_FDT;
     private int numP_TRT;
     private int numTotalBags;
-    private int numLostBags;
+    private int missingBags;
     private File log;
     
     public Logger(int numSeats, int numP, String filename){
@@ -68,7 +91,13 @@ public class Logger {
         this.numP_FDT = 0;
         this.numP_TRT = 0;
         this.numTotalBags = 0;
-        this.numLostBags = 0;
+        this.missingBags = 0;
+
+        for (int i = 0; i < st.length; i++) {
+            st[i] = "----";
+            si[i] = "---";
+        }
+
         this.log = new File(filename);
         try {
             Files.deleteIfExists(log.toPath());
@@ -113,9 +142,23 @@ public class Logger {
         this.q[id] = state;
     }
 
+    // Set all queue empty
+    public void setQEmpty() {
+        for (int i = 0; i < q.length; i++) {
+            q[i] = "-";
+        }
+    }
+
     // Occupation state for the seat in the bus
     public void setS(int id, String state) {
         this.s[id] = state;
+    }
+
+    // Set all seats empty
+    public void setSEmpty() {
+        for (int i = 0; i < s.length; i++) {
+            s[i] = "-";
+        }
     }
 
     // State of the passengers
@@ -143,7 +186,11 @@ public class Logger {
     // Number of pieces of luggage each passenger has collected
     public void setNa(int id, int n) {
         this.na[id] = n;
-        this.numLostBags = this.numTotalBags - n;
+    }
+
+    // Number of pieces of luggage all passengers lost
+    public void setMissing(int n){
+        this.missingBags = n;
     }
 
     // Final report
@@ -152,7 +199,7 @@ public class Logger {
                 "\nN. of passengers which have this airport as their final destination = " + this.numP_FDT + 
                 "\nN. of passengers in transit = " + this.numP_TRT +
                 "\nN. of bags that should have been transported in the planes hold = " + this.numTotalBags +
-                "\nN- of bags that were lost = " + this.numLostBags;
+                "\nN- of bags that were lost = " + this.missingBags;
     }
 
     @Override
@@ -174,9 +221,10 @@ public class Logger {
     }
 
     public void write(boolean end){
-        String first = ("PLANE         PORTER                  DRIVER                     PASSENGER" +
-        "\nFN  BN   Stat CB SR     Stat Q1 Q2 Q3 Q4 Q5 Q6  S1 S2 S3    St1 Si1 NR1 NA1   St2 Si2 NR2 NA2   St3 Si3 NR3 NA3  St4 Si4 NR4 NA4  St5 Si5 NR5 NA5  St6 Si6 NR6 NA6");
-        String s = String.format("\n%2d %2d   %s %2d %2d     %s %s %s %s %s %s %s   %s %s %s    %s  %3s %1d   %1d     %s %3s  %1d   %1d     %s %3s  %1d   %1d    %s %3s  %1d   %1d    %s %3s  %1d   %1d    %s %3s  %1d   %1d", 
+        String first = ("                                        AIRPORT RHAPSODY - Description of the internal state of the problem" +
+                        "\nPLANE         PORTER                  DRIVER                                                            PASSENGER" +
+                        "\nFN  BN   Stat CB SR    Stat  Q1 Q2 Q3 Q4 Q5 Q6  S1 S2 S3    St1  Si1 NR1 NA1    St2  Si2 NR2 NA2    St3  Si3 NR3 NA3    St4  Si4 NR4 NA4    St5  Si5 NR5 NA5    St6  Si6 NR6 NA6");
+        String s = String.format("\n%2d  %2d   %4s %2d %2d    %4s  %s  %s  %s  %s  %s  %s   %s  %s  %s     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     ", 
         this.fn, this.bn, this.statPorter, this.cb, this.sr, this.statDriver, 
         this.q[0], this.q[1], this.q[2], this.q[3], this.q[4], this.q[5],
         this.s[0], this.s[1], this.s[2],
@@ -209,5 +257,4 @@ public class Logger {
             //TODO: handle exception
         }
     }
-
 }

@@ -32,29 +32,31 @@ public class AirportRhapsody {
 
         //Sharing region
 
-        arrivalLounge = new ArrivalLounge(nPassengers*maxBags,nPassengers);
-        collPoint = new CollectionPoint(nPassengers*maxBags, nPassengers);
-        reclaimOffice = new ReclaimOffice();
-        arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces);
-        depTransQuay = new DepTransQuay(nPassengers, arrTransQuay);
-        arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay, nPlaneLandings);
-        depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit);
-        tempStorageArea = new TempStorageArea(nPassengers);
         generalRepo = new Logger(nSeatingPlaces, nPassengers, "log.txt");
+        arrivalLounge = new ArrivalLounge(nPassengers*maxBags, nPassengers, generalRepo);
+        collPoint = new CollectionPoint(nPassengers*maxBags, nPassengers, generalRepo);
+        reclaimOffice = new ReclaimOffice(generalRepo);
+        arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces, generalRepo);
+        depTransQuay = new DepTransQuay(nPassengers, arrTransQuay, generalRepo);
+        arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay, nPlaneLandings, generalRepo);
+        depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit, generalRepo);
+        tempStorageArea = new TempStorageArea(nPassengers);
 
         //entities
-        porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint);
-        
-        busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay);
-        
+        porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint, generalRepo);
+        busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay, generalRepo);
+        // generalRepo.write(false);
 
         //Start Simullation
         porter.start();
         busDriver.start();
 
         for (int j = 0; j < nPlaneLandings; j++) {
+            generalRepo.setFn(j);
+            generalRepo.setBn(0);
+
             for (int i = 0; i < nPassengers; i++){
-                passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance);
+                passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance, generalRepo);
             }
             for (int i = 0; i < nPassengers; i++){
                 passenger[i].start ();
@@ -83,6 +85,9 @@ public class AirportRhapsody {
         }
         catch (InterruptedException e) {System.out.println("Porter exceção.");}
         System.out.println("O porter terminou.");     
+
+        generalRepo.setMissing(reclaimOffice.getNumBagsMissing());
+        generalRepo.write(true);   
     }
     
 }

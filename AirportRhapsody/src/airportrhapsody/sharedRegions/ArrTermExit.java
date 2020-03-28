@@ -3,6 +3,7 @@ package airportrhapsody.sharedRegions;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
+import airportrhapsody.Logger;
 import airportrhapsody.mainProgram.Passenger;
 
 /**
@@ -13,23 +14,25 @@ public class ArrTermExit extends PassengersHandler {
     private CyclicBarrier newBarrier;
     private ArrivalLounge arrivalLounge;
     private ArrTransQuay arrTransQuay;
+    private Logger generalRepo;
     private int totalPassengers;
     private int counter;
 
-    public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights) {
+    public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights, Logger generalRepo) {
         super(n);
-        newBarrier = new CyclicBarrier(n);
+        this.newBarrier = new CyclicBarrier(n);
         this.arrivalLounge = arrivalLounge;
         this.arrTransQuay = arrTransQuay;
-        totalPassengers = n * numbOfFlights;
-        counter = 0;
+        this.totalPassengers = n * numbOfFlights;
+        this.counter = 0;
+        this.generalRepo = generalRepo;
     }
 
     public void leaveAirpDown() {
         try {
-            newBarrier.await();
-            counter++;
-            if(counter == totalPassengers){
+            this.newBarrier.await();
+            this.counter++;
+            if(this.counter == this.totalPassengers){
                 this.endOfWork();
             }
         } catch (InterruptedException | BrokenBarrierException e) {
@@ -53,20 +56,23 @@ public class ArrTermExit extends PassengersHandler {
     private void endOfWork(){
         arrivalLounge.setDayEnd(true);
         arrTransQuay.setDayEnd(true);
+        arrivalLounge.restUp();
     }
 
     public void goHome(Passenger p) {
         synchronized (this){
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
+            this.generalRepo.setSt(p.getPassengerID(), "EAT ");
+            // this.generalRepo.write(false);
             System.out.println("Passenger " + p.getPassengerID() + " : goHome");
             
         }
         try {
-            newBarrier.await();
+            this.newBarrier.await();
             synchronized (this){
-                counter++;
-                if(counter == totalPassengers){
+                this.counter++;
+                if(this.counter == this.totalPassengers){
                     this.endOfWork();
                 }
                 

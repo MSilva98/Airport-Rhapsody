@@ -1,5 +1,6 @@
 package airportrhapsody.sharedRegions;
 
+import airportrhapsody.Logger;
 import airportrhapsody.mainProgram.BusDriver;
 import airportrhapsody.mainProgram.Passenger;
 
@@ -10,11 +11,13 @@ public class DepTransQuay extends PassengersHandler {
 
     private Semaphore parkBusDep;
     private ArrTransQuay arrTransQuay;
+    private Logger generalRepo;
     
-    public DepTransQuay(int n, ArrTransQuay arrTransQuay){
+    public DepTransQuay(int n, ArrTransQuay arrTransQuay, Logger generalRepo){
         super(n);
         parkBusDep = new Semaphore();
         this.arrTransQuay = arrTransQuay;
+        this.generalRepo = generalRepo;
     }
 
     public void leaveBus(Passenger p){
@@ -22,10 +25,13 @@ public class DepTransQuay extends PassengersHandler {
             System.out.println("Passenger "+ p.getPassengerID() + ": leaveTheBus()");
             p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
             super.insertPassenger(p);
-            arrTransQuay.getSeats().removePassenger(p.getPassengerID());
-
+            this.arrTransQuay.getSeats().removePassenger(p.getPassengerID());
+            this.generalRepo.setSt(p.getPassengerID(), "ADTT");
+            this.generalRepo.setS(this.arrTransQuay.getSeats().size(), "-");
+            this.generalRepo.write(false);
+            
             if(arrTransQuay.getSeats().isEmpty()){
-                System.out.println("Bus empty back to arrival term");   
+                // System.out.println("Bus empty back to arrival term");   
                 parkBusDep.up();
             }
         }
@@ -39,7 +45,9 @@ public class DepTransQuay extends PassengersHandler {
     public void parkTheBusAndLetPassOff(BusDriver b){
         System.out.println("BusDriver: parkTheBusAndLetPassOff()");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
+        this.generalRepo.setStatDriver("PADT");
         arrTransQuay.enterBusUp();
+        this.generalRepo.write(false);
         parkBusDep.down();
     }
 }

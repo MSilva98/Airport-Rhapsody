@@ -74,6 +74,9 @@ public class LuggageHandler {
                         return l;
                     }
                 }
+                else{
+                    return null;
+                }
             }
         }
         return null;

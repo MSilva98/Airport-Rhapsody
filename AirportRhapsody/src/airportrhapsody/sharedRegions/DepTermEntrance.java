@@ -1,5 +1,6 @@
 package airportrhapsody.sharedRegions;
 
+import airportrhapsody.Logger;
 import airportrhapsody.mainProgram.Passenger;
 
 /**
@@ -8,10 +9,12 @@ import airportrhapsody.mainProgram.Passenger;
 public class DepTermEntrance extends PassengersHandler{
 
     private ArrTermExit arrTermExit;
+    private Logger generalRepo;
 
-    public DepTermEntrance(int n, ArrTermExit arrTermExit){
+    public DepTermEntrance(int n, ArrTermExit arrTermExit, Logger generalRepo){
         super(n);
         this.arrTermExit = arrTermExit;
+        this.generalRepo = generalRepo;
     }
 
     public void arrivedTerm(Passenger p){
@@ -31,6 +34,7 @@ public class DepTermEntrance extends PassengersHandler{
             System.out.println("Passenger "+ p.getPassengerID()+" : prepareNextLeg");
             this.arrivedTerm(depTransQuay.leaveDepTransQuay(p.getPassengerID()));
             p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
+            this.generalRepo.setSt(p.getPassengerID(), "EDT ");
         }
         arrTermExit.leaveAirpDown();
         synchronized(this){

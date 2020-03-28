@@ -1,5 +1,6 @@
 package airportrhapsody.sharedRegions;
 
+import airportrhapsody.Logger;
 import airportrhapsody.mainProgram.Passenger;
 
 /**
@@ -9,18 +10,23 @@ public class ReclaimOffice {
 
     private int reclaims;
     private int numBagsMissing;
+    private Logger generalRepo;
 
-    public ReclaimOffice() {
-        numBagsMissing = 0;
+    public ReclaimOffice(Logger generalRepo) {
+        this.generalRepo = generalRepo;
+        this.numBagsMissing = 0;
     }
 
-    public ReclaimOffice(int reclaims) {
+    public ReclaimOffice(int reclaims, Logger generalRepo) {
         this.reclaims = reclaims;
+        this.generalRepo = generalRepo;
     }
 
     public void reportMissingBags(int numBags, Passenger p) {
         p.setPassengerState(Passenger.InternalState.AT_THE_BAGGAGE_RECLAIM_OFFICE);
-        numBagsMissing++;
+        this.generalRepo.setSt(p.getPassengerID(), "ATRO");
+        this.generalRepo.write(false);
+        this.numBagsMissing += numBags;
     }
 
     public int getNumBagsMissing() {
