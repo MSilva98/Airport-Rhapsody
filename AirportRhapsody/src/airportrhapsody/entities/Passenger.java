@@ -154,12 +154,10 @@ public class Passenger extends Thread{
                 arrTermExit.goHome(this);
             }else{
                 for (int i = 0; i < this.nr; i++) {
-                    if(collPoint.goCollectABag(this)){ 
-                        this.na++;
-                    }
-                    else{
-                        break;
-                    }
+                    // if(collPoint.goCollectABag(this)){ 
+                    //     this.na++;
+                    // }
+                    
                 }
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){

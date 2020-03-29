@@ -49,9 +49,8 @@ public class CollectionPoint extends LuggageHandler {
         }
         this.collectBag[p.getPassengerID()].down();
         synchronized(this){
-            // System.out.println(p.getPassengerID());
-            // Luggage l = super.remLuggage(p.getPassengerID());
-            // System.out.println(l);
+
+        System.out.println("COLLECT BAG");
             return(super.remLuggage(p.getPassengerID()) != null);
         }
     }    
@@ -61,11 +60,7 @@ public class CollectionPoint extends LuggageHandler {
      */
     public void insertBag(Luggage l){
         super.addLuggage(l);
-        // if(!this.wakenPassengers[l.getOwner()]){
-        //     this.wakenPassengers[l.getOwner()] = true;
-            // System.out.println("PASSENGER " + l.getOwner() + " TEM MALA À ESPERA");
-            this.collectBag[l.getOwner()].up();
-        // }
+        this.collectBag[l.getOwner()].up();    
     }
 
     /**
@@ -76,7 +71,9 @@ public class CollectionPoint extends LuggageHandler {
         p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
         this.generalRepo.setStatPorter("WPTL");
         this.generalRepo.write(false);
-        while(!super.isEmpty());  
+        // while(!super.isEmpty());  
+
+        System.out.println("NO MORE BAGS");
 
         for (int i = 0; i < collectBag.length; i++) {
             this.collectBag[i].up();

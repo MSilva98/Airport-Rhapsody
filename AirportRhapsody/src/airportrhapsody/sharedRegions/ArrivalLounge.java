@@ -33,6 +33,7 @@ public class ArrivalLounge extends LuggageHandler {
      */
     private Logger generalRepo;
 
+    private int count, numPass;
 
     /**
      * Instantiating the arrival lounge.
@@ -40,12 +41,14 @@ public class ArrivalLounge extends LuggageHandler {
      * @param numPassengers number of passengers
      * @param generalRepo   general repository of information
      */
-    public ArrivalLounge(int maxBags,int numPassengers, Logger generalRepo){
+    public ArrivalLounge(int maxBags, int numPassengers, Logger generalRepo){
         super(maxBags);
         this.airport = new PassengersHandler(numPassengers);
         this.rest = new Semaphore();
         this.dayEnd = false;
         this.generalRepo = generalRepo;
+        this.count = 0;
+        this.numPass = numPassengers;
     }
 
     /**
@@ -97,10 +100,18 @@ public class ArrivalLounge extends LuggageHandler {
      * @return What passagenger should do according to his situation
      */
     public boolean whatShouldIDo(Passenger p) {
-        this.airport.insertPassenger(p);
-        if(this.airport.isFull()){
-            this.rest.up();
-            this.airport.removeAll();
+        // this.airport.insertPassenger(p);
+        // if(this.airport.isFull()){
+        //     this.rest.up();
+        //     this.airport.removeAll();
+        // }
+
+        synchronized(this){
+            this.count++;
+            if(this.count == this.numPass){
+                this.wakePorter();
+                this.count = 0;
+            }
         }
 
         return (p.getSituation() == Passenger.Situation.FDT);

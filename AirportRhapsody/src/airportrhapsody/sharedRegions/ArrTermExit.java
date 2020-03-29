@@ -163,6 +163,8 @@ public class ArrTermExit extends PassengersHandler {
 
         synchronized(this){
             this.blocked++;
+
+        System.out.println("GO HOME " + p.getPassengerID());
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();

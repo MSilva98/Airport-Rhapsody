@@ -79,6 +79,7 @@ public class Porter extends Thread{
     @Override
     public void run(){
         this.arrivalLounge.restPorter();
+        System.out.println("WAKE UP PORTER");
         while (!this.arrivalLounge.takeARest(this)) {
             Luggage l = this.arrivalLounge.tryToCollectABag(this);
             while(l != null){
@@ -87,6 +88,7 @@ public class Porter extends Thread{
             }
             this.collPoint.noMoreBagsToCollect(this);
             this.arrivalLounge.restPorter();
+            System.out.println("WAKE UP PORTER");
         }
         
     }
