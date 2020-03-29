@@ -57,7 +57,7 @@ public class AirportRhapsody {
             for (int i = 0; i < nPassengers; i++){
                 passenger[i].start ();
             }
-    
+            
             //End simulation
     
             for (int i = 0; i < nPassengers; i++){

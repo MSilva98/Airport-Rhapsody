@@ -73,8 +73,8 @@ public class Logger {
     private String[] s;
     private String[] st;
     private String[] si;
-    private int[] nr;
-    private int[] na;
+    private String[] nr;
+    private String[] na;
     private int numP_FDT;
     private int numP_TRT;
     private int numTotalBags;
@@ -86,8 +86,8 @@ public class Logger {
         this.s = new String[numSeats];
         this.st = new String[numP];
         this.si = new String[numP];
-        this.nr = new int[numP];
-        this.na = new int[numP];
+        this.nr = new String[numP];
+        this.na = new String[numP];
         this.numP_FDT = 0;
         this.numP_TRT = 0;
         this.numTotalBags = 0;
@@ -96,6 +96,8 @@ public class Logger {
         for (int i = 0; i < st.length; i++) {
             st[i] = "---";
             si[i] = "---";
+            nr[i] = "-";
+            na[i] = "-";
         }
 
         this.log = new File(filename);
@@ -179,13 +181,13 @@ public class Logger {
 
     // Number of pieces of luggage each passenger carried at the start ot his journey
     public void setNr(int id, int n) {
-        this.nr[id] = n;
+        this.nr[id] = ""+n;
         this.numTotalBags += n;
     }
 
     // Number of pieces of luggage each passenger has collected
     public void setNa(int id, int n) {
-        this.na[id] = n;
+        this.na[id] = ""+n;
     }
 
     // Number of pieces of luggage all passengers lost
@@ -227,7 +229,7 @@ public class Logger {
                         "\n                                                         PASSENGER" +
                         "\nSt1 Si1 NR1 NA1 St2 Si2 NR2 NA2 St3 Si3 NR3 NA3 St4 Si4 NR4 NA4 St5 Si5 NR5 NA5 St6 Si6 NR6 NA6");
         String s = String.format("\n%2d %2d  %4s %2d %2d   %4s  %2s %2s %2s %2s %2s %2s  %2s %2s %2s" + 
-                                 "\n%3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d", 
+                                 "\n%3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s", 
         this.fn, this.bn, this.statPorter, this.cb, this.sr, this.statDriver, 
         this.q[0], this.q[1], this.q[2], this.q[3], this.q[4], this.q[5],
         this.s[0], this.s[1], this.s[2],
