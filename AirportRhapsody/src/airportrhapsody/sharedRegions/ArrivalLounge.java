@@ -8,12 +8,38 @@ import airportrhapsody.commonInfrastructures.*;
  * ArrivalLounge
  */
 public class ArrivalLounge extends LuggageHandler {
-
+    /**
+     * Semaphore that block porter thread
+     * 
+     * @serialField rest
+     */
     private Semaphore rest;
+    /**
+     * Data type to store passengers who are in the arrival lounge
+     * 
+     * @serialField airport
+     */
     private PassengersHandler airport;
+    /**
+     * State of the day
+     * 
+     * @serialField dayEnd
+     */
     private boolean dayEnd;
+    /**
+     *  Logger - general repository of information
+     * 
+     *  @serialField generalRepo
+     */
     private Logger generalRepo;
 
+
+    /**
+     * Instantiating the arrival lounge.
+     * @param maxBags max number of bags
+     * @param numPassengers number of passengers
+     * @param generalRepo   general repository of information
+     */
     public ArrivalLounge(int maxBags,int numPassengers, Logger generalRepo){
         super(maxBags);
         this.airport = new PassengersHandler(numPassengers);
@@ -22,10 +48,19 @@ public class ArrivalLounge extends LuggageHandler {
         this.generalRepo = generalRepo;
     }
 
+    /**
+     * Put a bag on the arrival lounge
+     * @param l bag
+     */
     public void putBag(Luggage l){
         super.addLuggage(l);
     }
 
+    /**
+     * Try to collect a bag from the arrival lounge
+     * @param p porter
+     * @return bag
+     */
     public Luggage tryToCollectABag(Porter p){
         p.setPorterState(Porter.InternalState.AT_THE_PLANES_HOLD);
         this.generalRepo.setStatPorter("APLH");
@@ -33,21 +68,34 @@ public class ArrivalLounge extends LuggageHandler {
         return super.remLuggage();
     }
 
+    /**
+     * block porter
+     */
     public void restPorter(){
         rest.down();
     }
-
+    /**
+     * wake up porter
+     */
     public void wakePorter(){
         rest.up();
     }
 
+    /**
+     * Take a rest
+     * @param p porter
+     * @return <li> true, if day is over
+     *         <li> false, if isn't
+     */
     public boolean takeARest(Porter p) {
-        // p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
-        // this.generalRepo.setStatPorter("WFPL");
-        // this.generalRepo.write(false);
         return dayEnd;
     }
 
+    /**
+     * What should i do
+     * @param p passenger
+     * @return What passagenger should do according to his situation
+     */
     public boolean whatShouldIDo(Passenger p) {
         this.airport.insertPassenger(p);
         if(this.airport.isFull()){
@@ -63,7 +111,6 @@ public class ArrivalLounge extends LuggageHandler {
     }
 
     public void setDayEnd(boolean st){
-        // System.out.println("WORK DONE PORTER");
         dayEnd = st;
         rest.up();
     }

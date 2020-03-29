@@ -2,16 +2,37 @@ package airportrhapsody.commonInfrastructures;
 
 import airportrhapsody.entities.Passenger;
 
+/**
+ * Passengers handler
+ */
 public class PassengersHandler {
+    /**
+     * Array of passengers
+     */
     private Passenger[] p;
+    /**
+     * Indicate if is full
+     */
     private boolean full;
+    /**
+     * Indicate if is empty
+     */
     private boolean empty;
+    /**
+     * index
+     */
     private int index;
+    /**
+     * max number of passengers
+     */
     private int max;
 
     public PassengersHandler() {
     }
-
+    /**
+     * Passenger handler constructor
+     * @param n size of the handler
+     */
     public PassengersHandler(int n) {
         this.p = new Passenger[n];
         this.full = false;
@@ -56,7 +77,12 @@ public class PassengersHandler {
     public int size(){
         return index;
     }
-
+    /**
+     * Insert passenger in handler
+     * @param x passenger
+     * @return <li> true if insert with success
+     *         <li> else false
+     */
     public boolean insertPassenger(Passenger x) {
         if(!this.isFull()){
             p[this.index] = x;
@@ -67,7 +93,10 @@ public class PassengersHandler {
         }
         return false;
     }
-
+    /**
+     * Remove passenger from handler
+     * @return passenger
+     */
     public Passenger removePassenger(){
         if(!this.isEmpty()){
             this.index--;
@@ -77,7 +106,11 @@ public class PassengersHandler {
         }   
         return null;
     }
-
+    /**
+     * Remove passenger from handler
+     * @param id passenger id
+     * @return passenger
+     */
     public Passenger removePassenger(int id){
         if(!this.isEmpty()){
             for (int i = 0; i < p.length; i++) {
@@ -99,7 +132,9 @@ public class PassengersHandler {
         }   
         return null;
     }
-
+    /**
+     * Remove all passengers
+     */
     public void removeAll(){
         this.p = new Passenger[p.length];
         this.full = false;

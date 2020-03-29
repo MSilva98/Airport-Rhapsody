@@ -5,17 +5,53 @@ import airportrhapsody.entities.Passenger;
 import airportrhapsody.commonInfrastructures.*;
 
 /**
- * ArrTransQuay
+ * Arrival terminal transfer quay
  */
 public class ArrTransQuay extends PassengersHandler {
-
+    /**
+     * Semaphore that block bus driver thread
+     * 
+     * @serialField parkBusArr
+     */
     private Semaphore parkBusArr;
+    /**
+     * Semaphore that block bus driver thread
+     * 
+     * @serialField busBoard
+     */
     private Semaphore busBoard;
+    /**
+     * Array of semaphores that block passengers threads
+     * 
+     * @serialField busBoard
+     */
     private Semaphore[] passengers;
+    /**
+     * Number of seats that bus can carry
+     * 
+     * @serialField seats 
+     */
     private PassengersHandler seats;
+    /**
+     *  Logger - general repository of information
+     * 
+     *  @serialField generalRepo
+     */
     private Logger generalRepo;
+     /**
+     * State of the day
+     * 
+     * @serialField dayEnd
+     */
     private boolean dayEnd;
 
+
+    /**
+     * Instantiating the arrival terminal transfer quay.
+     * @param n number of passengers
+     * @param nseats    Number of seats that bus can carry
+     * @param generalRepo general repository of information
+     */
     public ArrTransQuay(int n, int nseats, Logger generalRepo){
         super(n);
         this.seats = new PassengersHandler(nseats);
@@ -29,27 +65,53 @@ public class ArrTransQuay extends PassengersHandler {
         }
         this.dayEnd = false;
     }
-
+    /**
+     * Free passengers
+     */
     public void enterBusUp() {
-        // int[] ids = this.seats.getIDs();
-        Passenger[] p = this.seats.getP();
-        for (int i = 0; i < p.length; i++) {
-            if(p[i] != null){
-                p[i].setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
-                this.generalRepo.setSt(p[i].getPassengerID(), "TRT");
-                this.passengers[p[i].getPassengerID()].up();
+        // // int[] ids = this.seats.getIDs();
+        // Passenger[] p = this.seats.getP();
+        // for (int i = 0; i < p.length; i++) {
+        //     if(p[i] != null){
+        //         p[i].setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
+        //         this.generalRepo.setSt(p[i].getPassengerID(), "TRT");
+        //         this.passengers[p[i].getPassengerID()].up();
+        //     }
+        //     // if(ids[i] != -1){    
+        //     //     //System.out.println("Passenger " + ids[i] + " up");
+        //     //     this.passengers[ids[i]].up();
+        //     // }
+        // }
+        PassengersHandler tmp = this.seats;
+        while(!tmp.isEmpty()) {
+            Passenger p = tmp.removePassenger();
+            if(p != null){
+                // System.out.println("THIS IS " + p.getPassengerID());
+                p.setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
+                this.generalRepo.setSt(p.getPassengerID(), "TRT");
+                this.passengers[p.getPassengerID()].up();
             }
-            // if(ids[i] != -1){    
-            //     //System.out.println("Passenger " + ids[i] + " up");
-            //     this.passengers[ids[i]].up();
-            // }
         }
         this.generalRepo.write(false);
     }
+    // public void enterBusUp() {
 
+    //     Passenger[] p = this.seats.getP();
+    //     for (int i = 0; i < p.length; i++) {
+    //         if(p[i] != null){
+    //             p[i].setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
+    //             this.generalRepo.setSt(p[i].getPassengerID(), "TRT");
+    //             this.passengers[p[i].getPassengerID()].up();
+    //         }
+    //     }
+    //     this.generalRepo.write(false);
+    // }
+    /**
+     * Enter the bus
+     * @param id passenger id
+     */
     public void enterTheBus(int id){
         synchronized (this){
-            System.out.println("Passenger "+ id + ": enterTheBus()");
             this.seats.insertPassenger( super.removePassenger(id));
             this.generalRepo.setQ(super.size(), "-");
             this.generalRepo.setS(this.seats.size()-1, ""+id);
@@ -62,15 +124,20 @@ public class ArrTransQuay extends PassengersHandler {
         }
         this.passengers[id].down();
     }
-
+    /**
+     * Park the bus
+     * @param b bus driver
+     */
     public void parkTheBus(BusDriver b){
-        System.out.println("BusDriver: parkTheBus");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);  
         this.generalRepo.setStatDriver("PKAT");  
         // this.generalRepo.write(false);
         this.parkBusArr.down(2000);
     }
-
+    /**
+     * Take a bus
+     * @param p passenger
+     */
     public void takeABus(Passenger p) {
         synchronized(this){
             p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
@@ -87,10 +154,11 @@ public class ArrTransQuay extends PassengersHandler {
         }
         this.passengers[p.getPassengerID()].down();
     }
-
+    /**
+     * Announcing bus boarding
+     */
     public void announcingBusBoarding() {
         int passEnter = super.size();
-        // System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ this.numPassengers());
         
         int[] ids = super.getIDs();
         for (int i = 0; i < passEnter; i++) {
@@ -100,7 +168,10 @@ public class ArrTransQuay extends PassengersHandler {
         }
         this.busBoard.down();
     }
-
+    /**
+     * Current number of passengers
+     * @return
+     */
     public int numPassengers(){
         return super.size();
     }
@@ -114,7 +185,6 @@ public class ArrTransQuay extends PassengersHandler {
     }
 
     public void setDayEnd(boolean st){
-        // System.out.println("WORK DONE DRIVER");
         dayEnd = st;
     }
 }

@@ -1,14 +1,33 @@
 package airportrhapsody.commonInfrastructures;
 
+/**
+ * Luggage handler
+ */
+
 public class LuggageHandler {
+    /**
+     * Array of bags
+     */
     private Luggage[] bags;
+    /**
+     * index
+     */
     private int index;
+    /**
+     * Indicate if is full
+     */
     private boolean full;
+    /**
+     * Indicate if is empty
+     */
     private boolean empty;
 
     public LuggageHandler(){
     }
-
+    /**
+     * Lugagge handler constructor
+     * @param n size of the handler
+     */
     public LuggageHandler(int n) {
         this.bags = new Luggage[n];
         this.index = 0;
@@ -23,19 +42,35 @@ public class LuggageHandler {
     public void setNbags(Luggage[] nbags) {
         this.bags = nbags;
     }
-
+    /**
+     * Check if the luggage handler is full
+     * @return <li> true if is full
+     *         <li> else false
+     */
     public boolean isFull(){
         return this.full;
     }
-
+    /**
+     * Check if the luggage handler is empty
+     * @return <li> true if is empty
+     *         <li> else false
+     */
     public boolean isEmpty(){
         return this.empty;
     }
-
+    /**
+     * Current number of bags
+     * @return number of bags
+     */
     public int size(){
         return this.index;
     }
-
+    /**
+     * Add a bag to the handler
+     * @param bag bag
+     * @return <li> true is add bag with success
+     *         <li> false if fail
+     */
     public boolean addLuggage(Luggage bag){
         if(!this.isFull()){
             this.bags[index] = bag;
@@ -46,7 +81,10 @@ public class LuggageHandler {
         }
         return false;
     }
-
+    /**
+     * Remove a bag
+     * @return bag
+     */
     public Luggage remLuggage(){
         if(!this.isEmpty()){
             this.index--;
@@ -56,11 +94,14 @@ public class LuggageHandler {
         }
         return null;
     }
-
+    /**
+     * Remove a bag
+     * @param id passenger id
+     * @return bag
+     */
     public Luggage remLuggage(int id){
         if(!this.isEmpty()){
             for (int i = 0; i < bags.length; i++) {
-                // System.out.println("bags size " + bags.length + " i=" + i);
                 if(bags[i] != null){
                     if (bags[i].getOwner() == id){
                         Luggage l = bags[i];

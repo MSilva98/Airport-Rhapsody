@@ -3,7 +3,17 @@ package airportrhapsody.mainProgram;
 import airportrhapsody.sharedRegions.*;
 import airportrhapsody.entities.*;
 
+    /**
+     * The program describe activities take place at an airport
+     * and aim to portray what happens 
+     * when passengers arrive from a flight.
+     */
+
 public class AirportRhapsody {
+
+    /**
+     *   Main Program
+     */
 
     public static void main(String[] args) {
 
@@ -14,7 +24,7 @@ public class AirportRhapsody {
         int nPlaneLandings = 5;                             // number of plane landings
         int nSeatingPlaces = 3;                             // bus capacity
         int maxBags = 2;                                    // maximum luggage
-        ArrivalLounge arrivalLounge;
+        ArrivalLounge arrivalLounge;                        
         CollectionPoint collPoint;
         ReclaimOffice reclaimOffice;
         ArrTransQuay arrTransQuay;

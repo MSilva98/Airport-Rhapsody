@@ -1,12 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- * 
- * 
- * Passenger bags are randomly attributed (0,1 or 2) and the lost bags are randomly generated
- */
-
 package airportrhapsody.entities;
 
 import java.util.Random;
@@ -14,7 +5,15 @@ import java.util.Random;
 import airportrhapsody.sharedRegions.*;
 import airportrhapsody.commonInfrastructures.*;
 
+/**
+ * This class implements the passenger thread
+ */
+
 public class Passenger extends Thread{
+
+    /**
+     * Passenger internal state enumerate
+     */
     public enum InternalState {
         AT_THE_DISEMBARKING_ZONE,
         AT_THE_LUGGAGE_COLLECTION_POINT,
@@ -26,27 +25,108 @@ public class Passenger extends Thread{
         ENTERING_THE_DEPARTURE_TERMINAL
     }
 
+    /**
+     * Passenger situation enumerate
+     */
+
     public enum Situation {
         TRT,
         FDT
     }
 
+
+    /**
+     *  Passenger identification
+     * 
+     *  @serialField busDriveID
+     */
     private int passengerID;
 
+    /**
+     *  Passenger state
+     * 
+     *  @serialField passengerState
+     */
     private InternalState passengerState;
+    /**
+     *  Passenger situation
+     * 
+     *  @serialField situation
+     */
     private Situation situation;
-    private int nr; //number of pieces of luggage the passenger carried at the start of her journey
-    private int na; //number of pieces of luggage the passenger she has presently collected
-
+    /**
+     * Number of pieces of luggage the passenger carried at the start of her journey
+     * 
+     * @serialField nr
+     */
+    private int nr;
+    /**
+     * Number of pieces of luggage the passenger she has presently collected
+     * 
+     * @serialField na
+     */
+    private int na; 
+    /**
+     * Arrival lounge
+     * 
+     * @serialField arrivalLounge
+     */
     private ArrivalLounge arrivalLounge;
+    /**
+     * Baggage collection point
+     * 
+     * @serialField collPoint
+     */
     private CollectionPoint collPoint;
+    /**
+     * Baggage reclaim office
+     * 
+     * @serialField reclaimOffice
+     */
     private ReclaimOffice reclaimOffice;
+    /**
+     * Arrival terminal transfer quay
+     * 
+     * @serialField arrTransQuay
+     */
     private ArrTransQuay arrTransQuay;
+    /**
+     * Departure terminal transfer quay
+     * 
+     * @serialField arrTransQuay
+     */
     private DepTransQuay depTransQuay;
+    /**
+     * Arrival terminal exit
+     * 
+     * @serialField arrTermExit
+     */
     private ArrTermExit arrTermExit;
+    /**
+     * Departure terminal entrance
+     * 
+     * @serialField depTermEntrance
+     */
     private DepTermEntrance depTermEntrance;
+    /**
+     *  Logger - general repository of information
+     * 
+     *  @serialField generalRepo
+     */
     private Logger generalRepo;
 
+    /**
+     * Instantiating the passenger thread.
+     * @param id passanger identification
+     * @param arrivalLounge Arrival Lounge
+     * @param collPoint Baggage colletion point
+     * @param reclaimOffice Baggage reclaim office
+     * @param arrTransQuay  Arrival terminal transfer quay
+     * @param depTransQuay  Departure terminal transfer quay
+     * @param arrTermExit   Arrival terminal exit
+     * @param depTermEntrance   Departure terminal entrance
+     * @param generalRepo   General repository of information
+     */
     public Passenger(int id, ArrivalLounge arrivalLounge, CollectionPoint collPoint, ReclaimOffice reclaimOffice, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay, ArrTermExit arrTermExit, DepTermEntrance depTermEntrance, Logger generalRepo) {
         this.passengerID = id;
         this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
@@ -62,29 +142,19 @@ public class Passenger extends Thread{
         setupPassenger();
     }
 
-    public Passenger() {
-        this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
-        setupPassenger();
-    }
-
-    public Passenger(int id) {
-        this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
-        setupPassenger();
-        this.passengerID = id;
-    }
+    /**
+     * Passenger thread life cycle
+     */
 
     @Override
     public void run() {
-        // System.out.println("Thread Passenger " + passengerID + " - nr: " + nr + " situation: " + situation);
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(this.nr == 0){
                 arrTermExit.goHome(this);
             }else{
-                // boolean success = true;
                 for (int i = 0; i < this.nr; i++) {
-                    if(collPoint.goCollectABag(this)){    
-                        // System.out.println("Bag collected " + passengerID);
+                    if(collPoint.goCollectABag(this)){ 
                         this.na++;
                     }
                     else{
@@ -93,7 +163,6 @@ public class Passenger extends Thread{
                 }
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){
-                    // System.out.println("REPORT " + passengerID + "  NA: " + na + " NR: " + nr);
                     reclaimOffice.reportMissingBags(nr - na, this);
                 }
                 arrTermExit.goHome(this);
@@ -105,7 +174,10 @@ public class Passenger extends Thread{
             depTermEntrance.prepareNextLeg(depTransQuay, this);
         }
     }
-
+    /*
+     * Setup passenger situtation and bags. 
+     * Bags are randomly attributed (0,1 or 2) and the lost bags are randomly generated
+     */
     public void setupPassenger() {
         Situation s[] = Situation.values();
         Random rand = new Random(); 
@@ -113,7 +185,6 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        // System.out.println("BAGS LOST " + temp + " SIT : " + situation + " " + passengerID + " NR: " + nr);
         for (int i = 0; i < nr - temp; i++) {
             this.arrivalLounge.putBag(new Luggage(this.passengerID, this.situation));
         }
@@ -124,23 +195,39 @@ public class Passenger extends Thread{
         this.generalRepo.setNa(this.passengerID, 0);
         this.generalRepo.write(false);
     }
-
+    /**
+     * Get the passenger state
+     * @return passenger state
+     */
     public InternalState getPassengerState() {
         return this.passengerState;
     }
-
+    /**
+     * Get passenger ID
+     * @return passenger ID
+     */
     public int getPassengerID() {
         return this.passengerID;
     }
-
+    /**
+     * Get the passenger state
+     * @param state passenger state
+     */
     public void setPassengerState(InternalState state) {
         this.passengerState = state;
     }
 
+    /**
+     * Get situation
+     * @return
+     */
     public Situation getSituation() {
         return this.situation;
     }
-
+    /**
+     * Set situation
+     * @param situation passenger situation
+     */
     public void setSituation(Situation situation) {
         this.situation = situation;
     }

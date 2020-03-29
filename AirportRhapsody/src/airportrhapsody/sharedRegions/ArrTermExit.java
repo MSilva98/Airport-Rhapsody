@@ -4,18 +4,56 @@ import airportrhapsody.entities.Passenger;
 import airportrhapsody.commonInfrastructures.*;
 
 /**
- * ArrTermExit
+ * Arrival terminal exit
  */
 public class ArrTermExit extends PassengersHandler {
-
+    /**
+     * Arrival Lounge
+     * 
+     * @serialField arrivalLounge
+     */
     private ArrivalLounge arrivalLounge;
+    /**
+     * Arrival terminal transfer quay
+     * 
+     * @serialField arrTransQuay
+     */
     private ArrTransQuay arrTransQuay;
+    /**
+     *  Logger - general repository of information
+     * 
+     *  @serialField generalRepo
+     */
     private Logger generalRepo;
+    /**
+     * total number of passengers
+     * 
+     * @serialField totalPassengers
+     */
     private int totalPassengers;
+    /**
+     * Counter of passengers
+     * 
+     * @serialField counter
+     */
     private int counter;
+    /**
+     * Array of semaphore that block passengers threads
+     * 
+     * @serialField test
+     */
     private Semaphore[] test;
     private int blocked;
 
+
+    /**
+     * Instantiating the arrival terminal exit.
+     * @param n number of passenger per flight
+     * @param arrivalLounge Arrival lounge
+     * @param arrTransQuay Arrival terminal tranfer quay
+     * @param numbOfFlights number of flights
+     * @param generalRepo   general repository of information
+     */
     public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights, Logger generalRepo) {
         super(n);
         // this.newBarrier = new CyclicBarrier(n);
@@ -31,6 +69,9 @@ public class ArrTermExit extends PassengersHandler {
         this.generalRepo = generalRepo;
     }
 
+    /**
+     * Simulate barrier
+     */
     public void leaveAirpDown() {
         // try {
         //     this.newBarrier.await();
@@ -46,7 +87,6 @@ public class ArrTermExit extends PassengersHandler {
         // }
         synchronized(this){
             this.blocked++;
-            // System.out.println(blocked);
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();
@@ -63,30 +103,45 @@ public class ArrTermExit extends PassengersHandler {
         } 
     }
 
+    /**
+     * Inser passenger in terminal
+     * @param p passanger
+     */
     public void arrivedTerm(Passenger p) {
         super.insertPassenger(p);
     }
-
+    /**
+     * Remove passenger from terminal
+     * @return passenger
+     */
     public Passenger leftTerm() {
         return super.removePassenger();
     }
 
+
+    /**
+     * Check if terminal is empty
+     * @return true if is empty
+     */
     public boolean emptyTerm() {
         return super.isEmpty();
     }
-
+    /**
+     * Set the end of the work
+     */
     private void endOfWork(){
         arrivalLounge.setDayEnd(true);
         arrTransQuay.setDayEnd(true);
     }
-
+    /**
+     * Go home
+     * @param p passenger
+     */
     public void goHome(Passenger p) {
         synchronized (this){
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EAT");
-            // this.generalRepo.write(false);
-            System.out.println("Passenger " + p.getPassengerID() + " : goHome");
             
         }
         // try {
@@ -108,7 +163,6 @@ public class ArrTermExit extends PassengersHandler {
 
         synchronized(this){
             this.blocked++;
-            // System.out.println(blocked);
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();
