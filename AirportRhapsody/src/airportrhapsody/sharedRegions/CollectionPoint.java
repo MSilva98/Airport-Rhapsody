@@ -27,17 +27,24 @@ public class CollectionPoint extends LuggageHandler {
     }
 
     public boolean goCollectABag(Passenger p){
-        p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
-        this.generalRepo.setSt(p.getPassengerID(), "ATCP");
-        this.wakenPassengers[p.getPassengerID()] = false;
-        System.out.println("Passenger " + p.getPassengerID() + " BLOQUEADO");
-        this.collectBag[p.getPassengerID()].down();
-        synchronized(this){
-            // System.out.println(p.getPassengerID());
-            // Luggage l = super.remLuggage(p.getPassengerID());
-            // System.out.println(l);
-            return(super.remLuggage(p.getPassengerID()) != null);
+        if(super.isEmpty()){
+            synchronized(this){
+                p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
+                this.generalRepo.setSt(p.getPassengerID(), "ATCP");
+                this.wakenPassengers[p.getPassengerID()] = false;
+                System.out.println("Passenger " + p.getPassengerID() + " BLOQUEADO");
+            }
+            this.collectBag[p.getPassengerID()].down();
+            synchronized(this){
+                // System.out.println(p.getPassengerID());
+                // Luggage l = super.remLuggage(p.getPassengerID());
+                // System.out.println(l);
+                return(super.remLuggage(p.getPassengerID()) != null);
+            }
+        }else{
+            return false;
         }
+        
     }    
 
     public void insertBag(Luggage l){

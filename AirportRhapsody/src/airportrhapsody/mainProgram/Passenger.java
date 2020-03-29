@@ -87,6 +87,9 @@ public class Passenger extends Thread{
                         System.out.println("Bag collected " + passengerID);
                         this.na++;
                     }
+                    else{
+                        break;
+                    }
                 }
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){
