@@ -15,12 +15,6 @@ public class ArrivalLounge extends LuggageHandler {
      */
     private Semaphore rest;
     /**
-     * Data type to store passengers who are in the arrival lounge
-     * 
-     * @serialField airport
-     */
-    private PassengersHandler airport;
-    /**
      * State of the day
      * 
      * @serialField dayEnd
@@ -32,8 +26,18 @@ public class ArrivalLounge extends LuggageHandler {
      *  @serialField generalRepo
      */
     private Logger generalRepo;
-
-    private int count, numPass;
+    /**
+     *  Number of passengers in the arrival lounge
+     * 
+     *  @serialField numPass
+     */
+    private int numPass;
+    /**
+     *  Total number of passengers in each plane
+     * 
+     *  @serialField numMaxPass
+     */
+    private int numMaxPass;
 
     /**
      * Instantiating the arrival lounge.
@@ -43,12 +47,11 @@ public class ArrivalLounge extends LuggageHandler {
      */
     public ArrivalLounge(int maxBags, int numPassengers, Logger generalRepo){
         super(maxBags);
-        this.airport = new PassengersHandler(numPassengers);
         this.rest = new Semaphore();
         this.dayEnd = false;
         this.generalRepo = generalRepo;
-        this.count = 0;
-        this.numPass = numPassengers;
+        this.numPass = 0;
+        this.numMaxPass = numPassengers;
     }
 
     /**
@@ -100,20 +103,13 @@ public class ArrivalLounge extends LuggageHandler {
      * @return What passagenger should do according to his situation
      */
     public boolean whatShouldIDo(Passenger p) {
-        // this.airport.insertPassenger(p);
-        // if(this.airport.isFull()){
-        //     this.rest.up();
-        //     this.airport.removeAll();
-        // }
-
         synchronized(this){
-            this.count++;
-            if(this.count == this.numPass){
+            this.numPass++;
+            if(this.numPass == this.numMaxPass){
                 this.wakePorter();
-                this.count = 0;
+                this.numPass = 0;
             }
         }
-
         return (p.getSituation() == Passenger.Situation.FDT);
     }
 

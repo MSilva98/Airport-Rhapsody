@@ -20,6 +20,12 @@ public class CollectionPoint extends LuggageHandler {
      *  @serialField generalRepo
      */
     private Logger generalRepo;
+    /**
+     *  Flag to signal that there are no more bags
+     * 
+     *  @serialField generalRepo
+     */
+    private boolean noMoreBags;
 
     /**
      * Instantiating the baggage Collection Point.
@@ -34,6 +40,7 @@ public class CollectionPoint extends LuggageHandler {
             this.collectBag[i] = new Semaphore();
         }
         this.generalRepo = generalRepo;
+        this.noMoreBags = false;
     }
 
     /**
@@ -43,16 +50,23 @@ public class CollectionPoint extends LuggageHandler {
      *         <li> false if don't collect a bag
      */
     public boolean goCollectABag(Passenger p){
-        synchronized(this){
-            p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
-            this.generalRepo.setSt(p.getPassengerID(), "LCP");
-        }
-        this.collectBag[p.getPassengerID()].down();
-        synchronized(this){
-
-        System.out.println("COLLECT BAG");
-            return(super.remLuggage(p.getPassengerID()) != null);
-        }
+        // if(!noMoreBags){
+            synchronized(this){
+                p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
+                this.generalRepo.setSt(p.getPassengerID(), "LCP");
+            }
+            System.out.println("PASSENGER " + p.getPassengerID() + " WAITING FOR BAG");
+            this.collectBag[p.getPassengerID()].down();
+            synchronized(this){
+                System.out.println("COLLECT BAG " + p.getPassengerID());
+                return (super.remLuggage(p.getPassengerID()) != null);
+            }
+        // }
+        // else{
+        //     System.out.println("THERE ARE NO MORE BAGS HERE");
+        //     return false;
+        // }
+        
     }    
     /**
      * Insert a bag in collection point
@@ -79,8 +93,16 @@ public class CollectionPoint extends LuggageHandler {
             this.collectBag[i].up();
         }
         resetSemaphores(this.collectBag.length);
+        this.noMoreBags = true;
     }
 
+    public void noBags(){
+        this.noMoreBags = false;
+    }
+
+    public boolean getNoBags(){
+        return this.noMoreBags;
+    }
     public int size(){
         return super.size();
     }
