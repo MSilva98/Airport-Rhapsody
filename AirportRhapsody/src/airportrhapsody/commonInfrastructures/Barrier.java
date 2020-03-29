@@ -1,4 +1,4 @@
-package airportrhapsody.sharedRegions;
+package airportrhapsody.commonInfrastructures;
 
 /**
  * Barrier

@@ -1,4 +1,4 @@
-package airportrhapsody.mainProgram;
+package airportrhapsody.entities;
 
 import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;

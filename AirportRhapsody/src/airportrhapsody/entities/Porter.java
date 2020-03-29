@@ -1,8 +1,9 @@
-package airportrhapsody.mainProgram;
+package airportrhapsody.entities;
 
 import airportrhapsody.Logger;
-import airportrhapsody.mainProgram.Passenger.Situation;
+import airportrhapsody.entities.Passenger.Situation;
 import airportrhapsody.sharedRegions.*;
+import airportrhapsody.commonInfrastructures.*;
 
 public class Porter extends Thread{
     public enum InternalState {

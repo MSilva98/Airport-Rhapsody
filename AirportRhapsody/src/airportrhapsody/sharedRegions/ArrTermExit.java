@@ -4,7 +4,8 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 import airportrhapsody.Logger;
-import airportrhapsody.mainProgram.Passenger;
+import airportrhapsody.entities.Passenger;
+import airportrhapsody.commonInfrastructures.*;
 
 /**
  * ArrTermExit

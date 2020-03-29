@@ -1,9 +1,9 @@
 package airportrhapsody.sharedRegions;
 
 import airportrhapsody.Logger;
-import airportrhapsody.mainProgram.BusDriver;
-import airportrhapsody.mainProgram.Passenger;
-
+import airportrhapsody.entities.BusDriver;
+import airportrhapsody.entities.Passenger;
+import airportrhapsody.commonInfrastructures.*;
 
 /**
  * ArrTransQuay

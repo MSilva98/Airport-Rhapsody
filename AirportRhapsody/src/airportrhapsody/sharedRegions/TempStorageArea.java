@@ -1,5 +1,7 @@
 package airportrhapsody.sharedRegions;
 
+import airportrhapsody.commonInfrastructures.*;
+
 /**
  * TempStorageArea
  */

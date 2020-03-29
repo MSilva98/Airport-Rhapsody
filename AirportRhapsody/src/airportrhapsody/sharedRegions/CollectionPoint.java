@@ -1,8 +1,9 @@
 package airportrhapsody.sharedRegions;
 
 import airportrhapsody.Logger;
-import airportrhapsody.mainProgram.Passenger;
-import airportrhapsody.mainProgram.Porter;
+import airportrhapsody.entities.Passenger;
+import airportrhapsody.entities.Porter;
+import airportrhapsody.commonInfrastructures.*;
 
 /**
  * CollectionPoint

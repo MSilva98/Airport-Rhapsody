@@ -1,4 +1,4 @@
-package airportrhapsody.sharedRegions;
+package airportrhapsody.commonInfrastructures;
 
 /**
  *    Este tipo de dados define um semáforo de Dijkstra a partir de um monitor.

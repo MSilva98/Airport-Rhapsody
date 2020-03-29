@@ -1,7 +1,7 @@
 package airportrhapsody.sharedRegions;
 
 import airportrhapsody.Logger;
-import airportrhapsody.mainProgram.Passenger;
+import airportrhapsody.entities.Passenger;
 
 /**
  * ReclaimOffice

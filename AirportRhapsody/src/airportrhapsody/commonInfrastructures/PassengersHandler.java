@@ -1,6 +1,6 @@
-package airportrhapsody.sharedRegions;
+package airportrhapsody.commonInfrastructures;
 
-import airportrhapsody.mainProgram.Passenger;
+import airportrhapsody.entities.Passenger;
 
 public class PassengersHandler {
     private Passenger[] p;
