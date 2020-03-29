@@ -100,6 +100,13 @@ public class PassengersHandler {
         return null;
     }
 
+    public void removeAll(){
+        this.p = new Passenger[p.length];
+        this.full = false;
+        this.empty = true;
+        this.index = 0;
+    }
+
     @Override
     public String toString() {
         String s = "";

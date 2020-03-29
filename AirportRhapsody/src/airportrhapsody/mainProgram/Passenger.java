@@ -59,9 +59,7 @@ public class Passenger extends Thread{
         this.arrTermExit = arrTermExit;
         this.depTermEntrance = depTermEntrance;
         this.generalRepo = generalRepo;
-        this.generalRepo.setSt(id, "ATDZ");
         setupPassenger();
-
     }
 
     public Passenger() {
@@ -86,7 +84,7 @@ public class Passenger extends Thread{
                 // boolean success = true;
                 for (int i = 0; i < this.nr; i++) {
                     if(collPoint.goCollectABag(this)){    
-                        // System.out.println("Bag collected " + passengerID);
+                        System.out.println("Bag collected " + passengerID);
                         this.na++;
                     }
                 }
@@ -116,6 +114,7 @@ public class Passenger extends Thread{
         for (int i = 0; i < nr - temp; i++) {
             this.arrivalLounge.putBag(new Luggage(this.passengerID, this.situation));
         }
+        this.generalRepo.setSt(passengerID, "ATDZ");
         this.generalRepo.setBn(this.arrivalLounge.size());
         this.generalRepo.setSi(this.passengerID, this.situation.name());
         this.generalRepo.setNr(this.passengerID, this.nr);

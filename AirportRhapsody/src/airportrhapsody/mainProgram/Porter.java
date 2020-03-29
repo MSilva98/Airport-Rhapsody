@@ -39,14 +39,18 @@ public class Porter extends Thread{
     @Override
     public void run(){
         System.out.println("Thread Porter");
+        this.arrivalLounge.restPorter(); // começa bloqueado
+        System.out.println("PORTER DESBLOQUEADO");
         while (!this.arrivalLounge.takeARest(this)) {
-            this.arrivalLounge.rest(); // começa bloqueado
             Luggage l = this.arrivalLounge.tryToCollectABag(this);
             while(l != null){
                 this.carryItToAppropriateStore(l);
                 l = this.arrivalLounge.tryToCollectABag(this);
             }
             this.collPoint.noMoreBagsToCollect(this);
+            System.out.println("PORTER BLOQUEADO");
+            this.arrivalLounge.restPorter(); // começa bloqueado
+            System.out.println("PORTER DESBLOQUEADO");
         }
         
     }

@@ -17,10 +17,17 @@ public class ArrTermExit extends PassengersHandler {
     private Logger generalRepo;
     private int totalPassengers;
     private int counter;
+    private Semaphore[] test;
+    private int blocked;
 
     public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights, Logger generalRepo) {
         super(n);
-        this.newBarrier = new CyclicBarrier(n);
+        // this.newBarrier = new CyclicBarrier(n);
+        this.test = new Semaphore[n];
+        for (int i = 0; i < test.length; i++) {
+            test[i] = new Semaphore();
+        }
+        this.blocked = 0;
         this.arrivalLounge = arrivalLounge;
         this.arrTransQuay = arrTransQuay;
         this.totalPassengers = n * numbOfFlights;
@@ -29,16 +36,35 @@ public class ArrTermExit extends PassengersHandler {
     }
 
     public void leaveAirpDown() {
-        try {
-            this.newBarrier.await();
+        // try {
+        //     this.newBarrier.await();
+        //     synchronized(this){
+        //         this.counter++;
+        //         if(this.counter == this.totalPassengers){
+        //             this.endOfWork();
+        //         }
+        //     }
+        // } catch (InterruptedException | BrokenBarrierException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
+        synchronized(this){
+            this.blocked++;
+            System.out.println(blocked);
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();
             }
-        } catch (InterruptedException | BrokenBarrierException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
+        if(this.blocked == test.length){
+            for (int i = 0; i < test.length; i++) {
+                this.blocked = 0;
+                test[i].up();
+            }
+        }
+        else{
+            this.test[blocked-1].down();
+        } 
     }
 
     public void arrivedTerm(Passenger p) {
@@ -56,7 +82,6 @@ public class ArrTermExit extends PassengersHandler {
     private void endOfWork(){
         arrivalLounge.setDayEnd(true);
         arrTransQuay.setDayEnd(true);
-        arrivalLounge.restUp();
     }
 
     public void goHome(Passenger p) {
@@ -68,20 +93,40 @@ public class ArrTermExit extends PassengersHandler {
             System.out.println("Passenger " + p.getPassengerID() + " : goHome");
             
         }
-        try {
-            this.newBarrier.await();
-            synchronized (this){
-                this.counter++;
-                if(this.counter == this.totalPassengers){
-                    this.endOfWork();
-                }
+        // try {
+        //     this.newBarrier.await();
+        //     synchronized (this){
+        //         this.counter++;
+        //         if(this.counter == this.totalPassengers){
+        //             System.out.println("END OF WORK");
+        //             this.endOfWork();
+        //         }
                 
-                this.removePassenger();
-            }
+        //         this.removePassenger();
+        //     }
             
-        } catch (InterruptedException | BrokenBarrierException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        // } catch (InterruptedException | BrokenBarrierException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
+
+        synchronized(this){
+            this.blocked++;
+            System.out.println(blocked);
+            this.counter++;
+            if(this.counter == this.totalPassengers){
+                this.endOfWork();
+            }
+        }
+        if(this.blocked == test.length){
+            for (int i = 0; i < test.length; i++) {
+                this.blocked = 0;
+                this.removePassenger();
+                test[i].up();
+            }
+        }
+        else{
+            this.test[blocked-1].down();
         }
     }
 }

@@ -33,11 +33,11 @@ public class ArrivalLounge extends LuggageHandler {
         return super.remLuggage();
     }
 
-    public void rest(){
+    public void restPorter(){
         rest.down();
     }
 
-    public void restUp(){
+    public void wakePorter(){
         rest.up();
     }
 
@@ -52,6 +52,7 @@ public class ArrivalLounge extends LuggageHandler {
         this.airport.insertPassenger(p);
         if(this.airport.isFull()){
             this.rest.up();
+            this.airport.removeAll();
         }
 
         return (p.getSituation() == Passenger.Situation.FDT);
@@ -62,6 +63,8 @@ public class ArrivalLounge extends LuggageHandler {
     }
 
     public void setDayEnd(boolean st){
+        System.out.println("WORK DONE PORTER");
         dayEnd = st;
+        rest.up();
     }
 }

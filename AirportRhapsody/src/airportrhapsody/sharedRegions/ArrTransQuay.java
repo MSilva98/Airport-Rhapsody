@@ -121,6 +121,7 @@ public class ArrTransQuay extends PassengersHandler {
     }
 
     public void setDayEnd(boolean st){
+        System.out.println("WORK DONE DRIVER");
         dayEnd = st;
     }
 }
