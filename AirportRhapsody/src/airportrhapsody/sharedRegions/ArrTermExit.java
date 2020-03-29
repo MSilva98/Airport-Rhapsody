@@ -88,13 +88,12 @@ public class ArrTermExit extends PassengersHandler {
         synchronized(this){
             this.blocked++;
             System.out.println("BLOCKED " + blocked);
-
             this.counter++;
+        }
+        if(this.blocked == test.length){
             if(this.counter == this.totalPassengers){
                 this.endOfWork();
             }
-        }
-        if(this.blocked == test.length){
             for (int i = 0; i < test.length; i++) {
                 this.blocked = 0;
                 test[i].up();
@@ -165,16 +164,14 @@ public class ArrTermExit extends PassengersHandler {
 
         synchronized(this){
             this.blocked++;
-
         System.out.println("GO HOME " + p.getPassengerID());
         System.out.println("BLOCKED " + blocked);
-
             this.counter++;
+        }
+        if(this.blocked == test.length){
             if(this.counter == this.totalPassengers){
                 this.endOfWork();
             }
-        }
-        if(this.blocked == test.length){
             for (int i = 0; i < test.length; i++) {
                 this.blocked = 0;
                 this.removePassenger();

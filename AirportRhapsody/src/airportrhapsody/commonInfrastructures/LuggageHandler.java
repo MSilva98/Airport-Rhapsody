@@ -90,7 +90,9 @@ public class LuggageHandler {
             this.index--;
             this.full = this.size() == bags.length;
             this.empty = this.size() == 0;
-            return this.bags[this.index];
+            Luggage x = this.bags[this.index];
+            this.bags[this.index] = null;
+            return x;
         }
         return null;
     }
