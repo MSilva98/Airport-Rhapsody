@@ -87,6 +87,8 @@ public class ArrTermExit extends PassengersHandler {
         // }
         synchronized(this){
             this.blocked++;
+            System.out.println("BLOCKED " + blocked);
+
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();
@@ -165,6 +167,8 @@ public class ArrTermExit extends PassengersHandler {
             this.blocked++;
 
         System.out.println("GO HOME " + p.getPassengerID());
+        System.out.println("BLOCKED " + blocked);
+
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();

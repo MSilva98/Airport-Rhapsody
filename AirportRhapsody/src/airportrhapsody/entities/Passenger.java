@@ -153,12 +153,12 @@ public class Passenger extends Thread{
             if(this.nr == 0){
                 arrTermExit.goHome(this);
             }else{
-                for (int i = 0; i < this.nr; i++) {
-                    // if(collPoint.goCollectABag(this)){ 
-                    //     this.na++;
-                    // }
+                // for (int i = 0; i < this.nr; i++) {
+                //     if(collPoint.goCollectABag(this)){ 
+                //         this.na++;
+                //     }
                     
-                }
+                // }
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){
                     reclaimOffice.reportMissingBags(nr - na, this);

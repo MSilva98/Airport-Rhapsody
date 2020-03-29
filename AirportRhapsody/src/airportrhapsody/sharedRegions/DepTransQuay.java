@@ -52,7 +52,7 @@ public class DepTransQuay extends PassengersHandler {
             this.generalRepo.setS(this.arrTransQuay.getSeats().size(), "-");
             this.generalRepo.write(false);
             
-        System.out.println("LEAVE BUS " + p.getPassengerID());
+            System.out.println("LEAVE BUS " + p.getPassengerID());
             if(arrTransQuay.getSeats().isEmpty()){
                 parkBusDep.up();
             }

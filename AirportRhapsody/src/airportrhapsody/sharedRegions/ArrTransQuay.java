@@ -69,23 +69,12 @@ public class ArrTransQuay extends PassengersHandler {
      * Free passengers
      */
     public void enterBusUp() {
-        // // int[] ids = this.seats.getIDs();
-        // Passenger[] p = this.seats.getP();
-        // for (int i = 0; i < p.length; i++) {
-        //     if(p[i] != null){
-        //         p[i].setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
-        //         this.generalRepo.setSt(p[i].getPassengerID(), "TRT");
-        //         this.passengers[p[i].getPassengerID()].up();
-        //     }
-        //     // if(ids[i] != -1){    
-        //     //     //System.out.println("Passenger " + ids[i] + " up");
-        //     //     this.passengers[ids[i]].up();
-        //     // }
-        // }
+
         synchronized(this){
             PassengersHandler tmp = this.seats;
             while(!tmp.isEmpty()) {
                 Passenger p = tmp.removePassenger();
+                            // System.out.println("UM GAJO SAIUUUUUUUUUUUUUUU\n" + this.seats.toString());
                 if(p != null){
                     System.out.println("THIS IS " + p.getPassengerID());
                     p.setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
@@ -96,18 +85,7 @@ public class ArrTransQuay extends PassengersHandler {
             this.generalRepo.write(false);
         }
     }
-    // public void enterBusUp() {
-
-    //     Passenger[] p = this.seats.getP();
-    //     for (int i = 0; i < p.length; i++) {
-    //         if(p[i] != null){
-    //             p[i].setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
-    //             this.generalRepo.setSt(p[i].getPassengerID(), "TRT");
-    //             this.passengers[p[i].getPassengerID()].up();
-    //         }
-    //     }
-    //     this.generalRepo.write(false);
-    // }
+    
     /**
      * Enter the bus
      * @param id passenger id

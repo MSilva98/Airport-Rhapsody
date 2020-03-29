@@ -102,7 +102,9 @@ public class PassengersHandler {
             this.index--;
             this.full = this.size() == p.length;
             this.empty = this.size() == 0;
-            return this.p[this.index];
+            Passenger x = this.p[this.index];
+            this.p[this.index] = null;
+            return x;
         }   
         return null;
     }
