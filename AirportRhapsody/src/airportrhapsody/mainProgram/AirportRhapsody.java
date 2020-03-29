@@ -2,6 +2,7 @@ package airportrhapsody.mainProgram;
 
 import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;
+import airportrhapsody.entities.*;
 
 public class AirportRhapsody {
 
@@ -34,7 +35,7 @@ public class AirportRhapsody {
         reclaimOffice = new ReclaimOffice(generalRepo);
         arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces, generalRepo);
         depTransQuay = new DepTransQuay(nPassengers, arrTransQuay, generalRepo);
-        arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay, 1, generalRepo);
+        arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay, nPlaneLandings, generalRepo);
         depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit, generalRepo);
         tempStorageArea = new TempStorageArea(nPassengers);
 
@@ -47,7 +48,7 @@ public class AirportRhapsody {
         porter.start();
         busDriver.start();
 
-        // for (int j = 0; j < nPlaneLandings; j++) {
+        for (int j = 0; j < nPlaneLandings; j++) {
             generalRepo.setFn(0);
             generalRepo.setBn(0);
 
@@ -68,7 +69,7 @@ public class AirportRhapsody {
                 catch (InterruptedException e) {System.out.println("O passenger "+  i + " exceção.");}
                 System.out.println("O passenger "+  i + " terminou.");
             }
-        // }
+        }
         try
         { 
             busDriver.join();

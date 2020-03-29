@@ -7,12 +7,13 @@
  * Passenger bags are randomly attributed (0,1 or 2) and the lost bags are randomly generated
  */
 
-package airportrhapsody.mainProgram;
+package airportrhapsody.entities;
 
 import java.util.Random;
 
 import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;
+import airportrhapsody.commonInfrastructures.*;
 
 public class Passenger extends Thread{
     public enum InternalState {
