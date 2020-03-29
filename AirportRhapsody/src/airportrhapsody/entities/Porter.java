@@ -1,6 +1,5 @@
 package airportrhapsody.entities;
 
-import airportrhapsody.Logger;
 import airportrhapsody.entities.Passenger.Situation;
 import airportrhapsody.sharedRegions.*;
 import airportrhapsody.commonInfrastructures.*;
@@ -41,7 +40,7 @@ public class Porter extends Thread{
     public void run(){
         System.out.println("Thread Porter");
         this.arrivalLounge.restPorter(); // começa bloqueado
-        System.out.println("PORTER DESBLOQUEADO");
+        // System.out.println("PORTER DESBLOQUEADO");
         while (!this.arrivalLounge.takeARest(this)) {
             Luggage l = this.arrivalLounge.tryToCollectABag(this);
             while(l != null){
@@ -49,9 +48,9 @@ public class Porter extends Thread{
                 l = this.arrivalLounge.tryToCollectABag(this);
             }
             this.collPoint.noMoreBagsToCollect(this);
-            System.out.println("PORTER BLOQUEADO");
+            // System.out.println("PORTER BLOQUEADO");
             this.arrivalLounge.restPorter(); // começa bloqueado
-            System.out.println("PORTER DESBLOQUEADO");
+            // System.out.println("PORTER DESBLOQUEADO");
         }
         
     }

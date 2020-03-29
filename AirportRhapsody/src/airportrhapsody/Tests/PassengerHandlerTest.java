@@ -1,7 +1,7 @@
-package airportrhapsody;
+package airportrhapsody.Tests;
 
-import airportrhapsody.sharedRegions.PassengersHandler;
-import airportrhapsody.mainProgram.Passenger;
+import airportrhapsody.commonInfrastructures.PassengersHandler;
+import airportrhapsody.entities.Passenger;
 /**
  * PassengerHandlerTest
  */

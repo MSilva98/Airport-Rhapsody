@@ -1,6 +1,5 @@
 package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Logger;
 import airportrhapsody.entities.Passenger;
 import airportrhapsody.entities.Porter;
 import airportrhapsody.commonInfrastructures.*;
@@ -64,7 +63,7 @@ public class ArrivalLounge extends LuggageHandler {
     }
 
     public void setDayEnd(boolean st){
-        System.out.println("WORK DONE PORTER");
+        // System.out.println("WORK DONE PORTER");
         dayEnd = st;
         rest.up();
     }

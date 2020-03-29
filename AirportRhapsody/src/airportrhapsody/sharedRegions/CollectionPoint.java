@@ -1,6 +1,5 @@
 package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Logger;
 import airportrhapsody.entities.Passenger;
 import airportrhapsody.entities.Porter;
 import airportrhapsody.commonInfrastructures.*;
@@ -42,7 +41,7 @@ public class CollectionPoint extends LuggageHandler {
         super.addLuggage(l);
         // if(!this.wakenPassengers[l.getOwner()]){
         //     this.wakenPassengers[l.getOwner()] = true;
-            System.out.println("PASSENGER " + l.getOwner() + " TEM MALA À ESPERA");
+            // System.out.println("PASSENGER " + l.getOwner() + " TEM MALA À ESPERA");
             this.collectBag[l.getOwner()].up();
         // }
     }

@@ -1,4 +1,6 @@
-package airportrhapsody;
+package airportrhapsody.Tests;
+
+import airportrhapsody.sharedRegions.Logger;
 
 
 /**

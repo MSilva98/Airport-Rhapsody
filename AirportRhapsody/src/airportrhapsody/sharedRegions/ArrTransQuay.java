@@ -1,6 +1,5 @@
 package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Logger;
 import airportrhapsody.entities.BusDriver;
 import airportrhapsody.entities.Passenger;
 import airportrhapsody.commonInfrastructures.*;
@@ -76,7 +75,7 @@ public class ArrTransQuay extends PassengersHandler {
         synchronized(this){
             p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "ATT");    
-            System.out.println("Passenger "+ p.getPassengerID() +" : takeABus()");
+            // System.out.println("Passenger "+ p.getPassengerID() +" : takeABus()");
         
             super.insertPassenger(p);
             this.generalRepo.setQ(super.size()-1, ""+p.getPassengerID());
@@ -91,7 +90,7 @@ public class ArrTransQuay extends PassengersHandler {
 
     public void announcingBusBoarding() {
         int passEnter = super.size();
-        System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ this.numPassengers());
+        // System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ this.numPassengers());
         
         int[] ids = super.getIDs();
         for (int i = 0; i < passEnter; i++) {
@@ -115,7 +114,7 @@ public class ArrTransQuay extends PassengersHandler {
     }
 
     public void setDayEnd(boolean st){
-        System.out.println("WORK DONE DRIVER");
+        // System.out.println("WORK DONE DRIVER");
         dayEnd = st;
     }
 }

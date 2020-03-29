@@ -1,6 +1,5 @@
 package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Logger;
 import airportrhapsody.entities.BusDriver;
 import airportrhapsody.entities.Passenger;
 import airportrhapsody.commonInfrastructures.*;
@@ -43,7 +42,7 @@ public class DepTransQuay extends PassengersHandler {
     }
 
     public void parkTheBusAndLetPassOff(BusDriver b){
-        System.out.println("BusDriver: parkTheBusAndLetPassOff()");
+        // System.out.println("BusDriver: parkTheBusAndLetPassOff()");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
         this.generalRepo.setStatDriver("PKDT");
         arrTransQuay.enterBusUp();

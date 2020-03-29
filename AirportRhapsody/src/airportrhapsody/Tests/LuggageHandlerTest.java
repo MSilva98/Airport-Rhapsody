@@ -1,7 +1,7 @@
-package airportrhapsody;
+package airportrhapsody.Tests;
 
-import airportrhapsody.sharedRegions.Luggage;
-import airportrhapsody.sharedRegions.LuggageHandler;
+import airportrhapsody.commonInfrastructures.Luggage;
+import airportrhapsody.commonInfrastructures.LuggageHandler;
 
 /**
  * LuggageHandlerTest

@@ -1,6 +1,6 @@
-package airportrhapsody;
+package airportrhapsody.Tests;
 
-import airportrhapsody.sharedRegions.Semaphore;
+import airportrhapsody.commonInfrastructures.Semaphore;
 
 /**
  * SemaphoreTimeoutTest

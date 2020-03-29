@@ -1,6 +1,5 @@
 package airportrhapsody.sharedRegions;
 
-import airportrhapsody.Logger;
 import airportrhapsody.entities.Passenger;
 import airportrhapsody.commonInfrastructures.*;
 

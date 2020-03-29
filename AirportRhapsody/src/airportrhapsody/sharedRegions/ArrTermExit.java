@@ -1,9 +1,5 @@
 package airportrhapsody.sharedRegions;
 
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-
-import airportrhapsody.Logger;
 import airportrhapsody.entities.Passenger;
 import airportrhapsody.commonInfrastructures.*;
 
@@ -12,7 +8,6 @@ import airportrhapsody.commonInfrastructures.*;
  */
 public class ArrTermExit extends PassengersHandler {
 
-    private CyclicBarrier newBarrier;
     private ArrivalLounge arrivalLounge;
     private ArrTransQuay arrTransQuay;
     private Logger generalRepo;
@@ -51,7 +46,7 @@ public class ArrTermExit extends PassengersHandler {
         // }
         synchronized(this){
             this.blocked++;
-            System.out.println(blocked);
+            // System.out.println(blocked);
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();
@@ -113,7 +108,7 @@ public class ArrTermExit extends PassengersHandler {
 
         synchronized(this){
             this.blocked++;
-            System.out.println(blocked);
+            // System.out.println(blocked);
             this.counter++;
             if(this.counter == this.totalPassengers){
                 this.endOfWork();

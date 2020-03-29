@@ -1,6 +1,5 @@
 package airportrhapsody.mainProgram;
 
-import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;
 import airportrhapsody.entities.*;
 

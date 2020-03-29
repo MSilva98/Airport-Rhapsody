@@ -1,6 +1,5 @@
 package airportrhapsody.entities;
 
-import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;
 
 public class BusDriver extends Thread {
@@ -46,21 +45,21 @@ public class BusDriver extends Thread {
     }
 
     private void goToDepartureTerminal() {
-        System.out.println("BusDriver: goToDepartureTerminal");
+        // System.out.println("BusDriver: goToDepartureTerminal");
         this.setBusDriverState(InternalState.DRIVING_FORWARD);
         generalRepo.setStatDriver("DRFW");
         generalRepo.write(false);
     }
 
     private void goToArrivalTerminal() {
-        System.out.println("BusDriver: goToArrivalTerminal");
+        // System.out.println("BusDriver: goToArrivalTerminal");
         this.setBusDriverState(InternalState.DRIVING_BACKWARD);
         generalRepo.setStatDriver("DRBW");
         generalRepo.write(false);
     }
 
     private boolean hasDaysWorkEnded() {
-        System.out.println("BusDriver: hasDaysWorkEnded");
+        // System.out.println("BusDriver: hasDaysWorkEnded");
         this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
         generalRepo.setStatDriver("PKAT");
         return arrTransQuay.getDayEnd();

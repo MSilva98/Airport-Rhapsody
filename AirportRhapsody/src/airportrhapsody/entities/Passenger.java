@@ -11,7 +11,6 @@ package airportrhapsody.entities;
 
 import java.util.Random;
 
-import airportrhapsody.Logger;
 import airportrhapsody.sharedRegions.*;
 import airportrhapsody.commonInfrastructures.*;
 
@@ -76,7 +75,7 @@ public class Passenger extends Thread{
 
     @Override
     public void run() {
-        System.out.println("Thread Passenger " + passengerID + " - nr: " + nr + " situation: " + situation);
+        // System.out.println("Thread Passenger " + passengerID + " - nr: " + nr + " situation: " + situation);
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(this.nr == 0){
@@ -85,7 +84,7 @@ public class Passenger extends Thread{
                 // boolean success = true;
                 for (int i = 0; i < this.nr; i++) {
                     if(collPoint.goCollectABag(this)){    
-                        System.out.println("Bag collected " + passengerID);
+                        // System.out.println("Bag collected " + passengerID);
                         this.na++;
                     }
                     else{
@@ -94,7 +93,7 @@ public class Passenger extends Thread{
                 }
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){
-                    System.out.println("REPORT " + passengerID + "  NA: " + na + " NR: " + nr);
+                    // System.out.println("REPORT " + passengerID + "  NA: " + na + " NR: " + nr);
                     reclaimOffice.reportMissingBags(nr - na, this);
                 }
                 arrTermExit.goHome(this);
@@ -114,7 +113,7 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        System.out.println("BAGS LOST " + temp + " SIT : " + situation + " " + passengerID + " NR: " + nr);
+        // System.out.println("BAGS LOST " + temp + " SIT : " + situation + " " + passengerID + " NR: " + nr);
         for (int i = 0; i < nr - temp; i++) {
             this.arrivalLounge.putBag(new Luggage(this.passengerID, this.situation));
         }
