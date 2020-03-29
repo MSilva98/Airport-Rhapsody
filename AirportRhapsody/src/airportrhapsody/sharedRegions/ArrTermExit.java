@@ -88,7 +88,7 @@ public class ArrTermExit extends PassengersHandler {
         synchronized (this){
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
-            this.generalRepo.setSt(p.getPassengerID(), "EAT ");
+            this.generalRepo.setSt(p.getPassengerID(), "EAT");
             // this.generalRepo.write(false);
             System.out.println("Passenger " + p.getPassengerID() + " : goHome");
             

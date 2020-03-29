@@ -26,7 +26,7 @@ public class DepTransQuay extends PassengersHandler {
             p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
             super.insertPassenger(p);
             this.arrTransQuay.getSeats().removePassenger(p.getPassengerID());
-            this.generalRepo.setSt(p.getPassengerID(), "ADTT");
+            this.generalRepo.setSt(p.getPassengerID(), "DTT");
             this.generalRepo.setS(this.arrTransQuay.getSeats().size(), "-");
             this.generalRepo.write(false);
             
@@ -45,7 +45,7 @@ public class DepTransQuay extends PassengersHandler {
     public void parkTheBusAndLetPassOff(BusDriver b){
         System.out.println("BusDriver: parkTheBusAndLetPassOff()");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
-        this.generalRepo.setStatDriver("PADT");
+        this.generalRepo.setStatDriver("PKDT");
         arrTransQuay.enterBusUp();
         this.generalRepo.write(false);
         parkBusDep.down();

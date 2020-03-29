@@ -28,7 +28,7 @@ public class ArrivalLounge extends LuggageHandler {
 
     public Luggage tryToCollectABag(Porter p){
         p.setPorterState(Porter.InternalState.AT_THE_PLANES_HOLD);
-        this.generalRepo.setStatPorter("ATPH");
+        this.generalRepo.setStatPorter("APLH");
         this.generalRepo.write(false);
         return super.remLuggage();
     }

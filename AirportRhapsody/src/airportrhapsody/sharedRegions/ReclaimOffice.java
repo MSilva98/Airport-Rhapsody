@@ -24,7 +24,7 @@ public class ReclaimOffice {
 
     public void reportMissingBags(int numBags, Passenger p) {
         p.setPassengerState(Passenger.InternalState.AT_THE_BAGGAGE_RECLAIM_OFFICE);
-        this.generalRepo.setSt(p.getPassengerID(), "ATRO");
+        this.generalRepo.setSt(p.getPassengerID(), "BRO");
         this.generalRepo.write(false);
         this.numBagsMissing += numBags;
     }

@@ -38,26 +38,26 @@ import java.nio.file.Files;
  * 
  * STATES
  * PORTER
- * WAITING_FOR_A_PLANE_TO_LAND – WFPL
- * AT_THE_PLANES_HOLD – ATPH
- * AT_THE_LUGGAGE_BELT_CONVEYOR – ALBC
- * AT_THE_STOREROOM – ATST
+ * WAITING_FOR_A_PLANE_TO_LAND – WPTL
+ * AT_THE_PLANES_HOLD – APLH
+ * AT_THE_LUGGAGE_BELT_CONVEYOR – ALCB
+ * AT_THE_STOREROOM – ASTR
  * 
  * PASSENGER
- * AT_THE_DISEMBARKING_ZONE – ATDZ
- * AT_THE_LUGGAGE_COLLECTION_POINT – ATCP
- * AT_THE_BAGGAGE_RECLAIM_OFFICE – ATRO
+ * AT_THE_DISEMBARKING_ZONE – WSD
+ * AT_THE_LUGGAGE_COLLECTION_POINT – LCP
+ * AT_THE_BAGGAGE_RECLAIM_OFFICE – BRO
  * EXITING_THE_ARRIVAL_TERMINAL – EAT
- * AT_THE_ARRIVAL_TRANSFER_TERMINAL – AATT
- * TERMINAL_TRANSFER – TT
- * AT_THE_DEPARTURE_TRANSFER_TERMINAL – ADTT
+ * AT_THE_ARRIVAL_TRANSFER_TERMINAL – ATT
+ * TERMINAL_TRANSFER – TRT
+ * AT_THE_DEPARTURE_TRANSFER_TERMINAL – DTT
  * ENTERING_THE_DEPARTURE_TERMINAL – EDT
  * 
  * BUS DRIVER
- * PARKING_AT_THE_ARRIVAL_TERMINAL – PAAT
- * DRIVING_FORWARD – DF
- * PARKING_AT_THE_DEPARTURE_TERMINAL – PADT
- * DRIVING_BACKWARD - DB
+ * PARKING_AT_THE_ARRIVAL_TERMINAL – PKAT
+ * DRIVING_FORWARD – DRFW
+ * PARKING_AT_THE_DEPARTURE_TERMINAL – PKDT
+ * DRIVING_BACKWARD - DRBW
  */
 
 public class Logger {
@@ -94,7 +94,7 @@ public class Logger {
         this.missingBags = 0;
 
         for (int i = 0; i < st.length; i++) {
-            st[i] = "----";
+            st[i] = "---";
             si[i] = "---";
         }
 
@@ -221,10 +221,13 @@ public class Logger {
     }
 
     public void write(boolean end){
-        String first = ("                                        AIRPORT RHAPSODY - Description of the internal state of the problem" +
-                        "\nPLANE         PORTER                  DRIVER                                                            PASSENGER" +
-                        "\nFN  BN   Stat CB SR    Stat  Q1 Q2 Q3 Q4 Q5 Q6  S1 S2 S3    St1  Si1 NR1 NA1    St2  Si2 NR2 NA2    St3  Si3 NR3 NA3    St4  Si4 NR4 NA4    St5  Si5 NR5 NA5    St6  Si6 NR6 NA6");
-        String s = String.format("\n%2d  %2d   %4s %2d %2d    %4s  %s  %s  %s  %s  %s  %s   %s  %s  %s     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     %4s %4s  %1d  %1d     ", 
+        String first = ("                 AIRPORT RHAPSODY - Description of the internal state of the problem \n" +
+                        "\nPLANE    PORTER                  DRIVER"+
+                        "\nFN BN  Stat CB SR   Stat  Q1 Q2 Q3 Q4 Q5 Q6  S1 S2 S3" + 
+                        "\n                                                         PASSENGER" +
+                        "\nSt1 Si1 NR1 NA1 St2 Si2 NR2 NA2 St3 Si3 NR3 NA3 St4 Si4 NR4 NA4 St5 Si5 NR5 NA5 St6 Si6 NR6 NA6");
+        String s = String.format("\n%2d %2d  %4s %2d %2d   %4s  %2s %2s %2s %2s %2s %2s  %2s %2s %2s" + 
+                                 "\n%3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d %3s %3s %3d %3d", 
         this.fn, this.bn, this.statPorter, this.cb, this.sr, this.statDriver, 
         this.q[0], this.q[1], this.q[2], this.q[3], this.q[4], this.q[5],
         this.s[0], this.s[1], this.s[2],

@@ -27,7 +27,7 @@ public class Porter extends Thread{
         this.tempStorageArea = tempStorageArea;
         this.collPoint = collPoint;
         this.generalRepo = generalRepo;
-        this.generalRepo.setStatPorter("WFPL");
+        this.generalRepo.setStatPorter("WPTL");
         this.generalRepo.setCb(this.collPoint.size());
         this.generalRepo.setSr(this.tempStorageArea.size());
      }
@@ -61,14 +61,14 @@ public class Porter extends Thread{
             this.collPoint.insertBag(l);
             this.setPorterState(InternalState.AT_THE_LUGGAGE_BELT_CONVEYOR);
             System.out.println("Porter: " + "carryItToAppropriateStore -> collPoint");
-            this.generalRepo.setStatPorter("ALBC");
+            this.generalRepo.setStatPorter("ALCB");
             this.generalRepo.setCb(this.collPoint.size());
         }
         else{
             this.tempStorageArea.insertBag(l);
             this.setPorterState(InternalState.AT_THE_STOREROOM);
             System.out.println("Porter: " + "carryItToAppropriateStore -> tempStor");
-            this.generalRepo.setStatPorter("ATST");
+            this.generalRepo.setStatPorter("ASTR");
             this.generalRepo.setSr(this.tempStorageArea.size());
         }
         this.generalRepo.write(false);

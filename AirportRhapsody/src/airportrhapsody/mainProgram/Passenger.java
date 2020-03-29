@@ -117,7 +117,7 @@ public class Passenger extends Thread{
         for (int i = 0; i < nr - temp; i++) {
             this.arrivalLounge.putBag(new Luggage(this.passengerID, this.situation));
         }
-        this.generalRepo.setSt(passengerID, "ATDZ");
+        this.generalRepo.setSt(passengerID, "WSD");
         this.generalRepo.setBn(this.arrivalLounge.size());
         this.generalRepo.setSi(this.passengerID, this.situation.name());
         this.generalRepo.setNr(this.passengerID, this.nr);

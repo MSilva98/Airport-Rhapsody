@@ -37,7 +37,7 @@ public class ArrTransQuay extends PassengersHandler {
         for (int i = 0; i < p.length; i++) {
             if(p[i] != null){
                 p[i].setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
-                this.generalRepo.setSt(p[i].getPassengerID(), "TT  ");
+                this.generalRepo.setSt(p[i].getPassengerID(), "TRT");
                 this.passengers[p[i].getPassengerID()].up();
             }
             // if(ids[i] != -1){    
@@ -54,7 +54,7 @@ public class ArrTransQuay extends PassengersHandler {
             this.seats.insertPassenger( super.removePassenger(id));
             this.generalRepo.setQ(super.size(), "-");
             this.generalRepo.setS(this.seats.size()-1, ""+id);
-            // this.generalRepo.write(false);
+            this.generalRepo.write(false);
             //System.out.println("Bus full? " + this.seats.isFull() + " No Passengers in terminal? " + super.isEmpty());
             if(this.seats.isFull() || super.isEmpty()){
                 this.busBoard.up();
@@ -67,27 +67,24 @@ public class ArrTransQuay extends PassengersHandler {
     public void parkTheBus(BusDriver b){
         System.out.println("BusDriver: parkTheBus");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);  
-        this.generalRepo.setStatDriver("PAAT");  
-        this.generalRepo.write(false);
+        this.generalRepo.setStatDriver("PKAT");  
+        // this.generalRepo.write(false);
         this.parkBusArr.down(2000);
     }
 
     public void takeABus(Passenger p) {
         synchronized(this){
             p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
-            this.generalRepo.setSt(p.getPassengerID(), "AATT");
-            
+            this.generalRepo.setSt(p.getPassengerID(), "ATT");    
             System.out.println("Passenger "+ p.getPassengerID() +" : takeABus()");
-            
+        
             super.insertPassenger(p);
             this.generalRepo.setQ(super.size()-1, ""+p.getPassengerID());
-            //System.out.println(super.toString());
+            this.generalRepo.write(false);
             
             if(super.size() == this.seats.maxSize()){
-                //System.out.println("Wake up bus driver");
                 this.parkBusArr.up();
             }
-            this.generalRepo.write(false);
         }
         this.passengers[p.getPassengerID()].down();
     }
@@ -97,14 +94,11 @@ public class ArrTransQuay extends PassengersHandler {
         System.out.println("BusDriver: announcingBusBoarding: number of passengers in queue: "+ this.numPassengers());
         
         int[] ids = super.getIDs();
-        
         for (int i = 0; i < passEnter; i++) {
             if(i < seats.maxSize()){
-                //System.out.println("Passenger " + ids[i] + " unblocked");
                 this.passengers[ids[i]].up();
             }
         }
-        //System.out.println("Bus driver blocked at busBoard");
         this.busBoard.down();
     }
 

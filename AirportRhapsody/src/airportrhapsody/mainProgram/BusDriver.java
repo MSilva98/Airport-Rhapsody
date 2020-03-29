@@ -25,7 +25,7 @@ public class BusDriver extends Thread {
         this.arrTransQuay = arrTransQuay;
         this.depTransQuay = depTransQuay;
         this.generalRepo = generalRepo;
-        this.generalRepo.setStatDriver("PAAT");
+        this.generalRepo.setStatDriver("PKAT");
         this.generalRepo.setQEmpty();
         this.generalRepo.setSEmpty();
     }
@@ -33,7 +33,7 @@ public class BusDriver extends Thread {
     @Override
     public void run() {
         System.out.println("Thread BusDriver");
-        while(!arrTransQuay.getDayEnd()){
+        while(!hasDaysWorkEnded()){
             arrTransQuay.parkTheBus(this);
             if(!arrTransQuay.isEmpty()){
                 arrTransQuay.announcingBusBoarding();
@@ -42,28 +42,28 @@ public class BusDriver extends Thread {
                 goToArrivalTerminal();
             }
         }
-        hasDaysWorkEnded();
+        generalRepo.write(false);
     }
 
     private void goToDepartureTerminal() {
         System.out.println("BusDriver: goToDepartureTerminal");
         this.setBusDriverState(InternalState.DRIVING_FORWARD);
-        generalRepo.setStatDriver("DF  ");
+        generalRepo.setStatDriver("DRFW");
         generalRepo.write(false);
     }
 
     private void goToArrivalTerminal() {
         System.out.println("BusDriver: goToArrivalTerminal");
         this.setBusDriverState(InternalState.DRIVING_BACKWARD);
-        generalRepo.setStatDriver("DB  ");
+        generalRepo.setStatDriver("DRBW");
         generalRepo.write(false);
     }
 
-    private void hasDaysWorkEnded() {
+    private boolean hasDaysWorkEnded() {
         System.out.println("BusDriver: hasDaysWorkEnded");
         this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
-        generalRepo.setStatDriver("PAAT");
-        generalRepo.write(false);
+        generalRepo.setStatDriver("PKAT");
+        return arrTransQuay.getDayEnd();
     }
 
     public InternalState getBusDriverState() {

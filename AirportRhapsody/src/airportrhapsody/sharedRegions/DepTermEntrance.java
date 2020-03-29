@@ -34,7 +34,7 @@ public class DepTermEntrance extends PassengersHandler{
             System.out.println("Passenger "+ p.getPassengerID()+" : prepareNextLeg");
             this.arrivedTerm(depTransQuay.leaveDepTransQuay(p.getPassengerID()));
             p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
-            this.generalRepo.setSt(p.getPassengerID(), "EDT ");
+            this.generalRepo.setSt(p.getPassengerID(), "EDT");
         }
         arrTermExit.leaveAirpDown();
         synchronized(this){
