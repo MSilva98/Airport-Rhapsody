@@ -99,7 +99,7 @@ public class ArrTransQuay extends PassengersHandler {
             this.generalRepo.setS(this.seats.size()-1, ""+id);
             this.generalRepo.write(false);
             //System.out.println("Bus full? " + this.seats.isFull() + " No Passengers in terminal? " + super.isEmpty());
-            System.out.println("SEATS ENTER " + this.seats.toString());
+            // System.out.println("SEATS ENTER " + this.seats.toString());
             if(this.seats.isFull() || super.isEmpty()){
                 this.busBoard.up();
                 //System.out.println("BusBoard UP");
@@ -116,7 +116,7 @@ public class ArrTransQuay extends PassengersHandler {
         this.generalRepo.setStatDriver("PKAT");  
         // this.generalRepo.write(false);
 
-        System.out.println("PPARK BUS");
+        // System.out.println("PPARK BUS");
         this.parkBusArr.down(2000);
     }
     /**
@@ -171,7 +171,7 @@ public class ArrTransQuay extends PassengersHandler {
 
     public void setDayEnd(boolean st){
         dayEnd = st;
-        System.out.println("WORK DONE DRIVER");
+        // System.out.println("WORK DONE DRIVER");
         this.parkBusArr.up();
     }
 }

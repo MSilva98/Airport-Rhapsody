@@ -66,7 +66,7 @@ public class DepTermEntrance extends PassengersHandler{
             p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EDT");
 
-            System.out.println("PREP NEXT LEG " + p.getPassengerID());
+            // System.out.println("PREP NEXT LEG " + p.getPassengerID());
         }
         arrTermExit.leaveAirpDown();
         synchronized(this){

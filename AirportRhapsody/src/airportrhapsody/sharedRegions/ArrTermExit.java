@@ -149,7 +149,7 @@ public class ArrTermExit extends PassengersHandler {
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EAT");
-            System.out.println("GO HOME " + p.getPassengerID());
+            // System.out.println("GO HOME " + p.getPassengerID());
             
         }
         try {
@@ -157,7 +157,7 @@ public class ArrTermExit extends PassengersHandler {
             synchronized (this){
                 this.counter++;
                 if(this.counter == this.totalPassengers){
-                    System.out.println("END OF WORK");
+                    // System.out.println("END OF WORK");
                     this.endOfWork();
                 }
                 
