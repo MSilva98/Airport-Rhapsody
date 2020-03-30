@@ -144,6 +144,14 @@ public class PassengersHandler {
         this.index = 0;
     }
 
+    public PassengersHandler copyTo(Passenger[] pass){
+        PassengersHandler t = new PassengersHandler(pass.length);
+        for (int i = 0; i < pass.length; i++) {
+            t.insertPassenger(pass[i]);
+        }
+        return t;
+    }
+
     @Override
     public String toString() {
         String s = "";

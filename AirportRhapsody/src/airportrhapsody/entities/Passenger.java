@@ -148,7 +148,6 @@ public class Passenger extends Thread{
 
     @Override
     public void run() {
-        this.collPoint.noBags();
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(this.nr == 0){
@@ -161,9 +160,11 @@ public class Passenger extends Thread{
                         }
                     }
                 }
+                // this.na = collPoint.goCollectABag(this);
+                
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){
-                    System.out.println("REPORT: " + passengerID + " NA: " + na + " NR: " + nr);
+                    // System.out.println("REPORT: " + passengerID + " NA: " + na + " NR: " + nr);
                     reclaimOffice.reportMissingBags(nr - na, this);
                 }
                 arrTermExit.goHome(this);
@@ -186,7 +187,7 @@ public class Passenger extends Thread{
         this.situation = s[rand_int1]; // randomize situation
         this.nr = rand.nextInt(3);
         int temp = rand.nextInt(nr+1);
-        System.out.println("BAGS LOST " + temp + " SIT : " + situation + " " + passengerID + " NR: " + nr);
+        // System.out.println("BAGS LOST " + temp + " SIT : " + situation + " " + passengerID + " NR: " + nr);
 
         for (int i = 0; i < nr - temp; i++) {
             this.arrivalLounge.putBag(new Luggage(this.passengerID, this.situation));

@@ -1,6 +1,10 @@
 package airportrhapsody.sharedRegions;
 
 import airportrhapsody.entities.Passenger;
+
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+
 import airportrhapsody.commonInfrastructures.*;
 
 /**
@@ -45,7 +49,7 @@ public class ArrTermExit extends PassengersHandler {
     private Semaphore[] test;
     private int blocked;
 
-
+    private CyclicBarrier newBarrier;
     /**
      * Instantiating the arrival terminal exit.
      * @param n number of passenger per flight
@@ -67,41 +71,43 @@ public class ArrTermExit extends PassengersHandler {
         this.totalPassengers = n * numbOfFlights;
         this.counter = 0;
         this.generalRepo = generalRepo;
+        this.newBarrier = new CyclicBarrier(n);
     }
 
     /**
      * Simulate barrier
      */
     public void leaveAirpDown() {
-        // try {
-        //     this.newBarrier.await();
-        //     synchronized(this){
-        //         this.counter++;
-        //         if(this.counter == this.totalPassengers){
-        //             this.endOfWork();
-        //         }
-        //     }
-        // } catch (InterruptedException | BrokenBarrierException e) {
-        //     // TODO Auto-generated catch block
-        //     e.printStackTrace();
+        try {
+            this.newBarrier.await();
+            synchronized(this){
+                this.counter++;
+                if(this.counter == this.totalPassengers){
+                    this.endOfWork();
+                }
+            }
+        } catch (InterruptedException | BrokenBarrierException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        // synchronized(this){
+        //     this.blocked++;
+        //     System.out.println("BLOCKED " + blocked);
+        //     this.counter++;
         // }
-        synchronized(this){
-            this.blocked++;
-            System.out.println("BLOCKED " + blocked);
-            this.counter++;
-        }
-        if(this.blocked == test.length){
-            if(this.counter == this.totalPassengers){
-                this.endOfWork();
-            }
-            for (int i = 0; i < test.length; i++) {
-                this.blocked = 0;
-                test[i].up();
-            }
-        }
-        else{
-            this.test[blocked-1].down();
-        } 
+        // if(this.blocked == test.length){
+        //     if(this.counter == this.totalPassengers){
+        //         System.out.println("END WORK ALL OF THEM");
+        //         this.endOfWork();
+        //     }
+        //     for (int i = 0; i < test.length; i++) {
+        //         this.blocked = 0;
+        //         test[i].up();
+        //     }
+        // }
+        // else{
+        //     this.test[blocked-1].down();
+        // } 
     }
 
     /**
@@ -143,43 +149,45 @@ public class ArrTermExit extends PassengersHandler {
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EAT");
+            System.out.println("GO HOME " + p.getPassengerID());
             
         }
-        // try {
-        //     this.newBarrier.await();
-        //     synchronized (this){
-        //         this.counter++;
-        //         if(this.counter == this.totalPassengers){
-        //             System.out.println("END OF WORK");
-        //             this.endOfWork();
-        //         }
+        try {
+            this.newBarrier.await();
+            synchronized (this){
+                this.counter++;
+                if(this.counter == this.totalPassengers){
+                    System.out.println("END OF WORK");
+                    this.endOfWork();
+                }
                 
-        //         this.removePassenger();
-        //     }
-            
-        // } catch (InterruptedException | BrokenBarrierException e) {
-        //     // TODO Auto-generated catch block
-        //     e.printStackTrace();
-        // }
-
-        synchronized(this){
-            this.blocked++;
-        System.out.println("GO HOME " + p.getPassengerID());
-        System.out.println("BLOCKED " + blocked);
-            this.counter++;
-        }
-        if(this.blocked == test.length){
-            if(this.counter == this.totalPassengers){
-                this.endOfWork();
-            }
-            for (int i = 0; i < test.length; i++) {
-                this.blocked = 0;
                 this.removePassenger();
-                test[i].up();
             }
+            
+        } catch (InterruptedException | BrokenBarrierException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
-        else{
-            this.test[blocked-1].down();
-        }
+
+        // synchronized(this){
+        //     this.blocked++;
+        // System.out.println("GO HOME " + p.getPassengerID());
+        // System.out.println("BLOCKED " + blocked);
+        //     this.counter++;
+        // }
+        // if(this.blocked == test.length){
+        //     if(this.counter == this.totalPassengers){
+        //         System.out.println("END WORK ALL OF THEM");
+        //         this.endOfWork();
+        //     }
+        //     for (int i = 0; i < test.length; i++) {
+        //         this.blocked = 0;
+        //         this.removePassenger();
+        //         test[i].up();
+        //     }
+        // }
+        // else{
+        //     this.test[blocked-1].down();
+        // }
     }
 }

@@ -47,12 +47,13 @@ public class DepTransQuay extends PassengersHandler {
         synchronized(this){
             p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
             super.insertPassenger(p);
+            // System.out.println("SEATS " + this.arrTransQuay.getSeats().toString());
             this.arrTransQuay.getSeats().removePassenger(p.getPassengerID());
             this.generalRepo.setSt(p.getPassengerID(), "DTT");
             this.generalRepo.setS(this.arrTransQuay.getSeats().size(), "-");
             this.generalRepo.write(false);
             
-            System.out.println("LEAVE BUS " + p.getPassengerID());
+            // System.out.println("LEAVE BUS " + p.getPassengerID());
             if(arrTransQuay.getSeats().isEmpty()){
                 parkBusDep.up();
             }
@@ -78,7 +79,7 @@ public class DepTransQuay extends PassengersHandler {
         arrTransQuay.enterBusUp();
         this.generalRepo.write(false);
 
-        System.out.println("PARK BUS AND LET THEM OFF");
+        // System.out.println("PARK BUS AND LET THEM OFF");
         parkBusDep.down();
     }
 }

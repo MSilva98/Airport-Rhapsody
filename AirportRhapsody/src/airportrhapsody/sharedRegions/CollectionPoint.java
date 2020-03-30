@@ -50,22 +50,24 @@ public class CollectionPoint extends LuggageHandler {
      *         <li> false if don't collect a bag
      */
     public boolean goCollectABag(Passenger p){
-        // if(!noMoreBags){
+        if(!noMoreBags){ 
             synchronized(this){
                 p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
                 this.generalRepo.setSt(p.getPassengerID(), "LCP");
+                // System.out.println("PASSENGER " + p.getPassengerID() + " WAITING FOR BAG");
             }
-            System.out.println("PASSENGER " + p.getPassengerID() + " WAITING FOR BAG");
+            
             this.collectBag[p.getPassengerID()].down();
             synchronized(this){
-                System.out.println("COLLECT BAG " + p.getPassengerID());
-                return (super.remLuggage(p.getPassengerID()) != null);
+                // System.out.println("BAG COLLECTED " + p.getPassengerID());
+                return super.remLuggage(p.getPassengerID()) != null;
             }
-        // }
-        // else{
-        //     System.out.println("THERE ARE NO MORE BAGS HERE");
-        //     return false;
-        // }
+        }
+
+        else{
+            // System.out.println("THERE ARE NO MORE BAGS HERE");
+            return false;
+        }
         
     }    
     /**
@@ -85,18 +87,20 @@ public class CollectionPoint extends LuggageHandler {
         p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
         this.generalRepo.setStatPorter("WPTL");
         this.generalRepo.write(false);
-        // while(!super.isEmpty());  
 
-        System.out.println("NO MORE BAGS");
+        // System.out.println("NO MORE BAGS");
+
+        this.noMoreBags = true;
 
         for (int i = 0; i < collectBag.length; i++) {
             this.collectBag[i].up();
         }
+
         resetSemaphores(this.collectBag.length);
-        this.noMoreBags = true;
     }
 
     public void noBags(){
+        // System.out.println("NO MORE BAGS FALSEEEEEEEEE");
         this.noMoreBags = false;
     }
 

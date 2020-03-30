@@ -119,6 +119,7 @@ public class ArrivalLounge extends LuggageHandler {
 
     public void setDayEnd(boolean st){
         dayEnd = st;
-        rest.up();
+        System.out.println("WORK DONE PORTER");
+        this.wakePorter();
     }
 }

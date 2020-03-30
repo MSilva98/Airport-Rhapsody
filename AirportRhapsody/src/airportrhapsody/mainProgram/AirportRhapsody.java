@@ -50,6 +50,7 @@ public class AirportRhapsody {
         for (int j = 0; j < nPlaneLandings; j++) {
             generalRepo.setFn(0);
             generalRepo.setBn(0);
+            collPoint.noBags();
 
             for (int i = 0; i < nPassengers; i++){
                 passenger[i] = new Passenger(i, arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance, generalRepo);

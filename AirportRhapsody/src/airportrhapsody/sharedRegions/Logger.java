@@ -206,11 +206,13 @@ public class Logger {
 
     @Override
     public String toString() {
-        return String.format("PLANE         PORTER                  DRIVER" +
-                             "\n%2d %2d   %s %2d %2d     %s %s %s %s %s %s %s   %s %s %s" +
+        return String.format("                 AIRPORT RHAPSODY - Description of the internal state of the problem \n" +
+                             "\nPLANE         PORTER                  DRIVER" +
+                             "\nFN BN  Stat CB SR   Stat  Q1 Q2 Q3 Q4 Q5 Q6  S1 S2 S3" +
                              "\n                    PASSENGER           " +  
-                             "\nSt1 Si1 NR1 NA1   St2 Si2 NR2 NA2   St3 Si3 NR3 NA3  St4 Si4 NR4 NA4  St5 Si5 NR5 NA5  St6 Si6 NR6 NA6" +
-                             "\n%s  %3s %1d   %1d     %s %3s  %1d   %1d     %s %3s  %1d   %1d    %s %3s  %1d   %1d    %s %3s  %1d   %1d    %s %3s  %1d   %1d", 
+                             "\nSt1 Si1 NR1 NA1 St2 Si2 NR2 NA2 St3 Si3 NR3 NA3 St4 Si4 NR4 NA4 St5 Si5 NR5 NA5 St6 Si6 NR6 NA6" +
+                             "\n%2d %2d  %4s %2d %2d   %4s  %2s %2s %2s %2s %2s %2s  %2s %2s %2s" + 
+                             "\n%3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s  %3s %3s %2s  %2s", 
         this.fn, this.bn, this.statPorter, this.cb, this.sr, this.statDriver, 
         this.q[0], this.q[1], this.q[2], this.q[3], this.q[4], this.q[5],
         this.s[0], this.s[1], this.s[2],
