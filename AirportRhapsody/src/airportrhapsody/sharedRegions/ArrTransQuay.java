@@ -74,9 +74,7 @@ public class ArrTransQuay extends PassengersHandler {
             PassengersHandler tmp = this.seats.copyTo(this.seats.getP());
             while(!tmp.isEmpty()) {
                 Passenger p = tmp.removePassenger();
-                            // System.out.println("UM GAJO SAIUUUUUUUUUUUUUUU\n" + this.seats.toString());
                 if(p != null){
-                    // System.out.println("THIS IS " + p.getPassengerID());
                     p.setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
                     this.generalRepo.setSt(p.getPassengerID(), "TRT");
                     this.passengers[p.getPassengerID()].up();
@@ -93,16 +91,12 @@ public class ArrTransQuay extends PassengersHandler {
     public void enterTheBus(int id){
         synchronized (this){
 
-        // System.out.println("ENTER BUS " + id);
             this.seats.insertPassenger( super.removePassenger(id));
             this.generalRepo.setQ(super.size(), "-");
             this.generalRepo.setS(this.seats.size()-1, ""+id);
             this.generalRepo.write(false);
-            //System.out.println("Bus full? " + this.seats.isFull() + " No Passengers in terminal? " + super.isEmpty());
-            // System.out.println("SEATS ENTER " + this.seats.toString());
             if(this.seats.isFull() || super.isEmpty()){
                 this.busBoard.up();
-                //System.out.println("BusBoard UP");
             }
         }
         this.passengers[id].down();
@@ -114,9 +108,7 @@ public class ArrTransQuay extends PassengersHandler {
     public void parkTheBus(BusDriver b){
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);  
         this.generalRepo.setStatDriver("PKAT");  
-        // this.generalRepo.write(false);
 
-        // System.out.println("PPARK BUS");
         this.parkBusArr.down(2000);
     }
     /**
@@ -127,7 +119,6 @@ public class ArrTransQuay extends PassengersHandler {
         synchronized(this){
             p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "ATT");    
-            // System.out.println("Passenger "+ p.getPassengerID() +" : takeABus()");
         
             super.insertPassenger(p);
             this.generalRepo.setQ(super.size()-1, ""+p.getPassengerID());
@@ -171,7 +162,6 @@ public class ArrTransQuay extends PassengersHandler {
 
     public void setDayEnd(boolean st){
         dayEnd = st;
-        // System.out.println("WORK DONE DRIVER");
         this.parkBusArr.up();
     }
 }

@@ -47,8 +47,11 @@ public class ArrTermExit extends PassengersHandler {
      * @serialField test
      */
     private Semaphore[] test;
-    private int blocked;
-
+    /**
+     * Barrier
+     * 
+     * @serialField newBarrier
+     */
     private CyclicBarrier newBarrier;
     /**
      * Instantiating the arrival terminal exit.
@@ -65,7 +68,6 @@ public class ArrTermExit extends PassengersHandler {
         for (int i = 0; i < test.length; i++) {
             test[i] = new Semaphore();
         }
-        this.blocked = 0;
         this.arrivalLounge = arrivalLounge;
         this.arrTransQuay = arrTransQuay;
         this.totalPassengers = n * numbOfFlights;
@@ -87,27 +89,8 @@ public class ArrTermExit extends PassengersHandler {
                 }
             }
         } catch (InterruptedException | BrokenBarrierException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        // synchronized(this){
-        //     this.blocked++;
-        //     System.out.println("BLOCKED " + blocked);
-        //     this.counter++;
-        // }
-        // if(this.blocked == test.length){
-        //     if(this.counter == this.totalPassengers){
-        //         System.out.println("END WORK ALL OF THEM");
-        //         this.endOfWork();
-        //     }
-        //     for (int i = 0; i < test.length; i++) {
-        //         this.blocked = 0;
-        //         test[i].up();
-        //     }
-        // }
-        // else{
-        //     this.test[blocked-1].down();
-        // } 
     }
 
     /**
@@ -149,7 +132,6 @@ public class ArrTermExit extends PassengersHandler {
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EAT");
-            // System.out.println("GO HOME " + p.getPassengerID());
             
         }
         try {
@@ -157,7 +139,6 @@ public class ArrTermExit extends PassengersHandler {
             synchronized (this){
                 this.counter++;
                 if(this.counter == this.totalPassengers){
-                    // System.out.println("END OF WORK");
                     this.endOfWork();
                 }
                 
@@ -165,29 +146,7 @@ public class ArrTermExit extends PassengersHandler {
             }
             
         } catch (InterruptedException | BrokenBarrierException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        // synchronized(this){
-        //     this.blocked++;
-        // System.out.println("GO HOME " + p.getPassengerID());
-        // System.out.println("BLOCKED " + blocked);
-        //     this.counter++;
-        // }
-        // if(this.blocked == test.length){
-        //     if(this.counter == this.totalPassengers){
-        //         System.out.println("END WORK ALL OF THEM");
-        //         this.endOfWork();
-        //     }
-        //     for (int i = 0; i < test.length; i++) {
-        //         this.blocked = 0;
-        //         this.removePassenger();
-        //         test[i].up();
-        //     }
-        // }
-        // else{
-        //     this.test[blocked-1].down();
-        // }
     }
 }

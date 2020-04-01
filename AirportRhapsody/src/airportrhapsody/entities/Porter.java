@@ -79,7 +79,6 @@ public class Porter extends Thread{
     @Override
     public void run(){
         this.arrivalLounge.restPorter();
-        // System.out.println("WAKE UP PORTER");
         while (!this.arrivalLounge.takeARest(this)) {
             Luggage l = this.arrivalLounge.tryToCollectABag(this);
             
@@ -89,7 +88,6 @@ public class Porter extends Thread{
             }
             this.collPoint.noMoreBagsToCollect(this);
             this.arrivalLounge.restPorter();
-            // System.out.println("WAKE UP PORTER");
         }
         
     }
@@ -101,7 +99,6 @@ public class Porter extends Thread{
         this.generalRepo.setBn(this.arrivalLounge.size());
         if(l.getSi() == Situation.FDT){
             this.collPoint.insertBag(l);
-            // System.out.println("BAG TO PASSENGER -> " + l.getOwner());
             this.setPorterState(InternalState.AT_THE_LUGGAGE_BELT_CONVEYOR);
             this.generalRepo.setStatPorter("ALCB");
             this.generalRepo.setCb(this.collPoint.size());

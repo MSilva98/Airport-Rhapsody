@@ -54,18 +54,15 @@ public class CollectionPoint extends LuggageHandler {
             synchronized(this){
                 p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
                 this.generalRepo.setSt(p.getPassengerID(), "LCP");
-                // System.out.println("PASSENGER " + p.getPassengerID() + " WAITING FOR BAG");
             }
             
             this.collectBag[p.getPassengerID()].down();
             synchronized(this){
-                // System.out.println("BAG COLLECTED " + p.getPassengerID());
                 return super.remLuggage(p.getPassengerID()) != null;
             }
         }
 
         else{
-            // System.out.println("THERE ARE NO MORE BAGS HERE");
             return false;
         }
         
@@ -88,7 +85,6 @@ public class CollectionPoint extends LuggageHandler {
         this.generalRepo.setStatPorter("WPTL");
         this.generalRepo.write(false);
 
-        // System.out.println("NO MORE BAGS");
 
         this.noMoreBags = true;
 
@@ -100,7 +96,6 @@ public class CollectionPoint extends LuggageHandler {
     }
 
     public void noBags(){
-        // System.out.println("NO MORE BAGS FALSEEEEEEEEE");
         this.noMoreBags = false;
     }
 
