@@ -69,6 +69,8 @@ public class AirportRhapsody {
                 catch (InterruptedException e) {System.out.println("O passenger "+  i + " exceção.");}
                 System.out.println("O passenger "+  i + " terminou.");
             }
+
+            generalRepo.clearVars();
         }
         try
         { 

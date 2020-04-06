@@ -195,6 +195,21 @@ public class Logger {
         this.missingBags = n;
     }
 
+    public void clearVars(){
+        this.setQEmpty();
+        this.setSEmpty();
+        this.st = new String[st.length];
+        this.si = new String[si.length];
+        this.nr = new String[nr.length];
+        this.na = new String[na.length];
+        for (int i = 0; i < st.length; i++) {
+            st[i] = "---";
+            si[i] = "---";
+            nr[i] = "-";
+            na[i] = "-";
+        }
+    }
+
     // Final report
     public String finalRep(){
         return  "\n\nFinal Report" +
