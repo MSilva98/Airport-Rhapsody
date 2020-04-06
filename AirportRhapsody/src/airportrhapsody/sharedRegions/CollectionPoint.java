@@ -27,9 +27,13 @@ public class CollectionPoint extends LuggageHandler {
      */
     private boolean noMoreBags;
 
+    /**
+     * Number of bags to collect
+     * 
+     * @serialField bagsToColl
+     */
     private int[] bagsToColl;
 
-    private Semaphore exc;
 
 
     /**
@@ -46,8 +50,6 @@ public class CollectionPoint extends LuggageHandler {
         }
         this.generalRepo = generalRepo;
         this.noMoreBags = false;
-        exc = new Semaphore();
-        exc.up();
         bagsToColl = new int[nPass];
         for (int i = 0; i < bagsToColl.length; i++) {
             bagsToColl[i]=0;
@@ -61,20 +63,16 @@ public class CollectionPoint extends LuggageHandler {
      *         <li> false if don't collect a bag
      */
     public boolean goCollectABag(Passenger p){
-        exc.down();
         if(bagsToColl[p.getPassengerID()]==0){
             bagsToColl[p.getPassengerID()]=p.getNr();
         }
-        System.out.println("->ENTER goCollectABag passid:" + p.getPassengerID());
         if(!noMoreBags){ 
             synchronized(this){
                 p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
                 this.generalRepo.setSt(p.getPassengerID(), "LCP");
             }
-            exc.up();
             this.collectBag[p.getPassengerID()].down();
             synchronized(this){
-                System.out.println("<-LEAVE goCollectABag passid:" + p.getPassengerID());
                 boolean r = super.remLuggage(p.getPassengerID()) != null;
                 bagsToColl[p.getPassengerID()]--; 
                 return r;
@@ -82,8 +80,6 @@ public class CollectionPoint extends LuggageHandler {
         }
 
         else{
-            exc.up();
-            System.out.println("<-LEAVE goCollectABag passid:" + p.getPassengerID());
             return false;
         }
         
@@ -95,7 +91,6 @@ public class CollectionPoint extends LuggageHandler {
     public void insertBag(Luggage l){
         super.addLuggage(l);
         this.collectBag[l.getOwner()].up();    
-        System.out.println("COLOQUEI UMA MALA DO FDP DO pid"+ l.getOwner() );
     }
 
     /**
@@ -103,8 +98,6 @@ public class CollectionPoint extends LuggageHandler {
      * @param p porter
      */
     public void noMoreBagsToCollect(Porter p) {
-        exc.down();
-        System.out.println("->NOMOREBAGS");
         p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
         this.generalRepo.setStatPorter("WPTL");
         this.generalRepo.write(false);
@@ -118,9 +111,6 @@ public class CollectionPoint extends LuggageHandler {
             }
             
         }
-        exc.up();
-        //resetSemaphores(this.collectBag.length);
-        System.out.println("<-NOMOREBAGS");
     }
 
     public void leaveCollPoint(int id){
@@ -143,11 +133,9 @@ public class CollectionPoint extends LuggageHandler {
      * @param n number of passengers
      */
     private void resetSemaphores(int n){
-        exc.down();
         this.collectBag = new Semaphore[n];
         for (int i = 0; i < collectBag.length; i++) {
             collectBag[i] = new Semaphore();
         }
-        exc.up();
     }
 }

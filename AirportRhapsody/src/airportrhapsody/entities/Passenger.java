@@ -148,7 +148,6 @@ public class Passenger extends Thread{
 
     @Override
     public void run() {
-        System.out.println("Passenger ID " +passengerID + " nr: " + nr + " sit: " + situation);
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(this.nr == 0){
