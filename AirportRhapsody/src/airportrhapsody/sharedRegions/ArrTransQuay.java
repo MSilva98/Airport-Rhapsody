@@ -95,14 +95,10 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public void enterTheBus(int id){
         synchronized (this){
-            System.out.println("ENTER EnterTheBus: Passenger " + id);
             this.seats.insertPassenger( super.removePassenger(id));
             this.generalRepo.setQ(super.size(), "-");
             this.generalRepo.setS(this.seats.size()-1, ""+id);
             this.generalRepo.write(false);
-            // if(this.seats.isFull() || super.isEmpty()){
-            //     this.busBoard.up();
-            // }
             passEnterCounter++;
             if(passEnter == passEnterCounter){
                 this.busBoard.up();
@@ -110,18 +106,15 @@ public class ArrTransQuay extends PassengersHandler {
             }
         }
         this.passengers[id].down();
-        System.out.println("LEAVE EnterTheBus: Passenger " + id);
     }
     /**
      * Park the bus
      * @param b bus driver
      */
     public void parkTheBus(BusDriver b){
-        System.out.println("ENTER PARK THE BUS ");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);  
         this.generalRepo.setStatDriver("PKAT");  
-        this.parkBusArr.down(20);
-        System.out.println("LEAVE PARK THE BUS ");
+        this.parkBusArr.down(10);
     }
     /**
      * Take a bus
@@ -129,7 +122,6 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public void takeABus(Passenger p) {
         synchronized(this){
-            System.out.println("ENTER TakeABus: Passenger " + p.getPassengerID());
             p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "ATT");    
             
@@ -142,7 +134,6 @@ public class ArrTransQuay extends PassengersHandler {
             }
         }
         this.passengers[p.getPassengerID()].down();
-        System.out.println("LEAVE TakeABus: Passenger " + p.getPassengerID());
     }
     /**
      * Announcing bus boarding
@@ -153,15 +144,12 @@ public class ArrTransQuay extends PassengersHandler {
         if(passEnter > 3){
             passEnter = 3;
         }
-        System.out.println("ENTER announcingBusBoarding");
-        
         for (int i = 0; i < passEnter; i++) {
             //if(i < seats.maxSize()){
                 this.passengers[ids[i]].up();
             //}
         }
         this.busBoard.down();
-        System.out.println("LEAVE announcingBusBoarding");
     }
     /**
      * Current number of passengers

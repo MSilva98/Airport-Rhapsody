@@ -45,7 +45,6 @@ public class DepTransQuay extends PassengersHandler {
      */
     public void leaveBus(Passenger p){
         synchronized(this){
-            System.out.println("ENTER LeaveBus: Passenger " + p.getPassengerID());
             p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
             super.insertPassenger(p);
             this.arrTransQuay.getSeats().removePassenger(p.getPassengerID());
@@ -56,7 +55,6 @@ public class DepTransQuay extends PassengersHandler {
             if(arrTransQuay.getSeats().isEmpty()){
                 parkBusDep.up();
             }
-            System.out.println("LEAVE LeaveBus: Passenger " + p.getPassengerID());
         }
         
     }
@@ -74,13 +72,11 @@ public class DepTransQuay extends PassengersHandler {
      * @param b bus driver
      */
     public void parkTheBusAndLetPassOff(BusDriver b){
-        System.out.println("ENTER parkTheBusAndLetPassOff");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
         this.generalRepo.setStatDriver("PKDT");
         arrTransQuay.enterBusUp();
         this.generalRepo.write(false);
 
         parkBusDep.down();
-        System.out.println("LEAVE parkTheBusAndLetPassOff");
     }
 }
