@@ -46,6 +46,9 @@ public class ArrTransQuay extends PassengersHandler {
     private boolean dayEnd;
 
 
+    private int passEnter;
+    private int passEnterCounter;
+
     /**
      * Instantiating the arrival terminal transfer quay.
      * @param n number of passengers
@@ -64,6 +67,8 @@ public class ArrTransQuay extends PassengersHandler {
             this.generalRepo.setQ(i, "-");
         }
         this.dayEnd = false;
+        passEnter=0;
+        passEnterCounter=0;
     }
     /**
      * Free passengers
@@ -90,26 +95,33 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public void enterTheBus(int id){
         synchronized (this){
-
+            System.out.println("ENTER EnterTheBus: Passenger " + id);
             this.seats.insertPassenger( super.removePassenger(id));
             this.generalRepo.setQ(super.size(), "-");
             this.generalRepo.setS(this.seats.size()-1, ""+id);
             this.generalRepo.write(false);
-            if(this.seats.isFull() || super.isEmpty()){
+            // if(this.seats.isFull() || super.isEmpty()){
+            //     this.busBoard.up();
+            // }
+            passEnterCounter++;
+            if(passEnter == passEnterCounter){
                 this.busBoard.up();
+                passEnterCounter=0;
             }
         }
         this.passengers[id].down();
+        System.out.println("LEAVE EnterTheBus: Passenger " + id);
     }
     /**
      * Park the bus
      * @param b bus driver
      */
     public void parkTheBus(BusDriver b){
+        System.out.println("ENTER PARK THE BUS ");
         b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);  
         this.generalRepo.setStatDriver("PKAT");  
-
-        this.parkBusArr.down(2000);
+        this.parkBusArr.down(20);
+        System.out.println("LEAVE PARK THE BUS ");
     }
     /**
      * Take a bus
@@ -117,9 +129,10 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public void takeABus(Passenger p) {
         synchronized(this){
+            System.out.println("ENTER TakeABus: Passenger " + p.getPassengerID());
             p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "ATT");    
-        
+            
             super.insertPassenger(p);
             this.generalRepo.setQ(super.size()-1, ""+p.getPassengerID());
             this.generalRepo.write(false);
@@ -129,20 +142,26 @@ public class ArrTransQuay extends PassengersHandler {
             }
         }
         this.passengers[p.getPassengerID()].down();
+        System.out.println("LEAVE TakeABus: Passenger " + p.getPassengerID());
     }
     /**
      * Announcing bus boarding
      */
     public void announcingBusBoarding() {
-        int passEnter = super.size();
-        
         int[] ids = super.getIDs();
+        passEnter = super.size();
+        if(passEnter > 3){
+            passEnter = 3;
+        }
+        System.out.println("ENTER announcingBusBoarding");
+        
         for (int i = 0; i < passEnter; i++) {
-            if(i < seats.maxSize()){
+            //if(i < seats.maxSize()){
                 this.passengers[ids[i]].up();
-            }
+            //}
         }
         this.busBoard.down();
+        System.out.println("LEAVE announcingBusBoarding");
     }
     /**
      * Current number of passengers

@@ -148,18 +148,19 @@ public class Passenger extends Thread{
 
     @Override
     public void run() {
+        System.out.println("Passenger ID " +passengerID + " nr: " + nr + " sit: " + situation);
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
         if(isFinalDst){
             if(this.nr == 0){
                 arrTermExit.goHome(this);
             }else{
-                for (int i = 0; i < this.nr; i++) {
-                    if(!this.collPoint.getNoBags()){
-                        if(collPoint.goCollectABag(this)){ 
-                            this.na++;
-                        }
-                    }
-                }
+            // for (int i = 0; i < this.nr; i++) {
+            //     if(!this.collPoint.getNoBags()){
+            //         if(collPoint.goCollectABag(this)){ 
+            //             this.na++;
+            //         }
+            //     }
+            // }
                 
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){

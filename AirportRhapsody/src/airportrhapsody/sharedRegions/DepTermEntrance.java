@@ -62,6 +62,7 @@ public class DepTermEntrance extends PassengersHandler{
      */
     public void prepareNextLeg(DepTransQuay depTransQuay, Passenger p){
         synchronized(this){
+            System.out.println("ENTER prepareNExtLEg passid:" + p.getPassengerID());
             this.arrivedTerm(depTransQuay.leaveDepTransQuay(p.getPassengerID()));
             p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EDT");
@@ -71,6 +72,6 @@ public class DepTermEntrance extends PassengersHandler{
         synchronized(this){
             super.removePassenger();
         }
-        
+        System.out.println("LEAVE prepareNExtLEg passid:" + p.getPassengerID());
     }
 }

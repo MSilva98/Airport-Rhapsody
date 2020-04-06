@@ -129,6 +129,7 @@ public class ArrTermExit extends PassengersHandler {
      */
     public void goHome(Passenger p) {
         synchronized (this){
+            System.out.println("ENTER GO HOME passid:" + p.getPassengerID());
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EAT");
@@ -148,5 +149,6 @@ public class ArrTermExit extends PassengersHandler {
         } catch (InterruptedException | BrokenBarrierException e) {
             e.printStackTrace();
         }
+        System.out.println("LEAVE GO HOME passid:" + p.getPassengerID());
     }
 }
