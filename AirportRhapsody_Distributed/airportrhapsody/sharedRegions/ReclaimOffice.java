@@ -41,14 +41,11 @@ public class ReclaimOffice {
      * @param numBags number of bags missing
      * @param p passenger
      */
-    public void reportMissingBags(int numBags, Passenger p) {
+    public Passenger.InternalState reportMissingBags(int numBags) {
         synchronized(this){
-            p.setPassengerState(Passenger.InternalState.AT_THE_BAGGAGE_RECLAIM_OFFICE);
-            this.generalRepo.setSt(p.getPassengerID(), "BRO");
-            this.generalRepo.write(false);
             this.numBagsMissing += numBags;
         }
-        
+        return Passenger.InternalState.AT_THE_BAGGAGE_RECLAIM_OFFICE;
     }
 
     public int getNumBagsMissing() {

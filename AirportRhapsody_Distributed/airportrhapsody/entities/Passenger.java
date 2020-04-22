@@ -148,7 +148,7 @@ public class Passenger extends Thread{
 
     @Override
     public void run() {
-        boolean isFinalDst = arrivalLounge.whatShouldIDo(this);
+        boolean isFinalDst = arrivalLounge.whatShouldIDo(this.situation);
         if(isFinalDst){
             if(this.nr == 0){
                 arrTermExit.goHome(this);
@@ -163,7 +163,9 @@ public class Passenger extends Thread{
                 collPoint.leaveCollPoint(passengerID);
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){
-                    reclaimOffice.reportMissingBags(nr - na, this);
+                    this.passengerState = this.reclaimOffice.reportMissingBags(nr - na);
+                    this.generalRepo.setSt(this.passengerID, "BRO");
+                    this.generalRepo.write(false);
                 }
                 arrTermExit.goHome(this);
             }

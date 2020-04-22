@@ -132,7 +132,6 @@ public class ArrTermExit extends PassengersHandler {
             this.insertPassenger(p);
             p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
             this.generalRepo.setSt(p.getPassengerID(), "EAT");
-            
         }
         try {
             this.newBarrier.await();

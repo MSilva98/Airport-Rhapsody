@@ -97,12 +97,7 @@ public class CollectionPoint extends LuggageHandler {
      * No more bags to collect
      * @param p porter
      */
-    public void noMoreBagsToCollect(Porter p) {
-        p.setPorterState(Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND);
-        this.generalRepo.setStatPorter("WPTL");
-        this.generalRepo.write(false);
-
-
+    public Porter.InternalState noMoreBagsToCollect() {
         this.noMoreBags = true;
 
         for (int i = 0; i < collectBag.length; i++) {
@@ -111,6 +106,7 @@ public class CollectionPoint extends LuggageHandler {
             }
             
         }
+        return Porter.InternalState.WAITING_FOR_A_PLANE_TO_LAND;
     }
 
     public void leaveCollPoint(int id){

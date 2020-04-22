@@ -79,17 +79,20 @@ public class Porter extends Thread{
     @Override
     public void run(){
         this.arrivalLounge.restPorter();
-        while (!this.arrivalLounge.takeARest(this)) {
-            Luggage l = this.arrivalLounge.tryToCollectABag(this);
-            
+        while (!this.arrivalLounge.takeARest()) {
+            Luggage l = this.arrivalLounge.tryToCollectABag();
+            this.porterState = Porter.InternalState.AT_THE_PLANES_HOLD;
+            this.generalRepo.setStatPorter("APLH");
+            this.generalRepo.write(false);
             while(l != null){
                 this.carryItToAppropriateStore(l);
-                l = this.arrivalLounge.tryToCollectABag(this);
+                l = this.arrivalLounge.tryToCollectABag();
             }
-            this.collPoint.noMoreBagsToCollect(this);
+            this.porterState = this.collPoint.noMoreBagsToCollect();
+            this.generalRepo.setStatPorter("WPTL");
+            this.generalRepo.write(false);    
             this.arrivalLounge.restPorter();
         }
-        
     }
     /**
      * Carry luggage to the approriate store

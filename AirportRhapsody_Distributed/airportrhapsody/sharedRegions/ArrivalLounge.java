@@ -67,10 +67,7 @@ public class ArrivalLounge extends LuggageHandler {
      * @param p porter
      * @return bag
      */
-    public Luggage tryToCollectABag(Porter p){
-        p.setPorterState(Porter.InternalState.AT_THE_PLANES_HOLD);
-        this.generalRepo.setStatPorter("APLH");
-        this.generalRepo.write(false);
+    public Luggage tryToCollectABag(){
         return super.remLuggage();
     }
 
@@ -93,7 +90,7 @@ public class ArrivalLounge extends LuggageHandler {
      * @return <li> true, if day is over
      *         <li> false, if isn't
      */
-    public boolean takeARest(Porter p) {
+    public boolean takeARest() {
         return dayEnd;
     }
 
@@ -102,7 +99,7 @@ public class ArrivalLounge extends LuggageHandler {
      * @param p passenger
      * @return What passagenger should do according to his situation
      */
-    public boolean whatShouldIDo(Passenger p) {
+    public boolean whatShouldIDo(Passenger.Situation s) {
         synchronized(this){
             this.numPass++;
             if(this.numPass == this.numMaxPass){
@@ -110,7 +107,7 @@ public class ArrivalLounge extends LuggageHandler {
                 this.numPass = 0;
             }
         }
-        return (p.getSituation() == Passenger.Situation.FDT);
+        return (s == Passenger.Situation.FDT);
     }
 
     public boolean getDayEnd(){
