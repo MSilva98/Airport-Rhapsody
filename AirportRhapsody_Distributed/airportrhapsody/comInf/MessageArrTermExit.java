@@ -1,4 +1,4 @@
-package comInf;
+package airportrhapsody.comInf;
 
 import java.io.Serializable;
 

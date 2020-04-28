@@ -1,44 +1,45 @@
-package comInf;
+package airportrhapsody.comInf;
 
 import java.io.Serializable;
 
-public class MessageDepTermEntrance implements Serializable{
+public class MessageReclaimOffice implements Serializable {
 
     /**
      *  Key
      *    @serialField serialVersionUID
      */
-    private static final long serialVersionUID = 3124977643902114045L;
+    private static final long serialVersionUID = -1568907649192352215L;
 
     // Message types
 
     /**
-     * Insert passenger in terminal
+     * Report missing bags
      * 
-     * @serialField AR
+     * @serialField RMB
      */
-    public static final int AR = 1;
+    public static final int RMB = 1;
 
     /**
-     * Remove passenger from terminal
+     * get number of bags missing
      * 
-     * @serialField LT
+     * @serialField GNBM
      */
-    public static final int LT = 2;
+    public static final int GNBM = 2;
 
     /**
-     * Check if terminal is empty
+     * Get reclaims
      * 
-     * @serialField EP
+     * @serialField GR
      */
-    public static final int EP = 3;
+    public static final int GR = 3;
 
     /**
-     * Prepare next leg
+     * Set reclaims
      * 
-     * @serialField PNL
+     * @serialField SR
      */
-    public static final int PNL = 4;
+    public static final int SR = 4;
+
 
     //Message arguments
 
@@ -57,7 +58,7 @@ public class MessageDepTermEntrance implements Serializable{
      *    @param type message type
      */
 
-    public MessageDepTermEntrance (int type)
+    public MessageReclaimOffice (int type)
     {
         msgType = type;
     }
@@ -72,5 +73,4 @@ public class MessageDepTermEntrance implements Serializable{
     {
         return (msgType);
     }
-
 }
