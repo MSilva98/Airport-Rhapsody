@@ -36,8 +36,11 @@ public class DepTermEntrance extends PassengersHandler{
      * Insert passenger in terminal
      * @param p passenger
      */
-    public void arrivedTerm(Passenger p){
-        super.insertPassenger(p);
+    public Passenger.InternalState arrivedTerm(int passengerID){
+        // super.insertPassenger(p);
+        this.generalRepo.setSt(passengerID, "EDT");
+        this.generalRepo.write(false);
+        return Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL;
     }
 
     /**
@@ -60,16 +63,16 @@ public class DepTermEntrance extends PassengersHandler{
      * @param depTransQuay Departure terminal transfer quay
      * @param p passenger
      */
-    public void prepareNextLeg(DepTransQuay depTransQuay, Passenger p){
-        synchronized(this){
-            this.arrivedTerm(depTransQuay.leaveDepTransQuay(p.getPassengerID()));
-            p.setPassengerState(Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL);
-            this.generalRepo.setSt(p.getPassengerID(), "EDT");
+    public void prepareNextLeg(){
+        // synchronized(this){
+        //     this.arrivedTerm(depTransQuay.leaveDepTransQuay(p.getPassengerID()));
+        //     p.setPassengerState();
+        //     this.generalRepo.setSt(p.getPassengerID(), "EDT");
 
-        }
+        // }
         arrTermExit.leaveAirpDown();
-        synchronized(this){
-            super.removePassenger();
-        }
+        // synchronized(this){
+        //     this.leftTerm();
+        // }
     }
 }

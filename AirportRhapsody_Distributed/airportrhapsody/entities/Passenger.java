@@ -151,11 +151,14 @@ public class Passenger extends Thread{
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this.situation);
         if(isFinalDst){
             if(this.nr == 0){
-                arrTermExit.goHome(this);
+                this.passengerState = arrTermExit.arrivedTerm(this.passengerID);
+                arrTermExit.goHome();
             }else{
                 for (int i = 0; i < this.nr; i++) {
                     if(!this.collPoint.getNoBags()){
-                        if(collPoint.goCollectABag(this)){ 
+                        this.setPassengerState(InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
+                        this.generalRepo.setSt(this.passengerID, "LCP");
+                        if(collPoint.goCollectABag(this.passengerID, this.nr)){ 
                             this.na++;
                         }
                     }
@@ -163,17 +166,20 @@ public class Passenger extends Thread{
                 collPoint.leaveCollPoint(passengerID);
                 this.generalRepo.setNa(this.passengerID, this.na);
                 if (this.nr != this.na){
-                    this.passengerState = this.reclaimOffice.reportMissingBags(nr - na);
+                    this.setPassengerState(this.reclaimOffice.reportMissingBags(nr - na));
                     this.generalRepo.setSt(this.passengerID, "BRO");
                     this.generalRepo.write(false);
                 }
-                arrTermExit.goHome(this);
+                this.setPassengerState(arrTermExit.arrivedTerm(this.passengerID));
+                arrTermExit.goHome();
             }
         }else{
+            this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
             arrTransQuay.takeABus(this);
-            arrTransQuay.enterTheBus(passengerID);
-            depTransQuay.leaveBus(this);
-            depTermEntrance.prepareNextLeg(depTransQuay, this);
+            arrTransQuay.enterTheBus(this.passengerID);
+            this.setPassengerState(depTransQuay.leaveBus(this.passengerID));
+            this.setPassengerState(depTermEntrance.arrivedTerm(this.passengerID));
+            depTermEntrance.prepareNextLeg();
         }
     }
     /*

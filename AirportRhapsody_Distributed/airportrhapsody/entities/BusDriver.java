@@ -81,11 +81,14 @@ public class BusDriver extends Thread {
     @Override
     public void run() {
         while(!hasDaysWorkEnded()){
-            arrTransQuay.parkTheBus(this);
+            arrTransQuay.parkTheBus();
+            this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
+            this.generalRepo.setStatDriver("PKAT");  
+            this.generalRepo.write(false);
             if(!arrTransQuay.isEmpty()){
                 arrTransQuay.announcingBusBoarding();
                 goToDepartureTerminal();
-                depTransQuay.parkTheBusAndLetPassOff(this);
+                this.setBusDriverState(depTransQuay.parkTheBusAndLetPassOff());
                 goToArrivalTerminal();
             }
         }

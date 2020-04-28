@@ -43,12 +43,11 @@ public class DepTransQuay extends PassengersHandler {
      * Passenger leave the bus
      * @param p passenger
      */
-    public void leaveBus(Passenger p){
+    public Passenger.InternalState leaveBus(int passengerID){
         synchronized(this){
-            p.setPassengerState(Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL);
-            super.insertPassenger(p);
-            this.arrTransQuay.getSeats().removePassenger(p.getPassengerID());
-            this.generalRepo.setSt(p.getPassengerID(), "DTT");
+            // super.insertPassenger(p);
+            this.arrTransQuay.getSeats().removePassenger(passengerID);
+            this.generalRepo.setSt(passengerID, "DTT");
             this.generalRepo.setS(this.arrTransQuay.getSeats().size(), "-");
             this.generalRepo.write(false);
             
@@ -57,6 +56,7 @@ public class DepTransQuay extends PassengersHandler {
             }
         }
         
+        return Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL;
     }
 
     /**
@@ -71,12 +71,11 @@ public class DepTransQuay extends PassengersHandler {
      * Park the bus and let pass off
      * @param b bus driver
      */
-    public void parkTheBusAndLetPassOff(BusDriver b){
-        b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL);
-        this.generalRepo.setStatDriver("PKDT");
+    public BusDriver.InternalState parkTheBusAndLetPassOff(){
         arrTransQuay.enterBusUp();
-        this.generalRepo.write(false);
-
         parkBusDep.down();
+        this.generalRepo.setStatDriver("PKDT");
+        this.generalRepo.write(false);
+        return BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL;
     }
 }

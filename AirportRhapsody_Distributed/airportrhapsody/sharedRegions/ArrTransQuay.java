@@ -80,12 +80,12 @@ public class ArrTransQuay extends PassengersHandler {
             while(!tmp.isEmpty()) {
                 Passenger p = tmp.removePassenger();
                 if(p != null){
-                    p.setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
-                    this.generalRepo.setSt(p.getPassengerID(), "TRT");
+                    // p.setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
+                    // this.generalRepo.setSt(p.getPassengerID(), "TRT");
                     this.passengers[p.getPassengerID()].up();
                 }
             }
-            this.generalRepo.write(false);
+            // this.generalRepo.write(false);
         }
     }
     
@@ -93,11 +93,12 @@ public class ArrTransQuay extends PassengersHandler {
      * Enter the bus
      * @param id passenger id
      */
-    public void enterTheBus(int id){
+    public void enterTheBus(int passengerID){
         synchronized (this){
-            this.seats.insertPassenger( super.removePassenger(id));
+            this.seats.insertPassenger(super.removePassenger(passengerID));
+            this.generalRepo.setSt(passengerID, "TRT");
             this.generalRepo.setQ(super.size(), "-");
-            this.generalRepo.setS(this.seats.size()-1, ""+id);
+            this.generalRepo.setS(this.seats.size()-1, ""+passengerID);
             this.generalRepo.write(false);
             passEnterCounter++;
             if(passEnter == passEnterCounter){
@@ -105,15 +106,14 @@ public class ArrTransQuay extends PassengersHandler {
                 passEnterCounter=0;
             }
         }
-        this.passengers[id].down();
+        this.passengers[passengerID].down();
     }
     /**
      * Park the bus
      * @param b bus driver
      */
-    public void parkTheBus(BusDriver b){
-        b.setBusDriverState(BusDriver.InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);  
-        this.generalRepo.setStatDriver("PKAT");  
+    public void parkTheBus(){  
+        // this.generalRepo.setStatDriver("PKAT");  
         this.parkBusArr.down(1);
     }
     /**
@@ -121,11 +121,9 @@ public class ArrTransQuay extends PassengersHandler {
      * @param p passenger
      */
     public void takeABus(Passenger p) {
-        synchronized(this){
-            p.setPassengerState(Passenger.InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
-            this.generalRepo.setSt(p.getPassengerID(), "ATT");    
-            
+        synchronized(this){            
             super.insertPassenger(p);
+            this.generalRepo.setSt(p.getPassengerID(), "ATT");    
             this.generalRepo.setQ(super.size()-1, ""+p.getPassengerID());
             this.generalRepo.write(false);
             

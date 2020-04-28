@@ -64,10 +64,10 @@ public class ArrTermExit extends PassengersHandler {
     public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights, Logger generalRepo) {
         super(n);
         // this.newBarrier = new CyclicBarrier(n);
-        this.test = new Semaphore[n];
-        for (int i = 0; i < test.length; i++) {
-            test[i] = new Semaphore();
-        }
+        // this.test = new Semaphore[n];
+        // for (int i = 0; i < test.length; i++) {
+        //     test[i] = new Semaphore();
+        // }
         this.arrivalLounge = arrivalLounge;
         this.arrTransQuay = arrTransQuay;
         this.totalPassengers = n * numbOfFlights;
@@ -97,8 +97,11 @@ public class ArrTermExit extends PassengersHandler {
      * Inser passenger in terminal
      * @param p passanger
      */
-    public void arrivedTerm(Passenger p) {
-        super.insertPassenger(p);
+    public Passenger.InternalState arrivedTerm(int passengerID) {
+        // super.insertPassenger(p);
+        this.generalRepo.setSt(passengerID, "EAT");
+        this.generalRepo.write(false);
+        return Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL;
     }
     /**
      * Remove passenger from terminal
@@ -127,12 +130,12 @@ public class ArrTermExit extends PassengersHandler {
      * Go home
      * @param p passenger
      */
-    public void goHome(Passenger p) {
-        synchronized (this){
-            this.insertPassenger(p);
-            p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
-            this.generalRepo.setSt(p.getPassengerID(), "EAT");
-        }
+    public void goHome() {
+        // synchronized (this){
+        //     this.insertPassenger(p);
+        //     p.setPassengerState(Passenger.InternalState.EXITING_THE_ARRIVAL_TERMINAL);
+        //     this.generalRepo.setSt(p.getPassengerID(), "EAT");
+        // }
         try {
             this.newBarrier.await();
             synchronized (this){
@@ -141,7 +144,7 @@ public class ArrTermExit extends PassengersHandler {
                     this.endOfWork();
                 }
                 
-                this.removePassenger();
+                // this.leftTerm();
             }
             
         } catch (InterruptedException | BrokenBarrierException e) {

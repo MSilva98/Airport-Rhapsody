@@ -62,19 +62,15 @@ public class CollectionPoint extends LuggageHandler {
      * @return <li> true if collect a bag
      *         <li> false if don't collect a bag
      */
-    public boolean goCollectABag(Passenger p){
-        if(bagsToColl[p.getPassengerID()]==0){
-            bagsToColl[p.getPassengerID()]=p.getNr();
+    public boolean goCollectABag(int passengerID, int nr){
+        if(bagsToColl[passengerID] == 0){
+            bagsToColl[passengerID] = nr;
         }
         if(!noMoreBags){ 
+            this.collectBag[passengerID].down();
             synchronized(this){
-                p.setPassengerState(Passenger.InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
-                this.generalRepo.setSt(p.getPassengerID(), "LCP");
-            }
-            this.collectBag[p.getPassengerID()].down();
-            synchronized(this){
-                boolean r = super.remLuggage(p.getPassengerID()) != null;
-                bagsToColl[p.getPassengerID()]--; 
+                boolean r = super.remLuggage(passengerID) != null;
+                bagsToColl[passengerID]--; 
                 return r;
             }
         }
