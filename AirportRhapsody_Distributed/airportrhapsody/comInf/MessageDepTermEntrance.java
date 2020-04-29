@@ -64,9 +64,9 @@ public class MessageDepTermEntrance implements Serializable{
 
     /**
      * 
-     *    @serialField b
+     *    @serialField genBool
      */
-    private boolean b;
+    private boolean genBool;
 
     /**
      *  Passenger 
@@ -128,10 +128,10 @@ public class MessageDepTermEntrance implements Serializable{
      *    @param type message type
      *    @param b
      */
-    public MessageDepTermEntrance (int type, boolean b)
+    public MessageDepTermEntrance (int type, boolean genBool)
     {
         msgType = type;
-        this.b = b;
+        this.genBool = genBool;
     }
 
     /**

@@ -60,9 +60,9 @@ public class MessageReclaimOffice implements Serializable {
 
     /**
      *  Passenger ID or bags or reclaims
-     *    @serialField passengerID
+     *    @serialField genInt
      */
-    private int i = -1;
+    private int genInt = -1;
 
 
 
@@ -95,10 +95,10 @@ public class MessageReclaimOffice implements Serializable {
      *    @param type message type
      *    @param i Passenger ID or bags or reclaims
      */
-    public MessageReclaimOffice (int type, int i)
+    public MessageReclaimOffice (int type, int genInt)
     {
         msgType = type;
-        this.i = i;
+        this.genInt = genInt;
     }
 
     /**

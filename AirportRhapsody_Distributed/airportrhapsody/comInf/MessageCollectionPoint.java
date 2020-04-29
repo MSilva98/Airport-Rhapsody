@@ -63,6 +63,12 @@ public class MessageCollectionPoint implements Serializable{
      */
     public static final int S = 7;
 
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  8;
     
 
     //Message arguments
@@ -87,9 +93,9 @@ public class MessageCollectionPoint implements Serializable{
 
     /**
      * 
-     *    @serialField b
+     *    @serialField genBool
      */
-    private boolean b;
+    private boolean genBool;
 
     /**
      *  Luaggage
@@ -133,10 +139,10 @@ public class MessageCollectionPoint implements Serializable{
      *    @param type message type
      *    @param b
      */
-    public MessageCollectionPoint (int type, boolean b)
+    public MessageCollectionPoint (int type, boolean genBool)
     {
         msgType = type;
-        this.b = b;
+        this.genBool = genBool;
     }
 
     /**
@@ -167,12 +173,12 @@ public class MessageCollectionPoint implements Serializable{
      *  Instantiating a message (form 4).
      *
      *    @param type message type
-     *    @param i  id or number os bags
+     *    @param n  id or number os bags
      */
-    public MessageCollectionPoint (int type, int i)
+    public MessageCollectionPoint (int type, int n)
     {
         msgType = type;
-        this.passengerID = passengerID;
+        this.nr = n;
     }
 
     /**
@@ -184,5 +190,17 @@ public class MessageCollectionPoint implements Serializable{
     public int getType ()
     {
         return (msgType);
+    }
+
+    public boolean getB(){
+        return genBool;
+    }
+
+    public Porter.InternalState getSt(){
+        return st;
+    }
+
+    public int getI(){
+        return nr;
     }
 }
