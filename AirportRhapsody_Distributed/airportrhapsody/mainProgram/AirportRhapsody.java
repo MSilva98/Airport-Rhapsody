@@ -1,7 +1,7 @@
 package airportrhapsody.mainProgram;
 
-import airportrhapsody.sharedRegions.*;
-import airportrhapsody.entities.*;
+import airportrhapsody.serverSide.*;
+import airportrhapsody.clientSide.*;
 
 public class AirportRhapsody {
 

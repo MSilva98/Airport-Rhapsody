@@ -1,4 +1,4 @@
-package airportrhapsody.sharedRegions;
+package airportrhapsody.serverSide;
 
 import airportrhapsody.entities.Passenger;
 import airportrhapsody.commonInfrastructures.*;

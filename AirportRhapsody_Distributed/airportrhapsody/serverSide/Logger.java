@@ -1,4 +1,4 @@
-package airportrhapsody.sharedRegions;
+package airportrhapsody.serverSide;
 
 import java.io.File;
 import java.io.FileWriter;

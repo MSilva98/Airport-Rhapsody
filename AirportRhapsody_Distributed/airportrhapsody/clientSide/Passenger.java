@@ -1,7 +1,7 @@
 package airportrhapsody.clientSide;
 import java.util.Random;
 
-import airportrhapsody.sharedRegions.*;
+import airportrhapsody.serverSide.*;
 import airportrhapsody.commonInfrastructures.*;
 
 /**

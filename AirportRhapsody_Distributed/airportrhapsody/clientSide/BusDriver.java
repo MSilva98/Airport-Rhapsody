@@ -1,6 +1,6 @@
 package airportrhapsody.clientSide;
 
-import airportrhapsody.sharedRegions.*;
+import airportrhapsody.serverSide.*;
 
 /**
  * This class implements the bus driver thread

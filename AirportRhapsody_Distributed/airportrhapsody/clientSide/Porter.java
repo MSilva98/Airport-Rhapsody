@@ -1,7 +1,7 @@
 package airportrhapsody.clientSide;
 
-import airportrhapsody.entities.Passenger.Situation;
-import airportrhapsody.sharedRegions.*;
+import airportrhapsody.clientSide.*;
+import airportrhapsody.serverSide.*;
 import airportrhapsody.commonInfrastructures.*;
 
 public class Porter extends Thread{
