@@ -174,7 +174,7 @@ public class Passenger extends Thread{
             }
         }else{
             this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
-            arrTransQuay.takeABus(this);
+            arrTransQuay.takeABus(this.passengerID);
             arrTransQuay.enterTheBus(this.passengerID);
             this.setPassengerState(depTransQuay.leaveBus(this.passengerID));
             this.setPassengerState(depTermEntrance.arrivedTerm(this.passengerID));

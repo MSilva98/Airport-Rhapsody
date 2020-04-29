@@ -1,5 +1,8 @@
 package airportrhapsody.serverSide;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import airportrhapsody.clientSide.BusDriver;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;
@@ -31,7 +34,7 @@ public class ArrTransQuay extends PassengersHandler {
      * 
      * @serialField seats 
      */
-    private PassengersHandler seats;
+    // private PassengersHandler seats;
     /**
      *  Logger - general repository of information
      * 
@@ -45,9 +48,11 @@ public class ArrTransQuay extends PassengersHandler {
      */
     private boolean dayEnd;
 
-
+    private List<Integer> passengersList;
+    private List<Integer> seats;
     private int passEnter;
     private int passEnterCounter;
+    private int nseats;
 
     /**
      * Instantiating the arrival terminal transfer quay.
@@ -57,7 +62,7 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public ArrTransQuay(int n, int nseats, Logger generalRepo){
         super(n);
-        this.seats = new PassengersHandler(nseats);
+        this.seats = new ArrayList<>();
         this.parkBusArr = new Semaphore();
         this.busBoard = new Semaphore();
         this.passengers = new Semaphore[n];
@@ -67,6 +72,8 @@ public class ArrTransQuay extends PassengersHandler {
             this.generalRepo.setQ(i, "-");
         }
         this.dayEnd = false;
+        this.passengersList = new ArrayList<>();
+        this.nseats = nseats;
         passEnter=0;
         passEnterCounter=0;
     }
@@ -76,14 +83,15 @@ public class ArrTransQuay extends PassengersHandler {
     public void enterBusUp() {
 
         synchronized(this){
-            PassengersHandler tmp = this.seats.copyTo(this.seats.getP());
+            // PassengersHandler tmp = this.seats.copyTo(this.seats.getP());
+            List<Integer> tmp = new ArrayList<>(this.seats);
             while(!tmp.isEmpty()) {
-                Passenger p = tmp.removePassenger();
-                if(p != null){
+                int passengerID = tmp.remove(0);
+                // if(passengerID != null){
                     // p.setPassengerState(Passenger.InternalState.TERMINAL_TRANSFER);
                     // this.generalRepo.setSt(p.getPassengerID(), "TRT");
-                    this.passengers[p.getPassengerID()].up();
-                }
+                    this.passengers[passengerID].up();
+                // }
             }
             // this.generalRepo.write(false);
         }
@@ -95,7 +103,8 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public void enterTheBus(int passengerID){
         synchronized (this){
-            this.seats.insertPassenger(super.removePassenger(passengerID));
+            this.seats.add(this.passengersList.get(this.passengersList.indexOf(Integer.valueOf(passengerID))));
+            this.passengersList.remove(Integer.valueOf(passengerID));
             this.generalRepo.setSt(passengerID, "TRT");
             this.generalRepo.setQ(super.size(), "-");
             this.generalRepo.setS(this.seats.size()-1, ""+passengerID);
@@ -120,31 +129,40 @@ public class ArrTransQuay extends PassengersHandler {
      * Take a bus
      * @param p passenger
      */
-    public void takeABus(Passenger p) {
+    public void takeABus(int passengerID) {
         synchronized(this){            
-            super.insertPassenger(p);
-            this.generalRepo.setSt(p.getPassengerID(), "ATT");    
-            this.generalRepo.setQ(super.size()-1, ""+p.getPassengerID());
+            // super.insertPassenger(p);
+            this.passengersList.add(passengerID);
+            this.generalRepo.setSt(passengerID, "ATT");    
+            this.generalRepo.setQ(this.passengersList.size()-1, ""+passengerID);
             this.generalRepo.write(false);
-            
-            if(super.size() == this.seats.maxSize()){
+            // System.out.println(this.passengersList.size() + "   " + passengerID);
+            if(this.passengersList.size() == this.nseats){
+                // System.out.println("WAKE UP BUS");
                 this.parkBusArr.up();
             }
         }
-        this.passengers[p.getPassengerID()].down();
+        this.passengers[passengerID].down();
     }
+
     /**
      * Announcing bus boarding
      */
     public void announcingBusBoarding() {
-        passEnter = super.size();
-        int[] ids = super.getIDs();
+        List<Integer> tmpL = new ArrayList<>(this.passengersList);
+        passEnter = tmpL.size();
+        int[] ids = new int[tmpL.size()];
+        System.out.println(tmpL.size() + " tmpL: " + tmpL);
+        for(int i = 0; i < ids.length; i++) {
+            System.out.println(i + "   ->   " + tmpL);
+            ids[i] = tmpL.get(i); 
+        }
         if(passEnter > 3){
             passEnter = 3;
         }
         for (int i = 0; i < passEnter; i++) {
             //if(i < seats.maxSize()){
-                // System.out.println("i="+i + " id =" + ids[i] + "   alll " + ids + " size " + passEnter);
+                // System.out.println("i="+i + " id =" + ids[i] + "   alll " + this.passengersList + " size " + passEnter);
                 this.passengers[ids[i]].up();
             //}
         }
@@ -158,7 +176,11 @@ public class ArrTransQuay extends PassengersHandler {
         return super.size();
     }
 
-    public PassengersHandler getSeats(){
+    // public PassengersHandler getSeats(){
+    //     return this.seats;
+    // }
+
+    public List<Integer> getSeats(){
         return this.seats;
     }
 
@@ -169,5 +191,10 @@ public class ArrTransQuay extends PassengersHandler {
     public void setDayEnd(boolean st){
         dayEnd = st;
         this.parkBusArr.up();
+    }
+
+    @Override
+    public boolean isEmpty(){
+        return this.passengersList.isEmpty();
     }
 }
