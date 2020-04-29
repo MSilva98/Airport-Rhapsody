@@ -38,7 +38,24 @@ public class CollectionPointStub  {
     public boolean goCollectABag(int passengerID, int nr){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageCollectionPoint inMessage, outMessage;
-        return false;
+        while (!con.open ()) {                                    // aguarda ligação
+            // { try
+            // { //sleep((long) (10));
+            // }
+            // catch (InterruptedException e) {}
+        }
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.GCAB, passengerID, nr);
+        con.writeObject(outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.GCAB ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getB();
+        }
+        
         
     }    
     /**
@@ -48,6 +65,21 @@ public class CollectionPointStub  {
     public void insertBag(Luggage l){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageCollectionPoint inMessage, outMessage;
+        while (!con.open ()) {                                    // aguarda ligação
+            // try
+            // { //sleep((long) (10));
+            // }
+            // catch (InterruptedException e) {}
+        }
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.IB, l);
+        con.writeObject(outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
+
     }
 
     /**
@@ -57,27 +89,100 @@ public class CollectionPointStub  {
     public Porter.InternalState noMoreBagsToCollect() {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageCollectionPoint inMessage, outMessage;
-        return null;
+        while (!con.open ()) {                                    // aguarda ligação
+            // try
+            // { //sleep((long) (10));
+            // }
+            // catch (InterruptedException e) {}
+        }
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.NMBTC);
+        con.writeObject(outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.GCAB ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return null;
+        }else{
+            return inMessage.getSt();
+        }
     }
 
     public void leaveCollPoint(int id){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageCollectionPoint inMessage, outMessage;
+        while (!con.open ()) {                                    // aguarda ligação
+            // try
+            // { //sleep((long) (10));
+            // }
+            // catch (InterruptedException e) {}
+        }
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.LCP,id);
+        con.writeObject(outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
 
     public void noBags(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageCollectionPoint inMessage, outMessage;
+        while (!con.open ()) {                                    // aguarda ligação
+            // try
+            // { //sleep((long) (10));
+            // }
+            // catch (InterruptedException e) {}
+        }
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.NB);
+        con.writeObject(outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
 
     public boolean getNoBags(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageCollectionPoint inMessage, outMessage;
-        return false;
+        while (!con.open ()) {                                    // aguarda ligação
+            // { try
+            // { //sleep((long) (10));
+            // }
+            // catch (IpassengerIDct(outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.GNB ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getB();
+        }
     }
     public int size(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageCollectionPoint inMessage, outMessage;
-        return -1;
+        while (!con.open ()) {                                    // aguarda ligação
+            // { try
+            // { //sleep((long) (10));
+            // }
+            // catch (InterruptedException e) {}
+        }
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.S);
+        con.writeObject(outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.S ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return -1;
+        }else{
+            return inMessage.getI();
+        }
     }
 }

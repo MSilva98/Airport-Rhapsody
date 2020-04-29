@@ -100,9 +100,9 @@ public class MessageArrivalLounge implements Serializable{
 
     /**
      *  Day state or What passagenger should do according to his situation
-     *    @serialField b
+     *    @serialField genBool
      */
-    private boolean b;
+    private boolean genBool;
 
     // /**
     //  *  What passagenger should do according to his situation
@@ -141,10 +141,10 @@ public class MessageArrivalLounge implements Serializable{
      *    @param b state
      */
 
-    public MessageArrivalLounge (int type, Boolean b)
+    public MessageArrivalLounge (int type, Boolean genBool)
     {
         this.msgType = type;
-        this.b = b;
+        this.genBool = genBool;
         
     }
 

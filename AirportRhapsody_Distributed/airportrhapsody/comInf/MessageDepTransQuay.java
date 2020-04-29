@@ -65,7 +65,7 @@ public class MessageDepTransQuay implements Serializable {
 
     /**
      *  Passenger 
-     *    @serialField st
+     *    @serialField p
      */
     private Passenger p = null;
 

@@ -88,9 +88,9 @@ public class MessageArrTransQuay implements Serializable{
 
     /**
      * Passenger ID or numOfPassengers
-     *    @serialField passengerID
+     *    @serialField genInt
      */
-    private int i = -1;
+    private int genInt = -1;
 
     /**
      *  Passenger 
@@ -100,9 +100,9 @@ public class MessageArrTransQuay implements Serializable{
 
     /**
      *  Day state 
-     *    @serialField b
+     *    @serialField genBool
      */
-    private boolean b;
+    private boolean genBool;
 
     /**
      *  Passengers handler
@@ -126,13 +126,13 @@ public class MessageArrTransQuay implements Serializable{
      *  Instantiating a message (form 2).
      *
      *    @param type message type
-     *    @param i Passenger ID or numOfPassenger
+     *    @param genI Passenger ID or numOfPassenger
      */
 
-    public MessageArrTransQuay (int type, int i)
+    public MessageArrTransQuay (int type, int genInt)
     {
         msgType = type;
-        this.i = i;
+        this.genInt = genInt;
     }
 
     /**
@@ -155,10 +155,10 @@ public class MessageArrTransQuay implements Serializable{
      *    @param b state
      */
 
-    public MessageArrTransQuay  (int type, Boolean b)
+    public MessageArrTransQuay  (int type, boolean genBool)
     {
         this.msgType = type;
-        this.b = b;
+        this.genBool = genBool;
         
     }
 
