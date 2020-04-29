@@ -2,6 +2,9 @@ package airportrhapsody.comInf;
 
 import java.io.Serializable;
 
+import airportrhapsody.clientSide.BusDriver;
+import airportrhapsody.clientSide.Passenger;
+
 public class MessageDepTransQuay implements Serializable {
 
 
@@ -42,6 +45,29 @@ public class MessageDepTransQuay implements Serializable {
 
     private int msgType = -1;
 
+    /**
+     *  Passenger state
+     *    @serialField st
+     */
+    private Passenger.InternalState st = null;
+
+    /**
+     *  Passenger ID
+     *    @serialField passengerID
+     */
+    private int passengerID = -1;
+
+    /**
+     *      Bis Driver state
+     *    @serialField b
+     */
+    private BusDriver.InternalState bst;
+
+    /**
+     *  Passenger 
+     *    @serialField st
+     */
+    private Passenger p = null;
 
 
     /**
@@ -53,6 +79,54 @@ public class MessageDepTransQuay implements Serializable {
     public MessageDepTransQuay (int type)
     {
         msgType = type;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     *    @param st Passenger state
+     */
+    public MessageDepTransQuay (int type, Passenger.InternalState st)
+    {
+        msgType = type;
+        this.st = st;
+    }
+
+    /**
+     *  Instantiating a message (form 3).
+     *
+     *    @param type message type
+     *    @param p Passenger
+     */
+    public MessageDepTransQuay (int type, Passenger p)
+    {
+        msgType = type;
+        this.p = p;
+    }
+
+    /**
+     *  Instantiating a message (form 4).
+     *
+     *    @param type message type
+     *    @param passengerID Passenger ID
+     */
+    public MessageDepTransQuay (int type, int passengerID)
+    {
+        msgType = type;
+        this.passengerID = passengerID;
+    }
+
+    /**
+     *  Instantiating a message (form 5).
+     *
+     *    @param type message type
+     *    @param st Bus Driver state
+     */
+    public MessageDepTransQuay (int type, BusDriver.InternalState bst)
+    {
+        msgType = type;
+        this.bst = bst;
     }
 
     /**

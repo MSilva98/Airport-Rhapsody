@@ -37,6 +37,13 @@ public class MessageTempStoreArea implements Serializable{
     private int msgType = -1;
 
 
+    /**
+     *  Luaggage
+     *    @serialField l
+     */
+
+    private Luggage l = null;
+
 
     /**
      *  Instantiating a message (form 1).
@@ -47,6 +54,18 @@ public class MessageTempStoreArea implements Serializable{
     public MessageTempStoreArea (int type)
     {
         msgType = type;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     */
+
+    public MessageTempStoreArea (int type, Luggage l)
+    {
+        msgType = type;
+        this.l = l;
     }
 
     /**

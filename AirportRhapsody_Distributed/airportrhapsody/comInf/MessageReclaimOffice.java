@@ -2,6 +2,8 @@ package airportrhapsody.comInf;
 
 import java.io.Serializable;
 
+import airportrhapsody.clientSide.Passenger;
+
 public class MessageReclaimOffice implements Serializable {
 
     /**
@@ -50,6 +52,18 @@ public class MessageReclaimOffice implements Serializable {
 
     private int msgType = -1;
 
+    /**
+     *  Passenger state
+     *    @serialField st
+     */
+    private Passenger.InternalState st = null;
+
+    /**
+     *  Passenger ID or bags or reclaims
+     *    @serialField passengerID
+     */
+    private int i = -1;
+
 
 
     /**
@@ -61,6 +75,30 @@ public class MessageReclaimOffice implements Serializable {
     public MessageReclaimOffice (int type)
     {
         msgType = type;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     *    @param st Passenger state
+     */
+    public MessageReclaimOffice (int type, Passenger.InternalState st)
+    {
+        msgType = type;
+        this.st = st;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     *    @param i Passenger ID or bags or reclaims
+     */
+    public MessageReclaimOffice (int type, int i)
+    {
+        msgType = type;
+        this.i = i;
     }
 
     /**

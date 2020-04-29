@@ -2,6 +2,8 @@ package airportrhapsody.comInf;
 
 import java.io.Serializable;
 
+import airportrhapsody.clientSide.Passenger;
+
 /**
  * This type of data defines messages that are exchanged between clients and Arrival terminal exit server
  */
@@ -68,7 +70,30 @@ public class MessageArrTermExit implements Serializable{
 
     private int msgType = -1;
 
+    /**
+     *  Passenger internal state
+     *    @serialField st
+     */
+    private Passenger.InternalState st = null;
 
+
+    /**
+     *  Passenger id
+     *    @serialField passengerID
+     */
+    private int passengerID = -1;
+
+    /**
+     *  Passenger 
+     *    @serialField p
+     */
+    private Passenger p = null;
+
+    /**
+     *  Terminal state 
+     *    @serialField isEmpty
+     */
+    private boolean isEmpty;
 
     /**
      *  Instantiating a message (form 1).
@@ -79,6 +104,58 @@ public class MessageArrTermExit implements Serializable{
     public MessageArrTermExit (int type)
     {
         msgType = type;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     *    @param passengerID passengerID
+     */
+
+    public MessageArrTermExit (int type,  int passengerID)
+    {
+        msgType = type;
+        this.passengerID = passengerID;
+    }
+
+    /**
+     *  Instantiating a message (form 3).
+     *
+     *    @param type message type
+     *    @param st passenger state
+     */
+
+    public MessageArrTermExit (int type, Passenger.InternalState st)
+    {
+        msgType = type;
+        this.st = st;
+    }
+
+    /**
+     *  Instantiating a message (form 4).
+     *
+     *    @param type message type
+     *    @param p passenger 
+     */
+
+    public MessageArrTermExit (int type, Passenger p)
+    {
+        msgType = type;
+        this.p = p;
+    }
+
+    /**
+     *  Instantiating a message (form 4).
+     *
+     *    @param type message type
+     *    @param isEmpty 
+     */
+
+    public MessageArrTermExit (int type, Boolean isEmpty)
+    {
+        msgType = type;
+        this.isEmpty = isEmpty;
     }
 
     /**

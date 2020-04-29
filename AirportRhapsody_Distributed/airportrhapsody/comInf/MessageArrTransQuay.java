@@ -2,6 +2,8 @@ package airportrhapsody.comInf;
 
 import java.io.Serializable;
 
+import airportrhapsody.clientSide.Passenger;
+
 public class MessageArrTransQuay implements Serializable{
 
     /**
@@ -82,9 +84,31 @@ public class MessageArrTransQuay implements Serializable{
      *  Message type
      *    @serialField msgType
      */
-
     private int msgType = -1;
 
+    /**
+     * Passenger ID or numOfPassengers
+     *    @serialField passengerID
+     */
+    private int i = -1;
+
+    /**
+     *  Passenger 
+     *    @serialField p
+     */
+    private Passenger p = null;
+
+    /**
+     *  Day state 
+     *    @serialField b
+     */
+    private boolean b;
+
+    /**
+     *  Passengers handler
+     *    @serialField p
+     */
+    private PassengersHandler ph = null;
 
 
     /**
@@ -96,6 +120,59 @@ public class MessageArrTransQuay implements Serializable{
     public MessageArrTransQuay (int type)
     {
         msgType = type;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     *    @param i Passenger ID or numOfPassenger
+     */
+
+    public MessageArrTransQuay (int type, int i)
+    {
+        msgType = type;
+        this.i = i;
+    }
+
+    /**
+     *  Instantiating a message (form 3).
+     *
+     *    @param type message type
+     *    @param p Passenger
+     */
+
+    public MessageArrTransQuay (int type, Passenger p)
+    {
+        msgType = type;
+        this.p = p;
+    }
+
+     /**
+     *  Instantiating a message (form 4).
+     *
+     *    @param type message type
+     *    @param b state
+     */
+
+    public MessageArrTransQuay  (int type, Boolean b)
+    {
+        this.msgType = type;
+        this.b = b;
+        
+    }
+
+    /**
+     *  Instantiating a message (form 5).
+     *
+     *    @param type message type
+     *    @param ph Passengers handler
+     */
+
+    public MessageArrTransQuay (int type, PassengersHandler ph)
+    {
+        msgType = type;
+        this.ph = ph;
     }
 
     /**

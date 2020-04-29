@@ -2,6 +2,8 @@ package airportrhapsody.comInf;
 
 import java.io.Serializable;
 
+import airportrhapsody.clientSide.Passenger;
+
 public class MessageDepTermEntrance implements Serializable{
 
     /**
@@ -46,8 +48,31 @@ public class MessageDepTermEntrance implements Serializable{
      *  Message type
      *    @serialField msgType
      */
-
     private int msgType = -1;
+
+    /**
+     *  Passenger state
+     *    @serialField st
+     */
+    private Passenger.InternalState st = null;
+
+    /**
+     *  Passenger ID
+     *    @serialField passengerID
+     */
+    private int passengerID = -1;
+
+    /**
+     * 
+     *    @serialField b
+     */
+    private boolean b;
+
+    /**
+     *  Passenger 
+     *    @serialField st
+     */
+    private Passenger p = null;
 
 
 
@@ -56,10 +81,57 @@ public class MessageDepTermEntrance implements Serializable{
      *
      *    @param type message type
      */
-
     public MessageDepTermEntrance (int type)
     {
         msgType = type;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     *    @param st Passenger state
+     */
+    public MessageDepTermEntrance (int type, Passenger.InternalState st)
+    {
+        msgType = type;
+        this.st = st;
+    }
+
+    /**
+     *  Instantiating a message (form 3).
+     *
+     *    @param type message type
+     *    @param p Passenger
+     */
+    public MessageDepTermEntrance (int type, Passenger p)
+    {
+        msgType = type;
+        this.p = p;
+    }
+
+    /**
+     *  Instantiating a message (form 4).
+     *
+     *    @param type message type
+     *    @param passengerID Passenger ID
+     */
+    public MessageDepTermEntrance (int type, int passengerID)
+    {
+        msgType = type;
+        this.passengerID = passengerID;
+    }
+
+    /**
+     *  Instantiating a message (form 4).
+     *
+     *    @param type message type
+     *    @param b
+     */
+    public MessageDepTermEntrance (int type, boolean b)
+    {
+        msgType = type;
+        this.b = b;
     }
 
     /**

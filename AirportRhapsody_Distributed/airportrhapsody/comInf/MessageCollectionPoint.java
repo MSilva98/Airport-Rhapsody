@@ -2,6 +2,8 @@ package airportrhapsody.comInf;
 
 import java.io.Serializable;
 
+import airportrhapsody.clientSide.Porter;
+
 public class MessageCollectionPoint implements Serializable{
 
     /**
@@ -69,8 +71,37 @@ public class MessageCollectionPoint implements Serializable{
      *  Message type
      *    @serialField msgType
      */
-
     private int msgType = -1;
+
+    /**
+     *  Passenger ID
+     *    @serialField passengerID
+     */
+    private int passengerID = -1;
+
+    /**
+     *  Nuber of bags
+     *    @serialField nr
+     */
+    private int nr = -1;
+
+    /**
+     * 
+     *    @serialField b
+     */
+    private boolean b;
+
+    /**
+     *  Luaggage
+     *    @serialField l
+     */
+    private Luggage l = null;
+
+    /**
+     *  Porter state
+     *    @serialField st
+     */
+    private Porter.InternalState st = null;
 
 
 
@@ -79,10 +110,69 @@ public class MessageCollectionPoint implements Serializable{
      *
      *    @param type message type
      */
-
     public MessageCollectionPoint (int type)
     {
         msgType = type;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     */
+    public MessageCollectionPoint (int type, int passengerID, int nr)
+    {
+        msgType = type;
+        this.passengerID = passengerID;
+        this.nr = nr;
+    }
+
+    /**
+     *  Instantiating a message (form 2).
+     *
+     *    @param type message type
+     *    @param b
+     */
+    public MessageCollectionPoint (int type, boolean b)
+    {
+        msgType = type;
+        this.b = b;
+    }
+
+    /**
+     *  Instantiating a message (form 3).
+     *
+     *    @param type message type
+     *    @param l luggage
+     */
+    public MessageCollectionPoint (int type, Luggage l)
+    {
+        msgType = type;
+        this.l = l;
+    }
+
+    /**
+     *  Instantiating a message (form 3).
+     *
+     *    @param type message type
+     *    @param st porter state
+     */
+    public MessageCollectionPoint (int type, Porter.InternalState st)
+    {
+        msgType = type;
+        this.st = st;
+    }
+
+    /**
+     *  Instantiating a message (form 4).
+     *
+     *    @param type message type
+     *    @param i  id or number os bags
+     */
+    public MessageCollectionPoint (int type, int i)
+    {
+        msgType = type;
+        this.passengerID = passengerID;
     }
 
     /**
