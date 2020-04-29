@@ -1,8 +1,8 @@
 package airportrhapsody.serverSide;
 
-import airportrhapsody.entities.Passenger;
-import airportrhapsody.entities.Porter;
-import airportrhapsody.commonInfrastructures.*;
+import airportrhapsody.clientSide.Passenger;
+import airportrhapsody.clientSide.Porter;
+import airportrhapsody.comInf.*;
 
 /**
  * Baggage Collection Point

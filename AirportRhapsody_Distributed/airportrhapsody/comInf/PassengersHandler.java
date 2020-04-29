@@ -1,5 +1,5 @@
 package airportrhapsody.comInf;
-import airportrhapsody.entities.Passenger;
+import airportrhapsody.clientSide.Passenger;
 
 /**
  * Passengers handler

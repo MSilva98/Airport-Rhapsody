@@ -1,8 +1,8 @@
 package airportrhapsody.serverSide;
 
-import airportrhapsody.entities.BusDriver;
-import airportrhapsody.entities.Passenger;
-import airportrhapsody.commonInfrastructures.*;
+import airportrhapsody.clientSide.BusDriver;
+import airportrhapsody.clientSide.Passenger;
+import airportrhapsody.comInf.*;
 /**
  * Departure terminal transfer quay
  */

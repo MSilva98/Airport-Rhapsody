@@ -1,6 +1,6 @@
 package airportrhapsody.comInf;
 
-import airportrhapsody.entities.Passenger.Situation;
+import airportrhapsody.clientSide.Passenger.Situation;
 
 /**
 * Luggage

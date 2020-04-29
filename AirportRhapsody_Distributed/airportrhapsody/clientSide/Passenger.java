@@ -2,7 +2,7 @@ package airportrhapsody.clientSide;
 import java.util.Random;
 
 import airportrhapsody.serverSide.*;
-import airportrhapsody.commonInfrastructures.*;
+import airportrhapsody.comInf.*;
 
 /**
  * This class implements the passenger thread

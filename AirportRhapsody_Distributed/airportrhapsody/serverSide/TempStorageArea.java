@@ -1,6 +1,6 @@
 package airportrhapsody.serverSide;
 
-import airportrhapsody.commonInfrastructures.*;
+import airportrhapsody.comInf.*;
 
 /**
  * Temporary Storage Area

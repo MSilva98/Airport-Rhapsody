@@ -2,7 +2,7 @@ package airportrhapsody.clientSide;
 
 import airportrhapsody.clientSide.*;
 import airportrhapsody.serverSide.*;
-import airportrhapsody.commonInfrastructures.*;
+import airportrhapsody.comInf.*;
 
 public class Porter extends Thread{
     /**
@@ -100,7 +100,7 @@ public class Porter extends Thread{
      */
     private void carryItToAppropriateStore(Luggage l) {
         this.generalRepo.setBn(this.arrivalLounge.size());
-        if(l.getSi() == Situation.FDT){
+        if(l.getSi() == Passenger.Situation.FDT){
             this.collPoint.insertBag(l);
             this.setPorterState(InternalState.AT_THE_LUGGAGE_BELT_CONVEYOR);
             this.generalRepo.setStatPorter("ALCB");

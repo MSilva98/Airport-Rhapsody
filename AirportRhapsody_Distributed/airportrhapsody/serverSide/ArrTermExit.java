@@ -1,11 +1,11 @@
 package airportrhapsody.serverSide;
 
-import airportrhapsody.entities.Passenger;
+import airportrhapsody.clientSide.Passenger;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-import airportrhapsody.commonInfrastructures.*;
+import airportrhapsody.comInf.*;
 
 /**
  * Arrival terminal exit
