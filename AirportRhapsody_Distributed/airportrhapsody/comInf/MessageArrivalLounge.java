@@ -77,6 +77,13 @@ public class MessageArrivalLounge implements Serializable{
      */
     public static final int SDE = 8;
 
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  9;
+
     //Message arguments
 
     /**
@@ -170,5 +177,13 @@ public class MessageArrivalLounge implements Serializable{
     public int getType ()
     {
         return (msgType);
+    }
+
+    public Luggage getLuggage(){
+        return l;
+    }
+
+    public boolean getGenBool(){
+        return genBool;
     }
 }

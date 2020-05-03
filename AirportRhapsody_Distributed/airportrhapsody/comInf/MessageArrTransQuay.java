@@ -76,6 +76,13 @@ public class MessageArrTransQuay implements Serializable{
      * @serialField SDE
      */
     public static final int SDE = 9;
+
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  10;
     
 
     //Message arguments

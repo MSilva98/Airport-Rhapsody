@@ -30,7 +30,7 @@ public class MessageArrTermExit implements Serializable{
      * 
      * @serialField AR
      */
-    public static final int AR = 2;
+    public static final int AT = 2;
 
     /**
      * Remove passenger from terminal
@@ -59,6 +59,13 @@ public class MessageArrTermExit implements Serializable{
      * @serialField GH
      */
     public static final int GH = 6;
+
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  7;
     
 
     //Message arguments
@@ -167,6 +174,18 @@ public class MessageArrTermExit implements Serializable{
     public int getType ()
     {
         return (msgType);
+    }
+
+    public Passenger.InternalState getSt(){
+        return st;
+    }
+
+    public Passenger getPassenger(){
+        return p;
+    }
+
+    public boolean getIsEmpty(){
+        return isEmpty;
     }
 
 }

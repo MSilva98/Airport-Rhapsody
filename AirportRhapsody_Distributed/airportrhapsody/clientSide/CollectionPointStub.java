@@ -154,6 +154,7 @@ public class CollectionPointStub  {
             // { //sleep((long) (10));
             // }
             // catch (IpassengerIDct(outMessage);
+        }
         inMessage = (MessageCollectionPoint) con.readObject ();
         con.close ();
         if(inMessage.getType() != MessageCollectionPoint.GNB ){

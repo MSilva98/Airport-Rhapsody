@@ -35,6 +35,15 @@ public class TempStorageAreaStub  {
     public void insertBag(Luggage l){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageTempStoreArea inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageTempStoreArea(MessageTempStoreArea.IB,l);
+        con.writeObject(outMessage);
+        inMessage = (MessageTempStoreArea) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageTempStoreArea.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
     /**
      * Collect a bag from Temporary Storage Area
@@ -43,6 +52,17 @@ public class TempStorageAreaStub  {
     public Luggage collectBag(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageTempStoreArea inMessage, outMessage;
-        return null;
+        while (!con.open ()) {}
+        outMessage = new MessageTempStoreArea(MessageTempStoreArea.CB);
+        con.writeObject(outMessage);
+        inMessage = (MessageTempStoreArea) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageTempStoreArea.CB ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return -1;
+        }else{
+            return inMessage.getLugagge();
+        }
     }
 }

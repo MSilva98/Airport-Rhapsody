@@ -36,6 +36,13 @@ public class MessageDepTransQuay implements Serializable {
      */
     public static final int LB = 3;
 
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  4;
+
     //Message arguments
 
     /**
@@ -61,7 +68,7 @@ public class MessageDepTransQuay implements Serializable {
      *      Bis Driver state
      *    @serialField b
      */
-    private BusDriver.InternalState bst;
+    private BusDriver.InternalState pst = null;
 
     /**
      *  Passenger 
@@ -87,10 +94,10 @@ public class MessageDepTransQuay implements Serializable {
      *    @param type message type
      *    @param st Passenger state
      */
-    public MessageDepTransQuay (int type, Passenger.InternalState st)
+    public MessageDepTransQuay (int type, Passenger.InternalState pst)
     {
         msgType = type;
-        this.st = st;
+        this.pst = pst;
     }
 
     /**
@@ -138,5 +145,17 @@ public class MessageDepTransQuay implements Serializable {
     public int getType ()
     {
         return (msgType);
+    }
+
+    public Passenger.InternalState getPassengerSt(){
+        return pst;
+    }
+
+    public BusDriver.InternalState getBusDriverSt(){
+        return bst;
+    }
+
+    public Passenger getPassenger(){
+        return p;
     }
 }

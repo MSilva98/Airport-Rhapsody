@@ -33,8 +33,18 @@ public class DepTransQuayStub  {
     public Passenger.InternalState leaveBus(int passengerID){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageDepTransQuay inMessage, outMessage;
-        
-        return null;
+        while (!con.open ()) {}
+        outMessage = new MessageDepTransQuay(MessageDepTransQuay.LB, passengerID);
+        con.writeObject(outMessage);
+        inMessage = (MessageDepTransQuay) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageDepTransQuay.LB ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return null;
+        }else{
+            return inMessage.getPassengerSt();
+        }
     }
 
     /**
@@ -45,7 +55,18 @@ public class DepTransQuayStub  {
     public Passenger leaveDepTransQuay(int id){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageDepTransQuay inMessage, outMessage;
-        return null;
+        while (!con.open ()) {}
+        outMessage = new MessageDepTransQuay(MessageDepTransQuay.LDTQ, id);
+        con.writeObject(outMessage);
+        inMessage = (MessageDepTransQuay) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageDepTransQuay.LDTQ ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return null;
+        }else{
+            return inMessage.getPassenger();
+        }
     }
     /**
      * Park the bus and let pass off
@@ -54,6 +75,17 @@ public class DepTransQuayStub  {
     public BusDriver.InternalState parkTheBusAndLetPassOff(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageDepTransQuay inMessage, outMessage;
-        return null;
+        while (!con.open ()) {}
+        outMessage = new MessageDepTransQuay(MessageDepTransQuay.PTBALPO);
+        con.writeObject(outMessage);
+        inMessage = (MessageDepTransQuay) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageDepTransQuay.PTBALPO ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return null;
+        }else{
+            return inMessage.getBusDriverSt();
+        }
     }
 }

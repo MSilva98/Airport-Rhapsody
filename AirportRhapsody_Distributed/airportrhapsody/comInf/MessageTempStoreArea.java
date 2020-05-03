@@ -27,6 +27,13 @@ public class MessageTempStoreArea implements Serializable{
      */
     public static final int CB = 2;
 
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  3;
+
     //Message arguments
 
     /**
@@ -77,6 +84,10 @@ public class MessageTempStoreArea implements Serializable{
     public int getType ()
     {
         return (msgType);
+    }
+
+    public Luggage getLugagge(){
+        return l;
     }
 
 

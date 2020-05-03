@@ -42,6 +42,13 @@ public class MessageReclaimOffice implements Serializable {
      */
     public static final int SR = 4;
 
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  5;
+
 
     //Message arguments
 
@@ -110,5 +117,13 @@ public class MessageReclaimOffice implements Serializable {
     public int getType ()
     {
         return (msgType);
+    }
+
+    public Passenger.InternalState getPassengerSt(){
+        return pst;
+    }
+
+    public int getGenInt(){
+        return genInt;
     }
 }

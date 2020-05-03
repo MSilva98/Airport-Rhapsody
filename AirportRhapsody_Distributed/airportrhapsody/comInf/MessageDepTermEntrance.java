@@ -17,9 +17,9 @@ public class MessageDepTermEntrance implements Serializable{
     /**
      * Insert passenger in terminal
      * 
-     * @serialField AR
+     * @serialField AT
      */
-    public static final int AR = 1;
+    public static final int AT = 1;
 
     /**
      * Remove passenger from terminal
@@ -41,6 +41,13 @@ public class MessageDepTermEntrance implements Serializable{
      * @serialField PNL
      */
     public static final int PNL = 4;
+
+    /**
+     * Success
+     * 
+     * @serialField ACK
+     */
+    public static final int ACK =  5;
 
     //Message arguments
 
@@ -143,6 +150,18 @@ public class MessageDepTermEntrance implements Serializable{
     public int getType ()
     {
         return (msgType);
+    }
+
+    public boolean getGenBool(){
+        return genBool;
+    }
+
+    public Passenger getPassenger(){
+        return p;
+    }
+
+    public Passenger.InternalState getPassengerSt(){
+        return st;
     }
 
 }

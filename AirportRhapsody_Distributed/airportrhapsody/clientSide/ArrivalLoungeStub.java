@@ -37,6 +37,15 @@ public class ArrivalLoungeStub {
     public void putBag(Luggage l){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.PB, l);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
 
     /**
@@ -47,7 +56,18 @@ public class ArrivalLoungeStub {
     public Luggage tryToCollectABag(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
-        return null;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.TTCAB);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageCollectionPoint.TTCAB ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return null;
+        }else{
+            return inMessage.getLugagge();
+        }
     }
 
     /**
@@ -56,6 +76,15 @@ public class ArrivalLoungeStub {
     public void restPorter(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.RP);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
     /**
      * wake up porter
@@ -63,6 +92,15 @@ public class ArrivalLoungeStub {
     public void wakePorter(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.WP);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
 
     /**
@@ -74,7 +112,18 @@ public class ArrivalLoungeStub {
     public boolean takeARest() {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
-        return false;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.TAR);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.TAR ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getGenBool();
+        }
     }
 
     /**
@@ -85,17 +134,48 @@ public class ArrivalLoungeStub {
     public boolean whatShouldIDo(Passenger.Situation s) {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
-        return false;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.WSID, s);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.WSID ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getGenBool();
+        }
     }
 
     public boolean getDayEnd(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
-        return false;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.GDE);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.GDE ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getGenBool();
+        }
     }
 
     public void setDayEnd(boolean st){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.SDE,st);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
 }

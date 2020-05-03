@@ -36,6 +36,15 @@ public class ArrTermExitStub  {
     public void leaveAirpDown() {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrTermExit(MessageArrTermExit.LAD);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrTermExit) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrTermExit.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
 
     /**
@@ -45,7 +54,18 @@ public class ArrTermExitStub  {
     public Passenger.InternalState arrivedTerm(int passengerID) {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
-        return null;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrTermExit.AT, passengerID);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrTermExit) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrTermExit.AT ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return null;
+        }else{
+            return inMessage.getSt();
+        }
     }
     /**
      * Remove passenger from terminal
@@ -54,7 +74,18 @@ public class ArrTermExitStub  {
     public Passenger leftTerm() {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
-        return null;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrTermExit.LT);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrTermExit) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrTermExit.LT ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return null;
+        }else{
+            return inMessage.getPassenger();
+        }
     }
 
 
@@ -65,7 +96,18 @@ public class ArrTermExitStub  {
     public boolean emptyTerm() {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
-        return false;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrTermExit.EP);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrTermExit) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrTermExit.EP ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getIsEmpty();
+        }
     }
     /**
      * Set the end of the work
@@ -73,6 +115,15 @@ public class ArrTermExitStub  {
     private void endOfWork(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrTermExit(MessageArrTermExit.EOW);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrTermExit) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrTermExit.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
     /**
      * Go home
@@ -81,5 +132,14 @@ public class ArrTermExitStub  {
     public void goHome() {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrTermExit(MessageArrTermExit.GH);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrTermExit) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrTermExit.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
     }
 }
