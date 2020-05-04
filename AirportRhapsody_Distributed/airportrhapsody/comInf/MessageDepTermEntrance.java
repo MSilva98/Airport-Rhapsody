@@ -21,33 +21,33 @@ public class MessageDepTermEntrance implements Serializable{
      */
     public static final int AT = 1;
 
-    /**
-     * Remove passenger from terminal
-     * 
-     * @serialField LT
-     */
-    public static final int LT = 2;
+    // /**
+    //  * Remove passenger from terminal
+    //  * 
+    //  * @serialField LT
+    //  */
+    // public static final int LT = 2;
 
-    /**
-     * Check if terminal is empty
-     * 
-     * @serialField EP
-     */
-    public static final int EP = 3;
+    // /**
+    //  * Check if terminal is empty
+    //  * 
+    //  * @serialField EP
+    //  */
+    // public static final int EP = 3;
 
     /**
      * Prepare next leg
      * 
      * @serialField PNL
      */
-    public static final int PNL = 4;
+    public static final int PNL = 2;
 
     /**
      * Success
      * 
      * @serialField ACK
      */
-    public static final int ACK =  5;
+    public static final int ACK =  3;
 
     //Message arguments
 
@@ -163,5 +163,9 @@ public class MessageDepTermEntrance implements Serializable{
     public Passenger.InternalState getPassengerSt(){
         return st;
     }
+
+	public int getPassengerID() {
+		return passengerID;
+	}
 
 }

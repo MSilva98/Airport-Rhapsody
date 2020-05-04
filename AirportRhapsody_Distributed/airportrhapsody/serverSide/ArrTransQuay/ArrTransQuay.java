@@ -6,6 +6,7 @@ import java.util.List;
 import airportrhapsody.clientSide.BusDriver;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;
+import airportrhapsody.serverSide.Logger.*;
 
 /**
  * Arrival terminal transfer quay

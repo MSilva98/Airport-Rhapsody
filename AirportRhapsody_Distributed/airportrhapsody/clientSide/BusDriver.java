@@ -1,6 +1,8 @@
 package airportrhapsody.clientSide;
 
-import airportrhapsody.serverSide.*;
+import airportrhapsody.serverSide.Logger.*;
+import airportrhapsody.serverSide.ArrTransQuay.*;
+import airportrhapsody.serverSide.DepTransQuay.*;
 
 /**
  * This class implements the bus driver thread

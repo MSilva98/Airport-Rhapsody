@@ -48,47 +48,48 @@ public class DepTermEntranceStub {
         }
     }
 
-    /**
-     * Remove passenger from terminal
-     * @return passenger
-     */
-    public Passenger leftTerm(){
-        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
-        MessageDepTermEntrance inMessage, outMessage;
-        while (!con.open ()) {}
-        outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.LT);
-        con.writeObject(outMessage);
-        inMessage = (MessageDepTermEntrance) con.readObject ();
-        con.close ();
-        if(inMessage.getType() != MessageDepTermEntrance.LT ){
-            System.out.println("Tipo inválido");
-            System.exit (1);
-            return null;
-        }else{
-            return inMessage.getPassenger();
-        }
-    }
-    /**
-     * Check if terminal is empty
-     *  @return <li> true if is empty
-     *          <li> else false
-     */
-    public boolean emptyTerm(){
-        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
-        MessageDepTermEntrance inMessage, outMessage;
-        while (!con.open ()) {}
-        outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.EP);
-        con.writeObject(outMessage);
-        inMessage = (MessageDepTermEntrance) con.readObject ();
-        con.close ();
-        if(inMessage.getType() != MessageDepTermEntrance.EP ){
-            System.out.println("Tipo inválido");
-            System.exit (1);
-            return false;
-        }else{
-            return inMessage.getGenBool();
-        }
-    }
+    // /**
+    //  * Remove passenger from terminal
+    //  * @return passenger
+    //  */
+    // public Passenger leftTerm(){
+    //     ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+    //     MessageDepTermEntrance inMessage, outMessage;
+    //     while (!con.open ()) {}
+    //     outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.LT);
+    //     con.writeObject(outMessage);
+    //     inMessage = (MessageDepTermEntrance) con.readObject ();
+    //     con.close ();
+    //     if(inMessage.getType() != MessageDepTermEntrance.LT ){
+    //         System.out.println("Tipo inválido");
+    //         System.exit (1);
+    //         return null;
+    //     }else{
+    //         return inMessage.getPassenger();
+    //     }
+    // }
+    // /**
+    //  * Check if terminal is empty
+    //  *  @return <li> true if is empty
+    //  *          <li> else false
+    //  */
+    // public boolean emptyTerm(){
+    //     ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+    //     MessageDepTermEntrance inMessage, outMessage;
+    //     while (!con.open ()) {}
+    //     outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.EP);
+    //     con.writeObject(outMessage);
+    //     inMessage = (MessageDepTermEntrance) con.readObject ();
+    //     con.close ();
+    //     if(inMessage.getType() != MessageDepTermEntrance.EP ){
+    //         System.out.println("Tipo inválido");
+    //         System.exit (1);
+    //         return false;
+    //     }else{
+    //         return inMessage.getGenBool();
+    //     }
+    // }
+
     /**
      * Prepare next leg
      * @param depTransQuay Departure terminal transfer quay

@@ -1,6 +1,7 @@
 package airportrhapsody.comInf;
 
 import java.io.Serializable;
+import java.util.List;
 
 import airportrhapsody.clientSide.Passenger;
 
@@ -78,11 +79,18 @@ public class MessageArrTransQuay implements Serializable{
     public static final int SDE = 9;
 
     /**
+     * Tranfer Quay Is Empty
+     * 
+     * @serialField IE
+     */
+    public static final int IE = 10;
+
+    /**
      * Success
      * 
      * @serialField ACK
      */
-    public static final int ACK =  10;
+    public static final int ACK =  11;
     
 
     //Message arguments
@@ -115,7 +123,7 @@ public class MessageArrTransQuay implements Serializable{
      *  Passengers handler
      *    @serialField p
      */
-    private PassengersHandler ph = null;
+    private List<Integer> ph = null;
 
 
     /**
@@ -176,7 +184,7 @@ public class MessageArrTransQuay implements Serializable{
      *    @param ph Passengers handler
      */
 
-    public MessageArrTransQuay (int type, PassengersHandler ph)
+    public MessageArrTransQuay (int type, List<Integer> ph)
     {
         msgType = type;
         this.ph = ph;
@@ -191,5 +199,13 @@ public class MessageArrTransQuay implements Serializable{
     public int getType ()
     {
         return (msgType);
+    }
+
+	public int getGenInt() {
+		return genInt;
+    }
+    
+    public boolean getGenBool() {
+        return genBool;
     }
 }

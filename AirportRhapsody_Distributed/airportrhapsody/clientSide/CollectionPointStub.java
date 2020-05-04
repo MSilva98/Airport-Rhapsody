@@ -183,7 +183,7 @@ public class CollectionPointStub  {
             System.exit (1);
             return -1;
         }else{
-            return inMessage.getI();
+            return inMessage.getNR();
         }
     }
 }

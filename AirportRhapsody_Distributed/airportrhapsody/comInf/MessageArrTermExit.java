@@ -47,26 +47,18 @@ public class MessageArrTermExit implements Serializable{
     public static final int EP = 4;
 
     /**
-     * Set the end of the work
-     * 
-     * @serialField EOW
-     */
-    public static final int EOW = 5;
-
-    /**
      * Go home
      * 
      * @serialField GH
      */
-    public static final int GH = 6;
+    public static final int GH = 5;
 
     /**
      * Success
      * 
      * @serialField ACK
      */
-    public static final int ACK =  7;
-    
+    public static final int ACK =  6;
 
     //Message arguments
 
@@ -188,4 +180,7 @@ public class MessageArrTermExit implements Serializable{
         return isEmpty;
     }
 
+    public int getPassengerID(){
+        return this.passengerID;
+    }
 }

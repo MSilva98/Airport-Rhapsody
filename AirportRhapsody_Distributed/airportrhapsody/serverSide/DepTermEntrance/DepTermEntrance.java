@@ -2,6 +2,8 @@ package airportrhapsody.serverSide.DepTermEntrance;
 
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;
+import airportrhapsody.serverSide.Logger.*;
+import airportrhapsody.serverSide.ArrTermExit.*;
 
 /**
  * Departure terminal entrance
@@ -43,21 +45,22 @@ public class DepTermEntrance extends PassengersHandler{
         return Passenger.InternalState.ENTERING_THE_DEPARTURE_TERMINAL;
     }
 
-    /**
-     * Remove passenger from terminal
-     * @return passenger
-     */
-    public Passenger leftTerm(){
-        return super.removePassenger();
-    }
-    /**
-     * Check if terminal is empty
-     *  @return <li> true if is empty
-     *          <li> else false
-     */
-    public boolean emptyTerm(){
-        return super.isEmpty();
-    }
+    // /**
+    //  * Remove passenger from terminal
+    //  * @return passenger
+    //  */
+    // public Passenger leftTerm(){
+    //     return super.removePassenger();
+    // }
+    // /**
+    //  * Check if terminal is empty
+    //  *  @return <li> true if is empty
+    //  *          <li> else false
+    //  */
+    // public boolean emptyTerm(){
+    //     return super.isEmpty();
+    // }
+    
     /**
      * Prepare next leg
      * @param depTransQuay Departure terminal transfer quay

@@ -1,6 +1,7 @@
 package airportrhapsody.serverSide.ReclaimOffice;
 
 import airportrhapsody.clientSide.Passenger;
+import airportrhapsody.serverSide.Logger.*;
 
 /**
  * Baggage reclaim office

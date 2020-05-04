@@ -3,6 +3,7 @@ package airportrhapsody.serverSide.CollectionPoint;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.clientSide.Porter;
 import airportrhapsody.comInf.*;
+import airportrhapsody.serverSide.Logger.*;
 
 /**
  * Baggage Collection Point

@@ -1,11 +1,13 @@
 package airportrhapsody.serverSide.ArrTermExit;
 
 import airportrhapsody.clientSide.Passenger;
+import airportrhapsody.comInf.*;
+import airportrhapsody.serverSide.ArrivalLounge.*;
+import airportrhapsody.serverSide.ArrTransQuay.*;
+import airportrhapsody.serverSide.Logger.*;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
-
-import airportrhapsody.comInf.*;
 
 /**
  * Arrival terminal exit
@@ -119,6 +121,7 @@ public class ArrTermExit extends PassengersHandler {
     public boolean emptyTerm() {
         return super.isEmpty();
     }
+    
     /**
      * Set the end of the work
      */

@@ -1,7 +1,9 @@
 package airportrhapsody.clientSide;
 
-import airportrhapsody.clientSide.*;
-import airportrhapsody.serverSide.*;
+import airportrhapsody.serverSide.Logger.*;
+import airportrhapsody.serverSide.ArrivalLounge.*;
+import airportrhapsody.serverSide.CollectionPoint.*;
+import airportrhapsody.serverSide.TempStorageArea.*;
 import airportrhapsody.comInf.*;
 
 public class Porter extends Thread{

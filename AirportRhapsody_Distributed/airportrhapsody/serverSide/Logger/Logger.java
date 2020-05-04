@@ -1,4 +1,4 @@
-package airportrhapsody.serverSide;
+package airportrhapsody.serverSide.Logger;
 
 import java.io.File;
 import java.io.FileWriter;

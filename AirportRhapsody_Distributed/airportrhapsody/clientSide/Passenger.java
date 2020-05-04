@@ -1,7 +1,14 @@
 package airportrhapsody.clientSide;
 import java.util.Random;
 
-import airportrhapsody.serverSide.*;
+import airportrhapsody.serverSide.Logger.*;
+import airportrhapsody.serverSide.ArrTermExit.*;
+import airportrhapsody.serverSide.ArrTransQuay.*;
+import airportrhapsody.serverSide.ArrivalLounge.*;
+import airportrhapsody.serverSide.CollectionPoint.*;
+import airportrhapsody.serverSide.DepTermEntrance.*;
+import airportrhapsody.serverSide.DepTransQuay.*;
+import airportrhapsody.serverSide.ReclaimOffice.*;
 import airportrhapsody.comInf.*;
 
 /**

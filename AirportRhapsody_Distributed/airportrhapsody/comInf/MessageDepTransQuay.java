@@ -158,4 +158,8 @@ public class MessageDepTransQuay implements Serializable {
     public Passenger getPassenger(){
         return p;
     }
+
+	public int getPassengerID() {
+		return passengerID;
+	}
 }

@@ -1,6 +1,15 @@
 package airportrhapsody.mainProgram;
 
-import airportrhapsody.serverSide.*;
+import airportrhapsody.serverSide.Logger.*;
+import airportrhapsody.serverSide.ArrTermExit.*;
+import airportrhapsody.serverSide.ArrTransQuay.*;
+import airportrhapsody.serverSide.ArrivalLounge.*;
+import airportrhapsody.serverSide.CollectionPoint.*;
+import airportrhapsody.serverSide.DepTermEntrance.*;
+import airportrhapsody.serverSide.DepTransQuay.*;
+import airportrhapsody.serverSide.ReclaimOffice.*;
+import airportrhapsody.serverSide.TempStorageArea.*;
+
 import airportrhapsody.clientSide.*;
 
 public class AirportRhapsody {
@@ -29,7 +38,7 @@ public class AirportRhapsody {
         //Sharing region
 
         generalRepo = new Logger(nSeatingPlaces, nPassengers, "log.txt");
-        arrivalLounge = new ArrivalLounge(nPassengers*maxBags, nPassengers, generalRepo);
+        arrivalLounge = new ArrivalLounge(nPassengers*maxBags, nPassengers/*, generalRepo*/);
         collPoint = new CollectionPoint(nPassengers*maxBags, nPassengers, generalRepo);
         reclaimOffice = new ReclaimOffice(generalRepo);
         arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces, generalRepo);

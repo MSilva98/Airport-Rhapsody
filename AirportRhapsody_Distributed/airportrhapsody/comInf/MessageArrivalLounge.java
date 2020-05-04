@@ -152,7 +152,6 @@ public class MessageArrivalLounge implements Serializable{
     {
         this.msgType = type;
         this.genBool = genBool;
-        
     }
 
     /**
@@ -185,5 +184,9 @@ public class MessageArrivalLounge implements Serializable{
 
     public boolean getGenBool(){
         return genBool;
+    }
+
+    public Passenger.Situation getSituation(){
+        return s;
     }
 }

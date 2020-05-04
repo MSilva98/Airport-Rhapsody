@@ -200,7 +200,15 @@ public class MessageCollectionPoint implements Serializable{
         return st;
     }
 
-    public int getI(){
+    public int getNR(){
         return nr;
+    }
+
+    public int getPassengerID(){
+        return passengerID;
+    }
+
+    public Luggage getBag(){
+        return l;
     }
 }

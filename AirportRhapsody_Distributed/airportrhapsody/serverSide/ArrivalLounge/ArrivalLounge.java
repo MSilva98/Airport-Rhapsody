@@ -1,7 +1,7 @@
 package airportrhapsody.serverSide.ArrivalLounge;
 
 import airportrhapsody.clientSide.Passenger;
-import airportrhapsody.clientSide.Porter;
+import airportrhapsody.serverSide.Logger.*;
 import airportrhapsody.comInf.*;
 
 /**
@@ -25,7 +25,7 @@ public class ArrivalLounge extends LuggageHandler {
      * 
      *  @serialField generalRepo
      */
-   // private Logger generalRepo;
+    private Logger generalRepo;
     /**
      *  Number of passengers in the arrival lounge
      * 

@@ -3,6 +3,8 @@ package airportrhapsody.serverSide.DepTransQuay;
 import airportrhapsody.clientSide.BusDriver;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;
+import airportrhapsody.serverSide.Logger.*;
+import airportrhapsody.serverSide.ArrTransQuay.*;
 /**
  * Departure terminal transfer quay
  */
