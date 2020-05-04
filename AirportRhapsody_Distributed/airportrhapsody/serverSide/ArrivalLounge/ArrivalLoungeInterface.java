@@ -24,7 +24,25 @@ public class ArrivalLoungeInterface {
         MessageArrivalLounge outMessage = null;                           // mensagem de resposta
         
          /* validação da mensagem recebida */
+
+         switch (inMessage.getType ()){ 
+            case MessageArrivalLounge.PB:  
+                if ((inMessage.getLuggage() == null) ){
+                    throw new MessageException ("Luggage missing!", inMessage);
+                }
+                break;
+            
+            default:    throw new MessageException ("Tipo inválido!", inMessage);
+        }
           /* seu processamento */
+
+          switch (inMessage.getType ()){ 
+              case MessageArrivalLounge.PB:
+                    arrivalLounge.putBag(inMessage.getLuggage());
+                    outMessage = new MessageArrivalLounge (MessageArrivalLounge.ACK);       // gerar resposta
+                    break;
+        
+            }
 
         return outMessage;
    }
