@@ -1,4 +1,4 @@
-package airportrhapsody.serverSide;
+package airportrhapsody.serverSide.CollectionPoint;
 
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.clientSide.Porter;

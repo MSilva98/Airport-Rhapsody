@@ -56,7 +56,7 @@ public class MessageDepTransQuay implements Serializable {
      *  Passenger state
      *    @serialField st
      */
-    private Passenger.InternalState st = null;
+    private Passenger.InternalState pst = null;
 
     /**
      *  Passenger ID
@@ -68,7 +68,7 @@ public class MessageDepTransQuay implements Serializable {
      *      Bis Driver state
      *    @serialField b
      */
-    private BusDriver.InternalState pst = null;
+    private BusDriver.InternalState bst = null;
 
     /**
      *  Passenger 

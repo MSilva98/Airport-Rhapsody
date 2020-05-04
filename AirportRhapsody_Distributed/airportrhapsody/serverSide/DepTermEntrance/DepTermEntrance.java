@@ -1,4 +1,4 @@
-package airportrhapsody.serverSide;
+package airportrhapsody.serverSide.DepTermEntrance;
 
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;

@@ -61,12 +61,12 @@ public class ArrivalLoungeStub {
         con.writeObject(outMessage);
         inMessage = (MessageArrivalLounge) con.readObject ();
         con.close ();
-        if(inMessage.getType() != MessageCollectionPoint.TTCAB ){
+        if(inMessage.getType() != MessageArrivalLounge.TTCAB ){
             System.out.println("Tipo inválido");
             System.exit (1);
             return null;
         }else{
-            return inMessage.getLugagge();
+            return inMessage.getLuggage();
         }
     }
 

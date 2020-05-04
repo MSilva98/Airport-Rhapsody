@@ -1,4 +1,4 @@
-package airportrhapsody.serverSide;
+package airportrhapsody.serverSide.ArrTermExit;
 
 import airportrhapsody.clientSide.Passenger;
 

@@ -60,7 +60,7 @@ public class TempStorageAreaStub  {
         if(inMessage.getType() != MessageTempStoreArea.CB ){
             System.out.println("Tipo inválido");
             System.exit (1);
-            return -1;
+            return null;
         }else{
             return inMessage.getLugagge();
         }

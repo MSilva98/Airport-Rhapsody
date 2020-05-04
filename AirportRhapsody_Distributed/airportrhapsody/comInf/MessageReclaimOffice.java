@@ -63,7 +63,7 @@ public class MessageReclaimOffice implements Serializable {
      *  Passenger state
      *    @serialField st
      */
-    private Passenger.InternalState st = null;
+    private Passenger.InternalState pst = null;
 
     /**
      *  Passenger ID or bags or reclaims
@@ -90,10 +90,10 @@ public class MessageReclaimOffice implements Serializable {
      *    @param type message type
      *    @param st Passenger state
      */
-    public MessageReclaimOffice (int type, Passenger.InternalState st)
+    public MessageReclaimOffice (int type, Passenger.InternalState pst)
     {
         msgType = type;
-        this.st = st;
+        this.pst = pst;
     }
 
     /**

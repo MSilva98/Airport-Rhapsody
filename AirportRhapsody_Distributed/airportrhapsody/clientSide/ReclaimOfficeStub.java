@@ -37,7 +37,7 @@ public class ReclaimOfficeStub {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageReclaimOffice inMessage, outMessage;
         while (!con.open ()) {}
-        outMessage = new MessageReclaimOffice(MessageReclaimOffice.RMB, passengerID);
+        outMessage = new MessageReclaimOffice(MessageReclaimOffice.RMB, numBags);
         con.writeObject(outMessage);
         inMessage = (MessageReclaimOffice) con.readObject ();
         con.close ();

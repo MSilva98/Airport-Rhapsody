@@ -1,4 +1,4 @@
-package airportrhapsody.serverSide;
+package airportrhapsody.serverSide.DepTransQuay;
 
 import airportrhapsody.clientSide.BusDriver;
 import airportrhapsody.clientSide.Passenger;

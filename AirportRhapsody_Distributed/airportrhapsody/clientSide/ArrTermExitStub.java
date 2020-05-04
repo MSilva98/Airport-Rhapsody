@@ -55,7 +55,7 @@ public class ArrTermExitStub  {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
         while (!con.open ()) {}
-        outMessage = new MessageArrivalLounge(MessageArrTermExit.AT, passengerID);
+        outMessage = new MessageArrTermExit(MessageArrTermExit.AT, passengerID);
         con.writeObject(outMessage);
         inMessage = (MessageArrTermExit) con.readObject ();
         con.close ();
@@ -75,7 +75,7 @@ public class ArrTermExitStub  {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
         while (!con.open ()) {}
-        outMessage = new MessageArrivalLounge(MessageArrTermExit.LT);
+        outMessage = new MessageArrTermExit(MessageArrTermExit.LT);
         con.writeObject(outMessage);
         inMessage = (MessageArrTermExit) con.readObject ();
         con.close ();
@@ -97,7 +97,7 @@ public class ArrTermExitStub  {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
         while (!con.open ()) {}
-        outMessage = new MessageArrivalLounge(MessageArrTermExit.EP);
+        outMessage = new MessageArrTermExit(MessageArrTermExit.EP);
         con.writeObject(outMessage);
         inMessage = (MessageArrTermExit) con.readObject ();
         con.close ();
