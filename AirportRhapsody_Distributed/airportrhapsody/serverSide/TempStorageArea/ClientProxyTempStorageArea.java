@@ -1,6 +1,6 @@
-package airportrhapsody.serverSide.ArrivalLounge;
+package airportrhapsody.serverSide.TempStorageArea;
 
-import airportrhapsody.comInf.MessageArrivalLounge;
+import airportrhapsody.comInf.MessageTempStoreArea;
 import airportrhapsody.comInf.MessageException;
 import airportrhapsody.serverSide.ServerCom;
 
@@ -12,7 +12,7 @@ import airportrhapsody.serverSide.ServerCom;
  * sockets usando o protocolo TCP.
  */
 
-public class ClientProxyArrivalLounge extends Thread
+public class ClientProxyTempStorageArea extends Thread
 {
   /**
    *  Contador de threads lançados
@@ -36,7 +36,7 @@ public class ClientProxyArrivalLounge extends Thread
    *    @serialField bShopInter
    */
 
-   private ArrivalLoungeInterface arrivalLoungeInt;
+   private TempStorageAreaInterface tempStorageAreaInterface;
 
   /**
    *  Instanciação do interface à barbearia.
@@ -45,12 +45,12 @@ public class ClientProxyArrivalLounge extends Thread
    *    @param bShopInter interface à barbearia
    */
 
-   public ClientProxyArrivalLounge (ServerCom sconi, ArrivalLoungeInterface arrivalLoungeInt)
+   public ClientProxyTempStorageArea (ServerCom sconi, TempStorageAreaInterface tempStorageAreaInterface)
    {
       super ("Proxy_" + getProxyId ());
 
       this.sconi = sconi;
-      this.arrivalLoungeInt = arrivalLoungeInt;
+      this.tempStorageAreaInterface = tempStorageAreaInterface;
    }
 
   /**
@@ -60,12 +60,12 @@ public class ClientProxyArrivalLounge extends Thread
    @Override
    public void run ()
    {
-      MessageArrivalLounge inMessage = null,                                      // mensagem de entrada
+      MessageTempStoreArea inMessage = null,                                      // mensagem de entrada
               outMessage = null;                      // mensagem de saída
 
-      inMessage = (MessageArrivalLounge) sconi.readObject ();                     // ler pedido do cliente
+      inMessage = (MessageTempStoreArea) sconi.readObject ();                     // ler pedido do cliente
       try
-      { outMessage = arrivalLoungeInt.processAndReply (inMessage);         // processá-lo
+      { outMessage = tempStorageAreaInterface.processAndReply (inMessage);         // processá-lo
       }
       catch (MessageException e)
       { System.out.println ("Thread " + getName () + ": " + e.getMessage () + "!");
@@ -84,12 +84,12 @@ public class ClientProxyArrivalLounge extends Thread
 
    private static int getProxyId ()
    {
-      Class<airportrhapsody.serverSide.ArrivalLounge.ClientProxyArrivalLounge> cl = null;             // representação do tipo de dados ClientProxy na máquina
+      Class<airportrhapsody.serverSide.TempStorageArea.ClientProxyTempStorageArea> cl = null;             // representação do tipo de dados ClientProxy na máquina
                                                            //   virtual de Java
       int proxyId;                                         // identificador da instanciação
 
       try
-      { cl = (Class<airportrhapsody.serverSide.ArrivalLounge.ClientProxyArrivalLounge>) Class.forName ("airportrhapsody.serverSide.ArrivalLounge.ClientProxyArrivalLounge");
+      { cl = (Class<airportrhapsody.serverSide.TempStorageArea.ClientProxyTempStorageArea>) Class.forName ("airportrhapsody.serverSide.TempStorageArea.ClientProxyTempStorageArea");
       }
       catch (ClassNotFoundException e)
       { System.out.println ("O tipo de dados ClientProxy não foi encontrado!");

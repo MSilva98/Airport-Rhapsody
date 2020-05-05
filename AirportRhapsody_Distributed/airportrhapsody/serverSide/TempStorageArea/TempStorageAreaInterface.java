@@ -15,6 +15,10 @@ public class TempStorageAreaInterface {
      * Instantiate the temporary storage area interface
      * @param tempStorageArea Temporary Storage Area
      */
+    public TempStorageAreaInterface(TempStorageArea tempStorageArea){
+        this.tempStorageArea = tempStorageArea;
+    }
+
     public MessageTempStoreArea processAndReply (MessageTempStoreArea inMessage) throws MessageException
     {
         MessageTempStoreArea outMessage = null;

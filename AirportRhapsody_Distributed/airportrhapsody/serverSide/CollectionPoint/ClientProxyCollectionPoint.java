@@ -1,6 +1,6 @@
-package airportrhapsody.serverSide.ArrivalLounge;
+package airportrhapsody.serverSide.CollectionPoint;
 
-import airportrhapsody.comInf.MessageArrivalLounge;
+import airportrhapsody.comInf.MessageCollectionPoint;
 import airportrhapsody.comInf.MessageException;
 import airportrhapsody.serverSide.ServerCom;
 
@@ -12,7 +12,7 @@ import airportrhapsody.serverSide.ServerCom;
  * sockets usando o protocolo TCP.
  */
 
-public class ClientProxyArrivalLounge extends Thread
+public class ClientProxyCollectionPoint extends Thread
 {
   /**
    *  Contador de threads lançados
@@ -36,7 +36,7 @@ public class ClientProxyArrivalLounge extends Thread
    *    @serialField bShopInter
    */
 
-   private ArrivalLoungeInterface arrivalLoungeInt;
+   private CollectionPointInterface collectionPointInterface;
 
   /**
    *  Instanciação do interface à barbearia.
@@ -45,12 +45,12 @@ public class ClientProxyArrivalLounge extends Thread
    *    @param bShopInter interface à barbearia
    */
 
-   public ClientProxyArrivalLounge (ServerCom sconi, ArrivalLoungeInterface arrivalLoungeInt)
+   public ClientProxyCollectionPoint (ServerCom sconi, CollectionPointInterface collectionPointInterface)
    {
       super ("Proxy_" + getProxyId ());
 
       this.sconi = sconi;
-      this.arrivalLoungeInt = arrivalLoungeInt;
+      this.collectionPointInterface = collectionPointInterface;
    }
 
   /**
@@ -60,12 +60,12 @@ public class ClientProxyArrivalLounge extends Thread
    @Override
    public void run ()
    {
-      MessageArrivalLounge inMessage = null,                                      // mensagem de entrada
+      MessageCollectionPoint inMessage = null,                                      // mensagem de entrada
               outMessage = null;                      // mensagem de saída
 
-      inMessage = (MessageArrivalLounge) sconi.readObject ();                     // ler pedido do cliente
+      inMessage = (MessageCollectionPoint) sconi.readObject ();                     // ler pedido do cliente
       try
-      { outMessage = arrivalLoungeInt.processAndReply (inMessage);         // processá-lo
+      { outMessage = collectionPointInterface.processAndReply (inMessage);         // processá-lo
       }
       catch (MessageException e)
       { System.out.println ("Thread " + getName () + ": " + e.getMessage () + "!");
@@ -84,12 +84,12 @@ public class ClientProxyArrivalLounge extends Thread
 
    private static int getProxyId ()
    {
-      Class<airportrhapsody.serverSide.ArrivalLounge.ClientProxyArrivalLounge> cl = null;             // representação do tipo de dados ClientProxy na máquina
+      Class<airportrhapsody.serverSide.CollectionPoint.ClientProxyCollectionPoint> cl = null;             // representação do tipo de dados ClientProxy na máquina
                                                            //   virtual de Java
       int proxyId;                                         // identificador da instanciação
 
       try
-      { cl = (Class<airportrhapsody.serverSide.ArrivalLounge.ClientProxyArrivalLounge>) Class.forName ("airportrhapsody.serverSide.ArrivalLounge.ClientProxyArrivalLounge");
+      { cl = (Class<airportrhapsody.serverSide.CollectionPoint.ClientProxyCollectionPoint>) Class.forName ("airportrhapsody.serverSide.CollectionPoint.ClientProxyCollectionPoint");
       }
       catch (ClassNotFoundException e)
       { System.out.println ("O tipo de dados ClientProxy não foi encontrado!");

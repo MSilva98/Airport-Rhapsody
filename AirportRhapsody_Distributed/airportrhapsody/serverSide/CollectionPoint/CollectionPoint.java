@@ -57,6 +57,19 @@ public class CollectionPoint extends LuggageHandler {
         }
     }
 
+    public CollectionPoint(int nBags, int nPass){
+        super(nBags);
+        this.collectBag = new Semaphore[nPass];
+        for (int i = 0; i < collectBag.length; i++) {
+            this.collectBag[i] = new Semaphore();
+        }
+        this.noMoreBags = false;
+        bagsToColl = new int[nPass];
+        for (int i = 0; i < bagsToColl.length; i++) {
+            bagsToColl[i]=0;
+        }
+    }
+
     /**
      * Go collect a bag
      * @param p passenger

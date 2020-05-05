@@ -34,6 +34,10 @@ public class DepTermEntrance extends PassengersHandler{
         this.arrTermExit = arrTermExit;
         this.generalRepo = generalRepo;
     }
+
+    public DepTermEntrance(int n){
+        super(n);
+    }
     /**
      * Insert passenger in terminal
      * @param p passenger

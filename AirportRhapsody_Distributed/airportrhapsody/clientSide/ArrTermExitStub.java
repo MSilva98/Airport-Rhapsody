@@ -112,19 +112,19 @@ public class ArrTermExitStub  {
     /**
      * Set the end of the work
      */
-    private void endOfWork(){
-        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
-        MessageArrTermExit inMessage, outMessage;
-        while (!con.open ()) {}
-        outMessage = new MessageArrTermExit(MessageArrTermExit.EOW);
-        con.writeObject(outMessage);
-        inMessage = (MessageArrTermExit) con.readObject ();
-        con.close ();
-        if(inMessage.getType() != MessageArrTermExit.ACK ){
-            System.out.println("Tipo inválido");
-            System.exit (1);
-        }
-    }
+    // private void endOfWork(){
+    //     ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+    //     MessageArrTermExit inMessage, outMessage;
+    //     while (!con.open ()) {}
+    //     outMessage = new MessageArrTermExit(MessageArrTermExit.EOW);
+    //     con.writeObject(outMessage);
+    //     inMessage = (MessageArrTermExit) con.readObject ();
+    //     con.close ();
+    //     if(inMessage.getType() != MessageArrTermExit.ACK ){
+    //         System.out.println("Tipo inválido");
+    //         System.exit (1);
+    //     }
+    // }
     /**
      * Go home
      * @param p passenger

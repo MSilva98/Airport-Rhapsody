@@ -33,6 +33,11 @@ public class ReclaimOffice {
         this.generalRepo = generalRepo;
         this.numBagsMissing = 0;
     }
+    
+    public ReclaimOffice() {
+        this.numBagsMissing = 0;
+    }
+    
     public ReclaimOffice(int reclaims, Logger generalRepo) {
         this.reclaims = reclaims;
         this.generalRepo = generalRepo;

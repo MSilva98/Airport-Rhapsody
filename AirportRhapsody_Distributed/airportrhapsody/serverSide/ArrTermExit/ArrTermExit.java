@@ -44,12 +44,6 @@ public class ArrTermExit extends PassengersHandler {
      */
     private int counter;
     /**
-     * Array of semaphore that block passengers threads
-     * 
-     * @serialField test
-     */
-    private Semaphore[] test;
-    /**
      * Barrier
      * 
      * @serialField newBarrier
@@ -65,16 +59,18 @@ public class ArrTermExit extends PassengersHandler {
      */
     public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights, Logger generalRepo) {
         super(n);
-        // this.newBarrier = new CyclicBarrier(n);
-        // this.test = new Semaphore[n];
-        // for (int i = 0; i < test.length; i++) {
-        //     test[i] = new Semaphore();
-        // }
         this.arrivalLounge = arrivalLounge;
         this.arrTransQuay = arrTransQuay;
         this.totalPassengers = n * numbOfFlights;
         this.counter = 0;
         this.generalRepo = generalRepo;
+        this.newBarrier = new CyclicBarrier(n);
+    }
+
+    public ArrTermExit(int n, int numbOfFlights) {
+        super(n);
+        this.totalPassengers = n * numbOfFlights;
+        this.counter = 0;
         this.newBarrier = new CyclicBarrier(n);
     }
 

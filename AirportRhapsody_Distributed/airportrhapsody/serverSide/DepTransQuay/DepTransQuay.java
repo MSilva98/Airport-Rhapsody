@@ -41,6 +41,12 @@ public class DepTransQuay extends PassengersHandler {
         this.generalRepo = generalRepo;
     }
 
+
+    public DepTransQuay(int n){
+        super(n);
+        parkBusDep = new Semaphore();
+    }
+
     /**
      * Passenger leave the bus
      * @param p passenger

@@ -45,7 +45,7 @@ public class AirportRhapsody {
         depTransQuay = new DepTransQuay(nPassengers, arrTransQuay, generalRepo);
         arrTermExit = new ArrTermExit(nPassengers, arrivalLounge, arrTransQuay, nPlaneLandings, generalRepo);
         depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit, generalRepo);
-        tempStorageArea = new TempStorageArea(nPassengers);
+        tempStorageArea = new TempStorageArea(nPassengers*maxBags);
 
         //entities
         porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint, generalRepo);

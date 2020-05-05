@@ -78,6 +78,22 @@ public class ArrTransQuay extends PassengersHandler {
         passEnter=0;
         passEnterCounter=0;
     }
+
+    public ArrTransQuay(int n, int nseats){
+        super(n);
+        this.seats = new ArrayList<>();
+        this.parkBusArr = new Semaphore();
+        this.busBoard = new Semaphore();
+        this.passengers = new Semaphore[n];
+        for (int i = 0; i < passengers.length; i++) {
+            this.passengers[i] = new Semaphore();
+        }
+        this.dayEnd = false;
+        this.passengersList = new ArrayList<>();
+        this.nseats = nseats;
+        passEnter=0;
+        passEnterCounter=0;
+    }
     /**
      * Free passengers
      */
