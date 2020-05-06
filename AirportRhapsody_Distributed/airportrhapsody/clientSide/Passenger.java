@@ -1,4 +1,5 @@
 package airportrhapsody.clientSide;
+
 import java.util.Random;
 
 import airportrhapsody.serverSide.Logger.*;
@@ -9,6 +10,7 @@ import airportrhapsody.serverSide.CollectionPoint.*;
 import airportrhapsody.serverSide.DepTermEntrance.*;
 import airportrhapsody.serverSide.DepTransQuay.*;
 import airportrhapsody.serverSide.ReclaimOffice.*;
+import airportrhapsody.LoggerStub;
 import airportrhapsody.comInf.*;
 
 /**
@@ -77,49 +79,49 @@ public class Passenger extends Thread{
      * 
      * @serialField arrivalLounge
      */
-    private ArrivalLounge arrivalLounge;
+    private ArrivalLoungeStub arrivalLounge;
     /**
      * Baggage collection point
      * 
      * @serialField collPoint
      */
-    private CollectionPoint collPoint;
+    private CollectionPointStub collPoint;
     /**
      * Baggage reclaim office
      * 
      * @serialField reclaimOffice
      */
-    private ReclaimOffice reclaimOffice;
+    private ReclaimOfficeStub reclaimOffice;
     /**
      * Arrival terminal transfer quay
      * 
      * @serialField arrTransQuay
      */
-    private ArrTransQuay arrTransQuay;
+    private ArrTransQuayStub arrTransQuay;
     /**
      * Departure terminal transfer quay
      * 
      * @serialField arrTransQuay
      */
-    private DepTransQuay depTransQuay;
+    private DepTransQuayStub depTransQuay;
     /**
      * Arrival terminal exit
      * 
      * @serialField arrTermExit
      */
-    private ArrTermExit arrTermExit;
+    private ArrTermExitStub arrTermExit;
     /**
      * Departure terminal entrance
      * 
      * @serialField depTermEntrance
      */
-    private DepTermEntrance depTermEntrance;
+    private DepTermEntranceStub depTermEntrance;
     /**
      *  Logger - general repository of information
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
 
     /**
      * Instantiating the passenger thread.
@@ -133,7 +135,7 @@ public class Passenger extends Thread{
      * @param depTermEntrance   Departure terminal entrance
      * @param generalRepo   General repository of information
      */
-    public Passenger(int id, ArrivalLounge arrivalLounge, CollectionPoint collPoint, ReclaimOffice reclaimOffice, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay, ArrTermExit arrTermExit, DepTermEntrance depTermEntrance, Logger generalRepo) {
+    public Passenger(int id, ArrivalLoungeStub arrivalLounge, CollectionPointStub collPoint, ReclaimOfficeStub reclaimOffice, ArrTransQuayStub arrTransQuay, DepTransQuayStub depTransQuay, ArrTermExitStub arrTermExit, DepTermEntranceStub depTermEntrance, LoggerStub generalRepo) {
         this.passengerID = id;
         this.passengerState = InternalState.AT_THE_DISEMBARKING_ZONE;
         this.na = 0;

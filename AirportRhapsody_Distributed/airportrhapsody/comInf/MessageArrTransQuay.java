@@ -208,4 +208,8 @@ public class MessageArrTransQuay implements Serializable{
     public boolean getGenBool() {
         return genBool;
     }
+
+    public List<Integer> getPassengersHandler(){
+        return ph;
+    }
 }
