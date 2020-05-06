@@ -1,6 +1,7 @@
 package airportrhapsody.clientSide;
 
 import airportrhapsody.serverSide.Logger.*;
+import airportrhapsody.LoggerStub;
 import airportrhapsody.serverSide.ArrTransQuay.*;
 import airportrhapsody.serverSide.DepTransQuay.*;
 
@@ -25,14 +26,14 @@ public class BusDriver extends Thread {
      *  @serialField arrTransQuay
      */
 
-    private ArrTransQuay arrTransQuay;
+    private ArrTransQuayStub arrTransQuay;
 
     /**
      *  Departure terminal transfer quay
      * 
      *  @serialField depTransQuay
      */
-    private DepTransQuay depTransQuay;
+    private DepTransQuayStub depTransQuay;
 
     /**
      *  Bus Driver state
@@ -46,7 +47,7 @@ public class BusDriver extends Thread {
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
 
     /**
      *  Number of seats
@@ -65,7 +66,7 @@ public class BusDriver extends Thread {
      * @param generalRepo General repository of information
      */
 
-    public BusDriver(int id, int numOfSeats, ArrTransQuay arrTransQuay, DepTransQuay depTransQuay, Logger generalRepo) {
+    public BusDriver(int id, int numOfSeats, ArrTransQuayStub arrTransQuay, DepTransQuayStub depTransQuay, LoggerStub generalRepo) {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
         this.seats = numOfSeats;
         this.arrTransQuay = arrTransQuay;

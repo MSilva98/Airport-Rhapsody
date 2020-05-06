@@ -4,6 +4,7 @@ import airportrhapsody.serverSide.Logger.*;
 import airportrhapsody.serverSide.ArrivalLounge.*;
 import airportrhapsody.serverSide.CollectionPoint.*;
 import airportrhapsody.serverSide.TempStorageArea.*;
+import airportrhapsody.LoggerStub;
 import airportrhapsody.comInf.*;
 
 public class Porter extends Thread{
@@ -22,25 +23,25 @@ public class Porter extends Thread{
      * 
      * @serialField arrivalLounge
      */
-    private ArrivalLounge arrivalLounge;
+    private ArrivalLoungeStub arrivalLounge;
     /**
      * Temporary storage area
      * 
      * @serialField tempStorageArea
      */
-    private TempStorageArea tempStorageArea;
+    private TempStorageAreaStub tempStorageArea;
     /**
      * Baggage collection point
      * 
      * @serialField collPoint
      */
-    private CollectionPoint collPoint;
+    private CollectionPointStub collPoint;
     /**
      *  Logger - general repository of information
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
     /**
      *  Porter identification
      * 
@@ -63,7 +64,7 @@ public class Porter extends Thread{
      * @param collPoint Baggage collection point
      * @param generalRepo general repository of information
      */
-    public Porter(int id, ArrivalLounge arrivalLounge, TempStorageArea tempStorageArea, CollectionPoint collPoint, Logger generalRepo){
+    public Porter(int id, ArrivalLoungeStub arrivalLounge, TempStorageAreaStub tempStorageArea, CollectionPointStub collPoint, LoggerStub generalRepo){
         this.porterState = InternalState.WAITING_FOR_A_PLANE_TO_LAND;
         this.porterID = id;
         this.arrivalLounge = arrivalLounge;

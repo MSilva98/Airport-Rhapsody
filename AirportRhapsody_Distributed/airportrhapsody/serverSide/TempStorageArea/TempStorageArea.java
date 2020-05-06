@@ -27,4 +27,9 @@ public class TempStorageArea extends LuggageHandler {
     public Luggage collectBag(){
         return super.remLuggage();
     }
+
+
+    @Override
+    public int size(){
+        return super.size();
 }
