@@ -211,7 +211,7 @@ public class Logger {
     }
 
     // Final report
-    public String finalRep(){
+    private String finalRep(){
         return  "\n\nFinal Report" +
                 "\nN. of passengers which have this airport as their final destination = " + this.numP_FDT + 
                 "\nN. of passengers in transit = " + this.numP_TRT +

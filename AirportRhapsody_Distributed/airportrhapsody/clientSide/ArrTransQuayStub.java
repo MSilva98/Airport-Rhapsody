@@ -183,4 +183,22 @@ public class ArrTransQuayStub {
             System.exit (1);
         }
     }
+
+    public boolean isEmpty(){
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrTransQuay inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrTransQuay(MessageArrTransQuay.IE);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrTransQuay) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrTransQuay.IE ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }
+        else{
+            return inMessage.getGenBool();
+        }
+    }
 }

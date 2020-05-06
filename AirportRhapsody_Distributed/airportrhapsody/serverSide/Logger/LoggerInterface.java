@@ -104,7 +104,6 @@ public class LoggerInterface {
                 }
                 break;
             case MessageLogger.CLRV:
-            case MessageLogger.FREP:
             case MessageLogger.WRT:
             default:    throw new MessageException("Invalide type", inMessage);
         }
@@ -173,10 +172,6 @@ public class LoggerInterface {
                 break;
             case MessageLogger.CLRV:
                 logger.clearVars();
-                outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
-                break;
-            case MessageLogger.FREP:
-                logger.finalRep();
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.WRT:

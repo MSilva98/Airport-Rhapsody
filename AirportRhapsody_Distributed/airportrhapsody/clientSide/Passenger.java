@@ -162,7 +162,10 @@ public class Passenger extends Thread{
                 this.passengerState = arrTermExit.arrivedTerm(this.passengerID);
                 arrTermExit.goHome();
             }else{
-                forhttps://videoconf-colibri.zoom.us/j/92850507660     this.generalRepo.setSt(this.passengerID, "LCP");
+                for (int i = 0; i < this.nr; i++) {
+                    if(!this.collPoint.getNoBags()){
+                        this.setPassengerState(InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
+                        this.generalRepo.setSt(this.passengerID, "LCP");
                         if(collPoint.goCollectABag(this.passengerID, this.nr)){ 
                             this.na++;
                         }

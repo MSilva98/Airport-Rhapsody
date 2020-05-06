@@ -130,25 +130,18 @@ public class MessageLogger implements Serializable{
     public static final int CLRV = 16;
        
     /**
-     * Final report
-     * 
-     * @serialField FREP
-     */
-    public static final int FREP = 17;
-       
-    /**
      * Write variables to log file
      * 
      * @serialField WRT
      */
-    public static final int WRT = 18;
+    public static final int WRT = 17;
 
     /**
      * Success
      * 
      * @serialField ACK
      */
-    public static final int ACK = 19;   
+    public static final int ACK = 18;   
     
     // Message arguments
     
@@ -227,6 +220,19 @@ public class MessageLogger implements Serializable{
      *  Instantiating a message (form 4).
      *
      *    @param type  message type
+     *    @param state state
+     */
+
+    public MessageLogger (int type, String state)
+    {
+        this.msgType = type;
+        this.genStr = state;
+    }
+
+    /**
+     *  Instantiating a message (form 5).
+     *
+     *    @param type  message type
      *    @param id    passenger ID
      *    @param state state
      */
@@ -239,7 +245,7 @@ public class MessageLogger implements Serializable{
     }
 
     /**
-     *  Instantiating a message (form 5).
+     *  Instantiating a message (form 6).
      *
      *    @param type message type
      *    @param end  last write to file
