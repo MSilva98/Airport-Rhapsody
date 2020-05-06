@@ -1,5 +1,8 @@
 package airportrhapsody.serverSide.ArrTermExit;
 
+import airportrhapsody.LoggerStub;
+import airportrhapsody.clientSide.ArrTransQuayStub;
+import airportrhapsody.clientSide.ArrivalLoungeStub;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;
 import airportrhapsody.serverSide.ArrivalLounge.*;
@@ -18,19 +21,19 @@ public class ArrTermExit extends PassengersHandler {
      * 
      * @serialField arrivalLounge
      */
-    private ArrivalLounge arrivalLounge;
+    private ArrivalLoungeStub arrivalLounge;
     /**
      * Arrival terminal transfer quay
      * 
      * @serialField arrTransQuay
      */
-    private ArrTransQuay arrTransQuay;
+    private ArrTransQuayStub arrTransQuay;
     /**
      *  Logger - general repository of information
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
     /**
      * total number of passengers
      * 
@@ -57,7 +60,7 @@ public class ArrTermExit extends PassengersHandler {
      * @param numbOfFlights number of flights
      * @param generalRepo   general repository of information
      */
-    public ArrTermExit(int n, ArrivalLounge arrivalLounge, ArrTransQuay arrTransQuay, int numbOfFlights, Logger generalRepo) {
+    public ArrTermExit(int n, ArrivalLoungeStub arrivalLounge, ArrTransQuayStub arrTransQuay, int numbOfFlights, LoggerStub generalRepo) {
         super(n);
         this.arrivalLounge = arrivalLounge;
         this.arrTransQuay = arrTransQuay;

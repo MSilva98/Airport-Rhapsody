@@ -45,11 +45,11 @@ public class DepTransQuayInterface {
 
         /* process message */
         switch (inMessage.getType()){
-            case MessageDepTransQuay.LDTQ:
-                int passengerID = inMessage.getPassengerID();
-                Passenger p = depTransQuay.leaveDepTransQuay(passengerID);
-                outMessage = new MessageDepTransQuay(MessageDepTransQuay.LDTQ,p);
-                break;
+            // case MessageDepTransQuay.LDTQ:
+            //     int passengerID = inMessage.getPassengerID();
+            //     Passenger p = depTransQuay.leaveDepTransQuay(passengerID);
+            //     outMessage = new MessageDepTransQuay(MessageDepTransQuay.LDTQ,p);
+            //     break;
 
             case MessageDepTransQuay.PTBALPO:
                 BusDriver.InternalState state = depTransQuay.parkTheBusAndLetPassOff();

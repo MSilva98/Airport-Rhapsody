@@ -52,22 +52,22 @@ public class DepTransQuayStub  {
      * @param id passenger id
      * @return  passenger
      */
-    public Passenger leaveDepTransQuay(int id){
-        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
-        MessageDepTransQuay inMessage, outMessage;
-        while (!con.open ()) {}
-        outMessage = new MessageDepTransQuay(MessageDepTransQuay.LDTQ, id);
-        con.writeObject(outMessage);
-        inMessage = (MessageDepTransQuay) con.readObject ();
-        con.close ();
-        if(inMessage.getType() != MessageDepTransQuay.LDTQ ){
-            System.out.println("Tipo inválido");
-            System.exit (1);
-            return null;
-        }else{
-            return inMessage.getPassenger();
-        }
-    }
+    // public Passenger leaveDepTransQuay(int id){
+    //     ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+    //     MessageDepTransQuay inMessage, outMessage;
+    //     while (!con.open ()) {}
+    //     outMessage = new MessageDepTransQuay(MessageDepTransQuay.LDTQ, id);
+    //     con.writeObject(outMessage);
+    //     inMessage = (MessageDepTransQuay) con.readObject ();
+    //     con.close ();
+    //     if(inMessage.getType() != MessageDepTransQuay.LDTQ ){
+    //         System.out.println("Tipo inválido");
+    //         System.exit (1);
+    //         return null;
+    //     }else{
+    //         return inMessage.getPassenger();
+    //     }
+    // }
     /**
      * Park the bus and let pass off
      * @param b bus driver

@@ -34,6 +34,13 @@ public class MessageTempStoreArea implements Serializable{
      */
     public static final int ACK =  3;
 
+    /**
+     * Size
+     * 
+     * @serialField S
+     */
+    public static final int S =  4;
+
     //Message arguments
 
     /**
@@ -50,6 +57,13 @@ public class MessageTempStoreArea implements Serializable{
      */
 
     private Luggage l = null;
+
+    /**
+     *  size
+     *    @serialField size
+     */
+
+    private int size = -1;
 
 
     /**
@@ -74,6 +88,17 @@ public class MessageTempStoreArea implements Serializable{
         msgType = type;
         this.l = l;
     }
+    /**
+     *  Instantiating a message (form 3).
+     *
+     *    @param type message type
+     */
+
+    public MessageTempStoreArea (int type, int size)
+    {
+        msgType = type;
+        this.size = size;
+    }
 
     /**
      *  Obtain the value of the message type field.
@@ -88,6 +113,10 @@ public class MessageTempStoreArea implements Serializable{
 
     public Luggage getLugagge(){
         return l;
+    }
+
+    public int getSize(){
+        return size;
     }
 
 

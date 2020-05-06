@@ -67,26 +67,26 @@ public class ArrTermExitStub  {
             return inMessage.getSt();
         }
     }
-    /**
-     * Remove passenger from terminal
-     * @return passenger
-     */
-    public Passenger leftTerm() {
-        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
-        MessageArrTermExit inMessage, outMessage;
-        while (!con.open ()) {}
-        outMessage = new MessageArrTermExit(MessageArrTermExit.LT);
-        con.writeObject(outMessage);
-        inMessage = (MessageArrTermExit) con.readObject ();
-        con.close ();
-        if(inMessage.getType() != MessageArrTermExit.LT ){
-            System.out.println("Tipo inválido");
-            System.exit (1);
-            return null;
-        }else{
-            return inMessage.getPassenger();
-        }
-    }
+    // /**
+    //  * Remove passenger from terminal
+    //  * @return passenger
+    //  */
+    // public Passenger leftTerm() {
+    //     ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+    //     MessageArrTermExit inMessage, outMessage;
+    //     while (!con.open ()) {}
+    //     outMessage = new MessageArrTermExit(MessageArrTermExit.LT);
+    //     con.writeObject(outMessage);
+    //     inMessage = (MessageArrTermExit) con.readObject ();
+    //     con.close ();
+    //     if(inMessage.getType() != MessageArrTermExit.LT ){
+    //         System.out.println("Tipo inválido");
+    //         System.exit (1);
+    //         return null;
+    //     }else{
+    //         return inMessage.getPassenger();
+    //     }
+    // }
 
 
     /**

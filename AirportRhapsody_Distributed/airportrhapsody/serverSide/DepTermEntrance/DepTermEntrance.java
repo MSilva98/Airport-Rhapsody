@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.DepTermEntrance;
 
+import airportrhapsody.LoggerStub;
+import airportrhapsody.clientSide.ArrTermExitStub;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;
 import airportrhapsody.serverSide.Logger.*;
@@ -14,13 +16,13 @@ public class DepTermEntrance extends PassengersHandler{
      * 
      * @serialField arrTermExit
      */
-    private ArrTermExit arrTermExit;
+    private ArrTermExitStub arrTermExit;
     /**
      *  Logger - general repository of information
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
 
 
     /**
@@ -29,7 +31,7 @@ public class DepTermEntrance extends PassengersHandler{
      * @param arrTermExit Arrival Terminal Exit
      * @param generalRepo general repository of information
      */
-    public DepTermEntrance(int n, ArrTermExit arrTermExit, Logger generalRepo){
+    public DepTermEntrance(int n, ArrTermExitStub arrTermExit, LoggerStub generalRepo){
         super(n);
         this.arrTermExit = arrTermExit;
         this.generalRepo = generalRepo;

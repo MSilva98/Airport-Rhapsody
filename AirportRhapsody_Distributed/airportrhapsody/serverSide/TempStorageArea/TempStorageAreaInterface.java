@@ -31,6 +31,10 @@ public class TempStorageAreaInterface {
                 }
                 break;
             case MessageTempStoreArea.CB:
+            case MessageTempStoreArea.S:
+                if(inMessage.getSize() == -1){
+                    throw new MessageException("Size missing!", inMessage);
+                }
             default:    throw new MessageException("Invalid type", inMessage);
         }
 
@@ -46,6 +50,10 @@ public class TempStorageAreaInterface {
                 Luggage l = tempStorageArea.collectBag();
                 outMessage = new MessageTempStoreArea(MessageTempStoreArea.CB,l);
                 break;
+            case MessageTempStoreArea.S: 
+                int size = tempStorageArea.size();
+                outMessage = new MessageTempStoreArea(MessageTempStoreArea.S, size);
+                break;  
 
         }
 
