@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.DepTransQuay;
 
+import airportrhapsody.LoggerStub;
+import airportrhapsody.clientSide.ArrTransQuayStub;
 import airportrhapsody.serverSide.ServerCom;
 
 public class ServerDepTransQuay {
@@ -26,12 +28,16 @@ public class ServerDepTransQuay {
       DepTransQuayInterface depTransQuayInterface;
       ServerCom scon, sconi;                               // canais de comunicação
       ClientProxyDepTransQuay cliProxy;                                // thread agente prestador do serviço
-
+      ArrTransQuayStub arrTransQuay;
+      LoggerStub generalRepo;
+      arrTransQuay = new ArrTransQuayStub("localhost", 4002);
+      generalRepo = new LoggerStub("localhost", 4008);
+      
      /* estabelecimento do servico */
 
       scon = new ServerCom (portNumb);                     // criação do canal de escuta e sua associação
       scon.start ();                                       // com o endereço público
-      depTransQuay = new DepTransQuay(nPassengers);
+      depTransQuay =  new DepTransQuay(nPassengers, arrTransQuay, generalRepo);
       depTransQuayInterface = new DepTransQuayInterface(depTransQuay);
       System.out.println("O serviço foi estabelecido!");
       System.out.println("O servidor esta em escuta.");

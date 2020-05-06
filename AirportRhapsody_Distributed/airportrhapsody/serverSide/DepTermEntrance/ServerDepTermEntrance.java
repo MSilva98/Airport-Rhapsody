@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.DepTermEntrance;
 
+import airportrhapsody.LoggerStub;
+import airportrhapsody.clientSide.ArrTermExitStub;
 import airportrhapsody.serverSide.ServerCom;
 
 public class ServerDepTermEntrance {
@@ -21,17 +23,21 @@ public class ServerDepTermEntrance {
        int nPlaneLandings = 5;                             // number of plane landings
        int nSeatingPlaces = 3;                             // bus capacity
        int maxBags = 2;                                    // maximum luggage
-
+       String serverHostName = "localhost";
       DepTermEntrance depTermEntrance;
       DepTermEntranceInterface depTermEntranceInterface;
       ServerCom scon, sconi;                               // canais de comunicação
       ClientProxyDepTermEntrance cliProxy;                                // thread agente prestador do serviço
+      LoggerStub generalRepo;
+      ArrTermExitStub arrTermExit;
 
+      generalRepo = new LoggerStub(serverHostName, 4008);
+      arrTermExit = new ArrTermExitStub(serverHostName, 4001);
      /* estabelecimento do servico */
 
       scon = new ServerCom (portNumb);                     // criação do canal de escuta e sua associação
       scon.start ();                                       // com o endereço público
-      depTermEntrance = new DepTermEntrance(nPassengers);
+      depTermEntrance = new DepTermEntrance(nPassengers, arrTermExit, generalRepo);;
       depTermEntranceInterface = new DepTermEntranceInterface(depTermEntrance);
       System.out.println("O serviço foi estabelecido!");
       System.out.println("O servidor esta em escuta.");
