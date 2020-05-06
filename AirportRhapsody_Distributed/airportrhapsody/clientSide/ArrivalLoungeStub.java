@@ -178,4 +178,21 @@ public class ArrivalLoungeStub {
             System.exit (1);
         }
     }
+
+    public int size(){
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.S);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.S ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return -1;
+        }else{
+            return inMessage.getSize();
+        }
+    }
 }

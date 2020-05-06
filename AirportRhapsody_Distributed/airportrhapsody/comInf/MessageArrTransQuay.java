@@ -111,7 +111,7 @@ public class MessageArrTransQuay implements Serializable{
      *  Passenger 
      *    @serialField p
      */
-    private Passenger p = null;
+    //private Passenger p = null;
 
     /**
      *  Day state 
@@ -157,11 +157,11 @@ public class MessageArrTransQuay implements Serializable{
      *    @param p Passenger
      */
 
-    public MessageArrTransQuay (int type, Passenger p)
-    {
-        msgType = type;
-        this.p = p;
-    }
+    // public MessageArrTransQuay (int type, Passenger p)
+    // {
+    //     msgType = type;
+    //     this.p = p;
+    // }
 
      /**
      *  Instantiating a message (form 4).

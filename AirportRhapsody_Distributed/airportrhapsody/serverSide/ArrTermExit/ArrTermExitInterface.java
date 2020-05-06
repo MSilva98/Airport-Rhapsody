@@ -32,7 +32,6 @@ public class ArrTermExitInterface {
                     throw new MessageException("Passenger ID missing", inMessage);
                 }
                 break;
-            case MessageArrTermExit.LT:
             case MessageArrTermExit.EP:
             case MessageArrTermExit.GH:
             default:    throw new MessageException("Invalid type", inMessage);
@@ -49,11 +48,6 @@ public class ArrTermExitInterface {
             case MessageArrTermExit.AT:
                 Passenger.InternalState state = arrTermExit.arrivedTerm(inMessage.getPassengerID());
                 outMessage = new MessageArrTermExit(MessageArrTermExit.AT,state);
-                break;
-
-            case MessageArrTermExit.LT:
-                Passenger p = arrTermExit.leftTerm();
-                outMessage = new MessageArrTermExit(MessageArrTermExit.LT,p);
                 break;
 
             case MessageArrTermExit.EP:

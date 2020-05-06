@@ -43,6 +43,10 @@ public class ArrivalLoungeInterface {
                 }
             case MessageArrivalLounge.GDE:
             case MessageArrivalLounge.SDE:
+            case MessageArrivalLounge.S:
+                if(inMessage.getSize() == -1){
+                    throw new MessageException("Size missing!", inMessage);
+                }
             default:    throw new MessageException ("Invalid type", inMessage);
         }
 
@@ -78,6 +82,12 @@ public class ArrivalLoungeInterface {
                 boolean whatShouldIDo = arrivalLounge.whatShouldIDo(inMessage.getSituation());
                 outMessage = new MessageArrivalLounge (MessageArrivalLounge.WSID, whatShouldIDo);       // gerar resposta
                 break;
+
+            case MessageArrivalLounge.S: 
+                int size = arrivalLounge.size();
+                outMessage = new MessageArrivalLounge(MessageArrivalLounge.S, size);
+                break;   
+
         }
 
         return outMessage;

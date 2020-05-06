@@ -86,7 +86,7 @@ public class MessageArrTermExit implements Serializable{
      *  Passenger 
      *    @serialField p
      */
-    private Passenger p = null;
+    //private Passenger p = null;
 
     /**
      *  Terminal state 
@@ -131,18 +131,18 @@ public class MessageArrTermExit implements Serializable{
         this.st = st;
     }
 
-    /**
-     *  Instantiating a message (form 4).
-     *
-     *    @param type message type
-     *    @param p passenger 
-     */
+    // /**
+    //  *  Instantiating a message (form 4).
+    //  *
+    //  *    @param type message type
+    //  *    @param p passenger 
+    //  */
 
-    public MessageArrTermExit (int type, Passenger p)
-    {
-        msgType = type;
-        this.p = p;
-    }
+    // public MessageArrTermExit (int type, Passenger p)
+    // {
+    //     msgType = type;
+    //     this.p = p;
+    // }
 
     /**
      *  Instantiating a message (form 4).
@@ -170,10 +170,6 @@ public class MessageArrTermExit implements Serializable{
 
     public Passenger.InternalState getSt(){
         return st;
-    }
-
-    public Passenger getPassenger(){
-        return p;
     }
 
     public boolean getIsEmpty(){

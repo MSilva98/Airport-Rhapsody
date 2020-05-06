@@ -1,11 +1,13 @@
 package airportrhapsody.comInf;
 
+import java.io.Serializable;
+
 import airportrhapsody.clientSide.Passenger.Situation;
 
 /**
 * Luggage
  */
-public class Luggage {
+public class Luggage implements Serializable{
     /**
      * Luggage id counter
      */

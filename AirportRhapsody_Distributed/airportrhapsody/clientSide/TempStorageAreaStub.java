@@ -65,4 +65,23 @@ public class TempStorageAreaStub  {
             return inMessage.getLugagge();
         }
     }
+
+    public int size(){
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageTempStoreArea inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageTempStoreArea(MessageTempStoreArea.S);
+        con.writeObject(outMessage);
+        inMessage = (MessageTempStoreArea) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageTempStoreArea.S ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return -1;
+        }else{
+            return inMessage.getSize();
+        }
+    }
+
+
 }

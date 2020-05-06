@@ -74,7 +74,7 @@ public class MessageDepTransQuay implements Serializable {
      *  Passenger 
      *    @serialField p
      */
-    private Passenger p = null;
+    //private Passenger p = null;
 
 
     /**
@@ -100,17 +100,17 @@ public class MessageDepTransQuay implements Serializable {
         this.pst = pst;
     }
 
-    /**
-     *  Instantiating a message (form 3).
-     *
-     *    @param type message type
-     *    @param p Passenger
-     */
-    public MessageDepTransQuay (int type, Passenger p)
-    {
-        msgType = type;
-        this.p = p;
-    }
+    // /**
+    //  *  Instantiating a message (form 3).
+    //  *
+    //  *    @param type message type
+    //  *    @param p Passenger
+    //  */
+    // public MessageDepTransQuay (int type, Passenger p)
+    // {
+    //     msgType = type;
+    //     this.p = p;
+    // }
 
     /**
      *  Instantiating a message (form 4).
@@ -155,9 +155,9 @@ public class MessageDepTransQuay implements Serializable {
         return bst;
     }
 
-    public Passenger getPassenger(){
-        return p;
-    }
+    // public Passenger getPassenger(){
+    //     return p;
+    // }
 
 	public int getPassengerID() {
 		return passengerID;

@@ -32,4 +32,5 @@ public class TempStorageArea extends LuggageHandler {
     @Override
     public int size(){
         return super.size();
+    }
 }

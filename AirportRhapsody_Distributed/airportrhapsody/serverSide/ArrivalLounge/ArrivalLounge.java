@@ -118,4 +118,9 @@ public class ArrivalLounge extends LuggageHandler {
         dayEnd = st;
         this.wakePorter();
     }
+
+    @Override
+    public int size(){
+        return super.size();
+    }
 }

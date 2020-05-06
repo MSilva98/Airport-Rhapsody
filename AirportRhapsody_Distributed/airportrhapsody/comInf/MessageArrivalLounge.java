@@ -84,6 +84,13 @@ public class MessageArrivalLounge implements Serializable{
      */
     public static final int ACK =  9;
 
+    /**
+     * Size
+     * 
+     * @serialField S
+     */
+    public static final int S =  10;
+
     //Message arguments
 
     /**
@@ -110,6 +117,12 @@ public class MessageArrivalLounge implements Serializable{
      *    @serialField genBool
      */
     private boolean genBool;
+
+    /**
+     *  Size
+     *    @serialField size
+     */
+    private int size = -1;
 
     // /**
     //  *  What passagenger should do according to his situation
@@ -168,6 +181,19 @@ public class MessageArrivalLounge implements Serializable{
     }
 
     /**
+     *  Instantiating a message (form 5).
+     *
+     *    @param type message type
+     *    @param s Passenger situation
+     */
+
+    public MessageArrivalLounge (int type, int size)
+    {
+        this.msgType = type;
+        this.size = size;
+    }
+
+    /**
      *  Obtain the value of the message type field.
      *
      *    @return message type
@@ -188,5 +214,9 @@ public class MessageArrivalLounge implements Serializable{
 
     public Passenger.Situation getSituation(){
         return s;
+    }
+
+    public int getSize(){
+        return size;
     }
 }

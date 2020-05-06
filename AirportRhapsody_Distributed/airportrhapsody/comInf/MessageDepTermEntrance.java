@@ -79,7 +79,7 @@ public class MessageDepTermEntrance implements Serializable{
      *  Passenger 
      *    @serialField st
      */
-    private Passenger p = null;
+    //private Passenger p = null;
 
 
 
@@ -105,17 +105,17 @@ public class MessageDepTermEntrance implements Serializable{
         this.st = st;
     }
 
-    /**
-     *  Instantiating a message (form 3).
-     *
-     *    @param type message type
-     *    @param p Passenger
-     */
-    public MessageDepTermEntrance (int type, Passenger p)
-    {
-        msgType = type;
-        this.p = p;
-    }
+    // /**
+    //  *  Instantiating a message (form 3).
+    //  *
+    //  *    @param type message type
+    //  *    @param p Passenger
+    //  */
+    // public MessageDepTermEntrance (int type, Passenger p)
+    // {
+    //     msgType = type;
+    //     this.p = p;
+    // }
 
     /**
      *  Instantiating a message (form 4).
@@ -156,9 +156,9 @@ public class MessageDepTermEntrance implements Serializable{
         return genBool;
     }
 
-    public Passenger getPassenger(){
-        return p;
-    }
+    // public Passenger getPassenger(){
+    //     return p;
+    // }
 
     public Passenger.InternalState getPassengerSt(){
         return st;
