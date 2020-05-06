@@ -75,6 +75,7 @@ public class DepTransQuay extends PassengersHandler {
     public Passenger leaveDepTransQuay(int id){
         return super.removePassenger(id);
     }
+    
     /**
      * Park the bus and let pass off
      * @param b bus driver

@@ -7,8 +7,14 @@ package airportrhapsody.comInf;
 public class MessageException extends Exception
 {
   /**
-   *  Mensagem que originou a excepção
-   *    @serialField msg
+  *  Key
+  *    @serialField serialVersionUID
+  */
+  private static final long serialVersionUID = -3162488976393941357L;
+  /**
+   * Mensagem que originou a excepção
+   * 
+   * @serialField msg
    */
 
    private Object msg;
