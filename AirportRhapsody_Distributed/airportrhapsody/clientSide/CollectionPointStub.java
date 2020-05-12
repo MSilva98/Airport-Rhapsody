@@ -99,7 +99,7 @@ public class CollectionPointStub  {
         con.writeObject(outMessage);
         inMessage = (MessageCollectionPoint) con.readObject ();
         con.close ();
-        if(inMessage.getType() != MessageCollectionPoint.GCAB ){
+        if(inMessage.getType() != MessageCollectionPoint.NMBTC ){
             System.out.println("Tipo inválido");
             System.exit (1);
             return null;
@@ -155,6 +155,8 @@ public class CollectionPointStub  {
             // }
             // catch (IpassengerIDct(outMessage);
         }
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.GNB);
+        con.writeObject(outMessage);
         inMessage = (MessageCollectionPoint) con.readObject ();
         con.close ();
         if(inMessage.getType() != MessageCollectionPoint.GNB ){

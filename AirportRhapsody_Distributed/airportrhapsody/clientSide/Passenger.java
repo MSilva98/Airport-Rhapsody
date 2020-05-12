@@ -156,38 +156,66 @@ public class Passenger extends Thread{
 
     @Override
     public void run() {
+        System.out.println("RUN 0");
         boolean isFinalDst = arrivalLounge.whatShouldIDo(this.situation);
+        System.out.println("RUN 1");
         if(isFinalDst){
+            System.out.println("RUN 2");
             if(this.nr == 0){
+                System.out.println("RUN 3");
                 this.passengerState = arrTermExit.arrivedTerm(this.passengerID);
+                System.out.println("RUN 5");
                 arrTermExit.goHome();
+                System.out.println("RUN 6");
             }else{
+                System.out.println("RUN 7");
                 for (int i = 0; i < this.nr; i++) {
+                    System.out.println("RUN 8");
                     if(!this.collPoint.getNoBags()){
+                        System.out.println("RUN 9");
                         this.setPassengerState(InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
+                        System.out.println("RUN 10");
                         this.generalRepo.setSt(this.passengerID, "LCP");
+                        System.out.println("RUN 11");
                         if(collPoint.goCollectABag(this.passengerID, this.nr)){ 
+                            System.out.println("RUN 12");
                             this.na++;
                         }
                     }
                 }
+                System.out.println("RUN 13");
                 collPoint.leaveCollPoint(passengerID);
+                System.out.println("RUN 14");
                 this.generalRepo.setNa(this.passengerID, this.na);
+                System.out.println("RUN 15");
                 if (this.nr != this.na){
+                    System.out.println("RUN 16");
                     this.setPassengerState(this.reclaimOffice.reportMissingBags(nr - na));
+                    System.out.println("RUN 17");
                     this.generalRepo.setSt(this.passengerID, "BRO");
+                    System.out.println("RUN 18");
                     this.generalRepo.write(false);
+                    System.out.println("RUN 19");
                 }
                 this.setPassengerState(arrTermExit.arrivedTerm(this.passengerID));
+                System.out.println("RUN 20");
                 arrTermExit.goHome();
+                System.out.println("RUN 21");
             }
         }else{
+            System.out.println("RUN 22");
             this.setPassengerState(InternalState.AT_THE_ARRIVAL_TRANSFER_TERMINAL);
+            System.out.println("RUN 23");
             arrTransQuay.takeABus(this.passengerID);
+            System.out.println("RUN 24");
             arrTransQuay.enterTheBus(this.passengerID);
+            System.out.println("RUN 25");
             this.setPassengerState(depTransQuay.leaveBus(this.passengerID));
+            System.out.println("RUN 26");
             this.setPassengerState(depTermEntrance.arrivedTerm(this.passengerID));
+            System.out.println("RUN 27");
             depTermEntrance.prepareNextLeg();
+            System.out.println("RUN 28");
         }
     }
     /*

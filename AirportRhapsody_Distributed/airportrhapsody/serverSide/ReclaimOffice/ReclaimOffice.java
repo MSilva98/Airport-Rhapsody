@@ -1,5 +1,6 @@
 package airportrhapsody.serverSide.ReclaimOffice;
 
+import airportrhapsody.LoggerStub;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.serverSide.Logger.*;
 
@@ -24,12 +25,12 @@ public class ReclaimOffice {
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
     /**
      * Instantiating the baggage reclaim office.
      * @param generalRepo
      */
-    public ReclaimOffice(Logger generalRepo) {
+    public ReclaimOffice(LoggerStub generalRepo) {
         this.generalRepo = generalRepo;
         this.numBagsMissing = 0;
     }
@@ -38,7 +39,7 @@ public class ReclaimOffice {
         this.numBagsMissing = 0;
     }
     
-    public ReclaimOffice(int reclaims, Logger generalRepo) {
+    public ReclaimOffice(int reclaims, LoggerStub generalRepo) {
         this.reclaims = reclaims;
         this.generalRepo = generalRepo;
     }

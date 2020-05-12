@@ -28,6 +28,7 @@ public class ArrTransQuayInterface {
         /* validate message */
         switch (inMessage.getType()){
             case MessageArrTransQuay.EBU:
+                break;
             case MessageArrTransQuay.ETB:
                 if(inMessage.getGenInt() == -1){
                     throw new MessageException("Passenger ID missing",inMessage);
@@ -35,6 +36,7 @@ public class ArrTransQuayInterface {
                 break;
 
             case MessageArrTransQuay.PTB:
+                break;
             case MessageArrTransQuay.TAB:
                 if(inMessage.getGenInt() == -1){
                     throw new MessageException("Passenger ID missing",inMessage);
@@ -42,12 +44,17 @@ public class ArrTransQuayInterface {
                 break;
 
             case MessageArrTransQuay.ABB:
+                break;
             case MessageArrTransQuay.NP:
+                break;
             case MessageArrTransQuay.GS:
+                break;
             case MessageArrTransQuay.GDE:
+                break;
             case MessageArrTransQuay.SDE:
+                break;
             case MessageArrTransQuay.IE:
-            
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
         

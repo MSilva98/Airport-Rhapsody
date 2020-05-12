@@ -23,7 +23,7 @@ public class CollectionPointInterface {
     public MessageCollectionPoint processAndReply (MessageCollectionPoint inMessage) throws MessageException
     {
         MessageCollectionPoint outMessage = null;
-
+        System.out.println("Type collPPoint mssg = " + inMessage.getType());
         /* validate message */
         switch (inMessage.getType()){
             case MessageCollectionPoint.GCAB:
@@ -49,8 +49,12 @@ public class CollectionPointInterface {
                 break;
 
             case MessageCollectionPoint.NB:
+                break;
             case MessageCollectionPoint.GNB:
+                break;
             case MessageCollectionPoint.S:
+                System.out.println("HERE");
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
 

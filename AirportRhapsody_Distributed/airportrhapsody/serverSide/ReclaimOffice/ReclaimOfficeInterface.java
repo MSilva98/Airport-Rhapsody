@@ -31,7 +31,9 @@ public class ReclaimOfficeInterface {
                 }
                 break;
             case MessageReclaimOffice.GNBM:
+                break;
             case MessageReclaimOffice.GR:
+                break;    
             case MessageReclaimOffice.SR:
                 if(inMessage.getGenInt() == -1){
                     throw new MessageException("Num of reclaims missing", inMessage);

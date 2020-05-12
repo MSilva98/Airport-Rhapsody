@@ -34,19 +34,23 @@ public class ArrivalLoungeInterface {
                 break;
             
             case MessageArrivalLounge.TTCAB:
+                break;
             case MessageArrivalLounge.RP:
+                break;
             case MessageArrivalLounge.WP:
+                break;
             case MessageArrivalLounge.TAR:
+                break;
             case MessageArrivalLounge.WSID:
                 if(inMessage.getSituation() == null){
                     throw new MessageException("Passenger situation missing!", inMessage);
                 }
             case MessageArrivalLounge.GDE:
+                break;
             case MessageArrivalLounge.SDE:
+                break;
             case MessageArrivalLounge.S:
-                if(inMessage.getSize() == -1){
-                    throw new MessageException("Size missing!", inMessage);
-                }
+                break;
             default:    throw new MessageException ("Invalid type", inMessage);
         }
 

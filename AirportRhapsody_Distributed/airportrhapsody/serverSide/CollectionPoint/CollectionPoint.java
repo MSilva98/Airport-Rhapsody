@@ -1,5 +1,6 @@
 package airportrhapsody.serverSide.CollectionPoint;
 
+import airportrhapsody.LoggerStub;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.clientSide.Porter;
 import airportrhapsody.comInf.*;
@@ -20,7 +21,7 @@ public class CollectionPoint extends LuggageHandler {
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
     /**
      *  Flag to signal that there are no more bags
      * 
@@ -43,7 +44,7 @@ public class CollectionPoint extends LuggageHandler {
      * @param nPass max number of passengers per flight
      * @param generalRepo general repository of information
      */
-    public CollectionPoint(int nBags, int nPass, Logger generalRepo){
+    public CollectionPoint(int nBags, int nPass, LoggerStub generalRepo){
         super(nBags);
         this.collectBag = new Semaphore[nPass];
         for (int i = 0; i < collectBag.length; i++) {

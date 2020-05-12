@@ -60,14 +60,16 @@ public class LoggerInterface {
                 }
                 break;
             case MessageLogger.SQE:
+                break;
             case MessageLogger.SS:
                 if(inMessage.getGenStr() == null){
                     throw new MessageException("Seat occupation state missing", inMessage);
                 }
                 break;
             case MessageLogger.SSE:
+                break;
             case MessageLogger.SST:
-                if(inMessage.getPassengerID() == -1){
+                if(inMessage.getGenInt() == -1){
                     throw new MessageException("Passenger id missing", inMessage);
                 }
                 if(inMessage.getGenStr() == null){
@@ -75,7 +77,7 @@ public class LoggerInterface {
                 }
                 break;
             case MessageLogger.SSI:
-                if(inMessage.getPassengerID() == -1){
+                if(inMessage.getGenInt()== -1){
                     throw new MessageException("Passenger id missing", inMessage);
                 }
                 if(inMessage.getGenStr() == null){
@@ -104,7 +106,9 @@ public class LoggerInterface {
                 }
                 break;
             case MessageLogger.CLRV:
+                break;
             case MessageLogger.WRT:
+                break;
             default:    throw new MessageException("Invalide type", inMessage);
         }
 
@@ -135,7 +139,7 @@ public class LoggerInterface {
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.SQ:
-                logger.setQ(inMessage.getPassengerID(), inMessage.getGenStr());
+                logger.setQ(inMessage.getGenInt(), inMessage.getGenStr());
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.SQE:
@@ -143,7 +147,7 @@ public class LoggerInterface {
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.SS:
-                logger.setS(inMessage.getPassengerID(), inMessage.getGenStr());
+                logger.setS(inMessage.getGenInt(), inMessage.getGenStr());
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.SSE:
@@ -151,11 +155,11 @@ public class LoggerInterface {
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.SST:
-                logger.setSt(inMessage.getPassengerID(), inMessage.getGenStr());
+                logger.setSt(inMessage.getGenInt(), inMessage.getGenStr());
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.SSI:
-                logger.setSi(inMessage.getPassengerID(), inMessage.getGenStr());
+                logger.setSi(inMessage.getGenInt(), inMessage.getGenStr());
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
                 break;
             case MessageLogger.SNR:

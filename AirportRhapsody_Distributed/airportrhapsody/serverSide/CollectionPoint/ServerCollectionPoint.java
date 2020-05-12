@@ -1,5 +1,6 @@
 package airportrhapsody.serverSide.CollectionPoint;
 
+import airportrhapsody.LoggerStub;
 import airportrhapsody.serverSide.ServerCom;
 
 public class ServerCollectionPoint {
@@ -27,12 +28,12 @@ public class ServerCollectionPoint {
       CollectionPointInterface collPointInterface;
       ServerCom scon, sconi;                               // canais de comunicação
       ClientProxyCollectionPoint cliProxy;                                // thread agente prestador do serviço
-
+      LoggerStub generalRepo = new LoggerStub("localhost", 4008);
      /* estabelecimento do servico */
 
       scon = new ServerCom (portNumb);                     // criação do canal de escuta e sua associação
       scon.start ();                                       // com o endereço público
-      collPoint = new CollectionPoint(nPassengers*maxBags, nPassengers);
+      collPoint = new CollectionPoint(nPassengers*maxBags, nPassengers, generalRepo);
       collPointInterface = new CollectionPointInterface(collPoint);        // activação do interface com o serviço
       System.out.println("O serviço foi estabelecido!");
       System.out.println("O servidor esta em escuta.");

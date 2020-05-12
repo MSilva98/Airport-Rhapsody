@@ -1,6 +1,7 @@
 package airportrhapsody.serverSide.ArrTransQuay;
 
 import airportrhapsody.serverSide.ServerCom;
+import airportrhapsody.LoggerStub;
 
 public class ServerArrTransQuay {
 /**
@@ -27,12 +28,12 @@ public class ServerArrTransQuay {
       ArrTransQuayInterface arrTransQuayInterface;                      // interface à barbearia
       ServerCom scon, sconi;                               // canais de comunicação
       ClientProxyArrTransQuay cliProxy;                                // thread agente prestador do serviço
-
+      LoggerStub generalRepo = new LoggerStub("localhost", 4008);
      /* estabelecimento do servico */
 
       scon = new ServerCom (portNumb);                     // criação do canal de escuta e sua associação
       scon.start ();                                       // com o endereço público
-      arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces);
+      arrTransQuay = new ArrTransQuay(nPassengers, nSeatingPlaces, generalRepo);
       arrTransQuayInterface = new ArrTransQuayInterface(arrTransQuay);
       System.out.println("O serviço foi estabelecido!");
       System.out.println("O servidor esta em escuta.");

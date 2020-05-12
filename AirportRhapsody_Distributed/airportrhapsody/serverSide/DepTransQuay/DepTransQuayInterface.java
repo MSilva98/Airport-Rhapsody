@@ -34,6 +34,7 @@ public class DepTransQuayInterface {
                 break;
             
             case MessageDepTransQuay.PTBALPO:
+                break;    
             case MessageDepTransQuay.LB:
                 if(inMessage.getPassengerID() == -1){
                     throw new MessageException("Passenger ID missing", inMessage);

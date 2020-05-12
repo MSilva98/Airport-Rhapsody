@@ -1,6 +1,7 @@
 package airportrhapsody.serverSide.ArrivalLounge;
 
 import airportrhapsody.serverSide.ServerCom;
+import airportrhapsody.LoggerStub;
 
 public class ServerArrivalLounge {
     /**
@@ -27,12 +28,12 @@ public class ServerArrivalLounge {
        ArrivalLoungeInterface arrivalLoungeInt;                      // interface à barbearia
        ServerCom scon, sconi;                               // canais de comunicação
        ClientProxyArrivalLounge cliProxy;                                // thread agente prestador do serviço
- 
+       LoggerStub generalRepo = new LoggerStub("localhost", 4008);
       /* estabelecimento do servico */
  
        scon = new ServerCom (portNumb);                     // criação do canal de escuta e sua associação
        scon.start ();                                       // com o endereço público
-       arrivalLounge = new ArrivalLounge(nPassengers*maxBags, nPassengers);
+       arrivalLounge = new ArrivalLounge(nPassengers*maxBags, nPassengers, generalRepo);
        arrivalLoungeInt = new ArrivalLoungeInterface (arrivalLounge);        // activação do interface com o serviço
        System.out.println("O serviço foi estabelecido!");
        System.out.println("O servidor esta em escuta.");

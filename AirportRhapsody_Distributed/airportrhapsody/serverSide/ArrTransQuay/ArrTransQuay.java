@@ -3,6 +3,7 @@ package airportrhapsody.serverSide.ArrTransQuay;
 import java.util.ArrayList;
 import java.util.List;
 
+import airportrhapsody.LoggerStub;
 import airportrhapsody.clientSide.BusDriver;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.comInf.*;
@@ -41,7 +42,7 @@ public class ArrTransQuay extends PassengersHandler {
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
      /**
      * State of the day
      * 
@@ -61,7 +62,7 @@ public class ArrTransQuay extends PassengersHandler {
      * @param nseats    Number of seats that bus can carry
      * @param generalRepo general repository of information
      */
-    public ArrTransQuay(int n, int nseats, Logger generalRepo){
+    public ArrTransQuay(int n, int nseats, LoggerStub generalRepo){
         super(n);
         this.seats = new ArrayList<>();
         this.parkBusArr = new Semaphore();
@@ -149,6 +150,7 @@ public class ArrTransQuay extends PassengersHandler {
     public void takeABus(int passengerID) {
         synchronized(this){            
             // super.insertPassenger(p);
+            System.out.println("pID take a bus - " + passengerID);
             this.passengersList.add(passengerID);
             this.generalRepo.setSt(passengerID, "ATT");    
             this.generalRepo.setQ(this.passengersList.size()-1, ""+passengerID);

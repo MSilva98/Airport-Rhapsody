@@ -33,6 +33,7 @@ public class DepTermEntranceInterface {
                 break;
 
             case MessageDepTermEntrance.PNL:
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
 

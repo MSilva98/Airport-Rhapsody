@@ -161,7 +161,7 @@ public class ArrTransQuayStub {
         con.writeObject(outMessage);
         inMessage = (MessageArrTransQuay) con.readObject ();
         con.close ();
-        if(inMessage.getType() != MessageArrTransQuay.GS ){
+        if(inMessage.getType() != MessageArrTransQuay.GDE ){
             System.out.println("Tipo inválido");
             System.exit (1);
             return false;

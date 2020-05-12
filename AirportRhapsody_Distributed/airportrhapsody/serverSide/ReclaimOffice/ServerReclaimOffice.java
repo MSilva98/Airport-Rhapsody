@@ -1,5 +1,6 @@
 package airportrhapsody.serverSide.ReclaimOffice;
 
+import airportrhapsody.LoggerStub;
 import airportrhapsody.serverSide.ServerCom;
 
 public class ServerReclaimOffice {
@@ -27,12 +28,12 @@ public class ServerReclaimOffice {
       ReclaimOfficeInterface reclaimOfficeInterface;
       ServerCom scon, sconi;                               // canais de comunicação
       ClientProxyReclaimOffice cliProxy;                                // thread agente prestador do serviço
-
+      LoggerStub generalRepo = new LoggerStub("localhost", 4008);
      /* estabelecimento do servico */
 
       scon = new ServerCom (portNumb);                     // criação do canal de escuta e sua associação
       scon.start ();                                       // com o endereço público
-      reclaimOffice = new ReclaimOffice();
+      reclaimOffice = new ReclaimOffice(generalRepo);
       reclaimOfficeInterface = new ReclaimOfficeInterface(reclaimOffice);
       System.out.println("O serviço foi estabelecido!");
       System.out.println("O servidor esta em escuta.");

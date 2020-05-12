@@ -31,10 +31,12 @@ public class TempStorageAreaInterface {
                 }
                 break;
             case MessageTempStoreArea.CB:
+                break;
             case MessageTempStoreArea.S:
-                if(inMessage.getSize() == -1){
-                    throw new MessageException("Size missing!", inMessage);
-                }
+                // if(inMessage.getSize() == -1){
+                //     throw new MessageException("Size missing!", inMessage);
+                // }
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
 

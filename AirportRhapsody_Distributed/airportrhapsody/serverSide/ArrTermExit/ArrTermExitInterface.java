@@ -27,13 +27,16 @@ public class ArrTermExitInterface {
         /* validate message */
         switch (inMessage.getType()){
             case MessageArrTermExit.LAD:
+                break;
             case MessageArrTermExit.AT:
                 if(inMessage.getPassengerID() == -1){
                     throw new MessageException("Passenger ID missing", inMessage);
                 }
                 break;
             case MessageArrTermExit.EP:
+                break;
             case MessageArrTermExit.GH:
+                break;    
             default:    throw new MessageException("Invalid type", inMessage);
         }
 

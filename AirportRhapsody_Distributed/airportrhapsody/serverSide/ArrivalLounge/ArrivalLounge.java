@@ -1,5 +1,6 @@
 package airportrhapsody.serverSide.ArrivalLounge;
 
+import airportrhapsody.LoggerStub;
 import airportrhapsody.clientSide.Passenger;
 import airportrhapsody.serverSide.Logger.*;
 import airportrhapsody.comInf.*;
@@ -25,7 +26,7 @@ public class ArrivalLounge extends LuggageHandler {
      * 
      *  @serialField generalRepo
      */
-    private Logger generalRepo;
+    private LoggerStub generalRepo;
     /**
      *  Number of passengers in the arrival lounge
      * 
@@ -45,7 +46,7 @@ public class ArrivalLounge extends LuggageHandler {
      * @param numPassengers number of passengers
      * @param generalRepo   general repository of information
      */
-    public ArrivalLounge(int maxBags, int numPassengers /*, Logger generalRepo*/){
+    public ArrivalLounge(int maxBags, int numPassengers , LoggerStub generalRepo){
         super(maxBags);
         this.rest = new Semaphore();
         this.dayEnd = false;
