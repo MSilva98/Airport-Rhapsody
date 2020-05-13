@@ -171,7 +171,7 @@ public class Passenger extends Thread{
                 System.out.println("RUN 7");
                 for (int i = 0; i < this.nr; i++) {
                     System.out.println("RUN 8");
-                    if(!this.collPoint.getNoBags()){
+                    if(!this.collPoint.getNoBags()){    // tentar corrigir para nao usar esta função
                         System.out.println("RUN 9");
                         this.setPassengerState(InternalState.AT_THE_LUGGAGE_COLLECTION_POINT);
                         System.out.println("RUN 10");

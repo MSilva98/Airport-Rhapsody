@@ -49,6 +49,7 @@ public class Semaphore
           try
           { wait (t);
           }
+          // verificar se o wait terminou por timeout ou por um up passar um parametro no down
           catch (InterruptedException e) {}
         }
         else val -= 1;

@@ -1,9 +1,9 @@
+#!/bin/bash
 #!/#!/usr/bin/env bash
 gnome-terminal 				--tab --title="Clean Class" --command="bash -c 'rm airportrhapsody/*.class; \
 																		rm airportrhapsody/*/*.class; \
 																		rm airportrhapsody/*/*/*.class; \
-																		$SHELL'"
-gnome-terminal 				--tab --title="Compile" --command="bash -c 'javac airportrhapsody/*.java; javac airportrhapsody/clientSide/*.java; \
+																		$SHELL'" --tab --title="Compile" --command="bash -c 'javac airportrhapsody/*.java; javac airportrhapsody/clientSide/*.java; \
 																		javac airportrhapsody/serverSide/*.java; javac airportrhapsody/comInf/*.java; \
 																		javac airportrhapsody/serverSide/ArrivalLounge/*.java; \
 																		javac airportrhapsody/serverSide/ArrTermExit/*.java; \

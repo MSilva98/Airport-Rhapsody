@@ -76,8 +76,10 @@ public class ArrivalLounge extends LuggageHandler {
      * block porter
      */
     public void restPorter(){
+        // passar para o takeARest()
         rest.down();
     }
+
     /**
      * wake up porter
      */
