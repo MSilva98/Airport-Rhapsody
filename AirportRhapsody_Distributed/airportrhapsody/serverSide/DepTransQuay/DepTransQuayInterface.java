@@ -53,13 +53,18 @@ public class DepTransQuayInterface {
             //     break;
 
             case MessageDepTransQuay.PTBALPO:
+                System.out.println("PTBALPO INTER - 0");
                 BusDriver.InternalState state = depTransQuay.parkTheBusAndLetPassOff();
+                System.out.println("PTBALPO INTER - 1");
                 outMessage = new MessageDepTransQuay(MessageDepTransQuay.PTBALPO,state);
                 break;
 
             case MessageDepTransQuay.LB:
+                System.out.println("LB INTER - 0");
                 int pID = inMessage.getPassengerID();
+                System.out.println("LB INTER - 1");
                 Passenger.InternalState st = depTransQuay.leaveBus(pID);
+                System.out.println("LB INTER - 2");
                 outMessage = new MessageDepTransQuay(MessageDepTransQuay.LB,st);
                 break;
         }

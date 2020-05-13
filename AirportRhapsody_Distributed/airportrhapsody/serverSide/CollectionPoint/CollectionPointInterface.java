@@ -42,8 +42,9 @@ public class CollectionPointInterface {
                 break;
 
             case MessageCollectionPoint.NMBTC:
+                break;
             case MessageCollectionPoint.LCP:
-                if(inMessage.getPassengerID() == -1){
+                if(inMessage.getNR() == -1){
                     throw new MessageException("Passenger ID missing", inMessage);
                 }
                 break;
@@ -61,24 +62,31 @@ public class CollectionPointInterface {
         /* process message */
         switch (inMessage.getType()){
             case MessageCollectionPoint.GCAB:
+                System.out.println("GCAB INTERF: 0");
                 int pID = inMessage.getPassengerID();
+                System.out.println("GCAB INTERF: 1");
                 int nr = inMessage.getNR();
+                System.out.println("GCAB INTERF: 2");
                 boolean bag = collPoint.goCollectABag(pID,nr);
                 outMessage = new MessageCollectionPoint(MessageCollectionPoint.GCAB,bag);
                 break;
 
             case MessageCollectionPoint.IB:
+                System.out.println("IB INTERF: 0");
                 collPoint.insertBag(inMessage.getBag());
+                System.out.println("IB INTERF: 1");
                 outMessage = new MessageCollectionPoint(MessageCollectionPoint.ACK);
                 break;    
 
             case MessageCollectionPoint.NMBTC:
+                System.out.println("NMBTC INTERF: 0");
                 Porter.InternalState state = collPoint.noMoreBagsToCollect();
+                System.out.println("NMBTC INTERF: 1");
                 outMessage = new MessageCollectionPoint(MessageCollectionPoint.NMBTC,state);
                 break;
 
             case MessageCollectionPoint.LCP:
-                int passID = inMessage.getPassengerID();
+                int passID = inMessage.getNR();
                 collPoint.leaveCollPoint(passID);
                 outMessage = new MessageCollectionPoint(MessageCollectionPoint.ACK);
                 break;

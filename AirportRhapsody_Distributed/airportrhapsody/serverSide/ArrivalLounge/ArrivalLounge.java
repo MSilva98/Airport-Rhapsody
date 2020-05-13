@@ -50,7 +50,7 @@ public class ArrivalLounge extends LuggageHandler {
         super(maxBags);
         this.rest = new Semaphore();
         this.dayEnd = false;
-        //this.generalRepo = generalRepo;
+        this.generalRepo = generalRepo;
         this.numPass = 0;
         this.numMaxPass = numPassengers;
     }
@@ -106,6 +106,7 @@ public class ArrivalLounge extends LuggageHandler {
         synchronized(this){
             this.numPass++;
             if(this.numPass == this.numMaxPass){
+                System.out.println("WAKE UP PORTER");
                 this.wakePorter();
                 this.numPass = 0;
             }

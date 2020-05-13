@@ -78,8 +78,8 @@ public class ArrivalLoungeInterface {
                 break;
 
             case MessageArrivalLounge.TAR:
-                arrivalLounge.takeARest();
-                outMessage = new MessageArrivalLounge (MessageArrivalLounge.ACK);       // gerar resposta
+                boolean b = arrivalLounge.takeARest();
+                outMessage = new MessageArrivalLounge (MessageArrivalLounge.TAR, b);       // gerar resposta
                 break;
 
             case MessageArrivalLounge.WSID:

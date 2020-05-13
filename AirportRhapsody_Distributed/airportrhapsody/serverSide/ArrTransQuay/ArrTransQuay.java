@@ -141,7 +141,7 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public void parkTheBus(){  
         // this.generalRepo.setStatDriver("PKAT");  
-        this.parkBusArr.down(1);
+        this.parkBusArr.down(20);
     }
     /**
      * Take a bus

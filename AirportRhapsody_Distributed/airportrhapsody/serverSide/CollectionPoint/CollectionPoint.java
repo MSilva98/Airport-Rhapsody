@@ -78,19 +78,23 @@ public class CollectionPoint extends LuggageHandler {
      *         <li> false if don't collect a bag
      */
     public boolean goCollectABag(int passengerID, int nr){
+        System.out.println("GCAB: 1");
         if(bagsToColl[passengerID] == 0){
             bagsToColl[passengerID] = nr;
         }
+        System.out.println("GCAB: 2");
         if(!noMoreBags){ 
             this.collectBag[passengerID].down();
+            System.out.println("GCAB: 3");
             synchronized(this){
                 boolean r = super.remLuggage(passengerID) != null;
                 bagsToColl[passengerID]--; 
+                System.out.println("GCAB: 4");
                 return r;
             }
         }
-
         else{
+            System.out.println("GCAB: 5");
             return false;
         }
         

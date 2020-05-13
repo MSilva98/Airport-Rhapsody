@@ -60,10 +60,13 @@ public class DepTransQuay extends PassengersHandler {
             this.generalRepo.setSt(passengerID, "DTT");
             this.generalRepo.setS(this.arrTransQuay.getSeats().size(), "-");
             this.generalRepo.write(false);
-            
+            System.out.println("LV - 0");
+            System.out.println("SIZE= " + arrTransQuay.getSeats().size());
             if(arrTransQuay.getSeats().isEmpty()){
+                System.out.println("LV - 1 UP BUSDRIVER");
                 parkBusDep.up();
             }
+            System.out.println("LV - 2");
         }
         
         return Passenger.InternalState.AT_THE_DEPARTURE_TRANSFER_TERMINAL;
@@ -83,8 +86,11 @@ public class DepTransQuay extends PassengersHandler {
      * @param b bus driver
      */
     public BusDriver.InternalState parkTheBusAndLetPassOff(){
+        System.out.println("PTBALPO - 0");
         arrTransQuay.enterBusUp();
+        System.out.println("PTBALPO - 1");
         parkBusDep.down();
+        System.out.println("PTBALPO - 2");
         this.generalRepo.setStatDriver("PKDT");
         this.generalRepo.write(false);
         return BusDriver.InternalState.PARKING_AT_THE_DEPARTURE_TERMINAL;

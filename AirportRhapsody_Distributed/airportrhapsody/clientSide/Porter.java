@@ -81,19 +81,32 @@ public class Porter extends Thread{
      */
     @Override
     public void run(){
+        System.out.println("RUN 0");
         this.arrivalLounge.restPorter();
+        System.out.println("RUN 1");
         while (!this.arrivalLounge.takeARest()) {
+            System.out.println("RUN 2");
             Luggage l = this.arrivalLounge.tryToCollectABag();
+            System.out.println("RUN 3");
             this.setPorterState(InternalState.AT_THE_PLANES_HOLD);
+            System.out.println("RUN 4");
             this.generalRepo.setStatPorter("APLH");
+            System.out.println("RUN 5");
             this.generalRepo.write(false);
+            System.out.println("RUN 6");
             while(l != null){
+                System.out.println("RUN 7");
                 this.carryItToAppropriateStore(l);
+                System.out.println("RUN 8");
                 l = this.arrivalLounge.tryToCollectABag();
             }
+            System.out.println("RUN 9");
             this.setPorterState(this.collPoint.noMoreBagsToCollect());
+            System.out.println("RUN 10");
             this.generalRepo.setStatPorter("WPTL");
-            this.generalRepo.write(false);    
+            System.out.println("RUN 11");
+            this.generalRepo.write(false);
+            System.out.println("RUN 12");   
             this.arrivalLounge.restPorter();
         }
     }
