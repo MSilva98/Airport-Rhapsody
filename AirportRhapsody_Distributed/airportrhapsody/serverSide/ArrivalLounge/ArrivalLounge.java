@@ -94,6 +94,7 @@ public class ArrivalLounge extends LuggageHandler {
      *         <li> false, if isn't
      */
     public boolean takeARest() {
+        restPorter();
         return dayEnd;
     }
 

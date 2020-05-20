@@ -91,6 +91,13 @@ public class MessageArrTransQuay implements Serializable{
      * @serialField ACK
      */
     public static final int ACK =  11;
+
+    /**
+     * RemoveSeats
+     * 
+     * @serialField ACK
+     */
+    public static final int R =  12;
     
 
     //Message arguments

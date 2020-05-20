@@ -82,7 +82,7 @@ public class Porter extends Thread{
     @Override
     public void run(){
         System.out.println("RUN 0");
-        this.arrivalLounge.restPorter();
+        //this.arrivalLounge.restPorter();
         System.out.println("RUN 1");
         while (!this.arrivalLounge.takeARest()) {
             System.out.println("RUN 2");
@@ -107,7 +107,7 @@ public class Porter extends Thread{
             System.out.println("RUN 11");
             this.generalRepo.write(false);
             System.out.println("RUN 12");   
-            this.arrivalLounge.restPorter();
+            //this.arrivalLounge.restPorter();
         }
     }
     /**

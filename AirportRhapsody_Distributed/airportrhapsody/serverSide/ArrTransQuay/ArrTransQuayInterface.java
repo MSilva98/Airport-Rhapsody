@@ -55,6 +55,11 @@ public class ArrTransQuayInterface {
                 break;
             case MessageArrTransQuay.IE:
                 break;
+            case MessageArrTransQuay.R:
+                if(inMessage.getGenInt() == -1){
+                    throw new MessageException("Passenger ID missing",inMessage);
+                }
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
         
@@ -108,7 +113,11 @@ public class ArrTransQuayInterface {
             case MessageArrTransQuay.IE:
                 boolean empty = arrTransQuay.isEmpty();
                 outMessage = new MessageArrTransQuay(MessageArrTransQuay.IE,empty);
-                break;    
+                break;   
+            case MessageArrTransQuay.R:
+                arrTransQuay.remove(inMessage.getGenInt());
+                outMessage = new MessageArrTransQuay(MessageArrTransQuay.ACK);
+                break;  
         }
 
         return outMessage;

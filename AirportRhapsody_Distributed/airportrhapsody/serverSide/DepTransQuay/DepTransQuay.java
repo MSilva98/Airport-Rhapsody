@@ -56,7 +56,7 @@ public class DepTransQuay extends PassengersHandler {
     public Passenger.InternalState leaveBus(int passengerID){
         synchronized(this){
             // super.insertPassenger(p);
-            this.arrTransQuay.getSeats().remove(Integer.valueOf(passengerID));
+            this.arrTransQuay.remove(passengerID);
             this.generalRepo.setSt(passengerID, "DTT");
             this.generalRepo.setS(this.arrTransQuay.getSeats().size(), "-");
             this.generalRepo.write(false);

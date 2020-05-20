@@ -216,4 +216,8 @@ public class ArrTransQuay extends PassengersHandler {
     public boolean isEmpty(){
         return this.passengersList.isEmpty();
     }
+
+    public void remove(int id){
+        seats.remove(Integer.valueOf(id));
+    }
 }
