@@ -49,6 +49,13 @@ public class MessageDepTermEntrance implements Serializable{
      */
     public static final int ACK =  3;
 
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  4;
+
     //Message arguments
 
     /**

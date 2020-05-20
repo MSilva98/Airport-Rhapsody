@@ -60,6 +60,13 @@ public class MessageArrTermExit implements Serializable{
      */
     public static final int ACK =  6;
 
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  7;
+
     //Message arguments
 
     /**

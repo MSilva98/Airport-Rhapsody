@@ -108,4 +108,20 @@ public class DepTermEntranceStub {
             System.exit (1);
         }
     }
+
+    public void shutdown ()
+    {
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageDepTermEntrance inMessage, outMessage;
+        while (!con.open ()){}
+        outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.SHUT);
+        con.writeObject (outMessage);
+        inMessage = (MessageDepTermEntrance) con.readObject ();
+        if (inMessage.getType () != MessageDepTermEntrance.ACK){ 
+            System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
+            System.out.println (inMessage.toString ());
+            System.exit (1);
+        }
+        con.close ();
+    }
 }

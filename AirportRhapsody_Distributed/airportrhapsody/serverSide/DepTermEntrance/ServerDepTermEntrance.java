@@ -13,6 +13,7 @@ public class ServerDepTermEntrance {
 
   private static final int portNumb = 4004;
 
+  public static boolean waitConn;
   /**
    *  Programa principal.
    */
@@ -44,7 +45,8 @@ public class ServerDepTermEntrance {
 
      /* processamento de pedidos */
 
-      while (true)
+      waitConn = true;
+      while (waitConn)
       { sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyDepTermEntrance (sconi, depTermEntranceInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();

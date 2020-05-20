@@ -109,6 +109,8 @@ public class LoggerInterface {
                 break;
             case MessageLogger.WRT:
                 break;
+            case MessageLogger.SHUT:
+                break;
             default:    throw new MessageException("Invalide type", inMessage);
         }
 
@@ -181,6 +183,11 @@ public class LoggerInterface {
             case MessageLogger.WRT:
                 logger.write(inMessage.getEnd());
                 outMessage = new MessageLogger(MessageLogger.ACK);       // gerar resposta
+                break;
+            case MessageLogger.SHUT:
+                ServerLogger.waitConn = false;
+                (((ClientProxyLogger) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                outMessage = new MessageLogger(MessageLogger.ACK);
                 break;
         }
         return outMessage;

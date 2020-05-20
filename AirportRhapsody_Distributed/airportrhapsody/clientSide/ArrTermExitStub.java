@@ -142,4 +142,20 @@ public class ArrTermExitStub  {
             System.exit (1);
         }
     }
+
+    public void shutdown ()
+    {
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrTermExit inMessage, outMessage;
+        while (!con.open ()){}
+        outMessage = new MessageArrTermExit(MessageArrTermExit.SHUT);
+        con.writeObject (outMessage);
+        inMessage = (MessageArrTermExit) con.readObject ();
+        if (inMessage.getType () != MessageArrTermExit.ACK){ 
+            System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
+            System.out.println (inMessage.toString ());
+            System.exit (1);
+        }
+        con.close ();
+    }
 }

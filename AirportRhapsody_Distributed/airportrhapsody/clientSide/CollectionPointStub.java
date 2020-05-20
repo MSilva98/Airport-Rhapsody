@@ -188,4 +188,20 @@ public class CollectionPointStub  {
             return inMessage.getNR();
         }
     }
+
+    public void shutdown ()
+    {
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageCollectionPoint inMessage, outMessage;
+        while (!con.open ()){}
+        outMessage = new MessageCollectionPoint(MessageCollectionPoint.SHUT);
+        con.writeObject (outMessage);
+        inMessage = (MessageCollectionPoint) con.readObject ();
+        if (inMessage.getType () != MessageCollectionPoint.ACK){ 
+            System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
+            System.out.println (inMessage.toString ());
+            System.exit (1);
+        }
+        con.close ();
+    }
 }

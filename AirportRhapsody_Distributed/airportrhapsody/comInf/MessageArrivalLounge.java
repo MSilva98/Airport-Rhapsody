@@ -91,6 +91,13 @@ public class MessageArrivalLounge implements Serializable{
      */
     public static final int S =  10;
 
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  11;
+
     //Message arguments
 
     /**

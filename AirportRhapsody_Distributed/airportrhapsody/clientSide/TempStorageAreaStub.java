@@ -83,5 +83,19 @@ public class TempStorageAreaStub  {
         }
     }
 
-
+    public void shutdown ()
+    {
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageTempStoreArea inMessage, outMessage;
+        while (!con.open ()){}
+        outMessage = new MessageTempStoreArea(MessageTempStoreArea.SHUT);
+        con.writeObject (outMessage);
+        inMessage = (MessageTempStoreArea) con.readObject ();
+        if (inMessage.getType () != MessageTempStoreArea.ACK){ 
+            System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
+            System.out.println (inMessage.toString ());
+            System.exit (1);
+        }
+        con.close ();
+    }
 }

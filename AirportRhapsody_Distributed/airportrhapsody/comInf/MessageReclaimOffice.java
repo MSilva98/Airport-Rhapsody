@@ -49,6 +49,13 @@ public class MessageReclaimOffice implements Serializable {
      */
     public static final int ACK =  5;
 
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  6;
+
 
     //Message arguments
 

@@ -14,14 +14,14 @@ public class PassengerMain {
         String serverHostName = "localhost";
 
         ArrivalLoungeStub arrivalLounge;
-        CollectionPointStub collPoint;
-        ReclaimOfficeStub reclaimOffice;
-        ArrTransQuayStub arrTransQuay;
-        DepTransQuayStub depTransQuay;
         ArrTermExitStub arrTermExit;
+        ArrTransQuayStub arrTransQuay;
+        CollectionPointStub collPoint;
         DepTermEntranceStub depTermEntrance;
-        TempStorageAreaStub tempStorageArea;
+        DepTransQuayStub depTransQuay;
         LoggerStub generalRepo;
+        ReclaimOfficeStub reclaimOffice;
+        TempStorageAreaStub tempStorageArea;
 
 
         generalRepo = new LoggerStub(serverHostName, 4008);

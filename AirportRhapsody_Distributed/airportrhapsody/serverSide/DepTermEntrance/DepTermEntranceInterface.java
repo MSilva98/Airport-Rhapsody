@@ -34,6 +34,9 @@ public class DepTermEntranceInterface {
 
             case MessageDepTermEntrance.PNL:
                 break;
+
+            case MessageDepTermEntrance.SHUT:
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
 
@@ -47,6 +50,12 @@ public class DepTermEntranceInterface {
 
             case MessageDepTermEntrance.PNL:
                 depTermEnt.prepareNextLeg();
+                outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.ACK);
+                break;
+
+            case MessageDepTermEntrance.SHUT:
+                ServerDepTermEntrance.waitConn = false;
+                (((ClientProxyDepTermEntrance) (Thread.currentThread ())).getScon ()).setTimeout (10);
                 outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.ACK);
                 break;
 

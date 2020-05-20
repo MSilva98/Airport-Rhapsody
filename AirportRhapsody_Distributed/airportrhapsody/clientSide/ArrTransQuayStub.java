@@ -215,4 +215,20 @@ public class ArrTransQuayStub {
             System.exit (1);
         }
     }
+
+    public void shutdown ()
+    {
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrTransQuay inMessage, outMessage;
+        while (!con.open ()){}
+        outMessage = new MessageArrTransQuay(MessageArrTransQuay.SHUT);
+        con.writeObject (outMessage);
+        inMessage = (MessageArrTransQuay) con.readObject ();
+        if (inMessage.getType () != MessageArrTransQuay.ACK){ 
+            System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
+            System.out.println (inMessage.toString ());
+            System.exit (1);
+        }
+        con.close ();
+    }
 }

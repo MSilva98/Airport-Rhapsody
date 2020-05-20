@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.DepTermEntrance;
 
+import javax.sql.rowset.serial.SerialArray;
+
 import airportrhapsody.comInf.MessageDepTermEntrance;
 import airportrhapsody.comInf.MessageException;
 import airportrhapsody.serverSide.ServerCom;
@@ -104,4 +106,8 @@ public class ClientProxyDepTermEntrance extends Thread
 
       return proxyId;
    }
+
+public ServerCom getScon() {
+	return this.sconi;
+}
 }

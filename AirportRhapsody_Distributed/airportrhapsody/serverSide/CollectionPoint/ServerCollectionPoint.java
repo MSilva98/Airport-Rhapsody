@@ -12,6 +12,7 @@ public class ServerCollectionPoint {
 
   private static final int portNumb = 4003;
 
+  public static boolean waitConn;
   /**
    *  Programa principal.
    */
@@ -39,8 +40,8 @@ public class ServerCollectionPoint {
       System.out.println("O servidor esta em escuta.");
 
      /* processamento de pedidos */
-
-      while (true)
+      waitConn = true;
+      while (waitConn)
       { sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyCollectionPoint(sconi, collPointInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();

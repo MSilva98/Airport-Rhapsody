@@ -104,4 +104,8 @@ public class ClientProxyArrivalLounge extends Thread
 
       return proxyId;
    }
+
+public ServerCom getScon() {
+	return this.sconi;
+}
 }

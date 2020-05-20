@@ -54,7 +54,8 @@ public class CollectionPointInterface {
             case MessageCollectionPoint.GNB:
                 break;
             case MessageCollectionPoint.S:
-                System.out.println("HERE");
+                break;
+            case MessageCollectionPoint.SHUT:
                 break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
@@ -104,6 +105,12 @@ public class CollectionPointInterface {
             case MessageCollectionPoint.S:
                 int size = collPoint.size();
                 outMessage = new MessageCollectionPoint(MessageCollectionPoint.S,size);
+                break;
+
+            case MessageCollectionPoint.SHUT:
+                ServerCollectionPoint.waitConn = false;
+                (((ClientProxyCollectionPoint) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                outMessage = new MessageCollectionPoint(MessageCollectionPoint.ACK);
                 break;
         }
         return outMessage;

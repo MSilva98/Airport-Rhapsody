@@ -88,4 +88,20 @@ public class DepTransQuayStub  {
             return inMessage.getBusDriverSt();
         }
     }
+
+    public void shutdown ()
+    {
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageDepTransQuay inMessage, outMessage;
+        while (!con.open ()){}
+        outMessage = new MessageDepTransQuay(MessageDepTransQuay.SHUT);
+        con.writeObject (outMessage);
+        inMessage = (MessageDepTransQuay) con.readObject ();
+        if (inMessage.getType () != MessageDepTransQuay.ACK){ 
+            System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
+            System.out.println (inMessage.toString ());
+            System.exit (1);
+        }
+        con.close ();
+    }
 }

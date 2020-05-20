@@ -60,6 +60,8 @@ public class ArrTransQuayInterface {
                     throw new MessageException("Passenger ID missing",inMessage);
                 }
                 break;
+            case MessageArrTransQuay.SHUT:
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
         
@@ -118,6 +120,11 @@ public class ArrTransQuayInterface {
                 arrTransQuay.remove(inMessage.getGenInt());
                 outMessage = new MessageArrTransQuay(MessageArrTransQuay.ACK);
                 break;  
+            case MessageArrTransQuay.SHUT:
+                ServerArrTransQuay.waitConn = false;
+                (((ClientProxyArrTransQuay) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                outMessage = new MessageArrTransQuay(MessageArrTransQuay.ACK);
+                break;
         }
 
         return outMessage;

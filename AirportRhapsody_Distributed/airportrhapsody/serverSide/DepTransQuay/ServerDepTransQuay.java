@@ -13,6 +13,7 @@ public class ServerDepTransQuay {
 
   private static final int portNumb = 4005;
 
+  public static boolean waitConn;
   /**
    *  Programa principal.
    */
@@ -43,8 +44,8 @@ public class ServerDepTransQuay {
       System.out.println("O servidor esta em escuta.");
 
      /* processamento de pedidos */
-
-      while (true)
+      waitConn = true;
+      while (waitConn)
       { sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyDepTransQuay(sconi, depTransQuayInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();

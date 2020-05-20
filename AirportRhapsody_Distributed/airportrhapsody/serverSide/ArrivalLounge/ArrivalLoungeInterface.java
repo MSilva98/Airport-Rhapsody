@@ -51,6 +51,8 @@ public class ArrivalLoungeInterface {
                 break;
             case MessageArrivalLounge.S:
                 break;
+            case MessageArrivalLounge.SHUT:
+                break;
             default:    throw new MessageException ("Invalid type", inMessage);
         }
 
@@ -90,8 +92,13 @@ public class ArrivalLoungeInterface {
             case MessageArrivalLounge.S: 
                 int size = arrivalLounge.size();
                 outMessage = new MessageArrivalLounge(MessageArrivalLounge.S, size);
-                break;   
-
+                break; 
+                
+            case MessageArrivalLounge.SHUT:
+                ServerArrivalLounge.waitConn = false;
+                (((ClientProxyArrivalLounge) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                outMessage = new MessageArrivalLounge(MessageArrivalLounge.ACK);
+                break;
         }
 
         return outMessage;

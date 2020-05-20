@@ -104,4 +104,8 @@ public class ClientProxyTempStorageArea extends Thread
 
       return proxyId;
    }
+
+public ServerCom getScon() {
+	return this.sconi;
+}
 }

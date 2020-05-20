@@ -37,6 +37,8 @@ public class ArrTermExitInterface {
                 break;
             case MessageArrTermExit.GH:
                 break;    
+            case MessageArrTermExit.SHUT:
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
 
@@ -60,6 +62,12 @@ public class ArrTermExitInterface {
 
             case MessageArrTermExit.GH:
                 arrTermExit.goHome();
+                outMessage = new MessageArrTermExit(MessageArrTermExit.ACK);
+                break;
+            
+            case MessageArrTermExit.SHUT:
+                ServerArrTermExit.waitConn = false;
+                (((ClientProxyArrTermExit) (Thread.currentThread ())).getScon ()).setTimeout (10);
                 outMessage = new MessageArrTermExit(MessageArrTermExit.ACK);
                 break;
         }

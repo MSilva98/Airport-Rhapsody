@@ -142,6 +142,13 @@ public class MessageLogger implements Serializable{
      * @serialField ACK
      */
     public static final int ACK = 18;   
+
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  19;
     
     // Message arguments
     

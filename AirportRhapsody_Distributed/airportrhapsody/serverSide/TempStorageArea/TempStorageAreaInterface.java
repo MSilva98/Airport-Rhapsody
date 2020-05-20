@@ -37,6 +37,8 @@ public class TempStorageAreaInterface {
                 //     throw new MessageException("Size missing!", inMessage);
                 // }
                 break;
+            case MessageTempStoreArea.SHUT:
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
 
@@ -56,6 +58,11 @@ public class TempStorageAreaInterface {
                 int size = tempStorageArea.size();
                 outMessage = new MessageTempStoreArea(MessageTempStoreArea.S, size);
                 break;  
+            case MessageTempStoreArea.SHUT:
+                ServerTempStorageArea.waitConn = false;   
+                (((ClientProxyTempStorageArea) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                outMessage = new MessageTempStoreArea(MessageTempStoreArea.ACK);
+                break;
 
         }
 

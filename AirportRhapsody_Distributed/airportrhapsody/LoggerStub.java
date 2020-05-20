@@ -279,4 +279,20 @@ public class LoggerStub {
             System.exit (1);
         }
     }
+
+    public void shutdown ()
+    {
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageLogger inMessage, outMessage;
+        while (!con.open ()){}
+        outMessage = new MessageLogger(MessageLogger.SHUT);
+        con.writeObject (outMessage);
+        inMessage = (MessageLogger) con.readObject ();
+        if (inMessage.getType () != MessageLogger.ACK){ 
+            System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
+            System.out.println (inMessage.toString ());
+            System.exit (1);
+        }
+        con.close ();
+    }
 }

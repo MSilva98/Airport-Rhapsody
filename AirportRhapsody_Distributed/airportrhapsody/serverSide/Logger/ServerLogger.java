@@ -11,6 +11,7 @@ public class ServerLogger {
 
     private static final int portNumb = 4008;
 
+    public static boolean waitConn;
     /**
      *  Programa principal.
      */
@@ -38,8 +39,8 @@ public class ServerLogger {
         System.out.println("O servidor esta em escuta.");
 
         /* processamento de pedidos */
-
-        while (true)
+        waitConn = true;
+        while (waitConn)
         {   
             sconi = scon.accept ();                            // entrada em processo de escuta
             cliProxy = new ClientProxyLogger(sconi, loggerInterface);    // lançamento do agente prestador do serviço

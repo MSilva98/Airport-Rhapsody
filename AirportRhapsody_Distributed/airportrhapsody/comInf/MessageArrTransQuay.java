@@ -98,6 +98,13 @@ public class MessageArrTransQuay implements Serializable{
      * @serialField ACK
      */
     public static final int R =  12;
+
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  13;
     
 
     //Message arguments

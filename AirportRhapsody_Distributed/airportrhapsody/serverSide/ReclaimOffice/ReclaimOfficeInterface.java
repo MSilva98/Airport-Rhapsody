@@ -39,6 +39,9 @@ public class ReclaimOfficeInterface {
                     throw new MessageException("Num of reclaims missing", inMessage);
                 }
                 break;
+
+            case MessageReclaimOffice.SHUT:
+                break;
             default:    throw new MessageException("Invalid type", inMessage);
         }
 
@@ -62,6 +65,12 @@ public class ReclaimOfficeInterface {
 
             case MessageReclaimOffice.SR:
                 reclaimOffice.setReclaims(inMessage.getGenInt());
+                outMessage = new MessageReclaimOffice(MessageReclaimOffice.ACK);
+                break;
+            
+            case MessageReclaimOffice.SHUT:
+                ServerReclaimOffice.waitConn = false;
+                (((ClientProxyReclaimOffice) (Thread.currentThread ())).getScon ()).setTimeout (10);
                 outMessage = new MessageReclaimOffice(MessageReclaimOffice.ACK);
                 break;
         }

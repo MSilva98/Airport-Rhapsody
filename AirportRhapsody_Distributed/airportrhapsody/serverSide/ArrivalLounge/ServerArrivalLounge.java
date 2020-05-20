@@ -12,6 +12,7 @@ public class ServerArrivalLounge {
 
    private static final int portNumb = 4000;
 
+   public static boolean waitConn;
    /**
     *  Programa principal.
     */
@@ -39,8 +40,8 @@ public class ServerArrivalLounge {
        System.out.println("O servidor esta em escuta.");
  
       /* processamento de pedidos */
- 
-       while (true)
+       waitConn = true;
+       while (waitConn)
        { sconi = scon.accept ();                            // entrada em processo de escuta
          cliProxy = new ClientProxyArrivalLounge (sconi, arrivalLoungeInt);    // lançamento do agente prestador do serviço
          cliProxy.start ();

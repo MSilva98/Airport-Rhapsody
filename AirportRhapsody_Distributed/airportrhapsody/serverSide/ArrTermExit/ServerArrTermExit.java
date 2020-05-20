@@ -14,6 +14,7 @@ public class ServerArrTermExit {
 
   private static final int portNumb = 4001;
 
+  public static boolean waitConn;
   /**
    *  Programa principal.
    */
@@ -46,8 +47,8 @@ public class ServerArrTermExit {
       System.out.println("O servidor esta em escuta.");
 
      /* processamento de pedidos */
-
-      while (true)
+      waitConn = true;
+      while (waitConn)
       { sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyArrTermExit (sconi, arrTermExitInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();

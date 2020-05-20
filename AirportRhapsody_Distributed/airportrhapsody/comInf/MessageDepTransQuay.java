@@ -43,6 +43,13 @@ public class MessageDepTransQuay implements Serializable {
      */
     public static final int ACK =  4;
 
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  5;
+
     //Message arguments
 
     /**

@@ -69,6 +69,13 @@ public class MessageCollectionPoint implements Serializable{
      * @serialField ACK
      */
     public static final int ACK =  8;
+
+    /**
+     * Shut
+     * 
+     * @serialField Shut
+     */
+    public static final int SHUT =  9;
     
 
     //Message arguments

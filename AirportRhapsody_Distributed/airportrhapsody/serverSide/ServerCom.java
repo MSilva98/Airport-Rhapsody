@@ -272,4 +272,21 @@ public class ServerCom
         System.exit (1);
       }
    }
+
+  /**
+   *  Definição de um time out de escuta.
+   */
+
+  public void setTimeout (int time)
+  {
+     try
+     { listeningSocket.setSoTimeout (time);
+     }
+     catch (SocketException e)
+     { System.out.println(Thread.currentThread ().getName () +
+                                " - ocorreu um erro na fixação de um timeout de escuta!");
+       e.printStackTrace ();
+       System.exit (1);
+     }
+  }
 }

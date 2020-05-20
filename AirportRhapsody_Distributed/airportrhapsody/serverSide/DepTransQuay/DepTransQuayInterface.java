@@ -40,7 +40,8 @@ public class DepTransQuayInterface {
                     throw new MessageException("Passenger ID missing", inMessage);
                 }
                 break;
-            
+            case MessageDepTransQuay.SHUT:
+                break;
             default:    throw new MessageException("Invalid Type", inMessage);
         }
 
@@ -66,6 +67,11 @@ public class DepTransQuayInterface {
                 Passenger.InternalState st = depTransQuay.leaveBus(pID);
                 System.out.println("LB INTER - 2");
                 outMessage = new MessageDepTransQuay(MessageDepTransQuay.LB,st);
+                break;
+            case MessageDepTransQuay.SHUT:
+                ServerDepTransQuay.waitConn = false;
+                (((ClientProxyDepTransQuay) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                outMessage = new MessageDepTransQuay(MessageDepTransQuay.ACK);
                 break;
         }
 
