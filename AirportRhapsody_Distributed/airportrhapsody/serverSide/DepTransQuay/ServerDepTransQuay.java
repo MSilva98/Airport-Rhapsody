@@ -50,5 +50,7 @@ public class ServerDepTransQuay {
         cliProxy = new ClientProxyDepTransQuay(sconi, depTransQuayInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();
       }
+      scon.end ();
+       System.out.println("O servidor foi desativado"); 
    }
 }

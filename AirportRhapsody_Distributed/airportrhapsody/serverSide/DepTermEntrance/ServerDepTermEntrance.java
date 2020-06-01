@@ -51,5 +51,7 @@ public class ServerDepTermEntrance {
         cliProxy = new ClientProxyDepTermEntrance (sconi, depTermEntranceInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();
       }
+      scon.end ();
+       System.out.println("O servidor foi desativado"); 
    }
 }

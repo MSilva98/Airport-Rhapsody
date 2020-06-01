@@ -33,7 +33,7 @@ public class PorterMain {
         arrivalLounge.shutdown();
         collPoint.shutdown();
         tempStorageArea.shutdown();
-        generalRepo.shutdown();
+        //generalRepo.shutdown();
         System.out.println("O porter terminou.");
     }
 }

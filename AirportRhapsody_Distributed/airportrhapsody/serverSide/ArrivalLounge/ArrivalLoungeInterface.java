@@ -89,6 +89,16 @@ public class ArrivalLoungeInterface {
                 outMessage = new MessageArrivalLounge (MessageArrivalLounge.WSID, whatShouldIDo);       // gerar resposta
                 break;
 
+            case MessageArrivalLounge.GDE:
+                boolean st = arrivalLounge.getDayEnd();
+                outMessage = new MessageArrivalLounge (MessageArrivalLounge.GDE, st);  
+                break;
+            case MessageArrivalLounge.SDE:
+                arrivalLounge.setDayEnd(inMessage.getGenBool());
+                outMessage = new MessageArrivalLounge (MessageArrivalLounge.ACK); 
+                break;
+
+
             case MessageArrivalLounge.S: 
                 int size = arrivalLounge.size();
                 outMessage = new MessageArrivalLounge(MessageArrivalLounge.S, size);

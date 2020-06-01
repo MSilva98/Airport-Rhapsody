@@ -46,5 +46,7 @@ public class ServerCollectionPoint {
         cliProxy = new ClientProxyCollectionPoint(sconi, collPointInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();
       }
+      scon.end ();
+       System.out.println("O servidor foi desativado"); 
    }
 }

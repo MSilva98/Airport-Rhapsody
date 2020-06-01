@@ -22,7 +22,7 @@ public class ServerArrTermExit {
    public static void main (String [] args)
    {
        int nPassengers = 6 ;                               // number of passengers
-       int nPlaneLandings = 5;                             // number of plane landings
+       int nPlaneLandings = 1;                             // number of plane landings
        int nSeatingPlaces = 3;                             // bus capacity
        int maxBags = 2;                                    // maximum luggage
        String serverHostName = "localhost";
@@ -53,6 +53,8 @@ public class ServerArrTermExit {
         cliProxy = new ClientProxyArrTermExit (sconi, arrTermExitInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();
       }
+      scon.end ();
+       System.out.println("O servidor foi desativado"); 
    }
     
 }

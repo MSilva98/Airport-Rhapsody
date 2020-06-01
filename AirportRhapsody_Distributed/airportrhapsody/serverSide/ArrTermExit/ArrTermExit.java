@@ -125,8 +125,11 @@ public class ArrTermExit extends PassengersHandler {
      * Set the end of the work
      */
     private void endOfWork(){
+        System.out.println("ARRIVAL LOUNGE EOF");
         arrivalLounge.setDayEnd(true);
+        System.out.println("ARRTRANSQUAY EOF");
         arrTransQuay.setDayEnd(true);
+        System.out.println("END EOF");
     }
     /**
      * Go home

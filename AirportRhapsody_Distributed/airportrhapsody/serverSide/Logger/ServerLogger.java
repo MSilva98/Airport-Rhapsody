@@ -46,5 +46,7 @@ public class ServerLogger {
             cliProxy = new ClientProxyLogger(sconi, loggerInterface);    // lançamento do agente prestador do serviço
             cliProxy.start ();
         }
+        scon.end ();
+       System.out.println("O servidor foi desativado"); 
     }
 }

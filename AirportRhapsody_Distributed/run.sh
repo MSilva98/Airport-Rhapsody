@@ -15,4 +15,4 @@ gnome-terminal					--tab --title="Passenger 1" --command="bash -c 'java airportr
 gnome-terminal					--tab --title="Passenger 2" --command="bash -c 'java airportrhapsody.clientSide.PassengerMain 2 ; $SHELL'"
 gnome-terminal					--tab --title="Passenger 3" --command="bash -c 'java airportrhapsody.clientSide.PassengerMain 3 ; $SHELL'"
 gnome-terminal					--tab --title="Passenger 4" --command="bash -c 'java airportrhapsody.clientSide.PassengerMain 4 ; $SHELL'"
-gnome-terminal					--tab --title="Passenger 5" --command="bash -c 'java airportrhapsody.clientSide.PassengerMain 5 ; $SHELL'"
+gnome-terminal					--tab --title="Passenger 5" --command="bash -c 'java airportrhapsody.clientSide.PassengerMain 5 '"
