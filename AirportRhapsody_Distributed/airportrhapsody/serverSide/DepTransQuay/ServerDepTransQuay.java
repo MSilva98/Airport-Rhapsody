@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.DepTransQuay;
 
+import java.net.SocketTimeoutException;
+
 import airportrhapsody.LoggerStub;
 import airportrhapsody.clientSide.ArrTransQuayStub;
 import airportrhapsody.serverSide.ServerCom;
@@ -46,9 +48,16 @@ public class ServerDepTransQuay {
      /* processamento de pedidos */
       waitConn = true;
       while (waitConn)
-      { sconi = scon.accept ();                            // entrada em processo de escuta
+      { 
+        try
+        {
+        sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyDepTransQuay(sconi, depTransQuayInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();
+        }
+        catch (SocketTimeoutException e)
+        { 
+        }
       }
       scon.end ();
        System.out.println("O servidor foi desativado"); 

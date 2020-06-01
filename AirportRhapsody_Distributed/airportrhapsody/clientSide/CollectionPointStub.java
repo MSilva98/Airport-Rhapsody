@@ -197,11 +197,11 @@ public class CollectionPointStub  {
         outMessage = new MessageCollectionPoint(MessageCollectionPoint.SHUT);
         con.writeObject (outMessage);
         inMessage = (MessageCollectionPoint) con.readObject ();
+        con.close ();
         if (inMessage.getType () != MessageCollectionPoint.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
             System.exit (1);
         }
-        con.close ();
     }
 }

@@ -106,12 +106,12 @@ public class ReclaimOfficeStub {
         outMessage = new MessageReclaimOffice(MessageReclaimOffice.SHUT);
         con.writeObject (outMessage);
         inMessage = (MessageReclaimOffice) con.readObject ();
+        con.close ();
         if (inMessage.getType () != MessageReclaimOffice.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
             System.exit (1);
         }
-        con.close ();
     }
 
 }

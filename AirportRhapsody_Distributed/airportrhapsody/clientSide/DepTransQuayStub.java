@@ -97,11 +97,11 @@ public class DepTransQuayStub  {
         outMessage = new MessageDepTransQuay(MessageDepTransQuay.SHUT);
         con.writeObject (outMessage);
         inMessage = (MessageDepTransQuay) con.readObject ();
+        con.close ();
         if (inMessage.getType () != MessageDepTransQuay.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
             System.exit (1);
         }
-        con.close ();
     }
 }

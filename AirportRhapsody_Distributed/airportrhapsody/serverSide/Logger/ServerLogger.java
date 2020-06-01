@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.Logger;
 
+import java.net.SocketTimeoutException;
+
 import airportrhapsody.serverSide.ServerCom;
 
 public class ServerLogger {
@@ -42,9 +44,14 @@ public class ServerLogger {
         waitConn = true;
         while (waitConn)
         {   
+            try{
             sconi = scon.accept ();                            // entrada em processo de escuta
             cliProxy = new ClientProxyLogger(sconi, loggerInterface);    // lançamento do agente prestador do serviço
             cliProxy.start ();
+            }
+            catch (SocketTimeoutException e)
+            { 
+            }
         }
         scon.end ();
        System.out.println("O servidor foi desativado"); 

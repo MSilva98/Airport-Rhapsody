@@ -204,11 +204,11 @@ public class ArrivalLoungeStub {
         outMessage = new MessageArrivalLounge(MessageArrivalLounge.SHUT);
         con.writeObject (outMessage);
         inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
         if (inMessage.getType () != MessageArrivalLounge.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
             System.exit (1);
         }
-        con.close ();
     }
 }

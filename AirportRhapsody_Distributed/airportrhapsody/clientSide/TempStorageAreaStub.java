@@ -91,11 +91,11 @@ public class TempStorageAreaStub  {
         outMessage = new MessageTempStoreArea(MessageTempStoreArea.SHUT);
         con.writeObject (outMessage);
         inMessage = (MessageTempStoreArea) con.readObject ();
+        con.close ();
         if (inMessage.getType () != MessageTempStoreArea.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
             System.exit (1);
         }
-        con.close ();
     }
 }

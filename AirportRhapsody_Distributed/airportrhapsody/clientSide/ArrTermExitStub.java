@@ -151,11 +151,11 @@ public class ArrTermExitStub  {
         outMessage = new MessageArrTermExit(MessageArrTermExit.SHUT);
         con.writeObject (outMessage);
         inMessage = (MessageArrTermExit) con.readObject ();
+        con.close ();
         if (inMessage.getType () != MessageArrTermExit.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
             System.exit (1);
         }
-        con.close ();
     }
 }

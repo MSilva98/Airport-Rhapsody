@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.CollectionPoint;
 
+import java.net.SocketTimeoutException;
+
 import airportrhapsody.LoggerStub;
 import airportrhapsody.serverSide.ServerCom;
 
@@ -42,9 +44,15 @@ public class ServerCollectionPoint {
      /* processamento de pedidos */
       waitConn = true;
       while (waitConn)
-      { sconi = scon.accept ();                            // entrada em processo de escuta
+      { 
+        try{
+        sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyCollectionPoint(sconi, collPointInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();
+        }
+        catch (SocketTimeoutException e)
+        { 
+        }
       }
       scon.end ();
        System.out.println("O servidor foi desativado"); 

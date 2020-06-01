@@ -46,15 +46,16 @@ public class ServerArrivalLounge {
        waitConn = true;
        while (waitConn)
        { 
-        //try
-        //{ 
+        System.out.println(waitConn);
+        try
+        { 
           sconi = scon.accept ();                            // entrada em processo de escuta
           cliProxy = new ClientProxyArrivalLounge (sconi, arrivalLoungeInt);    // lançamento do agente prestador do serviço
           cliProxy.start ();
-        //}
-        //catch (SocketTimeoutException e)
-        //{ 
-        //}
+        }
+        catch (SocketTimeoutException e)
+        { 
+        }
        }
        scon.end ();
        System.out.println("O servidor foi desativado"); 

@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.TempStorageArea;
 
+import java.net.SocketTimeoutException;
+
 import airportrhapsody.serverSide.ServerCom;
 
 public class ServerTempStorageArea {
@@ -42,9 +44,16 @@ public class ServerTempStorageArea {
    
       waitConn = true;
       while (waitConn)
-      { sconi = scon.accept ();                            // entrada em processo de escuta
+      { 
+         try
+         {
+         sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyTempStorageArea(sconi, tempStorageAreaInterface);   // lançamento do agente prestador do serviço
         cliProxy.start ();
+         }
+         catch (SocketTimeoutException e)
+         { 
+         }
       }
       scon.end ();
       System.out.println("O servidor foi desativado"); 

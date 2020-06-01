@@ -1,5 +1,7 @@
 package airportrhapsody.serverSide.ArrTermExit;
 
+import java.net.SocketTimeoutException;
+
 import airportrhapsody.LoggerStub;
 import airportrhapsody.clientSide.ArrTransQuayStub;
 import airportrhapsody.clientSide.ArrivalLoungeStub;
@@ -49,9 +51,16 @@ public class ServerArrTermExit {
      /* processamento de pedidos */
       waitConn = true;
       while (waitConn)
-      { sconi = scon.accept ();                            // entrada em processo de escuta
+      { 
+        try
+        {
+        sconi = scon.accept ();                            // entrada em processo de escuta
         cliProxy = new ClientProxyArrTermExit (sconi, arrTermExitInterface);    // lançamento do agente prestador do serviço
         cliProxy.start ();
+        }
+        catch (SocketTimeoutException e)
+        { 
+        }
       }
       scon.end ();
        System.out.println("O servidor foi desativado"); 

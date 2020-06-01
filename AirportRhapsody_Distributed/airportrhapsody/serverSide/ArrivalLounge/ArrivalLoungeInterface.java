@@ -106,6 +106,7 @@ public class ArrivalLoungeInterface {
                 
             case MessageArrivalLounge.SHUT:
                 ServerArrivalLounge.waitConn = false;
+                System.out.println(ServerArrivalLounge.waitConn + " waitConn");
                 (((ClientProxyArrivalLounge) (Thread.currentThread ())).getScon ()).setTimeout (10);
                 outMessage = new MessageArrivalLounge(MessageArrivalLounge.ACK);
                 break;
