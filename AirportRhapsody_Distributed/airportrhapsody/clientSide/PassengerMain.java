@@ -6,10 +6,8 @@ public class PassengerMain {
 
     public static void main(String[] args) {
         
-        int nPassengers = 6 ;                               // number of passengers
+
         int nPlaneLandings = 5;                             // number of plane landings
-        int nSeatingPlaces = 3;                             // bus capacity
-        int maxBags = 2;                                    // maximum luggage
 
         String serverHostName = "localhost";
 
@@ -35,15 +33,26 @@ public class PassengerMain {
         tempStorageArea = new TempStorageAreaStub(serverHostName, 4007);
 
 
-        Passenger passenger = new Passenger(Integer.parseInt(args[0]), arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance, generalRepo);
+        for (int i = 0; i < nPlaneLandings; i++) {
+            Passenger passenger = new Passenger(Integer.parseInt(args[0]), arrivalLounge, collPoint, reclaimOffice, arrTransQuay, depTransQuay, arrTermExit, depTermEntrance, generalRepo);
+        
+            passenger.start ();
 
-        passenger.start ();
-
-        try
-        { 
-            passenger.join();
+            try
+            { 
+                passenger.join();
+            }
+            catch (InterruptedException e) {}
+            System.out.println("O passenger terminou.");
         }
-        catch (InterruptedException e) {}
-        System.out.println("O passenger terminou.");
+
+        if(Integer.parseInt(args[0]) == 0){
+            arrTermExit.shutdown();
+            depTermEntrance.shutdown();
+            generalRepo.setMissing(reclaimOffice.getNumBagsMissing());
+            reclaimOffice.shutdown();
+        }
+
+        
     }
 }
