@@ -30,10 +30,7 @@ public class BusDriverMain {
             busDriver.join();
         }
         catch (InterruptedException e) {}
-        arrTransQuay.shutdown();
-        depTransQuay.shutdown();
-        generalRepo.write(true); 
-        generalRepo.shutdown();
+        
         System.out.println("O bus driver terminou.");
     }
 }

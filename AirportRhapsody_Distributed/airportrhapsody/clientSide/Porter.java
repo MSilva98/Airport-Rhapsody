@@ -107,9 +107,21 @@ public class Porter extends Thread{
             System.out.println("RUN 11");
             this.generalRepo.write(false);
             System.out.println("RUN 12");   
-            //this.arrivalLounge.restPorter();
+            
+            
         }
+        this.shutdownServers();
     }
+
+     /**
+     * Shutdown servers
+     */
+    private void shutdownServers(){
+        arrivalLounge.shutdown();
+        collPoint.shutdown();
+        tempStorageArea.shutdown();
+    }
+
     /**
      * Carry luggage to the approriate store
      * @param l bag to carry

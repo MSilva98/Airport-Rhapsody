@@ -9,7 +9,7 @@ import airportrhapsody.serverSide.ArrivalLounge.*;
 import airportrhapsody.serverSide.CollectionPoint.*;
 import airportrhapsody.serverSide.DepTermEntrance.*;
 import airportrhapsody.serverSide.DepTransQuay.*;
-import airportrhapsody.serverSide.ReclaimOffice.*;
+import airportrhapsody.serverSide.ReclaimOffice.*;  
 import airportrhapsody.LoggerStub;
 import airportrhapsody.comInf.*;
 
@@ -123,6 +123,14 @@ public class Passenger extends Thread{
      */
     private LoggerStub generalRepo;
 
+
+    /**
+     *  Counter number of flights
+     * 
+     *  @serialField counterFlights
+     */
+    private static int counterFlights = 0 ;
+
     /**
      * Instantiating the passenger thread.
      * @param id passanger identification
@@ -217,12 +225,29 @@ public class Passenger extends Thread{
             depTermEntrance.prepareNextLeg();
             System.out.println("RUN 28");
         }
+
+        this.shutdownServers();
+
     }
+
+     /**
+     * Shutdown servers
+     */
+    private void shutdownServers(){
+        if(passengerID == 0 && counterFlights == 5){
+            arrTermExit.shutdown();
+            depTermEntrance.shutdown();
+            generalRepo.setMissing(reclaimOffice.getNumBagsMissing());
+            reclaimOffice.shutdown();
+        }
+    }
+
     /*
      * Setup passenger situtation and bags. 
      * Bags are randomly attributed (0,1 or 2) and the lost bags are randomly generated
      */
     public void setupPassenger() {
+        counterFlights++;
         Situation s[] = Situation.values();
         Random rand = new Random(); 
         int rand_int1 = rand.nextInt(2);

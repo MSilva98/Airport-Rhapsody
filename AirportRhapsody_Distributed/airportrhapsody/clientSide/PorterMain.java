@@ -30,10 +30,7 @@ public class PorterMain {
             porter.join();
         }
         catch (InterruptedException e) {}
-        arrivalLounge.shutdown();
-        collPoint.shutdown();
-        tempStorageArea.shutdown();
-        //  generalRepo.shutdown();
+        
         System.out.println("O porter terminou.");
     }
 }

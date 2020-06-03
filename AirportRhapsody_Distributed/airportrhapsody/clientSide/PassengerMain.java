@@ -46,12 +46,7 @@ public class PassengerMain {
             System.out.println("O passenger terminou.");
         }
 
-        if(Integer.parseInt(args[0]) == 0){
-            arrTermExit.shutdown();
-            depTermEntrance.shutdown();
-            generalRepo.setMissing(reclaimOffice.getNumBagsMissing());
-            reclaimOffice.shutdown();
-        }
+        
 
         
     }
