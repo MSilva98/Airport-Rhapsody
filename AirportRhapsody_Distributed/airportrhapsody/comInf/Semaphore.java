@@ -22,35 +22,50 @@ public class Semaphore
 
    private int numbBlockThreads = 0;
 
+   /**
+   *  Estado down
+   *
+   *    @serialField downTime
+   */
+
+  private boolean downTime;
+
   /**
    *  Operação down.
    */
 
    public synchronized void down ()
    {
-     if (val == 0)
-        { numbBlockThreads += 1;
-          try
-          { wait ();
-          }
-          catch (InterruptedException e) {}
+     if (val == 0){ 
+        numbBlockThreads += 1;
+        try
+        { wait ();
         }
-        else val -= 1;
+        catch (InterruptedException e) {}
+        
+      }
+      else val -= 1;
    }
 
    /**
    *  Operação down com tempo t em milissegundos.
+   * 
+   * @param t time
    */
 
   public synchronized void down (int t)
   {
     if (val == 0)
         { numbBlockThreads += 1;
+          downTime = true;
           try
           { wait (t);
           }
           // verificar se o wait terminou por timeout ou por um up passar um parametro no down
           catch (InterruptedException e) {}
+          if(downTime){
+            numbBlockThreads-=1;
+          }
         }
         else val -= 1;
   }
@@ -63,6 +78,7 @@ public class Semaphore
    {
      if (numbBlockThreads != 0)
         { numbBlockThreads -= 1;
+          downTime = false;
           notify ();
         }
         else val += 1;
