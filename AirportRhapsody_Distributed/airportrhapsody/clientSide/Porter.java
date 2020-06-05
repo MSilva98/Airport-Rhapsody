@@ -110,7 +110,7 @@ public class Porter extends Thread{
             
             
         }
-        this.shutdownServers();
+        //this.shutdownServers();
     }
 
      /**

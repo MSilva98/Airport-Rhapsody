@@ -107,7 +107,7 @@ public class BusDriver extends Thread {
             System.out.println("RUN 10");
         }
         generalRepo.write(false);
-        this.shutdownServers();
+        //this.shutdownServers();
         
     }
     /**

@@ -7,6 +7,7 @@ do
 	sh run.sh &
 
 	while [ $(ps -aux | grep airportrhapsody | wc -l) -gt 1 ]; do
+	ps -aux | grep airportrhapsody | wc -l
         sleep 1
         echo "Airport Active"
     done
