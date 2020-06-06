@@ -122,8 +122,11 @@ public class ArrTransQuayInterface {
                 break;  
             case MessageArrTransQuay.SHUT:
                 ServerArrTransQuay.waitConn = false;
+                System.out.println("Arrival TRANS SHUT MESSAGE");
                 (((ClientProxyArrTransQuay) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("Arrival TRANS SHUT MESSAGE 1");
                 outMessage = new MessageArrTransQuay(MessageArrTransQuay.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
         }
 

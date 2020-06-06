@@ -80,7 +80,7 @@ public class ServerCom
    {
       try
       { listeningSocket = new ServerSocket (serverPortNumb);
-        //setTimeout (10000);
+        // setTimeout (1000);
         setTimeout (100);
       }
       catch (BindException e)                         // erro fatal --- port já em uso

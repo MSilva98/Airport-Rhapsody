@@ -1,5 +1,10 @@
 package airportrhapsody.clientSide;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
 import airportrhapsody.comInf.Luggage;
 import airportrhapsody.comInf.MessageArrivalLounge;
 
@@ -179,6 +184,69 @@ public class ArrivalLoungeStub {
         }
     }
 
+    public boolean getPrtEnd(){
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.GPE);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.GPE ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getGenBool();
+        }
+    }
+
+    public void setPrtEnd(boolean st){
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.SPE,st);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
+    }
+
+    public boolean getPassEnd(){
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.GPAE);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.GPAE ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+            return false;
+        }else{
+            return inMessage.getGenBool();
+        }
+    }
+
+    public void setPassEnd(boolean st){
+        ClientCom con = new ClientCom (serverHostName, serverPortNumb);
+        MessageArrivalLounge inMessage, outMessage;
+        while (!con.open ()) {}
+        outMessage = new MessageArrivalLounge(MessageArrivalLounge.SPAE,st);
+        con.writeObject(outMessage);
+        inMessage = (MessageArrivalLounge) con.readObject ();
+        con.close ();
+        if(inMessage.getType() != MessageArrivalLounge.ACK ){
+            System.out.println("Tipo inválido");
+            System.exit (1);
+        }
+    }
+
+
     public int size(){
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
@@ -200,15 +268,27 @@ public class ArrivalLoungeStub {
     {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrivalLounge inMessage, outMessage;
-        while (!con.open ()){}
+        // while (!con.open ()){}
+        System.out.println("BEFORE CON");
+        while (!con.open ()){
+            System.out.println("WHILE CON");
+            try
+        { Thread.currentThread ().sleep ((long) (10));
+        }
+        catch (InterruptedException e) {}
+        }
+        System.out.println("AFTER CON");
         outMessage = new MessageArrivalLounge(MessageArrivalLounge.SHUT);
         con.writeObject (outMessage);
+        System.out.println("SHUT SENT");
         inMessage = (MessageArrivalLounge) con.readObject ();
         con.close ();
+        System.out.println("ACK RECEIVED");
         if (inMessage.getType () != MessageArrivalLounge.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
-            System.exit (1);
+            while(true){}
+            // System.exit (1);
         }
     }
 }

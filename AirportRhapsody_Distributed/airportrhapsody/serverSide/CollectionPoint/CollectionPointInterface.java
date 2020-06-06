@@ -109,8 +109,11 @@ public class CollectionPointInterface {
 
             case MessageCollectionPoint.SHUT:
                 ServerCollectionPoint.waitConn = false;
+                System.out.println("COLL POINT SHUT MESSAGE");
                 (((ClientProxyCollectionPoint) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("COLL POINT SHUT MESSAGE 1");
                 outMessage = new MessageCollectionPoint(MessageCollectionPoint.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
         }
         return outMessage;

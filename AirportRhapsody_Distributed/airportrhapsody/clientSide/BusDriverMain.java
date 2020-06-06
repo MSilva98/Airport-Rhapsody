@@ -42,7 +42,7 @@ public class BusDriverMain {
         depTermEntrance = new DepTermEntranceStub(serverHostName, 4004);
         tempStorageArea = new TempStorageAreaStub(serverHostName, 4007);
 
-        BusDriver busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay, generalRepo);
+        BusDriver busDriver = new BusDriver(1,nSeatingPlaces,arrTransQuay,depTransQuay, arrivalLounge, generalRepo);
 
         busDriver.start ();
 
@@ -53,18 +53,43 @@ public class BusDriverMain {
         catch (InterruptedException e) {}
         
         System.out.println("O bus driver terminou.");
+        // generalRepo.setMissing(reclaimOffice.getNumBagsMissing());
 
+        // boolean end = false;
+        // end = arrivalLounge.shutdown();
+        // while(!end);
+
+        // end = false;
+        // end = collPoint.shutdown();
+        // while(!end);
+
+        // end = false;
+        // end = arrTransQuay.shutdown();
+        // while(!end);
         
-        arrivalLounge.shutdown();
-        collPoint.shutdown();
-        generalRepo.setMissing(reclaimOffice.getNumBagsMissing());
-        arrTransQuay.shutdown();
-        depTransQuay.shutdown();
-        arrTermExit.shutdown();
-        reclaimOffice.shutdown();
-        depTermEntrance.shutdown();
-        tempStorageArea.shutdown();
-        generalRepo.write(true); 
-        generalRepo.shutdown();
+        // end = false;
+        // end = depTransQuay.shutdown();
+        // while(!end);
+        
+        // end = false;
+        // end = arrTermExit.shutdown();
+        // while(!end);
+        
+        // end = false;
+        // end = reclaimOffice.shutdown();
+        // while(!end);
+        
+        // end = false;
+        // end = depTermEntrance.shutdown();
+        // while(!end);
+
+        // end = false;
+        // end = tempStorageArea.shutdown();
+        // while(!end);
+        
+        // generalRepo.write(true); 
+        // end = generalRepo.shutdown();
+
+
     }
 }

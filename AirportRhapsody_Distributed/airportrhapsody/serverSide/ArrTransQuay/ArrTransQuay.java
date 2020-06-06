@@ -169,12 +169,15 @@ public class ArrTransQuay extends PassengersHandler {
      */
     public void announcingBusBoarding() {
         List<Integer> tmpL = new ArrayList<>(this.passengersList);
-        passEnter = tmpL.size();
+        passEnter = 0;
         int[] ids = new int[tmpL.size()];
-        System.out.println(tmpL.size() + " tmpL: " + tmpL);
+        // System.out.println(tmpL.size() + " tmpL: " + tmpL);
         for(int i = 0; i < ids.length; i++) {
-            System.out.println(i + "   ->   " + tmpL);
-            ids[i] = tmpL.get(i); 
+            // System.out.println(i + "   ->   " + tmpL);
+            if(tmpL.get(i) != null){    
+                ids[i] = tmpL.get(i);
+                passEnter++;
+            } 
         }
         if(passEnter > 3){
             passEnter = 3;

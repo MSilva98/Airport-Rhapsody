@@ -15,14 +15,16 @@ public class PorterMain {
         CollectionPointStub collPoint;
         TempStorageAreaStub tempStorageArea;
         LoggerStub generalRepo;
+        ArrTransQuayStub arrTransQuay;
 
 
         generalRepo = new LoggerStub(serverHostName, 4008);
         arrivalLounge = new ArrivalLoungeStub(serverHostName, 4000);
         collPoint = new CollectionPointStub(serverHostName, 4003);
         tempStorageArea = new TempStorageAreaStub(serverHostName, 4007);
+        arrTransQuay = new ArrTransQuayStub(serverHostName, 4002);
 
-        Porter porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint, generalRepo);
+        Porter porter = new Porter(1, arrivalLounge, tempStorageArea, collPoint, arrTransQuay, generalRepo);
         porter.start ();
 
         try

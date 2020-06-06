@@ -47,13 +47,14 @@ public class ServerTempStorageArea {
       { 
          try
          {
-         sconi = scon.accept ();                            // entrada em processo de escuta
-        cliProxy = new ClientProxyTempStorageArea(sconi, tempStorageAreaInterface);   // lançamento do agente prestador do serviço
-        cliProxy.start ();
+            sconi = scon.accept ();                            // entrada em processo de escuta
+            cliProxy = new ClientProxyTempStorageArea(sconi, tempStorageAreaInterface);   // lançamento do agente prestador do serviço
+            cliProxy.start ();
          }
          catch (SocketTimeoutException e)
          { 
          }
+         System.out.println(waitConn);
       }
       scon.end ();
       System.out.println("O servidor foi desativado"); 

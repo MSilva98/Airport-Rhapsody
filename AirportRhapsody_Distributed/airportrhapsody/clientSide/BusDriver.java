@@ -1,6 +1,12 @@
 package airportrhapsody.clientSide;
 
 import airportrhapsody.serverSide.Logger.*;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
 import airportrhapsody.LoggerStub;
 import airportrhapsody.serverSide.ArrTransQuay.*;
 import airportrhapsody.serverSide.DepTransQuay.*;
@@ -56,7 +62,7 @@ public class BusDriver extends Thread {
      */
     private int seats;
 
-
+    private ArrivalLoungeStub arrivalLounge;
     /**
      * Instantiating the bus driver thread.
      * @param id Bus Driver identification
@@ -66,11 +72,12 @@ public class BusDriver extends Thread {
      * @param generalRepo General repository of information
      */
 
-    public BusDriver(int id, int numOfSeats, ArrTransQuayStub arrTransQuay, DepTransQuayStub depTransQuay, LoggerStub generalRepo) {
+    public BusDriver(int id, int numOfSeats, ArrTransQuayStub arrTransQuay, DepTransQuayStub depTransQuay, ArrivalLoungeStub arrivalLounge,  LoggerStub generalRepo) {
         this.busDriverState = InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL;
         this.seats = numOfSeats;
         this.arrTransQuay = arrTransQuay;
         this.depTransQuay = depTransQuay;
+        this.arrivalLounge = arrivalLounge;
         this.generalRepo = generalRepo;
         this.generalRepo.setStatDriver("PKAT");
         this.generalRepo.setQEmpty();
@@ -83,41 +90,63 @@ public class BusDriver extends Thread {
 
     @Override
     public void run() {
-        System.out.println("RUN 0");
+        // System.out.println("RUN 0");
         while(!hasDaysWorkEnded()){
-            System.out.println("RUN 1");
+            // System.out.println("RUN 1");
             arrTransQuay.parkTheBus();
-            System.out.println("RUN 2");
+            // System.out.println("RUN 2");
             this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
-            System.out.println("RUN 3");
+            // System.out.println("RUN 3");
             this.generalRepo.setStatDriver("PKAT");
-            System.out.println("RUN 4");  
+            // System.out.println("RUN 4");  
             this.generalRepo.write(false);
-            System.out.println("RUN 5");
+            // System.out.println("RUN 5");
             if(!arrTransQuay.isEmpty()){
-                System.out.println("RUN 6");
+                // System.out.println("RUN 6");
                 arrTransQuay.announcingBusBoarding();
-                System.out.println("RUN 7");
+                // System.out.println("RUN 7");
                 goToDepartureTerminal();
-                System.out.println("RUN 8");
+                // System.out.println("RUN 8");
                 this.setBusDriverState(depTransQuay.parkTheBusAndLetPassOff());
-                System.out.println("RUN 9");
+                // System.out.println("RUN 9");
                 goToArrivalTerminal();
             }
-            System.out.println("RUN 10");
+            // System.out.println("RUN 10");
         }
         generalRepo.write(false);
-        //this.shutdownServers();
-        
+        this.shutdownServers();
+        try{
+            String s = " Bus Driver End\n";
+            Files.write(Paths.get("shutdown.txt"), s.getBytes(), StandardOpenOption.APPEND);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
     /**
      * Shutdown servers
      */
     private void shutdownServers(){
+        generalRepo.write(true); 
+        try{
+            String s = "\nWAIT FOR PORTER";
+            Files.write(Paths.get("shutdown.txt"), s.getBytes(), StandardOpenOption.APPEND);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        while(!this.arrivalLounge.getPrtEnd());
+        arrivalLounge.shutdown();
         arrTransQuay.shutdown();
         depTransQuay.shutdown();
-        generalRepo.write(true); 
         generalRepo.shutdown();
+        try{
+            String s = "\nArrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End";
+            Files.write(Paths.get("shutdown.txt"), s.getBytes(), StandardOpenOption.APPEND);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -147,11 +176,11 @@ public class BusDriver extends Thread {
      */
 
     private boolean hasDaysWorkEnded() {
-        System.out.println("HSWE 0");
+        // System.out.println("HSWE 0");
         this.setBusDriverState(InternalState.PARKING_AT_THE_ARRIVAL_TERMINAL);
-        System.out.println("HSWE 1");
+        // System.out.println("HSWE 1");
         generalRepo.setStatDriver("PKAT");
-        System.out.println("HSWE 2");
+        // System.out.println("HSWE 2");
         return arrTransQuay.getDayEnd();
     }
 

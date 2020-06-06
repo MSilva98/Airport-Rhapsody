@@ -22,6 +22,18 @@ public class ArrivalLounge extends LuggageHandler {
      */
     private boolean dayEnd;
     /**
+     * State of the passenger execution
+     * 
+     * @serialField end
+     */
+    private boolean end;
+    /**
+     * State of the porter execution
+     * 
+     * @serialField end
+     */
+    private boolean prtEnd;
+    /**
      *  Logger - general repository of information
      * 
      *  @serialField generalRepo
@@ -122,6 +134,22 @@ public class ArrivalLounge extends LuggageHandler {
     public void setDayEnd(boolean st){
         dayEnd = st;
         this.wakePorter();
+    }
+
+    public boolean getPrtEnd(){
+        return prtEnd;
+    }
+
+    public void setPrtEnd(boolean st){
+        prtEnd = st;
+    }
+
+    public boolean getPassEnd(){
+        return end;
+    }
+
+    public void setPassEnd(boolean st){
+        end = st;
     }
 
     @Override

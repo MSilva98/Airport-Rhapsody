@@ -1,0 +1,2041 @@
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+WAIT FOR PORTER
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+WAIT FOR PASSENGER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+WAIT FOR PORTER
+ArrTerm End, DepTerm End, Reclaim End
+
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+Passengers at shut
+WAIT FOR PASSENGER
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End
+
+
+
+NEW EXECUTION #########################
+
+WAIT FOR PASSENGER
+Passengers at shut
+ArrTerm End, DepTerm End, Reclaim End
+
+WAIT FOR PORTER
+Coll point end, TempStore end Porter end
+
+Arrival Lounge end, ArrTransQuay End, DepTransQuay End, Logger End Bus Driver End

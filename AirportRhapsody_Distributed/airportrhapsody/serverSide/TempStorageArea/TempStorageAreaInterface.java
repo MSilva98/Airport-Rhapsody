@@ -60,8 +60,11 @@ public class TempStorageAreaInterface {
                 break;  
             case MessageTempStoreArea.SHUT:
                 ServerTempStorageArea.waitConn = false;   
+                System.out.println("TEMP STR SHUT MESSAGE");
                 (((ClientProxyTempStorageArea) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("TEMP STR SHUT MESSAGE 1");
                 outMessage = new MessageTempStoreArea(MessageTempStoreArea.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
 
         }

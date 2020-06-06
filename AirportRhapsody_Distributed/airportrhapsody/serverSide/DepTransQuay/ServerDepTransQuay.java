@@ -58,6 +58,7 @@ public class ServerDepTransQuay {
         catch (SocketTimeoutException e)
         { 
         }
+        System.out.println(waitConn);
       }
       scon.end ();
        System.out.println("O servidor foi desativado"); 

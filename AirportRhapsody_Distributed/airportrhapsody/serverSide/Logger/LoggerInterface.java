@@ -186,8 +186,11 @@ public class LoggerInterface {
                 break;
             case MessageLogger.SHUT:
                 ServerLogger.waitConn = false;
+                System.out.println("LOGGER SHUT MESSAGE");
                 (((ClientProxyLogger) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("LOGGER SHUT MESSAGE 1");
                 outMessage = new MessageLogger(MessageLogger.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
         }
         return outMessage;

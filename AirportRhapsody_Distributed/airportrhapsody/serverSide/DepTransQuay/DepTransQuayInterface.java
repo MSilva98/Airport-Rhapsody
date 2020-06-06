@@ -70,8 +70,11 @@ public class DepTransQuayInterface {
                 break;
             case MessageDepTransQuay.SHUT:
                 ServerDepTransQuay.waitConn = false;
+                System.out.println("DEP TRANS SHUT MESSAGE");
                 (((ClientProxyDepTransQuay) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("DEP TRANS SHUT MESSAGE 1");
                 outMessage = new MessageDepTransQuay(MessageDepTransQuay.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
         }
 

@@ -147,15 +147,25 @@ public class ArrTermExitStub  {
     {
         ClientCom con = new ClientCom (serverHostName, serverPortNumb);
         MessageArrTermExit inMessage, outMessage;
-        while (!con.open ()){}
+        System.out.println("BEFORE CON");
+        while (!con.open ()){
+            System.out.println("WHILE CON");
+            try
+        { Thread.currentThread ().sleep ((long) (10));
+        }
+        catch (InterruptedException e) {}
+        }
+        System.out.println("AFTER CON");
         outMessage = new MessageArrTermExit(MessageArrTermExit.SHUT);
         con.writeObject (outMessage);
+        System.out.println("SHUT SENT");
         inMessage = (MessageArrTermExit) con.readObject ();
         con.close ();
+        System.out.println("ACK RECEIVED");
         if (inMessage.getType () != MessageArrTermExit.ACK){ 
             System.out.println ("Thread " + Thread.currentThread ().getName () + ": Tipo inválido!");
             System.out.println (inMessage.toString ());
-            System.exit (1);
+            // System.exit (1);
         }
     }
 }

@@ -98,6 +98,34 @@ public class MessageArrivalLounge implements Serializable{
      */
     public static final int SHUT =  11;
 
+    /**
+     * Set Porter End
+     * 
+     * @serialField SE
+     */
+    public static final int SPE =  12;
+
+    /**
+     * Get Porter End
+     * 
+     * @serialField GE
+     */
+    public static final int GPE =  13;
+
+    /**
+     * Set Passengers End
+     * 
+     * @serialField SE
+     */
+    public static final int SPAE =  14;
+
+    /**
+     * Get Passengers End
+     * 
+     * @serialField GE
+     */
+    public static final int GPAE =  15;
+
     //Message arguments
 
     /**

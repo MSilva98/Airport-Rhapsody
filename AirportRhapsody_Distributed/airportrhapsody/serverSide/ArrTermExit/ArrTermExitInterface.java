@@ -67,8 +67,11 @@ public class ArrTermExitInterface {
             
             case MessageArrTermExit.SHUT:
                 ServerArrTermExit.waitConn = false;
+                System.out.println("Arrival EXIT SHUT MESSAGE");
                 (((ClientProxyArrTermExit) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("Arrival EXIT SHUT MESSAGE 1");
                 outMessage = new MessageArrTermExit(MessageArrTermExit.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
         }
 

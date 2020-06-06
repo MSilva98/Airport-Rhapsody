@@ -70,8 +70,11 @@ public class ReclaimOfficeInterface {
             
             case MessageReclaimOffice.SHUT:
                 ServerReclaimOffice.waitConn = false;
+                System.out.println("RECLAIM OFF SHUT MESSAGE");
                 (((ClientProxyReclaimOffice) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("RECLAIM OFF SHUT MESSAGE 1");
                 outMessage = new MessageReclaimOffice(MessageReclaimOffice.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
         }
 

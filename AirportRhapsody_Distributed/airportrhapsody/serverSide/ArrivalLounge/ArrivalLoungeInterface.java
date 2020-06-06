@@ -49,6 +49,14 @@ public class ArrivalLoungeInterface {
                 break;
             case MessageArrivalLounge.SDE:
                 break;
+            case MessageArrivalLounge.GPE:
+                break;
+            case MessageArrivalLounge.SPE:
+                break;
+            case MessageArrivalLounge.GPAE:
+                break;
+            case MessageArrivalLounge.SPAE:
+                break;
             case MessageArrivalLounge.S:
                 break;
             case MessageArrivalLounge.SHUT:
@@ -98,6 +106,23 @@ public class ArrivalLoungeInterface {
                 outMessage = new MessageArrivalLounge (MessageArrivalLounge.ACK); 
                 break;
 
+            case MessageArrivalLounge.GPE:
+                boolean s = arrivalLounge.getPrtEnd();
+                outMessage = new MessageArrivalLounge (MessageArrivalLounge.GPE, s);  
+                break;
+            case MessageArrivalLounge.SPE:
+                arrivalLounge.setPrtEnd(inMessage.getGenBool());
+                outMessage = new MessageArrivalLounge (MessageArrivalLounge.ACK); 
+                break;
+
+            case MessageArrivalLounge.GPAE:
+                boolean t = arrivalLounge.getPassEnd();
+                outMessage = new MessageArrivalLounge (MessageArrivalLounge.GPAE, t);  
+                break;
+            case MessageArrivalLounge.SPAE:
+                arrivalLounge.setPassEnd(inMessage.getGenBool());
+                outMessage = new MessageArrivalLounge (MessageArrivalLounge.ACK); 
+                break;
 
             case MessageArrivalLounge.S: 
                 int size = arrivalLounge.size();
@@ -106,9 +131,10 @@ public class ArrivalLoungeInterface {
                 
             case MessageArrivalLounge.SHUT:
                 ServerArrivalLounge.waitConn = false;
-                System.out.println(ServerArrivalLounge.waitConn + " waitConn");
+                // System.out.println(ServerArrivalLounge.waitConn + " waitConn");
                 (((ClientProxyArrivalLounge) (Thread.currentThread ())).getScon ()).setTimeout (10);
                 outMessage = new MessageArrivalLounge(MessageArrivalLounge.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
         }
 

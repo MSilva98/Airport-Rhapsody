@@ -1,3 +1,4 @@
+#!/bin/bash
 #!/bin/bash/sh
 
 #Auxilio do grupo P2G6 para a realização desta parte so script

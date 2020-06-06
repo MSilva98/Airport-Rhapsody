@@ -55,8 +55,11 @@ public class DepTermEntranceInterface {
 
             case MessageDepTermEntrance.SHUT:
                 ServerDepTermEntrance.waitConn = false;
+                System.out.println("DEP TERM SHUT MESSAGE");
                 (((ClientProxyDepTermEntrance) (Thread.currentThread ())).getScon ()).setTimeout (10);
+                System.out.println("DEPT TERM SHUT MESSAGE 1");
                 outMessage = new MessageDepTermEntrance(MessageDepTermEntrance.ACK);
+                System.out.println("SHUT COMPLETE");
                 break;
 
         }
