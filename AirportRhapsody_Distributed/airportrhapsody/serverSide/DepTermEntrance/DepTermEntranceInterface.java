@@ -20,6 +20,16 @@ public class DepTermEntranceInterface {
         this.depTermEnt = depTermEnt;
     }
 
+     /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageDepTermEntrance processAndReply (MessageDepTermEntrance inMessage) throws MessageException
     {
         MessageDepTermEntrance outMessage = null;

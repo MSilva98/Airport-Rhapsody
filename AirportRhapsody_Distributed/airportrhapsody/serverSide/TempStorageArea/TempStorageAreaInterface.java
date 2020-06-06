@@ -19,6 +19,16 @@ public class TempStorageAreaInterface {
         this.tempStorageArea = tempStorageArea;
     }
 
+     /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageTempStoreArea processAndReply (MessageTempStoreArea inMessage) throws MessageException
     {
         MessageTempStoreArea outMessage = null;

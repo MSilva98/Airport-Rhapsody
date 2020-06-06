@@ -18,6 +18,16 @@ public class LoggerInterface {
         this.logger = logger;
     }
 
+     /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageLogger processAndReply (MessageLogger inMessage) throws MessageException
     {
         MessageLogger outMessage = null;

@@ -19,6 +19,16 @@ public class ReclaimOfficeInterface {
         this.reclaimOffice = reclaimOffice;
     }
 
+     /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageReclaimOffice processAndReply (MessageReclaimOffice inMessage) throws MessageException
     {
         MessageReclaimOffice outMessage = null;

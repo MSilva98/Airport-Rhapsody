@@ -20,6 +20,16 @@ public class ArrivalLoungeInterface {
         this.arrivalLounge = arrivalLounge;
     }
 
+    /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageArrivalLounge processAndReply (MessageArrivalLounge inMessage) throws MessageException
     {
         MessageArrivalLounge outMessage = null;                           // mensagem de resposta

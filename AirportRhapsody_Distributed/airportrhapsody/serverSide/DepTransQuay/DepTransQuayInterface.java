@@ -21,6 +21,16 @@ public class DepTransQuayInterface {
         this.depTransQuay = depTransQuay;
     }
 
+     /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageDepTransQuay processAndReply (MessageDepTransQuay inMessage) throws MessageException
     {
         MessageDepTransQuay outMessage = null;

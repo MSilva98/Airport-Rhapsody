@@ -21,6 +21,16 @@ public class ArrTransQuayInterface {
         this.arrTransQuay = arrTransQuay;
     }
 
+     /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageArrTransQuay processAndReply (MessageArrTransQuay inMessage) throws MessageException
     {
         MessageArrTransQuay outMessage = null;

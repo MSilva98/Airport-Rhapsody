@@ -20,6 +20,16 @@ public class CollectionPointInterface {
         this.collPoint = collPoint;
     }
 
+     /**
+   *  Processing of messages by executing the corresponding task.
+   *  Generation of a reply message.
+   *
+   *    @param inMessage message
+   *
+   *    @return response message
+   *
+   *    @throws MessageException invalid message
+   */
     public MessageCollectionPoint processAndReply (MessageCollectionPoint inMessage) throws MessageException
     {
         MessageCollectionPoint outMessage = null;
