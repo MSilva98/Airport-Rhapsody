@@ -4,8 +4,8 @@
 for i in $(seq 1 2000)
 do
 	echo -e "\nRun n.o " $i
-	sh run.sh &
-
+	sh run.sh 
+	wait
 	while [ $(ps -aux | grep airportrhapsody | wc -l) -gt 1 ]; do
 	ps -aux | grep airportrhapsody | wc -l
         sleep 1
